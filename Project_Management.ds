@@ -1,0 +1,1591 @@
+/*
+ * Author       : zappyworkssoftwaresolutionst47
+ * Generated on : 22-Nov-2025 09:33:30
+ * Version      : 1.0
+ */
+ application "Project Management"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form Convert_CRM
+		{
+			displayname = "Convert CRM"
+			store data in zc = false
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Project_ID
+			(
+				type = picklist	
+				displayname = "Project ID"
+				values  = Project_Creation.ID
+    			displayformat = [Project_ID + " - " + Client_Name.first_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Project_Name
+			(
+    			type = text
+				displayname = "Project Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Description
+			(
+    			type = textarea
+				displayname = "Description "
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Project_Start_Date
+			(
+    			type = date
+				displayname = "Project Start Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Project_End_Date
+			(
+    			type = date
+				displayname = "Project End Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Total_Days
+			(
+				type = number
+				displayname = "Total Days"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Client_Name
+			(
+    			type = name
+				displayname = "Client Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Client_Email
+			(
+    			type = email
+				displayname = "Client Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Client_Phone
+			(
+    			type = phonenumber
+				displayname = "Client Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Project_Budget
+			(
+				displayname = "Project Budget"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			CRM_Status
+			(
+				type = picklist
+				displayname = "CRM Status"
+				maxchar = 100
+				values = {"Lead","Contact","Account","Deal"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			CRM_Account_Number_Lead
+			(
+    			type = text
+				displayname = "CRM Account Number Lead"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			CRM_Account_Number_Contacts
+			(
+    			type = text
+				displayname = " CRM Account Number Contacts"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			CRM_Account_Number_Account
+			(
+    			type = text
+				displayname = "CRM Account Number Account"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			CRM_Account_Number_Deal
+			(
+    			type = text
+				displayname = "CRM Account Number Deal"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				Submit
+				(
+   					type = submit
+   					displayname = "Submit"
+				)
+			}
+		}
+		form Customer_Care
+		{
+			displayname = "Customer Care"
+			success message = "Customer Care Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Project_ID
+			(
+				type = picklist	
+				displayname = "Project ID"
+				values  = Project_Creation.ID
+    			displayformat = [Project_ID + " - " + Client_Name.first_name + " - " + Project_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Client_Name
+			(
+    			type = name
+				displayname = "Client Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Client_Email
+			(
+    			type = email
+				displayname = "Client Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Client_Phone
+			(
+    			type = phonenumber
+				displayname = "Client Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Issue_Subject
+			(
+				type = picklist
+				displayname = "Issue Subject"
+				maxchar = 100
+				values = {"Development Issue","Show Error","Software Very Slow"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Description
+			(
+    			type = textarea
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Project_Creation
+		{
+			displayname = "Project Creation"
+			success message = "Project Creation Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Project_ID
+			(
+    			type = text
+				displayname = "Project ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number
+			(
+    			type = autonumber
+				displayname = "Auto Number"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Project_Name
+			(
+    			type = text
+				displayname = "Project Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Description
+			(
+    			type = textarea
+				displayname = "Description "
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Project_Start_Date
+			(
+    			type = date
+				displayname = "Project Start Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Project_End_Date
+			(
+    			type = date
+				displayname = "Project End Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Total_Days
+			(
+				type = number
+				displayname = "Total Days"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Client_Name
+			(
+    			type = name
+				displayname = "Client Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Client_Email
+			(
+    			type = email
+				displayname = "Client Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Client_Phone
+			(
+    			type = phonenumber
+				displayname = "Client Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Project_Budget
+			(
+				displayname = "Project Budget"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Project_Details
+			(
+				type = grid
+				displayname = "Project Details "
+				must have Project_Releated_Details_File
+				(
+    				type = upload file
+					displayname = "Project Releated Details File"
+				browse = local_drive, google_docs, zoho_docs
+					width = medium
+				)
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Section1
+			(
+				type = section
+				displayname = "Section"
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Estimated_Revenue
+			(
+				displayname = "Estimated Revenue"
+				type = INR
+				format = commadotindian
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Actual_Revenue
+			(
+				displayname = "Actual Revenue"
+				type = INR
+				format = commadotindian
+				initial value = 0
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Total_Cost
+			(
+				displayname = "Total Cost"
+				type = INR
+				format = commadotindian
+				initial value = 0
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Project_Tracking_Status
+			(
+    			type = text
+				displayname = "Project Tracking Status"
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Project_Revenue_Tracking
+			(
+				displayname = "Project Revenue Tracking"
+				type = INR
+				format = commadotindian
+				initial value = 0
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Status
+			(
+				type = picklist
+				displayname = "Status options"
+				maxchar = 100
+				values = {"In process","UAT","Post-Delivery support","Completed","closed"}
+				initial value = "In process"
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Desk_ID
+			(
+    			type = text
+				displayname = "Desk ID"
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			CRM_Status
+			(
+				type = picklist
+				displayname = "CRM Status"
+				maxchar = 100
+				values = {"Lead","Contact","Account","Deal"}
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			CRM_Account_Number_Lead
+			(
+    			type = text
+				displayname = "CRM Account Number Lead"
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			CRM_Account_Number_Contacts
+			(
+    			type = text
+				displayname = " CRM Account Number Contacts"
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			CRM_Account_Number_Account
+			(
+    			type = text
+				displayname = "CRM Account Number Account"
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			CRM_Account_Number_Deal
+			(
+    			type = text
+				displayname = "CRM Account Number Deal"
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Send_Project_Status
+		{
+			displayname = "Send Project Status"
+			success message = "Project Status Sent Successfully"
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Send"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list All_Project_Creations
+		{
+			displayName = "All Project Creations"
+			show all rows from Project_Creation    
+			(
+				Project_Name as "Project Name"
+				Description as "Description "
+				Project_Start_Date as "Project Start Date"
+				Project_End_Date as "Project End Date"
+				Client_Name  as "Client Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Client_Email as "Client Email"
+				Client_Phone as "Client Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Project_Budget as "Project Budget"
+				Project_ID as "Project ID"
+				Auto_Number as "Auto Number"
+				Total_Days as "Total Days"
+				Project_Details.Project_Releated_Details_File as "Project Details "
+				Estimated_Revenue as "Estimated Revenue"
+				Actual_Revenue as "Actual Revenue"
+				Total_Cost as "Total Cost"
+				Project_Tracking_Status as "Project Tracking Status"
+				Project_Revenue_Tracking as "Project Revenue Tracking"
+				Status as "Status options"
+				Desk_ID as "Desk ID"
+				CRM_Status as "CRM Status"
+				CRM_Account_Number_Lead as "CRM Account Number Lead"
+				CRM_Account_Number_Contacts as " CRM Account Number Contacts"
+				CRM_Account_Number_Account as "CRM Account Number Account"
+				CRM_Account_Number_Deal as "CRM Account Number Deal"
+				custom action "Create CRM Lead"
+				(
+	  			workflow = Create_CRM_Lead
+				show action in edit record menu = true
+				column header = "Create CRM Lead"
+				condition = (CRM_Status is null)
+				)
+				custom action "Convert Contacts"
+				(
+	  			workflow = Convert_Contacts1
+				show action in edit record menu = true
+				column header = "Convert Contacts"
+				condition = (CRM_Status == "Lead")
+				confirmation before execution
+				(
+					message for individual record = "Execute the Convert Contacts action for this record?"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+			)
+		}
+		default list All_Customer_Cares
+		{
+			displayName = "All Customer Cares"
+			show all rows from Customer_Care    
+			(
+				Project_ID as "Project ID"
+				Client_Name  as "Client Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Client_Email as "Client Email"
+				Client_Phone as "Client Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Issue_Subject as "Issue Subject"
+				Description
+			)
+		}
+		default list All_Project_Statuses
+		{
+			displayName = "All Project Statuses"
+			show all rows from Send_Project_Status    
+		}
+	}
+
+
+		workflow
+		{
+		form
+		{
+			Create_Project_ID as "Create Project ID"
+			{
+				type =  form
+				form = Project_Creation
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Project_ID = "PRO" + input.Project_Name.subString(0,4) + input.Project_Start_Date.getDay() + input.Client_Name.subString(0,3) + input.Auto_Number;
+										var = Map();
+										var.put("firstName",input.Client_Name.first_name);
+										var.put("lastName",input.Client_Name.last_name);
+										var.put("email",input.Client_Email);
+										var.put("mobile",input.Client_Phone);
+										var2 = zoho.desk.create(60055937116,"contacts",var,"zoho_desk_connection");
+										Get_Desk_ID = var2.get("id");
+										input.Desk_ID = Get_Desk_ID;
+										// 
+										// 
+										// 
+										// 
+										// 
+										// 
+										// 
+										// 
+										// 
+										// 
+										ver = zoho.workdrive.createFolder(input.Project_Name + "_" + input.Client_Name.first_name,"qtbolefdaad97ac6046b8a35f7f98087bd0fa","zoho_oauth_connection");
+										ver2 = ver.get("data").get("id");
+										// 
+										if(input.Project_Details.Project_Releated_Details_File != null)
+										{
+											for each  rec in input.Project_Details
+											{
+												rec2 = zoho.workdrive.uploadFile(rec.Project_Releated_Details_File,ver2,rec.Project_Releated_Details_File,false,"zoho_oauth_connection");
+											}
+										}
+						)
+					}
+				}
+
+			}
+			validation_For_Start_Date as "validation For Start Date"
+			{
+				type =  form
+				form = Project_Creation
+				record event = on add or edit
+
+				on user input of Project_Start_Date
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Project_Start_Date != null)
+										{
+											if(input.Project_Start_Date < zoho.currentdate)
+											{
+												alert "Not Valid Reson For You Select The Past Date";
+												input.Project_Start_Date = null;
+											}
+										}
+										if(input.Project_End_Date != null && input.Project_Start_Date != null)
+										{
+											input.Total_Days = input.Project_Start_Date.daysBetween(input.Project_End_Date);
+										}
+						)
+					}
+				}
+
+			}
+			validation_For_End_Date as "validation For End Date"
+			{
+				type =  form
+				form = Project_Creation
+				record event = on add or edit
+
+				on user input of Project_End_Date
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Project_End_Date != null)
+										{
+											if(input.Project_Start_Date > input.Project_End_Date)
+											{
+												alert "Not Valid Reson For You Enter The Past Date";
+												input.Project_End_Date = null;
+											}
+										}
+										if(input.Project_Start_Date != null && input.Project_End_Date != null)
+										{
+											input.Total_Days = input.Project_Start_Date.daysBetween(input.Project_End_Date);
+										}
+						)
+					}
+				}
+
+			}
+			Total_validation as "Total validation"
+			{
+				type =  form
+				form = Project_Creation
+				record event = on add or edit
+
+				on validate
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Total_Days == null || input.Total_Days == 0)
+										{
+											alert "Not Valid Reson For You Enter The Zero Value Or Not Value For The Project Total Days";
+										}
+						)
+					}
+				}
+
+			}
+			hide_and_disable as "hide and disable"
+			{
+				type =  form
+				form = Project_Creation
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						hide Project_ID,Actual_Revenue,Desk_ID,Estimated_Revenue,Project_Revenue_Tracking,Total_Cost,Status,Project_Tracking_Status,CRM_Status,CRM_Account_Number_Lead,CRM_Account_Number_Contacts,CRM_Account_Number_Account,CRM_Account_Number_Deal;
+					}
+					actions 
+					{
+						disable Total_Days;
+					}
+				}
+
+			}
+			validation_For_Project_Bu as "validation For Project Budget"
+			{
+				type =  form
+				form = Project_Creation
+				record event = on add or edit
+
+				on user input of Project_Budget
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Project_Budget != null)
+										{
+											if(input.Project_Budget <= 0)
+											{
+												alert "Not Valid Reson For You Enter The negative Value";
+												input.Project_Budget = null;
+											}
+										}
+										if(input.Project_Budget != null)
+										{
+											Es = input.Project_Budget;
+										}
+						)
+					}
+				}
+
+			}
+			Create_integration_with_Z as "Create integration with Zoho desk"
+			{
+				type =  form
+				form = Customer_Care
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											new = Project_Creation[ID == input.Project_ID];
+										new2 = new.Desk_ID;
+										var = Map();
+										var.put("Contact_Name",new2);
+										var.put("departmentId",231248000000010772);
+										var.put("subject",input.Issue_Subject);
+										var.put("contactId",new2.toNumber());
+										var.put("status","Open");
+										var2 = zoho.desk.create(60055937116,"Tickets",var,"zoho_desk_connection");
+						)
+					}
+				}
+
+			}
+			Convert_CRM as "Convert CRM"
+			{
+				type =  form
+				form = Convert_CRM
+				button = Submit
+				on click
+				{
+					actions 
+					{
+					on click
+					(
+						new = Project_Creation[Client_Name == input.Client_Name];
+										if(input.CRM_Status == "Lead")
+										{
+											CRMmap = Map();
+											CRMmap.put("Last_Name",input.Client_Name.last_name);
+											CRMmap.put("First_Name",input.Client_Name.first_name);
+											CRMmap.put("Email",input.Client_Email);
+											CRMmap.put("Phone",input.Client_Phone);
+											CRMmap.put("Company","JD Project Management");
+											lis = List();
+											lis.add(CRMmap);
+											CRMmap2 = Map();
+											CRMmap2.put("Data",lis);
+											rec = invokeurl
+											[
+												url :"https://www.zohoapis.in/crm/v8/Leads"
+												type :POST
+												parameters:CRMmap2
+												connection:"zohocrm_connection"
+											];
+											new.Status="Lead";
+											new.CRM_Account_Number_Lead=rec.get("data").get(0).get("details").get("id");
+											info new.CRM_Account_Number_Lead;
+											info rec;
+										}
+										if(input.CRM_Status == "Contacts")
+										{
+											ver = new.CRM_Account_Number_Lead;
+											Contacts_values = Map();
+											Contacts_values.put("First_Name ",input.Client_Name.first_name);
+											Contacts_values.put("Last_Name",input.Client_Name.last_name);
+											Contacts_values.put("Email ",input.Client_Email);
+											Contacts_values.put("Phone",input.Client_Phone);
+											response = zoho.crm.convertLead(ver.toNumber(),Contacts_values,"zohocrm_connection");
+											info response;
+											new.Status="Contacts";
+										}
+					)
+					}
+				}
+			}
+			hide_and_disable1 as "hide and disable"
+			{
+				type =  form
+				form = Convert_CRM
+				record event = on add
+
+				field rules
+				{
+					actions 
+					{
+						disable CRM_Account_Number_Contacts,Client_Email,Client_Name,Client_Phone,CRM_Account_Number_Account,CRM_Account_Number_Deal,CRM_Account_Number_Lead,CRM_Status,Description,Project_Budget,Project_End_Date,Project_ID,Project_Name,Project_Start_Date,Total_Days;
+					}
+					actions 
+					{
+						hide CRM_Account_Number_Contacts,CRM_Account_Number_Account,CRM_Account_Number_Deal,CRM_Account_Number_Lead;
+					}
+				}
+
+			}
+		}
+
+
+
+
+
+
+		functions
+		{
+			Create_CRM_Lead as "Create CRM Lead"
+			{
+				type =  functions
+				form = Project_Creation
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						openUrl("#Form:Convert_CRM?Project_ID=" + input.ID + "&Project_Name=" + input.Project_Name + "&Description=" + input.Description + "&Project_Start_Date=" + input.Project_Start_Date + "&Project_End_Date=" + input.Project_End_Date + "&Total_Days=" + input.Total_Days + "&Client_Name.first_name=" + input.Client_Name.first_name + "&Client_Name.last_name=" + input.Client_Name.last_name + "&Client_Email=" + input.Client_Email + "&Client_Phone=" + input.Client_Phone + "&Project_Budget=" + input.Project_Budget + "&CRM_Status=" + "Lead","popup window","height=<height>,width=<width>");
+										// CRMmap = Map();
+										// CRMmap.put("Last_Name",input.Client_Name.last_name);
+										// CRMmap.put("First_Name",input.Client_Name.first_name);
+										// CRMmap.put("Email",input.Client_Email);
+										// CRMmap.put("Phone",input.Client_Phone);
+										// CRMmap.put("Company","JD Project Management");
+										// lis = List();
+										// lis.add(CRMmap);
+										// CRMmap2 = Map();
+										// CRMmap2.put("Data",lis);
+										// rec = invokeurl
+										// [
+										// 	url :"https://www.zohoapis.in/crm/v8/Leads"
+										// 	type :POST
+										// 	parameters:CRMmap2
+										// 	connection:"zohocrm_connection"
+										// ];
+										// input.Status = "Lead";
+										// input.CRM_Account_Number_Lead = rec.get("data").get(0).get("details").get("id");
+										// info input.CRM_Account_Number_Lead;
+										// info rec;
+					)
+					}
+				}
+			}
+			Convert_Contacts1 as "Convert_Contacts"
+			{
+				type =  functions
+				form = Project_Creation
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						openUrl("#Form:Convert_CRM?Project_ID=" + input.ID + "&Project_Name=" + input.Project_Name + "&Description=" + input.Description + "&Project_Start_Date=" + input.Project_Start_Date + "&Project_End_Date=" + input.Project_End_Date + "&Total_Days=" + input.Total_Days + "&Client_Name.first_name=" + input.Client_Name.first_name + "&Client_Name.last_name=" + input.Client_Name.last_name + "&Client_Email=" + input.Client_Email + "&Client_Phone=" + input.Client_Phone + "&Project_Budget=" + input.Project_Budget + "&CRM_Status=" + "Contacts","popup window","height=<height>,width=<width>");
+					)
+					}
+				}
+			}
+		}
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	connections
+	{
+		zoho_oauth_connection
+		(
+			displayname = "Zoho OAuth Connection"
+			connector = zoho_oauth
+			permissions = {"WorkDrive.files.CREATE"}
+		)
+		zohocrm_connection
+		(
+			displayname = "ZohoCRM Connection"
+			connector = zohocrm1
+			permissions = {"create_accounts_record","create_campaigns_record","create_cases_record","create_contacts_record","create_deals_record","create_invoices_record","create_leads_record","create_products_record","create_purchase_orders_record","create_quotes_record","create_sales_orders_record","create_solutions_record","create_vendors_record","fetch_accounts_record","fetch_all_accounts_records","fetch_all_campaigns_records","fetch_all_cases_records","fetch_all_contacts_records","fetch_all_deals_records","fetch_all_invoices_records","fetch_all_leads_records","fetch_all_products_records","fetch_all_purchase_orders_records","fetch_all_quotes_records","fetch_all_sales_orders_records","fetch_all_solutions_records","fetch_all_vendors_records","fetch_campaigns_record","fetch_cases_record","fetch_contacts_record","fetch_deals_record","fetch_invoices_record","fetch_leads_record","fetch_products_record","fetch_purchase_orders_record","fetch_quotes_record","fetch_sales_orders_record","fetch_solutions_record","fetch_vendors_record","list_all","search_accounts_record","search_campaigns_record","search_cases_record","search_contacts_record","search_deals_record","search_invoices_record","search_leads_record","search_products_record","search_purchase_orders_record","search_quotes_record","search_sales_orders_record","search_solutions_record","search_vendors_record","sync_accounts_record","sync_campaigns_record","sync_cases_record","sync_contacts_record","sync_deals_record","sync_invoices_record","sync_leads_record","sync_products_record","sync_purchase_orders_record","sync_quotes_record","sync_sales_orders_record","sync_solutions_record","sync_vendors_record","update_accounts_record","update_campaigns_record","update_cases_record","update_contacts_record","update_deals_record","update_invoices_record","update_leads_record","update_products_record","update_purchase_orders_record","update_quotes_record","update_sales_orders_record","update_solutions_record","update_vendors_record"}
+		)
+		zoho_desk_connection
+		(
+			displayname = "Zoho Desk Connection"
+			connector = zoho_desk
+			permissions = {"create_account","create_agent","create_call","create_contact","create_department","create_event","create_product","create_task","create_ticket","get_account","get_agent","get_all_accounts","get_all_agents","get_all_calls","get_all_contacts","get_all_departments","get_all_events","get_all_products","get_all_tasks","get_all_tickets","get_call","get_contact","get_department","get_event","get_product","get_task","get_ticket","search_accounts","search_calls","search_contacts","search_events","search_products","search_tasks","search_tickets","update_account","update_agent","update_call","update_contact","update_department","update_event","update_product","update_task","update_ticket"}
+		)
+	}
+	web
+	{
+		forms
+		{
+			form Convert_CRM
+			{
+				label placement = left
+			}
+			form Customer_Care
+			{
+				label placement = left
+			}
+			form Project_Creation
+			{
+				label placement = left
+			}
+			form Send_Project_Status
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report All_Project_Creations
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Project_Name as "Project Name"
+								Description as "Description "
+								Project_Start_Date as "Project Start Date"
+								Project_End_Date as "Project End Date"
+								Client_Name as "Client Name"
+								Client_Email as "Client Email"
+								Client_Phone as "Client Phone"
+								"Create CRM Lead"
+								"Convert Contacts"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Project_Name as "Project Name"
+								Description as "Description "
+								Project_Start_Date as "Project Start Date"
+								Project_End_Date as "Project End Date"
+								Client_Name as "Client Name"
+								Client_Email as "Client Email"
+								Client_Phone as "Client Phone"
+								Project_Budget as "Project Budget"
+								Project_ID as "Project ID"
+								Auto_Number as "Auto Number"
+								Total_Days as "Total Days"
+								Project_Details.Project_Releated_Details_File as "Project Details "
+								Estimated_Revenue as "Estimated Revenue"
+								Actual_Revenue as "Actual Revenue"
+								Total_Cost as "Total Cost"
+								Project_Tracking_Status as "Project Tracking Status"
+								Project_Revenue_Tracking as "Project Revenue Tracking"
+								Status as "Status options"
+								Desk_ID as "Desk ID"
+								CRM_Status as "CRM Status"
+								CRM_Account_Number_Lead as "CRM Account Number Lead"
+								CRM_Account_Number_Contacts as " CRM Account Number Contacts"
+								CRM_Account_Number_Account as "CRM Account Number Account"
+								CRM_Account_Number_Deal as "CRM Account Number Deal"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Customer_Cares
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Project_ID as "Project ID"
+								Client_Name as "Client Name"
+								Client_Email as "Client Email"
+								Client_Phone as "Client Phone"
+								Issue_Subject as "Issue Subject"
+								Description
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Project_ID as "Project ID"
+								Client_Name as "Client Name"
+								Client_Email as "Client Email"
+								Client_Phone as "Client Phone"
+								Issue_Subject as "Issue Subject"
+								Description
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Project_Statuses
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Project_Creations
+				{
+					displayname = "Project Creations"
+					icon = "education-books-46"
+					form  Project_Creation
+					{
+						icon = "education-books-46"
+					}
+					report All_Project_Creations
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section Customer_Cares
+				{
+					displayname = "Customer Cares"
+					icon = "shopping-shop-location"
+					form  Customer_Care
+					{
+						icon = "travel-spa"
+					}
+					report All_Customer_Cares
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Convert_CRM
+				{
+					displayname = "Convert CRM"
+					icon = "tech-2-socket-uk"
+					form  Convert_CRM
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Project_Statuses
+				{
+					displayname = "Project Statuses"
+					icon = "education-books-46"
+					form  Send_Project_Status
+					{
+						icon = "health-ambulance"
+					}
+					report All_Project_Statuses
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "lato"
+			color options
+			{
+				color = "1"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Convert_CRM
+			{
+				label placement = auto
+			}
+			form Customer_Care
+			{
+				label placement = auto
+			}
+			form Project_Creation
+			{
+				label placement = auto
+			}
+			form Send_Project_Status
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = yellow
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Convert_CRM
+			{
+				label placement = auto
+			}
+			form Customer_Care
+			{
+				label placement = auto
+			}
+			form Project_Creation
+			{
+				label placement = auto
+			}
+			form Send_Project_Status
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = yellow
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

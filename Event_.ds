@@ -1,0 +1,1057 @@
+/*
+ * Author       : zappyworkssoftwaresolutionst47
+ * Generated on : 22-Nov-2025 09:42:25
+ * Version      : 1.0
+ */
+ application "Event "
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form Create_Event
+		{
+			displayname = "Create Event"
+			success message = "Event Created Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Event_Name
+			(
+    			type = text
+				displayname = "Event Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Start_Date_And_Time
+			(
+    			type = datetime
+				displayname = "Start Date And Time"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			End_Date_and_Time
+			(
+    			type = datetime
+				displayname = "End Date and Time"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Event_Type
+			(
+				type = radiobuttons
+				displayname = "Event Type"
+				maxchar = 100
+				values = {"Venue","Online","Hybrid"}
+				layout = 3
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Event_Category
+			(
+				type = radiobuttons
+				displayname = "Event Category "
+				maxchar = 100
+				values = {"Workshops","Product Launches","Trade Shows / Expos","Networking Events","Music Events","Film & Media Premieres","Art & Photography Shows","Cultural Festivals","Comedy Shows","Talent Performances"}
+				layout = 3
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Event_summary
+			(
+    			type = textarea
+				displayname = "Event summary "
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Create"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Event
+		{
+			success message = "Event Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Event_Name
+			(
+    			type = text
+				displayname = "Event Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Event_Date
+			(
+    			type = date
+				displayname = "Event Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Guest_limit
+			(
+				type = number
+				displayname = " Guest limit "
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Event_Registration
+		{
+			displayname = "Event Registration"
+			success message = "Event Registration Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Registration_No
+			(
+    			type = autonumber
+				displayname = "Registration No"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Phone_Number
+			(
+    			type = phonenumber
+				displayname = "Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Email
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Event_Name1
+			(
+				type = picklist	
+				displayname = "Event Name"
+				values  = Event.ID
+    			displayformat = [Event_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Event_Date
+			(
+    			type = date
+				displayname = "Event Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Enter_the_number_of_guests
+			(
+				type = number
+				displayname = "Enter the number of guests."
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list All_Events
+		{
+			displayName = "All Events"
+			show all rows from Event    
+			(
+				Event_Date as "Event Date"
+				Guest_limit as " Guest limit "
+				Event_Name as "Event Name"
+			)
+		}
+		default list All_Event_Registrations
+		{
+			displayName = "All Event Registrations"
+			show all rows from Event_Registration    
+			(
+				Name 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Phone_Number as "Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Event_Name1 as "Event Name"
+				Event_Date as "Event Date"
+				Enter_the_number_of_guests as "Enter the number of guests."
+				Registration_No as "Registration No"
+				Email
+				ID
+			)
+		}
+		default list All_Events1
+		{
+			displayName = "All Events"
+			show all rows from Create_Event    
+			(
+				Event_Name as "Event Name"
+				Event_Type as "Event Type"
+				Event_Category as "Event Category "
+				Start_Date_And_Time as "Start Date And Time"
+				End_Date_and_Time as "End Date and Time"
+				Event_summary as "Event summary "
+			)
+		}
+	}
+	pages
+	{
+		page event_dashboard
+		{
+			displayname = "event dashboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet()\ncontent\n&lt;%{\n\t%&gt;\n&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n&lt;head&gt;\n  &lt;meta charset=&quot;UTF-8&quot; \/&gt;\n  &lt;title&gt;Event Dashboard&lt;\/title&gt;\n&lt;\/head&gt;\n&lt;body style=&quot;font-family: &apos;Segoe UI&apos;, sans-serif; background-color: #eef2f7; color: #333; margin: 0; padding: 0;&quot;&gt;\n\n  &lt;div style=&quot;max-width: 1200px; margin: 0 auto; padding: 40px 20px;&quot;&gt;\n\n    &lt;!-- Header --&gt;\n    &lt;div style=&quot;text-align: center; margin-bottom: 40px;&quot;&gt;\n      &lt;h1 style=&quot;font-size: 2.5rem; color: #2c3e50; margin-bottom: 10px;&quot;&gt;\uD83C\uDF89 Event Dashboard&lt;\/h1&gt;\n      &lt;p style=&quot;font-size: 1.1rem; color: #34495e;&quot;&gt;Event: &lt;strong style=&quot;color: #000000;&quot;&gt;welcome to event registration 2025&lt;\/strong&gt;&lt;\/p&gt;\n      &lt;p style=&quot;font-size: 1rem; color: #555;&quot;&gt;\uD83D\uDCC5 September 12, 2025 &amp;nbsp; | &amp;nbsp; \uD83D\uDCCD Grand Expo Center&lt;\/p&gt;\n    &lt;\/div&gt;\n\n    &lt;!-- Stats Section --&gt;\n    &lt;div style=&quot;display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 40px; justify-content: space-between;&quot;&gt;\n\n      &lt;div style=&quot;background: linear-gradient(135deg, #74ebd5, #acb6e5); border-radius: 10px; flex: 1 1 220px; padding: 20px; color: white; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1);&quot;&gt;\n        &lt;h3 style=&quot;font-size: 1rem; margin-bottom: 10px;&quot;&gt;Total Attendees&lt;\/h3&gt;\n        &lt;p style=&quot;font-size: 1.8rem; font-weight: bold;&quot;&gt;1&lt;\/p&gt;\n      &lt;\/div&gt;\n\n      &lt;div style=&quot;background: linear-gradient(135deg, #f7971e, #ffd200); border-radius: 10px; flex: 1 1 220px; padding: 20px; color: #333; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1);&quot;&gt;\n        &lt;h3 style=&quot;font-size: 1rem; margin-bottom: 10px;&quot;&gt;Tickets Sold&lt;\/h3&gt;\n        &lt;p style=&quot;font-size: 1.8rem; font-weight: bold;&quot;&gt;10,000,000&lt;\/p&gt;\n      &lt;\/div&gt;\n\n      &lt;div style=&quot;background: linear-gradient(135deg, #43cea2, #185a9d); border-radius: 10px; flex: 1 1 220px; padding: 20px; color: white; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1);&quot;&gt;\n        &lt;h3 style=&quot;font-size: 1rem; margin-bottom: 10px;&quot;&gt;Revenue&lt;\/h3&gt;\n        &lt;p style=&quot;font-size: 1.8rem; font-weight: bold;&quot;&gt;$10,000,000&lt;\/p&gt;\n      &lt;\/div&gt;\n\n      &lt;div style=&quot;background: linear-gradient(135deg, #ff6a00, #ee0979); border-radius: 10px; flex: 1 1 220px; padding: 20px; color: white; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1);&quot;&gt;\n        &lt;h3 style=&quot;font-size: 1rem; margin-bottom: 10px;&quot;&gt;Avg Feedback&lt;\/h3&gt;\n        &lt;p style=&quot;font-size: 1.8rem; font-weight: bold;&quot;&gt;4.6 \/ 5&lt;\/p&gt;\n      &lt;\/div&gt;\n    &lt;\/div&gt;\n\n    &lt;!-- Placeholder Section --&gt;\n    &lt;div style=&quot;display: flex; gap: 20px; flex-wrap: wrap;&quot;&gt;\n\n      &lt;div style=&quot;background-color: #ffffff; border-left: 6px solid #007BFF; border-radius: 10px; flex: 1 1 48%; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);&quot;&gt;\n        &lt;h3 style=&quot;font-size: 1.2rem; color: #2c3e50; margin-bottom: 10px;&quot;&gt;\uD83D\uDCDD Feedback Summary&lt;\/h3&gt;\n        &lt;p style=&quot;color: #555; font-size: 1rem;&quot;&gt;[You can embed feedback details or chart here]&lt;\/p&gt;\n      &lt;\/div&gt;\n\n      &lt;div style=&quot;background-color: #ffffff; border-left: 6px solid #28a745; border-radius: 10px; flex: 1 1 48%; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);&quot;&gt;\n        &lt;h3 style=&quot;font-size: 1.2rem; color: #2c3e50; margin-bottom: 10px;&quot;&gt;\uD83D\uDCC8 Revenue Trend&lt;\/h3&gt;\n        &lt;p style=&quot;color: #555; font-size: 1rem;&quot;&gt;[Chart placeholder]&lt;\/p&gt;\n      &lt;\/div&gt;\n\n    &lt;\/div&gt;\n\n  &lt;\/div&gt;\n\n&lt;\/body&gt;\n&lt;\/html&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+		page filter
+		{
+			displayname = "filter"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t\n<\/layout>\n<\/zml>"
+		}
+	}
+
+
+		workflow
+		{
+		form
+		{
+			SELECT_THE_EVENT as "SELECT THE EVENT"
+			{
+				type =  form
+				form = Event_Registration
+				record event = on add or edit
+
+				on user input of Event_Name1
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											VER = Event[Event_Name == input.Event_Name1.Event_Name];
+										input.Event_Date = VER.Event_Date;
+										input.Enter_the_number_of_guests = VER.Guest_limit;
+						)
+					}
+				}
+
+			}
+			guest_calc as "guest calc"
+			{
+				type =  form
+				form = Event_Registration
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											var = Event[Guest_limit == input.Enter_the_number_of_guests];
+										if(0 < var.Guest_limit)
+										{
+											var.Guest_limit=var.Guest_limit - 1;
+										}
+						)
+					}
+				}
+
+			}
+			validate_events as "validate events"
+			{
+				type =  form
+				form = Event_Registration
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											var = Event[Guest_limit != 0];
+										input.Event_Name1:ui.add(var.ID.getall());
+						)
+					}
+				}
+
+			}
+			Integration_For_BackStage as "Integration For BackStage"
+			{
+				type =  form
+				form = Create_Event
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											val = 0;
+										if(input.Event_Type != null)
+										{
+											if(input.Event_Type == "Venue")
+											{
+												val = 1;
+											}
+											else if(input.Event_Type == "Online")
+											{
+												val = 2;
+											}
+											else if(input.Event_Type == "Hybrid")
+											{
+												val = 3;
+											}
+										}
+										var = Map();
+										var.put("name",input.Event_Name);
+										var.put("timezone","Asia/Calcutta");
+										var.put("start_time",input.Start_Date_And_Time.toString("yyyy-MM-dd'T'HH:mm:ss'Z'","UTC"));
+										var.put("end_time",input.End_Date_and_Time.toString("yyyy-MM-dd'T'HH:mm:ss'Z'","UTC"));
+										var.put("event_type",val);
+										var.put("category",input.Event_Category);
+										rec = invokeurl
+										[
+											url :"https://zohoapis.in/backstage/v3/portals/60058251040/events"
+											type :POST
+											parameters:var.toString()
+											connection:"zoho_backstage_connection_for_event"
+										];
+										info rec;
+						)
+					}
+				}
+
+			}
+		}
+
+
+
+
+
+		batchworkflow
+		{
+			ENVIRONMENT_EVENT
+			{
+    			display name = "ENVIRONMENT EVENT"
+    			type = batchworkflow
+    			form = Event_Registration[Event_Name1.Event_Name == "ENVIRONMENT EVENT"]
+    			event = "On Schedule"
+    			start = "04-Jun-2026 01:00:00"
+    			frequency = once
+    			batch size = 50
+    			status = active
+    			on execute 
+    			{
+					actions 
+					{
+						custom deluge script
+						(
+											sendmail
+										[
+											from :zoho.adminuserid
+											to :input.Email
+											subject :input.Event_Name1.Event_Name
+											message :"your event is coming soon very early"
+										]
+						)
+					}
+    			}
+			}
+			FOOD_EVENT
+			{
+    			display name = "FOOD EVENT"
+    			type = batchworkflow
+    			form = Event_Registration[Event_Name1.Event_Name == "FOOD EVENT"]
+    			event = "On Schedule"
+    			start = "15-Oct-2025 01:00:00"
+    			frequency = once
+    			batch size = 1000
+    			status = active
+    			on execute 
+    			{
+					actions 
+					{
+						custom deluge script
+						(
+											sendmail
+										[
+											from :zoho.adminuserid
+											to :input.Email
+											subject :input.Event_Name1.Event_Name
+											message :"your event is coming soon very early"
+										]
+						)
+					}
+    			}
+			}
+		}
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	connections
+	{
+		zoho_backstage_connection_for_event
+		(
+			displayname = "Zoho Backstage Connection For Event"
+			connector = zoho_backstage_connector
+			permissions = {"create_event","delete_event","get_all_events","get_all_portals","get_event","get_orders","get_portal","update_event"}
+		)
+	}
+	web
+	{
+		forms
+		{
+			form Create_Event
+			{
+				label placement = left
+			}
+			form Event
+			{
+				label placement = left
+			}
+			form Event_Registration
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report All_Events
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Event_Date as "Event Date"
+								Guest_limit as " Guest limit "
+								Event_Name as "Event Name"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Event_Date as "Event Date"
+								Guest_limit as " Guest limit "
+								Event_Name as "Event Name"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Event_Registrations
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Name
+								Phone_Number as "Phone"
+								Event_Name1 as "Event Name"
+								Event_Date as "Event Date"
+								Enter_the_number_of_guests as "Enter the number of guests."
+								Registration_No as "Registration No"
+								Email
+								ID
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Name
+								Phone_Number as "Phone"
+								Event_Name1 as "Event Name"
+								Event_Date as "Event Date"
+								Enter_the_number_of_guests as "Enter the number of guests."
+								Registration_No as "Registration No"
+								Email
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Events1
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Event_Name as "Event Name"
+								Event_Type as "Event Type"
+								Event_Category as "Event Category "
+								Start_Date_And_Time as "Start Date And Time"
+								End_Date_and_Time as "End Date and Time"
+								Event_summary as "Event summary "
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Event_Name as "Event Name"
+								Event_Type as "Event Type"
+								Event_Category as "Event Category "
+								Start_Date_And_Time as "Start Date And Time"
+								End_Date_and_Time as "End Date and Time"
+								Event_summary as "Event summary "
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section event_dashboard
+				{
+					displayname = "event dashboard"
+					icon = "location-appointment"
+					page event_dashboard
+					{
+						icon = "location-appointment"
+					}
+					page filter
+					{
+						icon = "design-2-filter-organization"
+					}
+				}
+				section Events
+				{
+					displayname = "Events"
+					icon = "ui-1-calendar-grid-58"
+					form  Event
+					{
+						icon = "location-appointment"
+					}
+					report All_Events
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section Event_Registrations
+				{
+					displayname = "Event Registrations"
+					icon = "location-appointment"
+					form  Event_Registration
+					{
+						icon = "location-appointment"
+					}
+					report All_Event_Registrations
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Events1
+				{
+					displayname = "Events"
+					icon = "ui-1-calendar-grid-58"
+					form  Create_Event
+					{
+						icon = "food-whisk"
+					}
+					report All_Events1
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "lato"
+			color options
+			{
+				color = "1"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Create_Event
+			{
+				label placement = auto
+			}
+			form Event
+			{
+				label placement = auto
+			}
+			form Event_Registration
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = lightred
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Create_Event
+			{
+				label placement = auto
+			}
+			form Event
+			{
+				label placement = auto
+			}
+			form Event_Registration
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = lightred
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

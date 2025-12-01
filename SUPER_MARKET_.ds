@@ -1,0 +1,3103 @@
+/*
+ * Author       : zappyworkssoftwaresolutionst47
+ * Generated on : 22-Nov-2025 09:41:41
+ * Version      : 1.0
+ */
+ application "SUPER MARKET "
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form add_qty_for_action_button
+		{
+			displayname = "add qty for action button"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			product_name
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			product_qty
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form ALL_TRANSACTION
+		{
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			TRANSACTION_DATE
+			(
+    			type = date
+				displayname = "TRANSACTION DATE"
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			TRANSACTION_ID
+			(
+    			type = autonumber
+				displayname = "TRANSACTION ID"
+				start index = 100
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			TRANSACTION_DETAILS
+			(
+    			type = text
+				displayname = "TRANSACTION DETAILS"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			TRANSACTION_AMOUNT
+			(
+				displayname = "TRANSACTION AMOUNT"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			TRANSACTION_TYPE
+			(
+				type = radiobuttons
+				displayname = "TRANSACTION TYPE"
+				maxchar = 100
+				values = {"CREDIT","DEBIT"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form invoice_bills
+		{
+			displayname = "invoice bills"
+			success message = "Invoice Bill Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			invoice_no
+			(
+    			type = text
+				displayname = "invoice no"
+				initial value = "10000000"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			PURCHASE_DATE
+			(
+    			type = date
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			SUPPILER_NAME
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			SubForm
+			(
+				type = grid
+				PRODUCT_TYPE
+				(
+					type = picklist	
+					values  = PRODUCT_TYPE_LIST.ID
+    				displayformat = [PRODUCT_TYPE]
+					sortorder = ascending
+					width = medium
+				)
+				PRODUCT_NAME
+				(
+					type = picklist	
+					values  = PRODUCT_DETAILS[PRODUCT_TYPE.ID == input.PRODUCT_TYPE].ID
+    				displayformat = [PRODUCT_ID + " - " + PRODUCT_NAME]
+					sortorder = ascending
+					width = medium
+				)
+				PRODUCT_QTY
+				(
+					type = number
+					width = medium
+				)
+				PRODUCT_PER_PRICE
+				(
+					type = INR
+					format = commadotindian
+					width = medium
+				)
+				TOTAL_PRODUCT_PRICE
+				(
+					type = INR
+					format = commadotindian
+					width = medium
+				)
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Section1
+			(
+				type = section
+				displayname = "Section"
+				visibility = true
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			GRAND_TOTAL
+			(
+				type = INR
+				format = commadotindian
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form MITI_PURCHASE_DETALIS
+		{
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			PURCHASE_DATE
+			(
+    			type = date
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			SUPPILER_NAME
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			MATI_PURCHASE_SUBFORM
+			(
+				type = grid
+				PRODUCT_TYPE
+				(
+					type = picklist	
+					values  = PRODUCT_TYPE_LIST.ID
+    				displayformat = [PRODUCT_TYPE]
+					sortorder = ascending
+					width = medium
+				)
+				PRODUCT_NAME
+				(
+					type = picklist	
+					values  = PRODUCT_DETAILS[PRODUCT_TYPE.ID == input.PRODUCT_TYPE].ID
+    				displayformat = [PRODUCT_ID + " - " + PRODUCT_NAME]
+					sortorder = ascending
+					width = medium
+				)
+				PRODUCT_QTY
+				(
+					type = number
+					initial value = 0
+					width = medium
+				)
+				PRODUCT_PER_PRICE
+				(
+					type = INR
+					format = commadotindian
+					initial value = 0
+					width = medium
+				)
+				TOTAL_PRODUCT_PRICE
+				(
+					type = INR
+					format = commadotindian
+					width = medium
+				)
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Section1
+			(
+				type = section
+				displayname = "Section"
+				visibility = true
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			GRAND_TOTAL
+			(
+				type = INR
+				format = commadotindian
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form MULT_SALES_DETALIS
+		{
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			sales_bill_no
+			(
+    			type = autonumber
+				displayname = "sales bill no"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			SALE_DATE
+			(
+    			type = date
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			CUSTOMER_NAME
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			MATI_SALES_SUBFORM
+			(
+				type = grid
+				PRODUCT_TYPE
+				(
+					type = picklist	
+					values  = PRODUCT_TYPE_LIST.ID
+    				displayformat = [PRODUCT_TYPE]
+					sortorder = ascending
+					width = medium
+				)
+				PRODUCT_NAME
+				(
+					type = picklist	
+					values  = PRODUCT_DETAILS.ID
+    				displayformat = [PRODUCT_ID + " - " + PRODUCT_NAME]
+					sortorder = ascending
+					width = medium
+				)
+				AVAIABLE_QTY
+				(
+					type = number
+					displayname = "AVAIABLE QTY"
+					width = medium
+				)
+				PRODUCT_QTY
+				(
+					type = number
+					initial value = 0
+					width = medium
+				)
+				PRODUCT_PER_PRICE
+				(
+					type = INR
+					format = commadotindian
+					initial value = 0
+					width = medium
+				)
+				TOTAL_PRODUCT_PRICE
+				(
+					type = INR
+					format = commadotindian
+					initial value = 0
+					width = medium
+				)
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Section1
+			(
+				type = section
+				displayname = "Section"
+				visibility = true
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			TOTAL_PRODUCT_QTY
+			(
+				type = number
+				displayname = "TOTAL PRODUCT_QTY"
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			GRAND_TOTAL
+			(
+				type = INR
+				format = commadotindian
+	 			row = 3
+	 			column = 2   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form PRODUCT_DETAILS
+		{
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			PRODUCT_ID
+			(
+    			type = autonumber
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			PRODUCT_TYPE
+			(
+				type = picklist	
+				values  = PRODUCT_TYPE_LIST.ID
+    			displayformat = [PRODUCT_TYPE]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			PRODUCT_NAME
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			PRODUCT_QTY
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			PRODUCT_PRICE
+			(
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			SALE_PRICE
+			(
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form PRODUCT_TYPE_LIST
+		{
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			PRODUCT_TYPE
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form PURCHASE_DETAILS
+		{
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			PURCHASE_DATE
+			(
+    			type = date
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			PRODUCT_TYPE
+			(
+				type = picklist	
+				values  = PRODUCT_TYPE_LIST.ID
+    			displayformat = [PRODUCT_TYPE]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			PRODUCT_NAME
+			(
+				type = picklist	
+				values  = PRODUCT_DETAILS[PRODUCT_TYPE.ID == input.PRODUCT_TYPE].ID
+    			displayformat = [PRODUCT_NAME]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			SUPPILER_NAME
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			PRODUCT_QTY
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			PRODUCT_PER_PRICE
+			(
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			TOTAL_PRODUCT_PRICE
+			(
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form return_product
+		{
+			displayname = "return product"
+			success message = "Return Product Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			sales_bill_no
+			(
+				type = picklist	
+				displayname = "sales bill no"
+				values  = MULT_SALES_DETALIS.ID
+    			displayformat = [sales_bill_no]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			SALE_DATE
+			(
+    			type = date
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			CUSTOMER_NAME
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			return_MATI_SALES_SUBFORM
+			(
+				type = grid
+				displayname = "return MATI_SALES_SUBFORM"
+				PRODUCT_TYPE_LIST
+				(
+					type = picklist	
+					values  = PRODUCT_TYPE_LIST.ID
+    				displayformat = [PRODUCT_TYPE]
+					sortorder = ascending
+					width = medium
+				)
+				PRODUCT_NAME
+				(
+					type = picklist	
+					values  = PRODUCT_DETAILS.ID
+    				displayformat = [PRODUCT_ID + " - " + PRODUCT_NAME]
+					sortorder = ascending
+					width = medium
+				)
+				PRODUCT_QTY
+				(
+					type = number
+					width = medium
+				)
+				return_qty
+				(
+					type = number
+					displayname = "return qty"
+					initial value = 0
+					width = medium
+				)
+				PRODUCT_PER_PRICE
+				(
+					type = INR
+					format = commadotindian
+					width = medium
+				)
+				TOTAL_PRODUCT_PRICE
+				(
+					type = INR
+					format = commadotindian
+					width = medium
+				)
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Section1
+			(
+				type = section
+				displayname = "Section"
+				visibility = true
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			TOTAL_PRODUCT_QTY
+			(
+				type = number
+				displayname = "TOTAL PRODUCT_QTY"
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			GRAND_TOTAL
+			(
+				type = INR
+				format = commadotindian
+	 			row = 3
+	 			column = 2   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form SALES_DETAILS
+		{
+			displayname = "SALES DETAILS"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			SALE_DATE
+			(
+    			type = date
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			PRODUCT_TYPE
+			(
+				type = picklist	
+				values  = PRODUCT_TYPE_LIST.ID
+    			displayformat = [PRODUCT_TYPE]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			PRODUCT_NAME
+			(
+				type = picklist	
+				values  = PRODUCT_DETAILS[PRODUCT_TYPE.ID == input.PRODUCT_TYPE].ID
+    			displayformat = [PRODUCT_NAME]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Customer_Name
+			(
+    			type = text
+				displayname = "CUSTOMER_NAME"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			PRODUCT_QTY
+			(
+				type = number
+				initial value = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			PRODUCT_PER_PRICE
+			(
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			TOTAL_PRODUCT_PRICE
+			(
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form update_product
+		{
+			store data in zc = false
+			success message = ""
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			PRODUCT_NAME
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			PRODUCT_QTY
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				Submit
+				(
+   					type = submit
+   					displayname = "Submit"
+				)
+				Reset
+				(
+   					type = reset
+   					displayname = "Reset"
+				)
+				PRODUCT_UPDATE
+				(
+   					type = button
+   					displayname = "PRODUCT UPDATE"
+				)
+			}
+		}
+	}
+	reports
+	{
+		default list PRODUCT_TYPE_LIST_Report
+		{
+			displayName = "PRODUCT_TYPE_LIST Report"
+			show all rows from PRODUCT_TYPE_LIST    
+			(
+				PRODUCT_TYPE
+			)
+		}
+		default list PRODUCT_DETAILS_Report
+		{
+			displayName = "PRODUCT_DETAILS Report"
+			show all rows from PRODUCT_DETAILS    
+			(
+				PRODUCT_TYPE
+				PRODUCT_NAME
+				PRODUCT_QTY
+				PRODUCT_PRICE
+				SALE_PRICE
+				PRODUCT_ID
+				custom action "ADD QTY"
+				(
+	  			workflow = add_qty
+				show action in edit record menu = true
+				column header = "ADD QTY"
+				condition = (PRODUCT_QTY <= 120)
+				confirmation before execution
+				(
+					message for individual record = "Execute the ADD QTY action for this record?"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+			)
+			sort by
+			(
+				PRODUCT_PRICE ascending
+			)
+		}
+		default list PURCHASE_DETAILS_Report
+		{
+			displayName = "PURCHASE_DETAILS Report"
+			show all rows from PURCHASE_DETAILS    
+			(
+				PURCHASE_DATE
+				PRODUCT_TYPE
+				PRODUCT_NAME
+				SUPPILER_NAME
+				PRODUCT_QTY
+				PRODUCT_PER_PRICE
+				TOTAL_PRODUCT_PRICE
+			)
+		}
+		default list ALL_TRANSACTION_Report
+		{
+			displayName = "ALL_TRANSACTION Report"
+			show all rows from ALL_TRANSACTION    
+			(
+				TRANSACTION_DATE as "TRANSACTION DATE"
+				TRANSACTION_ID as "TRANSACTION ID"
+				TRANSACTION_DETAILS as "TRANSACTION DETAILS"
+				TRANSACTION_TYPE as "TRANSACTION TYPE"
+				TRANSACTION_AMOUNT as "TRANSACTION AMOUNT"
+			)
+			conditional formatting
+			(
+				"New Formatting"
+				{
+				condition = (TRANSACTION_TYPE == "DEBIT")
+				fields = [TRANSACTION_DATE]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+				"New Formatting"
+				{
+				condition = (TRANSACTION_TYPE == "CREDIT")
+				fields = [TRANSACTION_DATE]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+			)
+		}
+		default list SALES_DETAILS_Report
+		{
+			displayName = "SALES DETAILS Report"
+			show all rows from SALES_DETAILS    
+			(
+				SALE_DATE
+				PRODUCT_TYPE
+				PRODUCT_NAME
+				Customer_Name as "CUSTOMER_NAME"
+				PRODUCT_QTY
+				PRODUCT_PER_PRICE
+				TOTAL_PRODUCT_PRICE
+			)
+		}
+		default list MITI_PURCHASE_DETALIS_Report
+		{
+			displayName = "MITI_PURCHASE_DETALIS Report"
+			show all rows from MITI_PURCHASE_DETALIS    
+			(
+				PURCHASE_DATE
+				SUPPILER_NAME
+				MATI_PURCHASE_SUBFORM.PRODUCT_TYPE as "MATI_PURCHASE_SUBFORM"
+				GRAND_TOTAL
+			)
+		}
+		default list MULT_SALES_DETALIS_Report
+		{
+			displayName = "MULT_SALES_DETALIS Report"
+			show all rows from MULT_SALES_DETALIS    
+			(
+				SALE_DATE
+				CUSTOMER_NAME
+				MATI_SALES_SUBFORM.PRODUCT_TYPE as "MATI_SALES_SUBFORM"
+				GRAND_TOTAL
+				TOTAL_PRODUCT_QTY as "TOTAL PRODUCT_QTY"
+				sales_bill_no as "sales bill no"
+			)
+		}
+		default list add_qty_for_action_button_Report
+		{
+			displayName = "add qty for action button Report"
+			show all rows from add_qty_for_action_button    
+			(
+				product_name
+				product_qty
+			)
+		}
+		default list All_Invoice_Bills
+		{
+			displayName = "All Invoice Bills"
+			show all rows from invoice_bills    
+			(
+				PURCHASE_DATE
+				SUPPILER_NAME
+				SubForm.PRODUCT_TYPE as "SubForm"
+				GRAND_TOTAL
+				invoice_no as "invoice no"
+			)
+		}
+		default list All_Return_Products
+		{
+			displayName = "All Return Products"
+			show all rows from return_product    
+			(
+				SALE_DATE
+				CUSTOMER_NAME
+				return_MATI_SALES_SUBFORM.PRODUCT_TYPE_LIST as "return MATI_SALES_SUBFORM"
+				TOTAL_PRODUCT_QTY as "TOTAL PRODUCT_QTY"
+				GRAND_TOTAL
+				sales_bill_no as "sales bill no"
+			)
+		}
+	}
+
+
+		workflow
+		{
+		form
+		{
+			CALCULATE_THE_TOTAL_PRICE as "CALCULATE THE TOTAL PRICE"
+			{
+				type =  form
+				form = PURCHASE_DETAILS
+				record event = on add or edit
+
+				on user input of PRODUCT_PER_PRICE
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.TOTAL_PRODUCT_PRICE = input.PRODUCT_QTY * input.PRODUCT_PER_PRICE;
+						)
+					}
+				}
+
+			}
+			QTY_INC as "QTY INC"
+			{
+				type =  form
+				form = PURCHASE_DETAILS
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											VER = PRODUCT_DETAILS[ID == input.PRODUCT_NAME];
+										VER.PRODUCT_QTY=VER.PRODUCT_QTY + input.PRODUCT_QTY;
+						)
+					}
+				}
+
+			}
+			INSET_FOR_ALL_TRANSACTION as "INSET_FOR_ALL_TRANSACTION"
+			{
+				type =  form
+				form = PURCHASE_DETAILS
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = insert into ALL_TRANSACTION
+										[
+											TRANSACTION_AMOUNT=input.TOTAL_PRODUCT_PRICE
+											TRANSACTION_DATE=zoho.currentdate
+											TRANSACTION_DETAILS="PURCHASE"
+											TRANSACTION_TYPE="DEBIT"
+											Added_User=zoho.loginuser
+										];
+						)
+					}
+				}
+
+			}
+			CALCULATE_THE_TOTAL_PRICE1 as "CALCULATE THE TOTAL PRICE"
+			{
+				type =  form
+				form = SALES_DETAILS
+				record event = on add or edit
+
+				on user input of PRODUCT_PER_PRICE
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.TOTAL_PRODUCT_PRICE = input.PRODUCT_QTY * input.PRODUCT_PER_PRICE;
+						)
+					}
+				}
+
+			}
+			REDUCE_THE_QTY as "REDUCE THE QTY"
+			{
+				type =  form
+				form = SALES_DETAILS
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = PRODUCT_DETAILS[ID == input.PRODUCT_NAME];
+										ver.PRODUCT_QTY=ver.PRODUCT_QTY - input.PRODUCT_QTY;
+										ver = insert into ALL_TRANSACTION
+										[
+											TRANSACTION_DATE=zoho.currentdate
+											TRANSACTION_AMOUNT=input.PRODUCT_QTY * input.PRODUCT_PER_PRICE
+											TRANSACTION_DETAILS="SALES"
+											TRANSACTION_TYPE="CREDIT"
+											Added_User=zoho.loginuser
+										];
+						)
+					}
+				}
+
+			}
+			show_product_price as "show product price"
+			{
+				type =  form
+				form = SALES_DETAILS
+				record event = on add or edit
+
+				on user input of PRODUCT_QTY
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = PRODUCT_DETAILS[ID == input.PRODUCT_NAME];
+										input.PRODUCT_PER_PRICE = ver.PRODUCT_PRICE;
+						)
+					}
+				}
+
+			}
+			show_product_price1 as "show product price"
+			{
+				type =  form
+				form = SALES_DETAILS
+				record event = on add or edit
+
+				on user input of PRODUCT_NAME
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = PRODUCT_DETAILS[ID == input.PRODUCT_NAME];
+										input.PRODUCT_PER_PRICE = ver.PRODUCT_PRICE;
+						)
+					}
+				}
+
+			}
+			CALCULATE_THE_SUBFORM_TOT as "CALCULATE THE SUBFORM TOTAL FOR QTY"
+			{
+				type =  form
+				form = MITI_PURCHASE_DETALIS
+				record event = on add or edit
+
+				on user input of MATI_PURCHASE_SUBFORM.PRODUCT_QTY
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											row.TOTAL_PRODUCT_PRICE=row.PRODUCT_QTY * row.PRODUCT_PER_PRICE;
+										input.GRAND_TOTAL = 0;
+										for each  REC in input.MATI_PURCHASE_SUBFORM
+										{
+											input.GRAND_TOTAL = REC.TOTAL_PRODUCT_PRICE + input.GRAND_TOTAL;
+										}
+						)
+					}
+				}
+
+			}
+			CALCULATE_THE_SUBFORM_TOT1 as "CALCULATE THE SUBFORM TOTAL FOR PER PRODUCT PRICE"
+			{
+				type =  form
+				form = MITI_PURCHASE_DETALIS
+				record event = on add or edit
+
+				on user input of MATI_PURCHASE_SUBFORM.PRODUCT_PER_PRICE
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											row.TOTAL_PRODUCT_PRICE=row.PRODUCT_QTY * row.PRODUCT_PER_PRICE;
+										input.GRAND_TOTAL = 0;
+										for each  REC in input.MATI_PURCHASE_SUBFORM
+										{
+											input.GRAND_TOTAL = REC.TOTAL_PRODUCT_PRICE + input.GRAND_TOTAL;
+										}
+						)
+					}
+				}
+
+			}
+			DISIBLE_FOR_SUBFORM_FIELD as "DISIBLE_FOR SUBFORM FIELD"
+			{
+				type =  form
+				form = MITI_PURCHASE_DETALIS
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											disable MATI_PURCHASE_SUBFORM.TOTAL_PRODUCT_PRICE;
+						)
+					}
+				}
+
+			}
+			DISIBLE__FIELD as "DISIBLE_ FIELD"
+			{
+				type =  form
+				form = MITI_PURCHASE_DETALIS
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						disable PURCHASE_DATE,GRAND_TOTAL;
+					}
+				}
+
+			}
+			QTY_INC_IN_MITI_PIRCHASE_ as "QTY INC IN MITI PIRCHASE && UPDATE THE TRANSECTION"
+			{
+				type =  form
+				form = MITI_PURCHASE_DETALIS
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											for each  REC in input.MATI_PURCHASE_SUBFORM
+										{
+											ver = PRODUCT_DETAILS[ID == REC.PRODUCT_NAME];
+											ver.PRODUCT_QTY=ver.PRODUCT_QTY + REC.PRODUCT_QTY;
+										}
+										var = insert into ALL_TRANSACTION
+										[
+											TRANSACTION_DATE=input.PURCHASE_DATE
+											TRANSACTION_TYPE="DEBIT"
+											TRANSACTION_AMOUNT=input.GRAND_TOTAL
+											TRANSACTION_DETAILS="PURCHASE"
+											Added_User=zoho.loginuser
+										];
+						)
+					}
+				}
+
+			}
+			CALCULATE_THE_SUBFORM_TOT2 as "CALCULATE THE SUBFORM TOTAL FOR QTY FOR SALES"
+			{
+				type =  form
+				form = MULT_SALES_DETALIS
+				record event = on add or edit
+
+				on user input of MATI_SALES_SUBFORM.PRODUCT_QTY
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											row.TOTAL_PRODUCT_PRICE=row.PRODUCT_QTY * row.PRODUCT_PER_PRICE;
+										input.GRAND_TOTAL = 0;
+										for each  REC in input.MATI_SALES_SUBFORM
+										{
+											input.GRAND_TOTAL = REC.TOTAL_PRODUCT_PRICE + input.GRAND_TOTAL;
+										}
+						)
+					}
+				}
+
+			}
+			CALCULATE_THE_SUBFORM_TOT3 as "CALCULATE THE SUBFORM TOTAL FOR PER PRODUCT PRICE"
+			{
+				type =  form
+				form = MULT_SALES_DETALIS
+				record event = on add or edit
+
+				on user input of MATI_SALES_SUBFORM.PRODUCT_PER_PRICE
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(MATI_SALES_SUBFORM.PRODUCT_PER_PRICE != null)
+										{
+											row.TOTAL_PRODUCT_PRICE=row.PRODUCT_QTY * row.PRODUCT_PER_PRICE;
+											input.GRAND_TOTAL = 0;
+											for each  REC in input.MATI_SALES_SUBFORM
+											{
+												input.GRAND_TOTAL = REC.TOTAL_PRODUCT_PRICE + input.GRAND_TOTAL;
+											}
+										}
+										else
+										{
+											row.TOTAL_PRODUCT_PRICE=null;
+											input.GRAND_TOTAL = null;
+										}
+						)
+					}
+				}
+
+			}
+			show_product_price2 as "show product price"
+			{
+				type =  form
+				form = MULT_SALES_DETALIS
+				record event = on add or edit
+
+				on user input of MATI_SALES_SUBFORM.PRODUCT_NAME
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = PRODUCT_DETAILS[ID == row.PRODUCT_NAME];
+										row.PRODUCT_PER_PRICE=ver.PRODUCT_PRICE;
+										row.AVAIABLE_QTY=ver.PRODUCT_QTY;
+						)
+					}
+				}
+
+			}
+			QTY_REDUCE_IN_PRODUCT_DET as "QTY REDUCE IN PRODUCT DETAILS"
+			{
+				type =  form
+				form = MULT_SALES_DETALIS
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											for each  REC in input.MATI_SALES_SUBFORM
+										{
+											ver = PRODUCT_DETAILS[ID == REC.PRODUCT_NAME];
+											ver.PRODUCT_QTY=ver.PRODUCT_QTY - REC.PRODUCT_QTY;
+										}
+										var = insert into ALL_TRANSACTION
+										[
+											Added_User=zoho.loginuser
+											TRANSACTION_DATE=input.SALE_DATE
+											TRANSACTION_TYPE="CREDIT"
+											TRANSACTION_AMOUNT=input.GRAND_TOTAL
+											TRANSACTION_DETAILS="SALES"
+										];
+						)
+					}
+				}
+
+			}
+			CHECK_THE_AVILABLE_QTY as "CHECK THE AVILABLE QTY"
+			{
+				type =  form
+				form = MULT_SALES_DETALIS
+				record event = on add or edit
+
+				on user input of MATI_SALES_SUBFORM.PRODUCT_QTY
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(row.AVAIABLE_QTY < row.PRODUCT_QTY)
+										{
+											alert "NO STOCK FOR THE IN THIS PRODUCT";
+										}
+						)
+					}
+				}
+
+			}
+			Fetch as "Fetch"
+			{
+				type =  form
+				form = PURCHASE_DETAILS
+				record event = on add
+
+				on load
+				{
+				}
+
+			}
+			add_qty_for_action_button as "add qty for action button"
+			{
+				type =  form
+				form = add_qty_for_action_button
+				record event = on add or edit
+					status = inactive
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = PRODUCT_DETAILS[PRODUCT_NAME == input.product_name];
+										ver.PRODUCT_QTY=ver.PRODUCT_QTY + input.product_qty;
+										openUrl("#Script:page.parent.refresh","parent window");
+						)
+					}
+				}
+
+			}
+			no_return as "no return"
+			{
+				type =  form
+				form = MITI_PURCHASE_DETALIS
+				record event = on add or edit
+
+				on user input of MATI_PURCHASE_SUBFORM.PRODUCT_TYPE
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = PRODUCT_DETAILS[ID != row.PRODUCT_NAME];
+										count = 0;
+										for each  rec in ver
+										{
+											row.PRODUCT_NAME:ui.add(rec.ID.getall());
+										}
+						)
+					}
+				}
+
+			}
+			CALCULATE_THE_TOTAL_QTY as "CALCULATE THE TOTAL QTY"
+			{
+				type =  form
+				form = MULT_SALES_DETALIS
+				record event = on add or edit
+
+				on user input of MATI_SALES_SUBFORM.PRODUCT_QTY
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											count = 0;
+										for each  rec in input.MATI_SALES_SUBFORM
+										{
+											count = count + rec.PRODUCT_QTY;
+										}
+										input.TOTAL_PRODUCT_QTY = count;
+						)
+					}
+				}
+
+			}
+			dynamic_clear as "dynamic clear"
+			{
+				type =  form
+				form = MULT_SALES_DETALIS
+				record event = on add or edit
+
+				on user input of MATI_SALES_SUBFORM.PRODUCT_TYPE
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = PRODUCT_DETAILS[PRODUCT_TYPE == row.PRODUCT_TYPE].ID.getAll();
+										new = input.MATI_SALES_SUBFORM.PRODUCT_NAME.getall();
+										ver.removeall(new);
+										row.PRODUCT_NAME:ui.add(ver);
+						)
+					}
+				}
+
+			}
+			Fetch_THE_ORDER_DETAILS_f as "Fetch THE ORDER DETAILS for sales"
+			{
+				type =  form
+				form = return_product
+				record event = on add or edit
+
+				on user input of sales_bill_no
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = MULT_SALES_DETALIS[ID == input.sales_bill_no];
+										input.GRAND_TOTAL = ver.GRAND_TOTAL;
+										input.CUSTOMER_NAME = ver.CUSTOMER_NAME;
+										input.SALE_DATE = ver.SALE_DATE;
+										input.TOTAL_PRODUCT_QTY = ver.TOTAL_PRODUCT_QTY;
+										for each  rec in ver.MATI_SALES_SUBFORM
+										{
+											new = return_product.return_MATI_SALES_SUBFORM();
+											new.PRODUCT_NAME=rec.PRODUCT_NAME;
+											new.PRODUCT_QTY=rec.PRODUCT_QTY;
+											new.PRODUCT_TYPE_LIST=rec.PRODUCT_TYPE;
+											new.PRODUCT_PER_PRICE=rec.PRODUCT_PER_PRICE;
+											new.TOTAL_PRODUCT_PRICE=rec.TOTAL_PRODUCT_PRICE;
+											input.return_MATI_SALES_SUBFORM.insert(new);
+										}
+						)
+					}
+				}
+
+			}
+			calculate_the_return_prod as "calculate the return product"
+			{
+				type =  form
+				form = return_product
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											for each  rec in input.return_MATI_SALES_SUBFORM
+										{
+											var = PRODUCT_DETAILS[ID == rec.PRODUCT_NAME];
+											var.PRODUCT_QTY=var.PRODUCT_QTY + rec.return_qty;
+										}
+										ver = MULT_SALES_DETALIS[ID == input.sales_bill_no];
+										for each  k in input.return_MATI_SALES_SUBFORM
+										{
+											for each  g in ver.MATI_SALES_SUBFORM
+											{
+												if(g.PRODUCT_NAME == k.PRODUCT_NAME)
+												{
+													g.PRODUCT_QTY=g.PRODUCT_QTY - k.return_qty;
+												}
+											}
+										}
+						)
+					}
+				}
+
+			}
+			reload as "reload"
+			{
+				type =  form
+				form = update_product
+				button = Submit
+				on click
+				{
+					actions 
+					{
+					on click
+					(
+						var = PRODUCT_DETAILS[PRODUCT_NAME == input.PRODUCT_NAME];
+										var.PRODUCT_QTY=var.PRODUCT_QTY + input.PRODUCT_QTY;
+										openUrl("#Script:page.parent.refresh","same window");
+					)
+					}
+				}
+			}
+			inventory_integration as "inventory integration"
+			{
+				type =  form
+				form = PRODUCT_DETAILS
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											maps = Map();
+										maps.put("name",input.PRODUCT_NAME);
+										maps.put("rate",input.SALE_PRICE);
+										maps.put("purchase_rate",input.PRODUCT_PRICE);
+										maps.put("unit",input.PRODUCT_QTY);
+										maps.put("product_type","goods");
+										rec = invokeurl
+										[
+											url :"https://www.zohoapis.in/inventory/v1/items?organization_id=60055929602"
+											type :POST
+											parameters:maps.tostring()
+											connection:"zoho_inventory"
+										];
+										info rec;
+						)
+					}
+				}
+
+			}
+		}
+
+
+
+
+
+
+		functions
+		{
+			add_qty as "add qty"
+			{
+				type =  functions
+				form = PRODUCT_DETAILS
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						openUrl("#Form:update_product?&zc_BgClr=#F5BBFC&PRODUCT_NAME=" + input.PRODUCT_NAME,"popup window");
+					)
+					}
+				}
+			}
+		}
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	connections
+	{
+		zoho_inventory
+		(
+			displayname = "Zoho Inventory"
+			connector = zoho_oauth
+			permissions = {"ZohoInventory.compositeitems.CREATE","ZohoInventory.compositeitems.DELETE","ZohoInventory.compositeitems.READ","ZohoInventory.compositeitems.UPDATE","ZohoInventory.contacts.CREATE","ZohoInventory.contacts.DELETE","ZohoInventory.contacts.READ","ZohoInventory.contacts.UPDATE","ZohoInventory.creditnotes.CREATE","ZohoInventory.creditnotes.DELETE","ZohoInventory.creditnotes.READ","ZohoInventory.creditnotes.UPDATE","ZohoInventory.customerpayments.CREATE","ZohoInventory.customerpayments.DELETE","ZohoInventory.customerpayments.READ","ZohoInventory.customerpayments.UPDATE","ZohoInventory.invoices.CREATE","ZohoInventory.invoices.DELETE","ZohoInventory.invoices.READ","ZohoInventory.invoices.UPDATE","ZohoInventory.items.CREATE","ZohoInventory.items.DELETE","ZohoInventory.items.READ","ZohoInventory.items.UPDATE","ZohoInventory.packages.CREATE","ZohoInventory.packages.DELETE","ZohoInventory.packages.READ","ZohoInventory.packages.UPDATE","ZohoInventory.purchaseorders.CREATE","ZohoInventory.purchaseorders.DELETE","ZohoInventory.purchaseorders.READ","ZohoInventory.purchaseorders.UPDATE","ZohoInventory.purchasereceives.CREATE","ZohoInventory.purchasereceives.DELETE","ZohoInventory.purchasereceives.READ","ZohoInventory.salesorders.CREATE","ZohoInventory.salesorders.DELETE","ZohoInventory.salesorders.READ","ZohoInventory.salesorders.UPDATE","ZohoInventory.settings.CREATE","ZohoInventory.settings.DELETE","ZohoInventory.settings.READ","ZohoInventory.settings.UPDATE","ZohoInventory.shipmentorders.CREATE","ZohoInventory.shipmentorders.DELETE","ZohoInventory.shipmentorders.READ","ZohoInventory.shipmentorders.UPDATE"}
+		)
+	}
+	web
+	{
+		forms
+		{
+			form add_qty_for_action_button
+			{
+				label placement = left
+			}
+			form ALL_TRANSACTION
+			{
+				label placement = left
+			}
+			form invoice_bills
+			{
+				label placement = left
+			}
+			form MITI_PURCHASE_DETALIS
+			{
+				label placement = left
+			}
+			form MULT_SALES_DETALIS
+			{
+				label placement = left
+			}
+			form PRODUCT_DETAILS
+			{
+				label placement = left
+			}
+			form PRODUCT_TYPE_LIST
+			{
+				label placement = left
+			}
+			form PURCHASE_DETAILS
+			{
+				label placement = left
+			}
+			form return_product
+			{
+				label placement = left
+			}
+			form SALES_DETAILS
+			{
+				label placement = left
+			}
+			form update_product
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report PRODUCT_TYPE_LIST_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								PRODUCT_TYPE
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								PRODUCT_TYPE
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report PRODUCT_DETAILS_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								PRODUCT_TYPE
+								PRODUCT_NAME
+								PRODUCT_QTY
+								PRODUCT_PRICE
+								SALE_PRICE
+								PRODUCT_ID
+								"ADD QTY"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								PRODUCT_TYPE
+								PRODUCT_NAME
+								PRODUCT_QTY
+								PRODUCT_PRICE
+								SALE_PRICE
+								PRODUCT_ID
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report PURCHASE_DETAILS_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								PURCHASE_DATE
+								PRODUCT_TYPE
+								PRODUCT_NAME
+								SUPPILER_NAME
+								PRODUCT_QTY
+								PRODUCT_PER_PRICE
+								TOTAL_PRODUCT_PRICE
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								PURCHASE_DATE
+								PRODUCT_TYPE
+								PRODUCT_NAME
+								SUPPILER_NAME
+								PRODUCT_QTY
+								PRODUCT_PER_PRICE
+								TOTAL_PRODUCT_PRICE
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report ALL_TRANSACTION_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								TRANSACTION_DATE as "TRANSACTION DATE"
+								TRANSACTION_ID as "TRANSACTION ID"
+								TRANSACTION_DETAILS as "TRANSACTION DETAILS"
+								TRANSACTION_TYPE as "TRANSACTION TYPE"
+								TRANSACTION_AMOUNT as "TRANSACTION AMOUNT"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								TRANSACTION_DATE as "TRANSACTION DATE"
+								TRANSACTION_ID as "TRANSACTION ID"
+								TRANSACTION_DETAILS as "TRANSACTION DETAILS"
+								TRANSACTION_TYPE as "TRANSACTION TYPE"
+								TRANSACTION_AMOUNT as "TRANSACTION AMOUNT"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report SALES_DETAILS_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								SALE_DATE
+								PRODUCT_TYPE
+								PRODUCT_NAME
+								Customer_Name as "CUSTOMER_NAME"
+								PRODUCT_QTY
+								PRODUCT_PER_PRICE
+								TOTAL_PRODUCT_PRICE
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								SALE_DATE
+								PRODUCT_TYPE
+								PRODUCT_NAME
+								Customer_Name as "CUSTOMER_NAME"
+								PRODUCT_QTY
+								PRODUCT_PER_PRICE
+								TOTAL_PRODUCT_PRICE
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report MITI_PURCHASE_DETALIS_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								PURCHASE_DATE
+								SUPPILER_NAME
+								MATI_PURCHASE_SUBFORM.PRODUCT_TYPE as "MATI_PURCHASE_SUBFORM"
+								GRAND_TOTAL
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								PURCHASE_DATE
+								SUPPILER_NAME
+								MATI_PURCHASE_SUBFORM.PRODUCT_TYPE as "MATI_PURCHASE_SUBFORM"
+								GRAND_TOTAL
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report MULT_SALES_DETALIS_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								SALE_DATE
+								CUSTOMER_NAME
+								MATI_SALES_SUBFORM.PRODUCT_TYPE as "MATI_SALES_SUBFORM"
+								GRAND_TOTAL
+								TOTAL_PRODUCT_QTY as "TOTAL PRODUCT_QTY"
+								sales_bill_no as "sales bill no"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								SALE_DATE
+								CUSTOMER_NAME
+								MATI_SALES_SUBFORM.PRODUCT_TYPE as "MATI_SALES_SUBFORM"
+								GRAND_TOTAL
+								TOTAL_PRODUCT_QTY as "TOTAL PRODUCT_QTY"
+								sales_bill_no as "sales bill no"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report add_qty_for_action_button_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								product_name
+								product_qty
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								product_name
+								product_qty
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Invoice_Bills
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								PURCHASE_DATE
+								SUPPILER_NAME
+								SubForm.PRODUCT_TYPE as "SubForm"
+								GRAND_TOTAL
+								invoice_no as "invoice no"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								PURCHASE_DATE
+								SUPPILER_NAME
+								SubForm.PRODUCT_TYPE as "SubForm"
+								GRAND_TOTAL
+								invoice_no as "invoice no"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Return_Products
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								SALE_DATE
+								CUSTOMER_NAME
+								return_MATI_SALES_SUBFORM.PRODUCT_TYPE_LIST as "return MATI_SALES_SUBFORM"
+								TOTAL_PRODUCT_QTY as "TOTAL PRODUCT_QTY"
+								GRAND_TOTAL
+								sales_bill_no as "sales bill no"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								SALE_DATE
+								CUSTOMER_NAME
+								return_MATI_SALES_SUBFORM.PRODUCT_TYPE_LIST as "return MATI_SALES_SUBFORM"
+								TOTAL_PRODUCT_QTY as "TOTAL PRODUCT_QTY"
+								GRAND_TOTAL
+								sales_bill_no as "sales bill no"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section PRODUCT_TYPE_LIST
+				{
+					displayname = "PRODUCT_TYPE_LIST"
+					icon = "tech-desktop"
+					form  PRODUCT_TYPE_LIST
+					{
+						icon = "tech-desktop"
+					}
+					report PRODUCT_TYPE_LIST_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section PRODUCT_DETAILS
+				{
+					displayname = "PRODUCT_DETAILS"
+					icon = "tech-desktop"
+					form  PRODUCT_DETAILS
+					{
+						icon = "tech-desktop"
+					}
+					report PRODUCT_DETAILS_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section PURCHASE_DETAILS
+				{
+					displayname = "PURCHASE_DETAILS"
+					icon = "tech-desktop"
+					form  PURCHASE_DETAILS
+					{
+						icon = "tech-desktop"
+					}
+					report PURCHASE_DETAILS_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section ALL_TRANSACTION
+				{
+					displayname = "ALL_TRANSACTION"
+					icon = "tech-desktop"
+					form  ALL_TRANSACTION
+					{
+						icon = "tech-desktop"
+					}
+					report ALL_TRANSACTION_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section SALES_DETAILS
+				{
+					displayname = "SALES DETAILS"
+					icon = "shopping-tag-sale"
+					form  SALES_DETAILS
+					{
+						icon = "shopping-tag-sale"
+					}
+					report SALES_DETAILS_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section MITI_PURCHASE_DETALIS
+				{
+					displayname = "MITI_PURCHASE_DETALIS"
+					icon = "tech-desktop"
+					form  MITI_PURCHASE_DETALIS
+					{
+						icon = "tech-desktop"
+					}
+					report MITI_PURCHASE_DETALIS_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section MULT_SALES_DETALIS
+				{
+					displayname = "MULT_SALES_DETALIS"
+					icon = "tech-desktop"
+					form  MULT_SALES_DETALIS
+					{
+						icon = "tech-desktop"
+					}
+					report MULT_SALES_DETALIS_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section add_qty_for_action_button
+				{
+					displayname = "add qty for action button"
+					icon = "design-2-button"
+					form  add_qty_for_action_button
+					{
+						icon = "design-2-button"
+					}
+					report add_qty_for_action_button_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Invoice_Bills
+				{
+					displayname = "Invoice Bills"
+					icon = "business-money-12"
+					form  invoice_bills
+					{
+						icon = "business-money-12"
+					}
+					report All_Invoice_Bills
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Return_Products
+				{
+					displayname = "Return Products"
+					icon = "objects-wool-ball"
+					form  return_product
+					{
+						icon = "objects-wool-ball"
+					}
+					report All_Return_Products
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Copy_of_PRODUCT_DETAILS
+				{
+					displayname = "Copy of PRODUCT_DETAILS"
+					icon = "tech-print-round"
+					form  update_product
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+					show = {section,component}
+				}
+			}
+		}
+		customize
+		{
+			new theme = 9
+			font = "lato"
+			color options
+			{
+				color = "7"
+			}
+			logo
+			{
+				preference = "app_icon"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form add_qty_for_action_button
+			{
+				label placement = auto
+			}
+			form ALL_TRANSACTION
+			{
+				label placement = auto
+			}
+			form invoice_bills
+			{
+				label placement = auto
+			}
+			form MITI_PURCHASE_DETALIS
+			{
+				label placement = auto
+			}
+			form MULT_SALES_DETALIS
+			{
+				label placement = auto
+			}
+			form PRODUCT_DETAILS
+			{
+				label placement = auto
+			}
+			form PRODUCT_TYPE_LIST
+			{
+				label placement = auto
+			}
+			form PURCHASE_DETAILS
+			{
+				label placement = auto
+			}
+			form return_product
+			{
+				label placement = auto
+			}
+			form SALES_DETAILS
+			{
+				label placement = auto
+			}
+			form update_product
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				menu color = "#12132b"
+				header color = "#12132b"
+				name = "custom_color"
+				brand color = "#ef8216"
+				type = "custom"
+				sub menu color = "#2f305d"
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form add_qty_for_action_button
+			{
+				label placement = auto
+			}
+			form ALL_TRANSACTION
+			{
+				label placement = auto
+			}
+			form invoice_bills
+			{
+				label placement = auto
+			}
+			form MITI_PURCHASE_DETALIS
+			{
+				label placement = auto
+			}
+			form MULT_SALES_DETALIS
+			{
+				label placement = auto
+			}
+			form PRODUCT_DETAILS
+			{
+				label placement = auto
+			}
+			form PRODUCT_TYPE_LIST
+			{
+				label placement = auto
+			}
+			form PURCHASE_DETAILS
+			{
+				label placement = auto
+			}
+			form return_product
+			{
+				label placement = auto
+			}
+			form SALES_DETAILS
+			{
+				label placement = auto
+			}
+			form update_product
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				menu color = "#12132b"
+				header color = "#12132b"
+				name = "custom_color"
+				brand color = "#ef8216"
+				type = "custom"
+				sub menu color = "#2f305d"
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

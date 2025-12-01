@@ -1,0 +1,5298 @@
+/*
+ * Author       : zappyworkssoftwaresolutionst47
+ * Generated on : 22-Nov-2025 09:36:23
+ * Version      : 1.0
+ */
+ application "practice for creator"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form Creator_To_Creator
+		{
+			displayname = "Creator To Creator"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Multi_Select
+			(
+				type = list	
+				displayname = "Multi Select"
+				values = {"Choice 1","Choice 2","Choice 3"}
+				height = 60px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form customer
+		{
+			success message = "Customer Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Ciustomer
+			(
+    			type = name
+				displayname = "Customer Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Customer_Email
+			(
+    			type = email
+				displayname = "Customer Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Customer_Address
+			(
+    			type = address
+				displayname = "Customer Address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Date_And_Time
+		{
+			displayname = "Date And Time"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			a
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Date_Time
+			(
+    			type = datetime
+				displayname = "Date-Time"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form deposit_amount_in_bank
+		{
+			displayname = "deposit amount in bank"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Enter_Amount
+			(
+				displayname = "Enter Amount"
+				type = INR
+				format = commadotindian
+				maxchar = 16
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			SubForm
+			(
+				type = grid
+				notes
+				(
+					type = number
+					width = medium
+				)
+				operators
+				(
+    				type = text
+					initial value = "*"
+					width = medium
+				)
+				qty
+				(
+					type = number
+					width = medium
+				)
+				total_amount
+				(
+					displayname = "total amount "
+					type = INR
+					format = commadotindian
+					width = medium
+				)
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form existing_from
+		{
+			displayname = "existing from"
+			success message = "Data Added Successfully!"
+			SubForm
+			(
+				type = grid
+				values  = normal_form.ID
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Feed_back_Integertion
+		{
+			displayname = "Feed back Integertion"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Your_Name
+			(
+    			type = name
+				displayname = "Your Name "
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Your_Email
+			(
+    			type = email
+				displayname = "Your Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Your_Rating
+			(
+    			type = text
+				displayname = "Your Rating "
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Your_Comments
+			(
+    			type = textarea
+				displayname = "Your Comments"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Fields
+		{
+			success message = "Field Added Successfully"
+			feature property = 320
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Email
+			(
+    			type = email
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Address
+			(
+    			type = address
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Phone_Number
+			(
+    			type = phonenumber
+				displayname = "Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Single_Line
+			(
+    			type = richtext
+				displayname = "Single Line"
+				height = 200px
+				toolbar = enable
+				[
+					style, strike-through, indent, font-color, background-color, remove-formatting, alignment, link, table, ruler, bullets-and-numbering, script-text, code, html, quote, 
+					font-size : {1, 2, 3, 4, 5, 6, 7},
+					font-family : {"Serif", "Arimo", "Ptmono", "Heuristica", "OpenSans", "Tinos", "Lato", "DejaVuSans", "ComicNeue", "EBGaramond", "RobotoCondensed", "ArchivoBlack", "Carlito", "Barlow", "Comfortaa", "Montserrat", "Nunito", "Poppins", "Quicksand", "Raleway", "Rubik", "SourceSansPro"}
+				]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Multi_Line
+			(
+    			type = textarea
+				displayname = "Multi Line"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Number
+			(
+				type = number
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Single_Line1
+			(
+    			type = text
+				displayname = "Single Line"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Date_field
+			(
+    			type = date
+				displayname = "Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Time
+			(
+    			type = time
+				timedisplayoptions = "hh:mm:ss" 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Dropdown
+			(
+				type = picklist
+				displayname = "Drop Down"
+				values = {"Choice 1","Choice 2","Choice 3"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Radio
+			(
+				type = radiobuttons
+				maxchar = 100
+				values = {"Choice 1","Choice 2","Choice 3"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Multi_Select
+			(
+				type = list	
+				displayname = "Multi Select"
+				values = {"Choice 1","Choice 2","Choice 3"}
+				height = 60px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Checkbox
+			(
+				type = checkboxes	
+				values = {"Choice 1","Choice 2","Choice 3"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Decision_box
+			(
+    			type = checkbox
+				displayname = "Decision box"
+				initial value = false
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Url
+			(
+    			type = url
+				enable  linkname, title
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Image
+			(
+    			type = image
+				annotation = true
+				source  = public_url,file,camera
+				aspect ratio = original
+				show onload = true
+				timer allowed = true
+				camera = primary
+				preview duration = 0
+				show gallery = true
+				switch camera = true
+				submit onscan = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Image1
+			(
+    			type = image
+				displayname = "Image"
+				annotation = true
+				source  = file,camera
+    			file count = 10
+				show onload = true
+				timer allowed = true
+				camera = primary
+				preview duration = 0
+				show gallery = true
+				switch camera = true
+				submit onscan = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Percent
+			(
+    			type = percentage
+				maxchar = 16
+				decimalplace = 15
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Currency
+			(
+				type = INR
+				format = commadotindian
+				decimalplace = 15
+				maxchar = 16
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Decimal
+			(
+				type = decimal
+				maxchar = 16
+				decimalplace = 15
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Date_Time
+			(
+    			type = datetime
+				displayname = "Date-Time"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			SubForm
+			(
+				type = grid
+				Name
+				(
+    				type = name
+     				prefix
+     				(
+	     				 type = prefix
+	     				 displayname ="Prefix"
+	     				 visibility = false
+	     				 value = {"Mr.","Mrs.","Ms."}
+     				) 
+     				first_name
+     				(
+	     				 type = first_name
+	     				 displayname ="First Name"
+     				) 
+     				last_name
+     				(
+	     				 type = last_name
+	     				 displayname ="Last Name"
+     				) 
+     				suffix
+     				(
+	     				 type = suffix
+	     				 displayname ="Suffix"
+	     				 visibility = false
+     				) 
+					width = medium
+					personal data = true
+				)
+				Email
+				(
+    				type = email
+					maxchar = 80
+					width = medium
+					personal data = true
+				)
+				Address
+				(
+    				type = address
+     				capture_coordinates = true
+     				adjust_using_map = false
+     				address_line_1
+     				(
+	     				  type = address_line_1
+	     				  displayname = "Address Line 1"
+     				) 
+     				address_line_2
+     				(
+	     				  type = address_line_2
+	     				  displayname = "Address Line 2"
+     				) 
+     				district_city
+     				(
+	     				  type = district_city
+	     				  displayname = "City / District"
+     				) 
+     				state_province
+     				(
+	     				  type = state_province
+	     				  displayname = "State / Province"
+     				) 
+     				postal_Code
+     				(
+	     				  type = postal_Code
+	     				  displayname = "Postal Code"
+     				) 
+     				country
+     				(
+	     				  type = country
+	     				  displayname = "Country"
+     				) 
+     				latitude
+     				(
+	     				  type = latitude
+	     				  displayname = "latitude"
+	     				 visibility = false
+     				) 
+     				longitude
+     				(
+	     				  type = longitude
+	     				  displayname = "longitude"
+	     				 visibility = false
+     				) 
+					width = medium
+					personal data = true
+				)
+				Phone_Number
+				(
+    				type = phonenumber
+					displayname = "Phone"
+					width = medium
+					personal data = true
+				)
+				Phone_Number1
+				(
+    				type = phonenumber
+					displayname = "Phone"
+					width = medium
+					personal data = true
+				)
+				Single_Line
+				(
+    				type = text
+					displayname = "Single Line"
+					width = medium
+				)
+				Multi_Line
+				(
+    				type = textarea
+					displayname = "Multi Line"
+					height = 100px
+					width = medium
+				)
+				Number
+				(
+					type = number
+					width = medium
+				)
+				Date_field
+				(
+    				type = date
+					displayname = "Date"
+					alloweddays = 0,1,2,3,4,5,6
+					width = medium
+				)
+				Time
+				(
+    				type = time
+					timedisplayoptions = "hh:mm:ss" 
+					width = medium
+				)
+				Dropdown
+				(
+					type = picklist
+					displayname = "Drop Down"
+					maxchar = 100
+					values = {"Choice 1","Choice 2","Choice 3"}
+					width = medium
+				)
+				Radio
+				(
+					type = radiobuttons
+					maxchar = 100
+					values = {"Choice 1","Choice 2","Choice 3"}
+					width = medium
+				)
+				Multi_Select
+				(
+					type = list	
+					displayname = "Multi Select"
+					values = {"Choice 1","Choice 2","Choice 3"}
+					height = 60px
+					width = medium
+				)
+				Checkbox
+				(
+					type = checkboxes	
+					values = {"Choice 1","Choice 2","Choice 3"}
+					width = medium
+				)
+				Decision_box
+				(
+    				type = checkbox
+					displayname = "Decision box"
+					initial value = false
+					width = medium
+				)
+				Rich_Text
+				(
+    				type = richtext
+					displayname = "Rich Text"
+					height = 200px
+					toolbar = enable
+					[
+						style, font-color, background-color, link, bullets-and-numbering, 
+						font-size : {1, 2, 3, 4, 5, 6, 7}
+					]
+					width = medium
+				)
+				Url
+				(
+    				type = url
+					enable  linkname
+					width = medium
+				)
+				Image
+				(
+    				type = image
+					source  = file
+					aspect ratio = original
+					camera = primary
+					show gallery = true
+					switch camera = true
+					width = medium
+				)
+				Percent
+				(
+    				type = percentage
+					width = medium
+				)
+				Currency
+				(
+					type = INR
+					format = commadotindian
+					width = medium
+				)
+				Decimal
+				(
+					type = decimal
+					width = medium
+				)
+				Date_Time
+				(
+    				type = datetime
+					displayname = "Date-Time"
+					timedisplayoptions = "hh:mm:ss"
+					alloweddays = 0,1,2,3,4,5,6
+					width = medium
+				)
+				Buy_Milk_Master
+				(
+					type = picklist	
+					displayname = "Buy Milk Master"
+					values  = jd_project.Buy_Milk_Master.ID
+    				displayformat = [Buying_Date]
+					sortorder = ascending
+					width = medium
+				)
+				Audio
+				(
+     				type = audio
+    				duration=60
+					width = medium
+				)
+				Video
+				(
+    				type = video
+    				duration=30
+					width = medium
+				)
+				Email1
+				(
+    				type = email
+					displayname = "Email"
+					maxchar = 80
+					width = medium
+					personal data = true
+				)
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Section1
+			(
+				type = section
+				displayname = "Section"
+				visibility = true
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Buy_Milk_Master
+			(
+				type = picklist	
+				displayname = "Buy Milk Master"
+				values  = jd_project.Buy_Milk_Master.ID
+    			displayformat = [Buying_Transaction_ID]
+				sortorder = ascending
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Signature
+			(
+    			type = signature
+	 			row = 3
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			File_upload
+			(
+    			type = upload file
+				displayname = "File upload"
+				browse = local_drive, google_docs, zoho_docs
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			File_upload1
+			(
+    			type = upload file
+				displayname = "File upload"
+    			file count = 10
+				browse = local_drive
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Audio
+			(
+     			type = audio
+    			duration=1800
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Video
+			(
+    			type = video
+    			duration=300
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number
+			(
+    			type = autonumber
+				displayname = "Auto Number"
+				start index = 100000000000
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number1
+			(
+    			type = autonumber
+				displayname = "Auto Number"
+				start index = 100000000000000
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number2
+			(
+    			type = autonumber
+				displayname = "Auto Number"
+				start index = 10000000000000000
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number3
+			(
+    			type = autonumber
+				displayname = "Auto Number"
+				start index = 1000000000000000000
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			zl
+			(
+    			type = autonumber
+				start index = 1000000000000000000
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Formula
+			(
+    			type = formula
+				value =  ""
+				visibility = true
+				display type = text
+				format = plaintext
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			QR_Code
+			(
+				type = qrcode
+				displayname = "QR Code"
+				value = "${ID}"
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Section2
+			(
+				type = section
+				displayname = "Section"
+				visibility = true
+	 			row = 4
+	 			column = 0   
+				width = medium
+			)
+			plain
+			(
+    			type = plaintext
+				value = "Add your Note here ..."
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			users
+			(
+    			type = picklist
+				displayname = "Users"
+				module = users
+				displayformat = [username]
+	 			row = 4
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form filiter
+		{
+			store data in zc = false
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			EMP_NAME
+			(
+				type = picklist	
+				values  = zoho_emp_details.ID
+    			displayformat = [" " + EMP_NAME.first_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			No_Of_Year_EXP
+			(
+				type = picklist	
+				displayname = "No Of Year EXP"
+				values  = zoho_emp_details.ID
+    			displayformat = [No_Of_Year_EXP]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				Submit
+				(
+   					type = submit
+   					displayname = "Submit"
+				)
+				Reset
+				(
+   					type = reset
+   					displayname = "Reset"
+				)
+			}
+		}
+		form intergration
+		{
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Phone_Number
+			(
+    			type = phonenumber
+				displayname = "Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Multi_Line
+			(
+    			type = textarea
+				displayname = "Multi Line"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form mult_upload_file_test
+		{
+			displayname = "mult upload file test"
+			success message = "Mult Upload File Test Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			a
+			(
+    			type = upload file
+				browse = local_drive
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			b
+			(
+    			type = upload file
+				browse = local_drive
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			c
+			(
+    			type = upload file
+				browse = local_drive
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			d
+			(
+    			type = upload file
+				browse = local_drive
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			f
+			(
+    			type = upload file
+				browse = local_drive
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form multiplication_Form
+		{
+			displayname = "multiplication Form"
+			success message = "Multiplication Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			milt_Number
+			(
+				type = number
+				displayname = "milt Number"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			SubForm
+			(
+				type = grid
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form normal_form
+		{
+			displayname = "normal form"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Date_field
+			(
+    			type = date
+				displayname = "Date"
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Phone_Number
+			(
+    			type = phonenumber
+				displayname = "Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			QR_Code
+			(
+				type = qrcode
+				displayname = "QR Code"
+				value = "mjgirigirigiri-1@okicici"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Image
+			(
+    			type = image
+				source  = file
+				aspect ratio = original
+				camera = primary
+				show gallery = true
+				switch camera = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Object_Detection
+			(
+    			type = textarea
+				displayname = "Object Detection"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+						AI_Properties
+						(
+									fieldtype = ObjectDetection
+									basefield = Image
+						)
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Pick_Your_Seat
+		{
+			displayname = "Pick Your Seat"
+			success message = "Seats Booked Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Mobile_Number
+			(
+    			type = phonenumber
+				displayname = "Mobile Number"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Email
+			(
+    			type = email
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Date_field
+			(
+    			type = date
+				displayname = "Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Seat_Style
+			(
+    			type = plaintext
+				value = ""
+	 			row = 1
+	 			column = 1   
+				width = 300px
+			)
+			must have Seats
+			(
+				type = checkboxes	
+				values = {"1","2","3","9","17","7","8","4","5","6","10","11","12","13","14","15","16","18","19","20","21","22","23","24"}
+	 			row = 1
+	 			column = 1   
+				width = 300px
+			)
+			selected_seats
+			(
+    			type = plaintext
+				value = ""
+	 			row = 1
+	 			column = 1   
+				width = 300px
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Book Now"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form sales
+		{
+			success message = "Sale Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Single_Line
+			(
+    			type = text
+				displayname = "Single Line"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Currency
+			(
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form test_1
+		{
+			displayname = "test 1"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			ID_PROOF
+			(
+    			type = upload file
+				displayname = "ID PROOF"
+				browse = local_drive
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form test_2
+		{
+			displayname = "test 2"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			File_upload
+			(
+    			type = upload file
+				displayname = "File upload"
+				browse = local_drive
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form use_ful
+		{
+			displayname = "use ful"
+			success message = "Data Added Successfully!"
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Workers_Details
+		{
+			displayname = "Workers Details"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Date_field
+			(
+    			type = date
+				displayname = "Date"
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Worker_ID
+			(
+    			type = text
+				displayname = "Worker ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Check_In_Check_Out
+			(
+				type = picklist
+				displayname = "Check In Check Out"
+				maxchar = 100
+				values = {"Check In","Check Out"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number
+			(
+    			type = autonumber
+				displayname = "Auto Number"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form zoho_emp_details
+		{
+			displayname = "zoho emp details"
+			success message = "Zoho Emp Detail Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			EMP_NAME
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			EMP_Phone
+			(
+    			type = phonenumber
+				displayname = "EMP Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Date_Of_Joning
+			(
+    			type = date
+				displayname = "Date Of Joning"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			No_Of_Year_EXP
+			(
+				type = number
+				displayname = "No Of Year EXP"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Date_field
+			(
+    			type = date
+				displayname = "Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Multi_Line
+			(
+    			type = textarea
+				displayname = "Multi Line"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Single_Line
+			(
+    			type = text
+				displayname = "Single Line"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Address
+			(
+    			type = address
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Phone_Number
+			(
+    			type = phonenumber
+				displayname = "Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Email
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Multi_Line1
+			(
+    			type = textarea
+				displayname = "Multi Line"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Multi_Line2
+			(
+    			type = textarea
+				displayname = "Multi Line"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Single_Line1
+			(
+    			type = text
+				displayname = "Single Line"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Multi_Line3
+			(
+    			type = textarea
+				displayname = "Multi Line"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Multi_Line4
+			(
+    			type = textarea
+				displayname = "Multi Line"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list normal_form_Report
+		{
+			displayName = "normal form Report"
+			show all rows from normal_form    
+			(
+				Name 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Date_field as "Date"
+				Phone_Number as "Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				QR_Code as "QR Code"
+				Image
+				Object_Detection as "Object Detection"
+			)
+		}
+		default list existing_from_Report
+		{
+			displayName = "existing from Report"
+			show all rows from existing_from    
+			(
+				SubForm
+				(
+					field = SubForm.Name + " " + SubForm.Date_field + " " + SubForm.Phone_Number
+				)
+			)
+		}
+		default list deposit_amount_in_bank_Report
+		{
+			displayName = "deposit amount in bank Report"
+			show all rows from deposit_amount_in_bank    
+			(
+				Enter_Amount as "Enter Amount"
+				SubForm.notes as "SubForm"
+			)
+		}
+		default list All_Zoho_Emp_Details
+		{
+			displayName = "All Zoho Emp Details"
+			show all rows from zoho_emp_details    
+			(
+				EMP_NAME 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				EMP_Phone as "EMP Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				No_Of_Year_EXP as "No Of Year EXP"
+				Date_Of_Joning as "Date Of Joning"
+				Date_field as "Date"
+				Multi_Line as "Multi Line"
+				Single_Line as "Single Line"
+				Address 
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Phone_Number as "Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Name 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Email
+				Multi_Line1 as "Multi Line"
+				Multi_Line2 as "Multi Line"
+				Single_Line1 as "Single Line"
+				Multi_Line3 as "Multi Line"
+				Multi_Line4 as "Multi Line"
+			)
+		}
+		default list intergration_Report
+		{
+			displayName = "intergration Report"
+			show all rows from intergration    
+			(
+				Phone_Number as "Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Multi_Line as "Multi Line"
+			)
+		}
+		default list test_1_Report
+		{
+			displayName = "test 1 Report"
+			show all rows from test_1    
+			(
+				Name 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				ID_PROOF as "ID PROOF"
+			)
+		}
+		default list Workers_Details_Report
+		{
+			displayName = "Workers Details Report"
+			show all rows from Workers_Details    
+			(
+				Name 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Worker_ID as "Worker ID"
+				Auto_Number as "Auto Number"
+				Date_field as "Date"
+				Check_In_Check_Out as "Check In Check Out"
+			)
+		}
+		default list test_2_Report
+		{
+			displayName = "test 2 Report"
+			show all rows from test_2    
+			(
+				Name 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				File_upload as "File upload"
+			)
+		}
+		default list All_Mult_Upload_File_Tests
+		{
+			displayName = "All Mult Upload File Tests"
+			show all rows from mult_upload_file_test    
+			(
+				Name 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				a
+				b
+				c
+				d
+				f
+			)
+		}
+		default list All_Multiplications
+		{
+			displayName = "All Multiplications"
+			show all rows from multiplication_Form    
+			(
+				milt_Number as "milt Number"
+			)
+		}
+		default list Feed_back_Integertion_Report
+		{
+			displayName = "Feed back Integertion Report"
+			show all rows from Feed_back_Integertion    
+			(
+				Your_Name  as "Your Name "
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Your_Email as "Your Email"
+				Your_Rating as "Your Rating "
+				Your_Comments as "Your Comments"
+			)
+		}
+		default list Date_And_Time_Report
+		{
+			displayName = "Date And Time Report"
+			show all rows from Date_And_Time    
+			(
+				Date_Time as "Date-Time"
+				a
+				ID
+			)
+		}
+		default list All_Customers
+		{
+			displayName = "All Customers"
+			show all rows from customer    
+			(
+				Ciustomer  as "Customer Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Customer_Email as "Customer Email"
+				Customer_Address  as "Customer Address"
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+			)
+		}
+		default list All_Sales
+		{
+			displayName = "All Sales"
+			show all rows from sales    
+			(
+				Single_Line as "Single Line"
+				Currency
+			)
+		}
+		list Booked
+		{
+			displayName = "Booked Seats"
+			show all rows from Pick_Your_Seat    
+			(
+				Name 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Date_field as "Date"
+				Mobile_Number as "Mobile Number"
+				Email
+				Seats
+			)
+			group by
+			(
+				Date_field ascending
+			)
+		}
+		default list use_ful_Report
+		{
+			displayName = "use ful Report"
+			show all rows from use_ful    
+		}
+		default list Creator_To_Creator_Report
+		{
+			displayName = "Creator To Creator Report"
+			show all rows from Creator_To_Creator    
+			(
+				Multi_Select as "Multi Select"
+			)
+		}
+		default list All_Fields
+		{
+			displayName = "All Fields"
+			show all rows from Fields    
+			(
+				Name 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Email
+				Phone_Number as "Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Address 
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Single_Line as "Single Line"
+				Multi_Line as "Multi Line"
+				Number
+				Single_Line1 as "Single Line"
+				Date_field as "Date"
+				Time
+				Dropdown as "Drop Down"
+				Radio
+				Multi_Select as "Multi Select"
+				Checkbox
+				Decision_box as "Decision box"
+				Url
+				Image
+				Image1 as "Image"
+				Percent
+				Currency
+				Decimal
+				Date_Time as "Date-Time"
+				SubForm.Name as "SubForm"
+				Buy_Milk_Master as "Buy Milk Master"
+				Signature
+				File_upload as "File upload"
+				File_upload1 as "File upload"
+				Audio
+				Video
+				Auto_Number as "Auto Number"
+				Auto_Number1 as "Auto Number"
+				Auto_Number2 as "Auto Number"
+				Auto_Number3 as "Auto Number"
+				zl
+				Formula
+				QR_Code as "QR Code"
+				users as "Users"
+			)
+		}
+	}
+	pages
+	{
+		page dashboard
+		{
+			displayname = "dashboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet3' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet3()\ncontent\n&lt;%{\n\t%&gt;\n&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n&lt;head&gt;\n    &lt;meta charset=&quot;UTF-8&quot;&gt;\n    &lt;title&gt;JD Milk Product&lt;\/title&gt;\n    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;\n    &lt;style&gt;\n        body {\n            margin: 0;\n            font-family: &apos;Tahoma&apos;, sans-serif;\n            background-color: #f4f4f9;\n            color: #333;\n        }\n\n        \/* Header *\/\n        header {\n            background-color: #2E7D32;\n            color: white;\n            padding: 30px 20px;\n            text-align: center;\n        }\n        header h1 {\n            margin: 0;\n            font-size: 32px;\n            font-weight: bold;\n        }\n        header p {\n            margin: 5px 0 0 0;\n            font-size: 16px;\n        }\n\n        \/* Main Section *\/\n        main {\n            padding: 40px 20px;\n            max-width: 900px;\n            margin: auto;\n            text-align: center;\n        }\n        main h2 {\n            font-size: 28px;\n            margin-bottom: 10px;\n        }\n        main p.description {\n            color: #555;\n            margin-bottom: 30px;\n            line-height: 1.6;\n        }\n\n        \/* Product Grid *\/\n        .product-grid {\n            display: grid;\n            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));\n            gap: 20px;\n        }\n        .product-card {\n            padding: 20px;\n            border-radius: 12px;\n            text-align: center;\n            cursor: pointer;\n            transition: transform 0.3s, box-shadow 0.3s;\n        }\n        .product-card:hover {\n            transform: translateY(-5px);\n            box-shadow: 0 10px 20px rgba(0,0,0,0.15);\n        }\n        .product-card h3 a {\n            text-decoration: none;\n            color: #000;\n            font-size: 18px;\n            font-weight: bold;\n        }\n        .product-card p {\n            color: #555;\n            margin-top: 10px;\n            font-size: 14px;\n        }\n\n        \/* Card Colors *\/\n        .buy-cow { background-color: #FFF3E0; }\n        .sell-cow { background-color: #C8E6C9; }\n        .buy-buffalo { background-color: #F8BBD0; }\n        .sell-buffalo { background-color: #D1C4E9; }\n\n        \/* Footer *\/\n        footer {\n            background-color: #2E7D32;\n            color: white;\n            text-align: center;\n            padding: 20px;\n            margin-top: 40px;\n        }\n        footer p {\n            margin: 4px 0;\n            font-size: 14px;\n        }\n    &lt;\/style&gt;\n&lt;\/head&gt;\n&lt;body&gt;\n\n    &lt;!-- Header --&gt;\n    &lt;header&gt;\n        &lt;h1&gt;JD Milk Product&lt;\/h1&gt;\n        &lt;p&gt;Fresh Cow &amp; Buffalo Milk - Buy &amp; Sell&lt;\/p&gt;\n    &lt;\/header&gt;\n\n    &lt;!-- Main Section --&gt;\n    &lt;main&gt;\n        &lt;h2&gt;Our Milk Products&lt;\/h2&gt;\n        &lt;p class=&quot;description&quot;&gt;\n            Select your preferred milk type and choose to buy or sell fresh milk directly. Enjoy the natural taste, quality, and richness of our milk products for your family&apos;s health and wellness.\n        &lt;\/p&gt;\n\n        &lt;div class=&quot;product-grid&quot;&gt;\n\n            &lt;!-- Cow Milk Buy --&gt;\n            &lt;div class=&quot;product-card buy-cow&quot; onclick=&quot;alert(&apos;Redirecting to Buy Cow Milk&apos;)&quot;&gt;\n                &lt;h3&gt;&lt;a href=&quot;#Form:Pre_Booking_Product&quot;&gt;Buy Cow Milk&lt;\/a&gt;&lt;\/h3&gt;\n                &lt;p&gt;Get fresh cow milk delivered to your doorstep.&lt;\/p&gt;\n            &lt;\/div&gt;\n\n            &lt;!-- Cow Milk Sell --&gt;\n            &lt;div class=&quot;product-card sell-cow&quot; onclick=&quot;alert(&apos;Redirecting to Sell Cow Milk&apos;)&quot;&gt;\n                &lt;h3&gt;&lt;a href=&quot;#Form:Rural_Customer_And_Vendor_Details_Master&quot;&gt;Sell Cow Milk&lt;\/a&gt;&lt;\/h3&gt;\n                &lt;p&gt;Sell your cow milk to verified buyers easily.&lt;\/p&gt;\n            &lt;\/div&gt;\n\n            &lt;!-- Buffalo Milk Buy --&gt;\n            &lt;div class=&quot;product-card buy-buffalo&quot; onclick=&quot;alert(&apos;Redirecting to Buy Buffalo Milk&apos;)&quot;&gt;\n                &lt;h3&gt;&lt;a href=&quot;#Form:Pre_Booking_Product&quot;&gt;Buy Buffalo Milk&lt;\/a&gt;&lt;\/h3&gt;\n                &lt;p&gt;Enjoy rich and creamy buffalo milk for your family.&lt;\/p&gt;\n            &lt;\/div&gt;\n\n            &lt;!-- Buffalo Milk Sell --&gt;\n            &lt;div class=&quot;product-card sell-buffalo&quot; onclick=&quot;alert(&apos;Redirecting to Sell Buffalo Milk&apos;)&quot;&gt;\n                &lt;h3&gt;&lt;a href=&quot;#Form:Rural_Customer_And_Vendor_Details_Master&quot;&gt;Sell Buffalo Milk&lt;\/a&gt;&lt;\/h3&gt;\n                &lt;p&gt;Reach buyers easily and sell your buffalo milk quickly.&lt;\/p&gt;\n            &lt;\/div&gt;\n\n        &lt;\/div&gt;\n    &lt;\/main&gt;\n\n    &lt;!-- Footer --&gt;\n    &lt;footer&gt;\n        &lt;p&gt;&amp;copy; 2025 JD Milk Product. All Rights Reserved.&lt;\/p&gt;\n        &lt;p&gt;Delivering Fresh Milk | Quality &amp; Trust Guaranteed&lt;\/p&gt;\n    &lt;\/footer&gt;\n\n&lt;\/body&gt;\n&lt;\/html&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+		page filiter_Dashboard
+		{
+			displayname = "filiter Dashboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet()\ncontent\n&lt;%{\n\t%&gt;\n&lt;div elName=&apos;zc-component&apos; formLinkName=&apos;zoho_emp_details&apos; params=&apos;zc_Header=false&amp;amp;zc_SuccMsg=Data Added Successfully!&amp;amp;zc_SubmitVal=Submit&amp;amp;zc_ResetVal=Reset&apos;&gt;Loading Form...&lt;\/div&gt;\n&lt;style&gt;\n\n*{\n    padding:0;\n}\n.zc-pb-embed-placeholder-content{\n    display:none;\n}\n.form-outer-wrapper&gt;.row{\n    width: 100%;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    border:none;\n    background:linear-gradient(45deg, #a1d8ff 0%, white 50%, #a1d8ff 100%);\n}\n.zc-pb-page-content-wrapper{\n    overflow:hidden !important;\n}\n.zc-pb-tile-card.zc-pb-formelem-placeholder,.zc-pb-tile-container,.zcform_Start_the_Match.zc-form-fullheight{\n    height:100vh !important;\n\tbackground:linear-gradient(45deg, #a1d8ff 0%, white 50%, #a1d8ff 100%) !important;\n}\nform[name=&quot;zoho_emp_details&quot;].label-left{\n    margin:15px 0px !important;\n\tpadding:0px;\n    background-color: white;\n    border-radius: 20px;\n    box-shadow: 0px 4px 20px rgba(0,0,0,0.2);\n}\n.Layout.elemContainment{\n\tpadding:0px !important;\n}\n.formbutton{\n\tpadding:5px !important;\n}\n.zc-footer-wrapper{\n    border:none;\n}\n.column-container .zc-pb-tile-container{\n    padding:0px !important;\n}\n&lt;\/style&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+		page summa
+		{
+			displayname = "summa"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet1' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet1()\ncontent\n&lt;%{\n\t%&gt;\n&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n&lt;head&gt;\n    &lt;meta charset=&quot;UTF-8&quot;&gt;\n    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;\n    &lt;title&gt;Milk Products&lt;\/title&gt;\n    &lt;style&gt;\n        body {\n            font-family: Arial, sans-serif;\n            margin: 0;\n            padding: 0;\n            background-color: #f5f5f5;\n            color: #333;\n        }\n\n        header {\n            background-color: #5c9e31;\n            color: white;\n            padding: 20px;\n            text-align: center;\n        }\n\n        header nav a {\n            color: white;\n            margin: 0 15px;\n            text-decoration: none;\n            font-weight: bold;\n        }\n\n        header nav a:hover {\n            text-decoration: underline;\n        }\n\n        main {\n            padding: 20px;\n        }\n\n        .widget {\n            background-color: #fff9c4;\n            padding: 20px;\n            border-radius: 10px;\n            max-width: 700px;\n            margin: auto;\n            box-shadow: 0 0 10px rgba(0,0,0,0.1);\n        }\n\n        .product-container {\n            display: flex;\n            justify-content: space-around;\n            margin-top: 20px;\n        }\n\n        .product-card {\n            background-color: #ffffff;\n            border: 1px solid #ddd;\n            border-radius: 8px;\n            width: 250px;\n            padding: 15px;\n            text-align: center;\n            transition: transform 0.2s;\n        }\n\n        .product-card:hover {\n            transform: scale(1.05);\n        }\n\n        .product-card img {\n            width: 100%;\n            height: 150px;\n            object-fit: cover;\n            border-radius: 5px;\n        }\n\n        .product-card button {\n            padding: 10px 15px;\n            margin-top: 10px;\n            border: none;\n            background-color: #5c9e31;\n            color: white;\n            border-radius: 5px;\n            cursor: pointer;\n        }\n\n        .product-card button:hover {\n            background-color: #4b7d28;\n        }\n\n        footer {\n            background-color: #5c9e31;\n            color: white;\n            text-align: center;\n            padding: 15px;\n            margin-top: 30px;\n        }\n    &lt;\/style&gt;\n&lt;\/head&gt;\n&lt;body&gt;\n    &lt;header&gt;\n        &lt;h1&gt;Milk Products Store&lt;\/h1&gt;\n        &lt;nav&gt;\n            &lt;a href=&quot;#&quot;&gt;Home&lt;\/a&gt;\n            &lt;a href=&quot;#&quot;&gt;Products&lt;\/a&gt;\n            &lt;a href=&quot;#&quot;&gt;Contact&lt;\/a&gt;\n        &lt;\/nav&gt;\n    &lt;\/header&gt;\n\n    &lt;main&gt;\n        &lt;section class=&quot;widget&quot;&gt;\n            &lt;h2&gt;Our Milk Products&lt;\/h2&gt;\n            &lt;div id=&quot;product-container&quot; class=&quot;product-container&quot;&gt;\n                &lt;!-- Products will be added here by JS --&gt;\n            &lt;\/div&gt;\n        &lt;\/section&gt;\n    &lt;\/main&gt;\n\n    &lt;footer&gt;\n        &lt;p&gt;&amp;copy; 2025 Milk Products Store. All rights reserved.&lt;\/p&gt;\n    &lt;\/footer&gt;\n\n    &lt;script&gt;\n        \/\/ Array of milk products\n        const products = [\n            { name: &quot;Cow Milk&quot;, price: &quot;$2.50&quot;, image: &quot;https:\/\/via.placeholder.com\/250x150?text=Cow+Milk&quot; },\n            { name: &quot;Buffalo Milk&quot;, price: &quot;$3.00&quot;, image: &quot;https:\/\/via.placeholder.com\/250x150?text=Buffalo+Milk&quot; }\n        ];\n\n        \/\/ Select container\n        const container = document.getElementById(&quot;product-container&quot;);\n\n        \/\/ Render each product dynamically\n        products.forEach(product =&gt; {\n            const card = document.createElement(&quot;div&quot;);\n            card.className = &quot;product-card&quot;;\n            card.innerHTML = `\n                &lt;img src=&quot;${product.image}&quot; alt=&quot;${product.name}&quot;&gt;\n                &lt;h3&gt;${product.name}&lt;\/h3&gt;\n                &lt;p&gt;Price: ${product.price}&lt;\/p&gt;\n                &lt;button onclick=&quot;buyProduct(&apos;${product.name}&apos;)&quot;&gt;Buy Now&lt;\/button&gt;\n            `;\n            container.appendChild(card);\n        });\n\n        \/\/ Simple JS function for Buy Now\n        function buyProduct(name) {\n            alert(`You selected: ${name}`);\n        }\n    &lt;\/script&gt;\n&lt;\/body&gt;\n&lt;\/html&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+		page Home_Page
+		{
+			displayname = "Home Page"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet2' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet2()\ncontent\n&lt;%{\n\t%&gt;\n&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n&lt;head&gt;\n    &lt;meta charset=&quot;UTF-8&quot;&gt;\n    &lt;title&gt;JD Milk Product - Home&lt;\/title&gt;\n    &lt;style&gt;\n        body {\n            margin: 0;\n            font-family: &apos;Tahoma&apos;, sans-serif;\n            background-color: #f4f4f9;\n            color: #333;\n        }\n        header {\n            background-color: #2E7D32;\n            color: white;\n            padding: 30px 20px;\n            text-align: center;\n        }\n        header h1 {\n            margin: 0;\n            font-size: 36px;\n        }\n        header p {\n            margin: 8px 0 0 0;\n            font-size: 20px;\n        }\n        main {\n            padding: 50px 20px;\n            max-width: 1200px;\n            margin: auto;\n        }\n        main h2 {\n            text-align: center;\n            font-size: 28px;\n            margin-bottom: 10px;\n        }\n        main p.description {\n            text-align: center;\n            color: #555;\n            max-width: 700px;\n            margin: 10px auto 50px auto;\n            line-height: 1.6;\n        }\n        .product-grid {\n            display: grid;\n            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));\n            gap: 30px;\n        }\n        .product-card {\n            padding: 25px;\n            border-radius: 12px;\n            text-align: center;\n            cursor: pointer;\n            transition: transform 0.3s, box-shadow 0.3s;\n        }\n        .product-card:hover {\n            transform: translateY(-5px);\n            box-shadow: 0 10px 20px rgba(0,0,0,0.15);\n        }\n        .product-card h3 a {\n            text-decoration: none;\n            color: #000;\n            font-size: 20px;\n        }\n        .product-card p {\n            color: #555;\n            margin-top: 10px;\n            font-size: 15px;\n        }\n        .buy-cow { background-color: #FFF3E0; }\n        .sell-cow { background-color: #C8E6C9; }\n        .buy-buffalo { background-color: #F8BBD0; }\n        .sell-buffalo { background-color: #D1C4E9; }\n        footer {\n            background-color: #2E7D32;\n            color: white;\n            text-align: center;\n            padding: 20px;\n            margin-top: 50px;\n        }\n        footer p {\n            margin: 5px 0;\n        }\n    &lt;\/style&gt;\n&lt;\/head&gt;\n&lt;body&gt;\n\n    &lt;!-- Header --&gt;\n    &lt;header&gt;\n        &lt;h1&gt;JD Milk Product&lt;\/h1&gt;\n        &lt;p&gt;Fresh Cow &amp; Buffalo Milk - Buy &amp; Sell | Your Trusted Milk Partner&lt;\/p&gt;\n    &lt;\/header&gt;\n\n    &lt;!-- Main Section --&gt;\n    &lt;main&gt;\n        &lt;h2&gt;Our Milk Products&lt;\/h2&gt;\n        &lt;p class=&quot;description&quot;&gt;\n            Select your preferred milk type and choose to buy or sell fresh milk directly. \n            Enjoy the natural taste, quality, and richness of our milk products for your family&apos;s health and wellness.\n        &lt;\/p&gt;\n\n        &lt;!-- Grid Layout --&gt;\n        &lt;div class=&quot;product-grid&quot;&gt;\n\n            &lt;!-- Cow Milk Buy --&gt;\n            &lt;div class=&quot;product-card buy-cow&quot; onclick=&quot;alert(&apos;Redirecting to Buy Cow Milk&apos;)&quot;&gt;\n                &lt;h3&gt;&lt;a href=&quot;#Form:Pre_Booking_Product&quot;&gt;Buy Cow Milk&lt;\/a&gt;&lt;\/h3&gt;\n                &lt;p&gt;Get fresh cow milk delivered to your doorstep with ease and convenience.&lt;\/p&gt;\n            &lt;\/div&gt;\n\n            &lt;!-- Cow Milk Sell --&gt;\n            &lt;div class=&quot;product-card sell-cow&quot; onclick=&quot;alert(&apos;Redirecting to Sell Cow Milk&apos;)&quot;&gt;\n                &lt;h3&gt;&lt;a href=&quot;#Form:Rural_Customer_And_Vendor_Details_Master&quot;&gt;Sell Cow Milk&lt;\/a&gt;&lt;\/h3&gt;\n                &lt;p&gt;Sell your cow milk to verified buyers easily and earn fair value for your product.&lt;\/p&gt;\n            &lt;\/div&gt;\n\n            &lt;!-- Buffalo Milk Buy --&gt;\n            &lt;div class=&quot;product-card buy-buffalo&quot; onclick=&quot;alert(&apos;Redirecting to Buy Buffalo Milk&apos;)&quot;&gt;\n                &lt;h3&gt;&lt;a href=&quot;#Form:Pre_Booking_Product&quot;&gt;Buy Buffalo Milk&lt;\/a&gt;&lt;\/h3&gt;\n                &lt;p&gt;Enjoy rich and creamy buffalo milk for your family, full of natural goodness.&lt;\/p&gt;\n            &lt;\/div&gt;\n\n            &lt;!-- Buffalo Milk Sell --&gt;\n            &lt;div class=&quot;product-card sell-buffalo&quot; onclick=&quot;alert(&apos;Redirecting to Sell Buffalo Milk&apos;)&quot;&gt;\n                &lt;h3&gt;&lt;a href=&quot;#Form:Rural_Customer_And_Vendor_Details_Master&quot;&gt;Sell Buffalo Milk&lt;\/a&gt;&lt;\/h3&gt;\n                &lt;p&gt;Reach buyers easily and sell your buffalo milk quickly and efficiently.&lt;\/p&gt;\n            &lt;\/div&gt;\n\n        &lt;\/div&gt;\n    &lt;\/main&gt;\n\n    &lt;!-- Footer --&gt;\n    &lt;footer&gt;\n        &lt;p&gt;&amp;copy; 2025 JD Milk Product. All Rights Reserved.&lt;\/p&gt;\n        &lt;p&gt;Delivering Fresh Milk to Your Doorstep | Quality &amp; Trust Guaranteed&lt;\/p&gt;\n    &lt;\/footer&gt;\n\n&lt;\/body&gt;\n&lt;\/html&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+	}
+
+
+		 functions
+		 {
+			 Deluge
+			 {
+				 list generate_list(int num, list mylist)
+                 {
+                 	if(input.num > 0)
+                 	{
+                 		mylist.add(num);
+                 		thisapp.generate_list(num - 1,mylist);
+                 	}
+                 	return mylist;
+                 }
+			 }
+		 }
+		workflow
+		{
+		form
+		{
+			ewfkaerwhfiulewfhi_rjgo_d as "ewfkaerwhfiulewfhi;rjgo'd"
+			{
+				type =  form
+				form = normal_form
+				record event = on add or edit
+
+				on user input of Name
+				{
+				}
+
+			}
+			fecth_and_check_amount as "fecth and check amount"
+			{
+				type =  form
+				form = deposit_amount_in_bank
+				record event = on add or edit
+
+				on user input of Enter_Amount
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(Enter_Amount != null)
+										{
+											input.SubForm.clear();
+											ver = {500,200,100,50,20,10,5,2,1,0};
+											new = input.Enter_Amount;
+											for each  rec in ver
+											{
+												rows = deposit_amount_in_bank.SubForm();
+												rows.notes=rec;
+												rows.qty=(new / rows.notes).floor();
+												rows.total_amount=rows.qty * rows.notes;
+												new = new - rows.total_amount;
+												if(new == 0)
+												{
+													break;
+												}
+												input.SubForm.insert(rows);
+											}
+										}
+										else
+										{
+											input.SubForm.clear();
+										}
+						)
+					}
+				}
+
+			}
+			calculate_the_Year_of_Exp as "calculate the Year of Exp"
+			{
+				type =  form
+				form = zoho_emp_details
+				record event = on add or edit
+
+				on user input of Date_Of_Joning
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.No_Of_Year_EXP = input.Date_Of_Joning.yearsBetween(today);
+						)
+					}
+				}
+
+			}
+			filiter_for_name as "filiter for name"
+			{
+				type =  form
+				form = filiter
+				record event = on add
+
+				on user input of EMP_NAME
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											openUrl("#Report:All_Zoho_Emp_Details?zc_LoadIn=embed-zoho&EMP_NAME.first_name=" + input.EMP_NAME.EMP_NAME,"same window");
+						)
+					}
+				}
+
+			}
+			check_no_of_exp as "check no of exp"
+			{
+				type =  form
+				form = filiter
+				record event = on add
+
+				on user input of No_Of_Year_EXP
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											openUrl("#Report:All_Zoho_Emp_Details?zc_LoadIn=embed-zoho&No_Of_Year_EXP=" + input.No_Of_Year_EXP.No_Of_Year_EXP,"same window");
+						)
+					}
+				}
+
+			}
+			demo_test as "demo test"
+			{
+				type =  form
+				form = test_1
+				record event = on add or edit
+					status = inactive
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											var = zoho.workdrive.createFolder("magesh","wky7wd7d2faafa5ba4b3b9e9e8488e0da88f6","zoho_oauth_connection");
+										info var;
+										// id = var.get("data").get("id");
+										// info id;
+										// new=zoho.workdrive.createFolder("karthi","wky7wd7d2faafa5ba4b3b9e9e8488e0da88f6?sfid=","zoho_oauth_connection");
+										// info new;
+						)
+					}
+				}
+
+			}
+			uplode_documation as "uplode documation"
+			{
+				type =  form
+				form = test_1
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											var = zoho.workdrive.createFolder(input.Name.first_name,"wky7wd7d2faafa5ba4b3b9e9e8488e0da88f6","zoho_oauth_connection");
+										id = var.get("data").get("id");
+										new = zoho.workdrive.uploadFile(input.ID_PROOF,id,input.ID_PROOF,false,"zoho_oauth_connection");
+						)
+					}
+				}
+
+			}
+			Worker_ID as "Worker ID"
+			{
+				type =  form
+				form = Workers_Details
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Worker_ID = "WO" + "_" + input.Date_field.getDay() + input.Name.subString(0,3) + "_" + input.Auto_Number;
+										var = input.Worker_ID;
+										new = input.Check_In_Check_Out;
+										time = zoho.currenttime;
+										people_api_url = "https://people.zoho.com/people/api/attendance";
+										attendance_data = Map();
+										attendance_data.put("employeeId",input.Worker_ID);
+										attendance_data.put("DateFormate","yyyy-MM-dd HH:mm:ss");
+										attendance_data.put("checkInOut",if(new == "Check-In","Check-in","Check-out"));
+										attendance_data.put("currentDate",time.toString("yyyy-MM-dd HH:mm:ss"));
+										response = invokeurl
+										[
+											url :people_api_url
+											type :POST
+											parameters:attendance_data
+											connection:"zoho_oauth_connection1"
+										];
+										info response;
+						)
+					}
+				}
+
+			}
+			summa as "summa"
+			{
+				type =  form
+				form = test_2
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											rec = zoho.workdrive.createFolder("giri","290yl7b446f6a0d93471d983edf1944a215bf","zoho_oauth_connection");
+										ver = rec.get("data").get("id");
+										new = zoho.workdrive.uploadFile(input.File_upload,ver,input.File_upload,false,"zoho_oauth_connection");
+						)
+					}
+				}
+
+			}
+			summa1 as "summa"
+			{
+				type =  form
+				form = test_2
+				record event = on add or edit
+					status = inactive
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											rec = zoho.workdrive.createFolder("giri","290yl7b446f6a0d93471d983edf1944a215bf","zoho_oauth_connection");
+										ver = rec.get("data").get("id");
+										info ver;
+						)
+					}
+				}
+
+			}
+			suuma as "suuma"
+			{
+				type =  form
+				form = mult_upload_file_test
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = zoho.workdrive.createFolder(input.Name.first_name,"290yl98514db854724eccadf2671810bb19d1","zoho_oauth_connection");
+										rec = ver.get("data").get("id");
+										// new={input.a,input.b,input.c,input.d,input.f};
+										new = {"a":if(input.a != null,input.a,""),"b":if(input.b != null,input.b,""),"c":if(input.c != null,input.c,""),"d":if(input.d != null,input.d,""),"e":if(input.f != null,input.f,"")};
+										for each  k in new
+										{
+											if(k != null)
+											{
+												val = zoho.workdrive.uploadFile(k,rec,k,false,"zoho_oauth_connection");
+											}
+										}
+						)
+					}
+				}
+
+			}
+			summa2 as "summa"
+			{
+				type =  form
+				form = multiplication_Form
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = " ".leftpad(9).toList("");
+										count = 0;
+										for each  rec in ver
+										{
+											count = count + 1;
+											info count + "*" + input.milt_Number + "=" + count * input.milt_Number;
+										}
+						)
+					}
+				}
+
+			}
+			test as "test"
+			{
+				type =  form
+				form = multiplication_Form
+				record event = on add or edit
+					status = inactive
+
+				on user input of milt_Number
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = " ".leftpad(9).toList("");
+										count = 0;
+										for each  rec in ver
+										{
+											count = count + 1;
+											info count + "*" + input.milt_Number + "=" + count * input.milt_Number;
+										}
+						)
+					}
+				}
+
+			}
+			Run_Scripts_While_Adding_ as "Run Scripts - While Adding a Record"
+			{
+				type =  form
+				form = Pick_Your_Seat
+				record event = on add
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											hide selected_seats;
+										hide Seats;
+										//Autofilling the date field with current date
+										input.Date_field = zoho.currentdate;
+						)
+					}
+				}
+
+			}
+			Run_Scripts_While_Adding_1 as "Run Scripts - While Adding a Record"
+			{
+				type =  form
+				form = Pick_Your_Seat
+				record event = on add
+
+				on validate
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											//Here we are validating seat selection
+										booked_seats_list = Pick_Your_Seat[Date_field == input.Date_field].Seats.getAll();
+										already_booked_seats = booked_seats_list.intersect(input.Seats);
+										input.Seats.removeall(already_booked_seats);
+										if(Seats.isEmpty())
+										{
+											alert "Select atleast one seat to book!";
+											cancel submit;
+										}
+						)
+					}
+				}
+
+			}
+			Run_Scripts_While_Adding_2 as "Run Scripts - While Adding a Record"
+			{
+				type =  form
+				form = Pick_Your_Seat
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											//Notify the user with respective booking details
+										SMS_Response = zoho.sms.send(input.Mobile_Number,"Thanks for using our service!!Your Booking has been confirmed.Booking Details:Name-" + input.Name + ",Date-" + input.Date_field + ",Selected Seats-" + input.Seats);
+										sendmail
+										[
+											from :zoho.adminuserid
+											to :input.Email
+											subject :"Seat Booking - Confirmation"
+											message :"<div><div>Hello " + input.Name + ",<br><br>&nbsp; &nbsp; &nbsp; Thanks for using our service. Your Booking has been confirmed. Please find the booking details here.<div><br><div>Name&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; :" + input.Name + "</div><div>Date &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;:" + input.Date_field + "</div><div>Booked Seats :" + input.Seats + "</div><div><br></div><div><br></div><div>We look forward to seeing you!</div><div><br></div><div>Regards,</div><div>" + zoho.adminuser + "</div></div></div></div><div><br></div>"
+										]
+						)
+					}
+				}
+
+			}
+			Run_Scripts_On_Always as "Run Scripts - On Always"
+			{
+				type =  form
+				form = Pick_Your_Seat
+				record event = on add or edit
+
+				on user input of Seats
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											//Showing selected seats in notes field for user reference
+										if(Seats.size() > 0)
+										{
+											booked_seats_list = Pick_Your_Seat[Date_field == input.Date_field].Seats.getAll();
+											already_booked_seats = booked_seats_list.intersect(input.Seats);
+											seatsList = input.Seats;
+											seatsList.removeall(already_booked_seats);
+											if(seatsList.isEmpty())
+											{
+												hide selected_seats;
+											}
+											else
+											{
+												show selected_seats;
+												input.selected_seats = "Selected Seats-<a >" + seatsList + "</a>";
+											}
+										}
+										else
+										{
+											hide selected_seats;
+										}
+						)
+					}
+				}
+
+			}
+			Run_Scripts_On_Always1 as "Run Scripts - On Always"
+			{
+				type =  form
+				form = Pick_Your_Seat
+				record event = on add or edit
+
+				on user input of Date_field
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											//Displaying the seat availability of selected date
+										if(input.Date_field >= zoho.currentdate)
+										{
+											hide selected_seats;
+											show Seats;
+											booked_seat_list = Pick_Your_Seat[Date_field == input.Date_field].Seats.getAll();
+											bookedSeatStyle = "";
+											for each  seat in booked_seat_list
+											{
+												bookedSeatStyle = bookedSeatStyle + "input[id$=checkboxesEl_zc-Seats_" + seat + "] + label { background: url('https://workdrive.zohoexternal.com/external/00e4bd21bfd11d1bb1e7bbc61c96526b46d25d0f6d88e07c95ed9c71187f6396/download?directDownload=true'); background-repeat:no-repeat;width: 27.0px;background-position: 15.0px 0.0px;} input[id$=checkboxesEl_zc-Seats_" + seat + "]:checked + label {background:url('https://workdrive.zohoexternal.com/external/00e4bd21bfd11d1bb1e7bbc61c96526b46d25d0f6d88e07c95ed9c71187f6396/download?directDownload=true');background-repeat: no-repeat;width: 27.0px;background-position: 15.0px 0.0px;}";
+											}
+											rowLastSeatStyle = "";
+											seat_list_desc = thisapp.generate_list(24,{});
+											seat_list = seat_list_desc.sort(true);
+											input.Seats:ui.add(seat_list);
+											add_gap_var = 3;
+											for each  row_last_seat in seat_list
+											{
+												if(row_last_seat.toLong() == add_gap_var)
+												{
+													rowLastSeatStyle = rowLastSeatStyle + "input[id$=checkboxesEl_zc-Seats_" + row_last_seat + "]+label{margin-right:55px;}";
+													add_gap_var = add_gap_var + 6;
+												}
+											}
+											widthlist = {0,106,172,236,300,364,428,492,556,620,684};
+											input.Seat_Style = "<style>  .flLeft .tempContDiv .zc-Checkbox { display:block;} .form-field .tempContDiv .choice-table-row {display:none;}.form-field .tempContDiv .choice-table-cell{ display:block;float:left;padding:0px;} .customCheckbox+label, .customRadio+label{ margin-right:0 px;border:none; background:url('https://workdrive.zohoexternal.com/external/ff9b77b8b9ac54d210ce2b1cad2161c81458191f3044922d8d8a281c9ca3d9fc/download?directDownload=true');padding: 12px;background-repeat: no-repeat;   width:27px;  background-position: 15px 0px;} .customCheckbox:checked+label{background:none; border:none;    background-image: url('https://workdrive.zohoexternal.com/external/09af22e4c2922b1b8b68941da15f0241b77c69b6e68b9dce9349e2810c82c8ca/download?directDownload=true');background-repeat: no-repeat;    width: 27px;background-position: 15px 0px;} .customCheckbox:focus+label, .customRadio:focus+label{ border:none;} .choice-label-text { display:none; }  .zc_checkbox:checked + label:after {display: none;} label+label { display:none; }" + bookedSeatStyle + " .form-field .tempContDiv { display: table; Width:428px;} " + rowLastSeatStyle + ".form-group label.zc-Seats-label{display:none;} .choice-table-cell span { padding:5px 0 0 0;} </style>";
+										}
+										else if(input.Date_field < zoho.currentdate)
+										{
+											Seats.deselectall();
+											hide Seats;
+											show selected_seats;
+											input.selected_seats = "<p style='color:red'>Please select a Valid Future Date!</p>";
+										}
+						)
+					}
+				}
+
+			}
+			creator_To_creator as "creator To creator"
+			{
+				type =  form
+				form = Creator_To_Creator
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											var = zoho.creator.getRecords("zappyworkssoftwaresolutionst47","doctor-details-form-for-admin","All_Doctor_Details","",1,100,"zoho_creator_connection");
+										info var;
+										new = var.get("data");
+										// info new;
+										val = List();
+										for each  rec in new
+										{
+											val.add(rec.get("DOCTOR_NAME").get("display_value"));
+										}
+										input.Multi_Select:ui.add(val);
+						)
+					}
+				}
+
+			}
+			Send_Email_Form_Propertie as "Send Email - Form Properties"
+			{
+				type =  presuccess
+				form = Fields
+					status = inactive
+				on start
+				{
+					actions 
+					{
+						sendmail
+						(
+							from : "zoho.adminuserid"
+							to : "zoho.adminuserid"
+							subject : "practice for creator : New entry added"
+							message : "Hello,<br/><br/>A new entry added in 'Fields' form of 'practice for creator' application.<br/><br><br><br><br><br><br><br><br><br><br><br><br>"
+							attachments : template : _default as inline
+						)
+					}
+				}
+			}
+		}
+
+		schedule
+		{
+			snfkjsbu as "snfkjsbu"
+			{
+				type =  schedule
+				form = Date_And_Time
+				start = Date_Time
+				time zone = "Asia/Kolkata"
+				on start
+				{
+					actions 
+					{
+					on load
+					(
+						ver = Date_And_Time[ID != null];
+										for each  giri in ver
+										{
+											rec = giri.Date_Time.addDay(1);
+											giri.Date_Time=rec;
+										}
+					)
+					}
+				}
+			}
+		}
+
+
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	connections
+	{
+		zoho_oauth_connection
+		(
+			displayname = "Zoho OAuth Connection"
+			connector = zoho_oauth
+			permissions = {"WorkDrive.files.CREATE"}
+		)
+		zoho_oauth_connection1
+		(
+			displayname = "Zoho OAuth Connection1"
+			connector = zoho_oauth
+			permissions = {"ZohoPeople.AllPeopleAPIs.ALL","ZohoPeople.attendance.ALL","ZohoPeople.dashboard.ALL","ZohoPeople.employee.ALL","zohopeople.employee.READ","ZohoPeople.forms.READ","ZOHOPEOPLE.leave.ALL"}
+		)
+		zoho_creator_connection
+		(
+			displayname = "Zoho Creator Connection"
+			connector = zohocreator
+			permissions = {"bulk_delete_records","bulk_update_records","create_record","delete_record","download_bulk_read_result","download_file","download_file_from_subform","execute_ai_skill","execute_custom_api","get_all_records","get_applications","get_applications_by_workspace","get_fields","get_forms","get_pages","get_record","get_reports","get_sections","get_the_status_of_the_bulk_read_job","search_record","update_record","upload_file","zc_connector"}
+		)
+	}
+	web
+	{
+		forms
+		{
+			form Creator_To_Creator
+			{
+				label placement = left
+			}
+			form customer
+			{
+				label placement = left
+			}
+			form Date_And_Time
+			{
+				label placement = left
+			}
+			form deposit_amount_in_bank
+			{
+				label placement = left
+			}
+			form existing_from
+			{
+				label placement = left
+			}
+			form Feed_back_Integertion
+			{
+				label placement = left
+			}
+			form Fields
+			{
+				label placement = left
+			}
+			form filiter
+			{
+				label placement = left
+			}
+			form intergration
+			{
+				label placement = left
+			}
+			form mult_upload_file_test
+			{
+				label placement = left
+			}
+			form multiplication_Form
+			{
+				label placement = left
+			}
+			form normal_form
+			{
+				label placement = left
+			}
+			form Pick_Your_Seat
+			{
+				label placement = left
+			}
+			form sales
+			{
+				label placement = left
+			}
+			form test_1
+			{
+				label placement = left
+			}
+			form test_2
+			{
+				label placement = left
+			}
+			form use_ful
+			{
+				label placement = left
+			}
+			form Workers_Details
+			{
+				label placement = left
+			}
+			form zoho_emp_details
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report normal_form_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Name
+								Date_field as "Date"
+								Phone_Number as "Phone"
+								QR_Code as "QR Code"
+								Image
+								Object_Detection as "Object Detection"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Name
+								Date_field as "Date"
+								Phone_Number as "Phone"
+								QR_Code as "QR Code"
+								Image
+								Object_Detection as "Object Detection"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report existing_from_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								SubForm.Name as "SubForm"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report deposit_amount_in_bank_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Enter_Amount as "Enter Amount"
+								SubForm.notes as "SubForm"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Enter_Amount as "Enter Amount"
+								SubForm.notes as "SubForm"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Zoho_Emp_Details
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								EMP_NAME
+								EMP_Phone as "EMP Phone"
+								No_Of_Year_EXP as "No Of Year EXP"
+								Date_Of_Joning as "Date Of Joning"
+								Date_field as "Date"
+								Multi_Line as "Multi Line"
+								Single_Line as "Single Line"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								EMP_NAME
+								EMP_Phone as "EMP Phone"
+								No_Of_Year_EXP as "No Of Year EXP"
+								Date_Of_Joning as "Date Of Joning"
+								Date_field as "Date"
+								Multi_Line as "Multi Line"
+								Single_Line as "Single Line"
+								Address
+								Phone_Number as "Phone"
+								Name
+								Email
+								Multi_Line1 as "Multi Line"
+								Multi_Line2 as "Multi Line"
+								Single_Line1 as "Single Line"
+								Multi_Line3 as "Multi Line"
+								Multi_Line4 as "Multi Line"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report intergration_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Phone_Number as "Phone"
+								Multi_Line as "Multi Line"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Phone_Number as "Phone"
+								Multi_Line as "Multi Line"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report test_1_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Name
+								ID_PROOF as "ID PROOF"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Name
+								ID_PROOF as "ID PROOF"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Workers_Details_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Name
+								Worker_ID as "Worker ID"
+								Auto_Number as "Auto Number"
+								Date_field as "Date"
+								Check_In_Check_Out as "Check In Check Out"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Name
+								Worker_ID as "Worker ID"
+								Auto_Number as "Auto Number"
+								Date_field as "Date"
+								Check_In_Check_Out as "Check In Check Out"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report test_2_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Name
+								File_upload as "File upload"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Name
+								File_upload as "File upload"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Mult_Upload_File_Tests
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Name
+								a
+								b
+								c
+								d
+								f
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Name
+								a
+								b
+								c
+								d
+								f
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Multiplications
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								milt_Number as "milt Number"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								milt_Number as "milt Number"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Feed_back_Integertion_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Your_Name as "Your Name "
+								Your_Email as "Your Email"
+								Your_Rating as "Your Rating "
+								Your_Comments as "Your Comments"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Your_Name as "Your Name "
+								Your_Email as "Your Email"
+								Your_Rating as "Your Rating "
+								Your_Comments as "Your Comments"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Date_And_Time_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Date_Time as "Date-Time"
+								a
+								ID
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Date_Time as "Date-Time"
+								a
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Customers
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Ciustomer as "Customer Name"
+								Customer_Email as "Customer Email"
+								Customer_Address as "Customer Address"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Ciustomer as "Customer Name"
+								Customer_Email as "Customer Email"
+								Customer_Address as "Customer Address"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Sales
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Single_Line as "Single Line"
+								Currency
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Single_Line as "Single Line"
+								Currency
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Booked
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 2
+						datablock1
+						(
+							layout type = 4
+		     				title = "Overview"
+							fields
+							(
+								Name
+								Seats
+								Email
+								Mobile_Number as "Mobile Number"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Add 
+    		 				Print 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Print   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								Name
+								Mobile_Number as "Mobile Number"
+								Email
+								Date_field as "Date"
+								Seats
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Print 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report use_ful_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Creator_To_Creator_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Multi_Select as "Multi Select"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Multi_Select as "Multi Select"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Fields
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Name
+								Email
+								Phone_Number as "Phone"
+								Address
+								Single_Line as "Single Line"
+								Multi_Line as "Multi Line"
+								Number
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Name
+								Email
+								Phone_Number as "Phone"
+								Address
+								Single_Line as "Single Line"
+								Multi_Line as "Multi Line"
+								Number
+								Single_Line1 as "Single Line"
+								Date_field as "Date"
+								Time
+								Dropdown as "Drop Down"
+								Radio
+								Multi_Select as "Multi Select"
+								Checkbox
+								Decision_box as "Decision box"
+								Url
+								Image
+								Image1 as "Image"
+								Percent
+								Currency
+								Decimal
+								Date_Time as "Date-Time"
+								SubForm.Name as "SubForm"
+								Buy_Milk_Master as "Buy Milk Master"
+								Signature
+								File_upload as "File upload"
+								File_upload1 as "File upload"
+								Audio
+								Video
+								Auto_Number as "Auto Number"
+								Auto_Number1 as "Auto Number"
+								Auto_Number2 as "Auto Number"
+								Auto_Number3 as "Auto Number"
+								zl
+								Formula
+								QR_Code as "QR Code"
+								users as "Users"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section normal_form
+				{
+					displayname = "normal form"
+					icon = "design-2-form"
+					form  normal_form
+					{
+						icon = "design-2-form"
+					}
+					report normal_form_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section existing_from
+				{
+					displayname = "existing from"
+					icon = "users-2-child"
+					form  existing_from
+					{
+						icon = "users-2-child"
+					}
+					report existing_from_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section dashboard
+				{
+					displayname = "dashboard"
+					icon = "ui-1-dashboard-half"
+					page dashboard
+					{
+						icon = "ui-1-dashboard-half"
+					}
+					page filiter_Dashboard
+					{
+						icon = "ui-1-dashboard-half"
+					}
+					page summa
+					{
+						icon = "tech-desktop"
+					}
+					page Home_Page
+					{
+						icon = "education-book-bookmark"
+					}
+				}
+				section deposit_amount_in_bank
+				{
+					displayname = "deposit amount in bank"
+					icon = "business-money-coins"
+					form  deposit_amount_in_bank
+					{
+						icon = "business-money-coins"
+					}
+					report deposit_amount_in_bank_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Zoho_Emp_Details
+				{
+					displayname = "Zoho Emp Details"
+					icon = "users-2-contacts-44"
+					form  zoho_emp_details
+					{
+						icon = "users-2-contacts-44"
+					}
+					report All_Zoho_Emp_Details
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section filiter
+				{
+					displayname = "filiter"
+					icon = "tech-desktop"
+					form  filiter
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section intergration
+				{
+					displayname = "intergration"
+					icon = "tech-desktop"
+					form  intergration
+					{
+						icon = "tech-desktop"
+					}
+					report intergration_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section test_1
+				{
+					displayname = "test 1"
+					icon = "education-flask"
+					form  test_1
+					{
+						icon = "education-flask"
+					}
+					report test_1_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Workers_Details
+				{
+					displayname = "Workers Details"
+					icon = "users-single-04"
+					form  Workers_Details
+					{
+						icon = "users-single-04"
+					}
+					report Workers_Details_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section test_2
+				{
+					displayname = "test 2"
+					icon = "education-flask"
+					form  test_2
+					{
+						icon = "education-flask"
+					}
+					report test_2_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Mult_Upload_File_Tests
+				{
+					displayname = "Mult Upload File Tests"
+					icon = "files-single-copy-04"
+					form  mult_upload_file_test
+					{
+						icon = "files-single-copy-04"
+					}
+					report All_Mult_Upload_File_Tests
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Multiplications
+				{
+					displayname = "Multiplications"
+					icon = "tech-desktop"
+					form  multiplication_Form
+					{
+						icon = "design-2-form"
+					}
+					report All_Multiplications
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Feed_back_Integertion
+				{
+					displayname = "Feed back Integertion"
+					icon = "objects-skull"
+					form  Feed_back_Integertion
+					{
+						icon = "objects-skull"
+					}
+					report Feed_back_Integertion_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Date_And_Time
+				{
+					displayname = "Date And Time"
+					icon = "users-2-a-time"
+					form  Date_And_Time
+					{
+						icon = "users-2-a-time"
+					}
+					report Date_And_Time_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Customers
+				{
+					displayname = "Customers"
+					icon = "shopping-mobile-card"
+					form  customer
+					{
+						icon = "business-business-contact-89"
+					}
+					report All_Customers
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Sales
+				{
+					displayname = "Sales"
+					icon = "business-businessman-03"
+					form  sales
+					{
+						icon = "business-businessman-03"
+					}
+					report All_Sales
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Pick_Your_Seat
+				{
+					displayname = "Pick Your Seat"
+					icon = "shopping-mobile-touch"
+					form  Pick_Your_Seat
+					{
+						icon = "shopping-mobile-touch"
+					}
+					report Booked
+					{
+						icon = "furniture-sofa"
+					}
+				}
+				section use_ful
+				{
+					displayname = "use ful"
+					icon = "design-2-form"
+					form  use_ful
+					{
+						icon = "design-2-form"
+					}
+					report use_ful_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Creator_To_Creator
+				{
+					displayname = "Creator To Creator"
+					icon = "media-1-play-69"
+					form  Creator_To_Creator
+					{
+						icon = "media-1-play-69"
+					}
+					report Creator_To_Creator_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Fields
+				{
+					displayname = "Fields"
+					icon = "sport-soccer-field"
+					form  Fields
+					{
+						icon = "sport-soccer-field"
+					}
+					report All_Fields
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 6
+			font = "lato"
+			color options
+			{
+				color = "1"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Creator_To_Creator
+			{
+				label placement = auto
+			}
+			form customer
+			{
+				label placement = auto
+			}
+			form Date_And_Time
+			{
+				label placement = auto
+			}
+			form deposit_amount_in_bank
+			{
+				label placement = auto
+			}
+			form existing_from
+			{
+				label placement = auto
+			}
+			form Feed_back_Integertion
+			{
+				label placement = auto
+			}
+			form Fields
+			{
+				label placement = auto
+			}
+			form filiter
+			{
+				label placement = auto
+			}
+			form intergration
+			{
+				label placement = auto
+			}
+			form mult_upload_file_test
+			{
+				label placement = auto
+			}
+			form multiplication_Form
+			{
+				label placement = auto
+			}
+			form normal_form
+			{
+				label placement = auto
+			}
+			form Pick_Your_Seat
+			{
+				label placement = auto
+			}
+			form sales
+			{
+				label placement = auto
+			}
+			form test_1
+			{
+				label placement = auto
+			}
+			form test_2
+			{
+				label placement = auto
+			}
+			form use_ful
+			{
+				label placement = auto
+			}
+			form Workers_Details
+			{
+				label placement = auto
+			}
+			form zoho_emp_details
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "1"
+			color options
+			{
+				color = darkgrey
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Creator_To_Creator
+			{
+				label placement = auto
+			}
+			form customer
+			{
+				label placement = auto
+			}
+			form Date_And_Time
+			{
+				label placement = auto
+			}
+			form deposit_amount_in_bank
+			{
+				label placement = auto
+			}
+			form existing_from
+			{
+				label placement = auto
+			}
+			form Feed_back_Integertion
+			{
+				label placement = auto
+			}
+			form Fields
+			{
+				label placement = auto
+			}
+			form filiter
+			{
+				label placement = auto
+			}
+			form intergration
+			{
+				label placement = auto
+			}
+			form mult_upload_file_test
+			{
+				label placement = auto
+			}
+			form multiplication_Form
+			{
+				label placement = auto
+			}
+			form normal_form
+			{
+				label placement = auto
+			}
+			form Pick_Your_Seat
+			{
+				label placement = auto
+			}
+			form sales
+			{
+				label placement = auto
+			}
+			form test_1
+			{
+				label placement = auto
+			}
+			form test_2
+			{
+				label placement = auto
+			}
+			form use_ful
+			{
+				label placement = auto
+			}
+			form Workers_Details
+			{
+				label placement = auto
+			}
+			form zoho_emp_details
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "1"
+			color options
+			{
+				color = darkgrey
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

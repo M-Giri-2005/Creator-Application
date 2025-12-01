@@ -1,0 +1,4105 @@
+/*
+ * Author       : zappyworkssoftwaresolutionst47
+ * Generated on : 22-Nov-2025 09:34:15
+ * Version      : 1.0
+ */
+ application "JD project"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form Buy_Milk_Master
+		{
+			displayname = "Buy Milk Master"
+			success message = "Milk Master Bought Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Buying_Transaction_ID
+			(
+    			type = text
+				displayname = "Buying Transaction ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Buying_Date
+			(
+    			type = date
+				displayname = "Buying Date"
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+    			description
+    			[
+    				type = tooltip
+    			 	message = "This Is for Milk Buying Date"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Customer_Type
+			(
+				type = radiobuttons
+				displayname = "Customer Type "
+				maxchar = 100
+				values = {"Buy For Customer"}
+				initial value = "Buy For Customer"
+    			description
+    			[
+    				type = tooltip
+    			 	message = "This Is For Your Customer Type"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Customer_ID
+			(
+				type = picklist	
+				displayname = "Customer ID"
+				values  = Customer_Details_Master[Customer_Type == "Buy For Customer" && Count_field == 0 && Customer_Apporval_Status == "Approval"].ID
+    			displayformat = [Customer_ID]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Select The Customer ID"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Buying_Time
+			(
+				type = radiobuttons
+				displayname = "Buying Time"
+				maxchar = 100
+				values = {"AM","PM"}
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Select The Buying Time"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Customer_Name
+			(
+    			type = name
+				displayname = "Customer Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+    			description
+    			[
+    				type = tooltip
+    			 	message = "This Is The Customer Name"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Customer_Email
+			(
+    			type = email
+				displayname = "Customer Email"
+				maxchar = 80
+    			description
+    			[
+    				type = tooltip
+    			 	message = "This Is The Customer Email"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Customer_phone
+			(
+    			type = phonenumber
+				displayname = "Customer phone"
+    			description
+    			[
+    				type = tooltip
+    			 	message = "This Is the Customer Phone Number"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Product_Name
+			(
+    			type = text
+				displayname = "Product Name"
+    			description
+    			[
+    				type = tooltip
+    			 	message = "This Is The Customer Sale For Product Name"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Liter_Per_Price
+			(
+				displayname = "Liter Per Price"
+				type = INR
+				format = commadotindian
+    			description
+    			[
+    				type = tooltip
+    			 	message = "This Is the Liter Per Price In Product"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Liter_For_Today_AM
+			(
+				type = decimal
+				displayname = "Liter For Today AM"
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Enter The Buying Liter In AM"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Total_Liter_Price_Today_AM
+			(
+				displayname = "Total Liter Price Today AM"
+				type = INR
+				format = commadotindian
+    			description
+    			[
+    				type = tooltip
+    			 	message = "This Is For Liter For Price Today For AM"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Liter_For_Today_PM
+			(
+				type = decimal
+				displayname = "Liter For Today PM"
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Enter The Buying Liter In PM"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Total_Liter_Price_Today_PM
+			(
+				displayname = "Total Liter Price Today PM"
+				type = INR
+				format = commadotindian
+    			description
+    			[
+    				type = tooltip
+    			 	message = "This Is For Liter For Price Today For PM"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number
+			(
+    			type = autonumber
+				displayname = "Auto Number"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Buy"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Check_In_Check_Out
+		{
+			displayname = "Check In & Check Out"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Today_Date
+			(
+    			type = date
+				displayname = "Today Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Check_IN_Date_And_Time
+			(
+    			type = datetime
+				displayname = "Check IN Date And Time"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Check_Out_Date_And_time
+			(
+    			type = datetime
+				displayname = "Check Out Date And time"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Worker_ID
+			(
+				type = picklist	
+				displayname = "Worker ID"
+				values  = worker_deatils.ID
+    			displayformat = [Worker_ID]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Time_Variation
+			(
+    			type = text
+				displayname = "Time Variation"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Worker_Role
+			(
+    			type = text
+				displayname = "Worker Role"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Customer_Approval_Status_Reson
+		{
+			displayname = "Customer Approval Status Reson"
+			store data in zc = false
+			success message = ""
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Customer_ID
+			(
+    			type = text
+				displayname = "Customer ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Approval_Or_Reject_Reson
+			(
+    			type = textarea
+				displayname = "Approval Or Reject Reson"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Customer_Name
+			(
+    			type = name
+				displayname = "Customer Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Customer_Email
+			(
+    			type = email
+				displayname = "Customer Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Customer_Apporval_Status
+			(
+				type = radiobuttons
+				displayname = "Customer Apporval Status"
+				maxchar = 100
+				values = {"Approval","Reject","Pending"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				Submit
+				(
+   					type = submit
+   					displayname = "Submit"
+				)
+				Reset
+				(
+   					type = reset
+   					displayname = "Reset"
+				)
+			}
+		}
+		form Customer_Details_Master
+		{
+			displayname = "Customer Details Master"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Date_Of_Jouning
+			(
+    			type = date
+				displayname = "Date Of Jouning"
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Enter For Customer Joining Date"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Customer_ID
+			(
+    			type = text
+				displayname = "Customer ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number
+			(
+    			type = autonumber
+				displayname = "Auto Number"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Customer_Name
+			(
+    			type = name
+				displayname = "Customer Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Enter Customer Name"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Customer_Phone
+			(
+    			type = phonenumber
+				displayname = "Customer Phone"
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Enter Customer Phone Number"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Customer_Email
+			(
+    			type = email
+				displayname = "Customer Email"
+				maxchar = 80
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Enter Customer Email"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Customer_Address
+			(
+    			type = address
+				displayname = "Customer Address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+	     			 visibility = false
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+	     			 visibility = false
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+	     			 visibility = false
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+	     			 visibility = false
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+	     			 visibility = false
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Enter Customer Address"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Customer_Date_Of_Brith
+			(
+    			type = date
+				displayname = "Customer Date Of Brith"
+				alloweddays = 0,1,2,3,4,5,6
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Enter Customer Date Of Brith"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Customer_Age
+			(
+				type = number
+				displayname = "Customer Age"
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Enter Customer Age"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Approval_Or_Reject_Reson
+			(
+    			type = textarea
+				displayname = "Approval Or Reject Reson"
+				height = 100px
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Enter For Approval And Reject Reson"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Count_field
+			(
+				type = number
+				displayname = "Count "
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Customer_Apporval_Status
+			(
+				type = radiobuttons
+				displayname = "Customer Apporval Status"
+				maxchar = 100
+				values = {"Approval","Reject","Pending"}
+				initial value = "Pending"
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Enter For Customer Status Only You Select For\nPending"
+    			]
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+			must have Customer_Type
+			(
+				type = radiobuttons
+				displayname = "Customer Type "
+				maxchar = 100
+				values = {"Buy For Customer","Sale Of Customer"}
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Select The Customer Type"
+    			]
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+			must have Product_Name
+			(
+				type = picklist	
+				displayname = "Product Name"
+				values  = PRODUCT_TYPE_LIST[Product_Type == input.Customer_Type].ID
+    			displayformat = [Product_Name]
+				sortorder = ascending
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Select The Product Name"
+    			]
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+			must have Product_Price
+			(
+				displayname = "Product Price"
+				type = INR
+				format = commadotindian
+    			description
+    			[
+    				type = tooltip
+    			 	message = "This Is For Product Price"
+    			]
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+			Pay_Time_Type
+			(
+				type = radiobuttons
+				displayname = "Pay Time Type"
+				maxchar = 100
+				values = {"Debtors","Pay To Daily"}
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Select The Customer Pay Time"
+    			]
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+			must have Total_Liters_AM
+			(
+				type = decimal
+				displayname = "Total Liters AM"
+				initial value = 0
+    			description
+    			[
+    				type = tooltip
+    			 	message = "This Is For Customer Total Liter In AM"
+    			]
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+			must have Total_Liter_Price_AM
+			(
+				displayname = "Total Liter Price AM"
+				type = INR
+				format = commadotindian
+				initial value = 0
+    			description
+    			[
+    				type = tooltip
+    			 	message = "This Is For Total Liter Price"
+    			]
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+			must have Total_Liters_PM
+			(
+				type = decimal
+				displayname = "Total Liters PM"
+				initial value = 0
+    			description
+    			[
+    				type = tooltip
+    			 	message = "This Is For Total Liter For PM"
+    			]
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+			must have Total_Liter_Price_PM
+			(
+				displayname = "Total Liter Price PM"
+				type = INR
+				format = commadotindian
+				initial value = 0
+    			description
+    			[
+    				type = tooltip
+    			 	message = "This For Total Liter For Price In PM"
+    			]
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+			must have Total_Liter
+			(
+				type = decimal
+				displayname = "Total Liter"
+				initial value = 0
+    			description
+    			[
+    				type = tooltip
+    			 	message = "This Is For Total Liter In AM And PM"
+    			]
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+			must have Total_Price
+			(
+				displayname = "Total Price"
+				type = INR
+				format = commadotindian
+				initial value = 0
+    			description
+    			[
+    				type = tooltip
+    			 	message = "This For Total Liter Price In AM and PM"
+    			]
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form PRODUCT_TYPE_LIST
+		{
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Product_Type
+			(
+				type = radiobuttons
+				displayname = "Product Type"
+				maxchar = 100
+				values = {"Buy For Customer","Sale Of Customer"}
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Select The Product Type"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Product_Name
+			(
+    			type = text
+				displayname = "Product Name"
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Enter The Proper Name And Not Enter For The Same Product Name"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Product_Price
+			(
+				displayname = "Product Price"
+				type = INR
+				format = commadotindian
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Enter The Product Price And Not Enter The Negative Value"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Role
+		{
+			success message = "Role Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Worker_Role
+			(
+    			type = text
+				displayname = "Worker Role"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Sales_Milk_Master_Details
+		{
+			displayname = "Sales Milk Master Details"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Sale_Transaction_ID
+			(
+    			type = text
+				displayname = "Sale Transaction ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number
+			(
+    			type = autonumber
+				displayname = "Auto Number"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Sales_Date
+			(
+    			type = date
+				displayname = "Sales Date"
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Time_Variation
+			(
+				type = radiobuttons
+				displayname = "Time Variation"
+				maxchar = 100
+				values = {"AM","PM"}
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Select For Sale Time"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Pay_Time_Type
+			(
+				type = radiobuttons
+				displayname = "Pay Time Type"
+				maxchar = 100
+				values = {"Debtors","Pay To Daily"}
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Select For Customer Pay Type"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Customer_ID
+			(
+				type = picklist	
+				displayname = "Customer ID"
+				values  = Customer_Details_Master[Customer_Type == "Sale Of Customer"].ID
+    			displayformat = [" " + Customer_ID]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Select For Customer ID"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Customer_Name
+			(
+    			type = name
+				displayname = "Customer Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+    			description
+    			[
+    				type = tooltip
+    			 	message = "This Is For Customer Name"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Customer_Email
+			(
+    			type = email
+				displayname = "Customer Email"
+				maxchar = 80
+    			description
+    			[
+    				type = tooltip
+    			 	message = "This Is For Customer Email"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Customer_phone
+			(
+    			type = phonenumber
+				displayname = "Customer phone"
+    			description
+    			[
+    				type = tooltip
+    			 	message = "This Is For Customer Phone Number"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Customer_Type
+			(
+    			type = text
+				displayname = "Customer Type"
+    			description
+    			[
+    				type = tooltip
+    			 	message = "This Is For Customer Type"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Product_List_And_Price
+			(
+				type = grid
+				displayname = "Product List And Price"
+				values  = Use_Sale_Existing_Sub_Form.ID
+    			bidirectional = Bidirectional_Look_Up
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Section1
+			(
+				type = section
+				displayname = "Section"
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Total_Liter
+			(
+				type = decimal
+				displayname = "Total Liter"
+				initial value = 0
+    			description
+    			[
+    				type = tooltip
+    			 	message = "This Is For Sale Product Total Liter"
+    			]
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Total_Price_Today
+			(
+				displayname = "Total Price Today"
+				type = INR
+				format = commadotindian
+				initial value = 0
+    			description
+    			[
+    				type = tooltip
+    			 	message = "This Is For Sale Produt Total Price"
+    			]
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form stateles_form_Buy_Milk_Master_Form
+		{
+			displayname = "stateles form Buy Milk Master Form"
+			store data in zc = false
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Customer_ID
+			(
+				type = picklist	
+				displayname = "Customer ID"
+				values  = Customer_Details_Master[Customer_Type == "Buy For Customer"].ID
+    			displayformat = [Customer_ID]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			From_Date
+			(
+    			type = date
+				displayname = "From Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			To_Date
+			(
+    			type = date
+				displayname = "To Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				Submit
+				(
+   					type = submit
+   					displayname = "Submit"
+				)
+				Reset
+				(
+   					type = reset
+   					displayname = "Reset"
+				)
+			}
+		}
+		form Today_Buy_Millk_Total
+		{
+			displayname = "Today Buy Millk Total"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Today_Date
+			(
+    			type = date
+				displayname = "Today Date"
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Time_Variation
+			(
+				type = radiobuttons
+				displayname = "Time Variation"
+				maxchar = 100
+				values = {"AM","PM"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Product_Name
+			(
+    			type = text
+				displayname = "Product Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Total_Liter_In_Cow_Today
+			(
+				type = decimal
+				displayname = "Total Liter In Cow Today"
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Total_Liter_Price_In_Today_Cow
+			(
+				displayname = "Total Liter Price In Today Cow"
+				type = INR
+				format = commadotindian
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Total_Liter_In_Buffalo_Today
+			(
+				type = decimal
+				displayname = "Total Liter In Buffalo Today"
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Total_Price_In_Buffalo_Today
+			(
+				displayname = "Total Price In Buffalo Today"
+				type = INR
+				format = commadotindian
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Use_Sale_Existing_Sub_Form
+		{
+			displayname = "Use Sale Existing Sub Form"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Product_Name
+			(
+				type = picklist	
+				displayname = "Product Name"
+				values  = PRODUCT_TYPE_LIST.ID
+    			displayformat = [Product_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Total_Milk_In_Cow
+			(
+				type = decimal
+				displayname = "Total Milk In Cow"
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Total_Milk_In_Buffalo
+			(
+				type = decimal
+				displayname = "Total Milk In Buffalo"
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Liter_For_Today_Buffalo_Milk
+			(
+				type = decimal
+				displayname = "Liter For Today  Buffalo Milk"
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Liter_For_Today_Cow_Milk
+			(
+				type = decimal
+				displayname = "Liter For Today Cow Milk"
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Price_Per_Liter
+			(
+				displayname = "Price Per Liter"
+				type = INR
+				format = commadotindian
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Total_Price_For_Liter_Buffalo
+			(
+				displayname = "Total Price For Liter Buffalo"
+				type = INR
+				format = commadotindian
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Total_Price_For_Liter_cow
+			(
+				displayname = "Total Price For Liter cow"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Bidirectional_Look_Up
+			(
+				type = picklist	
+				displayname = "Bidirectional Look Up"
+				values  = Sales_Milk_Master_Details.ID
+    			bidirectional = Product_List_And_Price
+    			displayformat = [ID]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form worker_deatils
+		{
+			displayname = "worker deatils"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Worker_ID
+			(
+    			type = text
+				displayname = "Worker ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Worker_Name
+			(
+    			type = name
+				displayname = "Worker Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Auto_Number
+			(
+    			type = autonumber
+				displayname = "Auto Number"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list PRODUCT_TYPE_LIST_Report
+		{
+			displayName = "PRODUCT_TYPE_LIST Report"
+			show all rows from PRODUCT_TYPE_LIST    
+			(
+				Product_Name as "Product Name"
+				Product_Price as "Product Price"
+				Product_Type as "Product Type"
+			)
+		}
+		default list Customer_Details_Master_Report
+		{
+			displayName = "Customer Details Master Report"
+			show all rows from Customer_Details_Master    
+			(
+				Date_Of_Jouning as "Date Of Jouning"
+				Customer_ID as "Customer ID"
+				Auto_Number as "Auto Number"
+				Customer_Name  as "Customer Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Customer_Phone as "Customer Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Customer_Email as "Customer Email"
+				Customer_Date_Of_Brith as "Customer Date Of Brith"
+				Customer_Address  as "Customer Address"
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Customer_Age as "Customer Age"
+				Customer_Apporval_Status as "Customer Apporval Status"
+				Customer_Type as "Customer Type "
+				Total_Liters_AM as "Total Liters AM"
+				Total_Liter_Price_AM as "Total Liter Price AM"
+				Pay_Time_Type as "Pay Time Type"
+				custom action "Approval"
+				(
+	  			workflow = Approval
+				show action in edit record menu = true
+				column header = "Approval"
+				condition = (Customer_Apporval_Status == "Pending" || Customer_Apporval_Status == "Reject")
+				confirmation before execution
+				(
+					message for individual record = "Execute the Approval action for this record?"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+				custom action "Reject"
+				(
+	  			workflow = Reject
+				show action in edit record menu = true
+				column header = "Reject"
+				condition = (Customer_Apporval_Status == "Approval" || Customer_Apporval_Status == "Pending")
+				confirmation before execution
+				(
+					message for individual record = "Execute the Reject action for this record?"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+				Total_Liters_PM as "Total Liters PM"
+				Total_Liter_Price_PM as "Total Liter Price PM"
+				Total_Liter as "Total Liter"
+				Total_Price as "Total Price"
+				Product_Name as "Product Name"
+				Product_Price as "Product Price"
+				Approval_Or_Reject_Reson as "Approval Or Reject Reson"
+				Count_field as "Count "
+			)
+		}
+		default list All_Milk_Masters
+		{
+			displayName = "All Milk Masters"
+			show all rows from Buy_Milk_Master    
+			(
+				Buying_Date as "Buying Date"
+				Customer_Type as "Customer Type "
+				Customer_ID as "Customer ID"
+				Customer_Name  as "Customer Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Customer_Email as "Customer Email"
+				Customer_phone as "Customer phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Liter_Per_Price as "Liter Per Price"
+				Liter_For_Today_AM as "Liter For Today AM"
+				Total_Liter_Price_Today_AM as "Total Liter Price Today AM"
+				Buying_Time as "Buying Time"
+				Product_Name as "Product Name"
+				Liter_For_Today_PM as "Liter For Today PM"
+				Total_Liter_Price_Today_PM as "Total Liter Price Today PM"
+				custom action "Update Evening Record"
+				(
+	  			workflow = Update_Evening_Record
+				show action in edit record menu = true
+				column header = "Update Evening Record"
+				condition = (Liter_For_Today_PM is null)
+				confirmation before execution
+				(
+					message for individual record = "Execute the Update Evening Record action for this record?"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+				Buying_Transaction_ID as "Buying Transaction ID"
+				Auto_Number as "Auto Number"
+			)
+		}
+		default list Sales_Milk_Master_Details_Report
+		{
+			displayName = "Sales Milk Master Details Report"
+			show all rows from Sales_Milk_Master_Details    
+			(
+				Sales_Date as "Sales Date"
+				Pay_Time_Type as "Pay Time Type"
+				Customer_ID as "Customer ID"
+				Customer_Name  as "Customer Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Customer_Email as "Customer Email"
+				Customer_phone as "Customer phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Customer_Type as "Customer Type"
+				Sale_Transaction_ID as "Sale Transaction ID"
+				Total_Price_Today as "Total Price Today"
+				Auto_Number as "Auto Number"
+				Time_Variation as "Time Variation"
+				Total_Liter as "Total Liter"
+			)
+		}
+		default list Today_Buy_Millk_Total_Report
+		{
+			displayName = "Today Buy Millk Total Report"
+			show all rows from Today_Buy_Millk_Total    
+			(
+				Total_Liter_In_Cow_Today as "Total Liter In Cow Today"
+				Total_Liter_Price_In_Today_Cow as "Total Liter Price In Today Cow"
+				Total_Liter_In_Buffalo_Today as "Total Liter In Buffalo Today"
+				Total_Price_In_Buffalo_Today as "Total Price In Buffalo Today"
+				Today_Date as "Today Date"
+				Time_Variation as "Time Variation"
+				Product_Name as "Product Name"
+			)
+		}
+		default list Use_Sale_Existing_Sub_Form_Report
+		{
+			displayName = "Use Sale Existing Sub Form Report"
+			show all rows from Use_Sale_Existing_Sub_Form    
+			(
+				Product_Name as "Product Name"
+				Price_Per_Liter as "Price Per Liter"
+				Total_Price_For_Liter_Buffalo as "Total Price For Liter Buffalo"
+				Liter_For_Today_Buffalo_Milk as "Liter For Today  Buffalo Milk"
+				Bidirectional_Look_Up as "Bidirectional Look Up"
+				Total_Milk_In_Cow as "Total Milk In Cow"
+				Total_Milk_In_Buffalo as "Total Milk In Buffalo"
+				Liter_For_Today_Cow_Milk as "Liter For Today Cow Milk"
+				Total_Price_For_Liter_cow as "Total Price For Liter cow"
+			)
+		}
+		default list Check_In_Check_Out_Report
+		{
+			displayName = "Check In & Check Out Report"
+			show all rows from Check_In_Check_Out    
+			(
+				Today_Date as "Today Date"
+				Check_IN_Date_And_Time as "Check IN Date And Time"
+				Check_Out_Date_And_time as "Check Out Date And time"
+				Time_Variation as "Time Variation"
+				Worker_Role as "Worker Role"
+				Worker_ID as "Worker ID"
+			)
+		}
+		default list All_Roles
+		{
+			displayName = "All Roles"
+			show all rows from Role    
+			(
+				Worker_Role as "Worker Role"
+			)
+		}
+		default list worker_deatils_Report
+		{
+			displayName = "worker deatils Report"
+			show all rows from worker_deatils    
+			(
+				Worker_ID as "Worker ID"
+				Worker_Name  as "Worker Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Auto_Number as "Auto Number"
+				ID
+				custom action "Check In "
+				(
+	  			workflow = Check_In1
+				show action in edit record menu = true
+				column header = "Check In "
+				)
+			)
+		}
+	}
+	pages
+	{
+		page Customer_Report_Filter
+		{
+			displayname = "Customer Report Filter"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet()\ncontent\n&lt;%{\n\t%&gt;\n&lt;div elName=&apos;zc-component&apos;formLinkName=&apos;stateles_form_Buy_Milk_Master_Form&apos; params=&apos;zc_Header=false&amp;amp;zc_SuccMsg=Data Added Successfully!&amp;amp;zc_SubmitVal=Submit&amp;amp;zc_ResetVal=Reset&apos;&gt;Loading Form...&lt;\/div&gt;\n&lt;div elName=&apos;zc-component&apos;name = &quot;JD&quot; viewLinkName=&apos;All_Milk_Masters&apos; params=&apos;zc_Header=true&apos;&gt;Loading View...&lt;\/div&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+	}
+
+
+		 functions
+		 {
+			 Deluge
+			 {
+				 date Get_Month_Word(date date)
+                 {
+                 	return zoho.currentdate;
+                 }
+			 }
+		 }
+		workflow
+		{
+		form
+		{
+			Calculate_The_Customer_Ag as "Calculate The Customer Age"
+			{
+				type =  form
+				form = Customer_Details_Master
+				record event = on add or edit
+
+				on user input of Customer_Date_Of_Brith
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Customer_Date_Of_Brith >= zoho.currentdate)
+										{
+											alert "Not Valid Reson For Customer Date Of Brith Is Wrong";
+											input.Customer_Date_Of_Brith = null;
+										}
+										else if(input.Customer_Date_Of_Brith != null)
+										{
+											input.Customer_Age = input.Customer_Date_Of_Brith.yearsBetween(zoho.currentdate);
+										}
+						)
+					}
+				}
+
+			}
+			Calculate_The_Milk_Price as "Calculate The Milk Price"
+			{
+				type =  form
+				form = Buy_Milk_Master
+				record event = on add or edit
+
+				on user input of Liter_For_Today_AM
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Liter_For_Today_AM != null)
+										{
+											if(input.Liter_For_Today_AM <= 0)
+											{
+												alert "Not Valid Reson For You Type For Negative Value";
+												input.Liter_For_Today_AM = null;
+											}
+											else
+											{
+												input.Total_Liter_Price_Today_AM = input.Liter_For_Today_AM * input.Liter_Per_Price;
+											}
+										}
+										else
+										{
+											input.Total_Liter_Price_Today_AM = null;
+										}
+						)
+					}
+				}
+
+			}
+			Add_Total_Liter_Price_and as "Add Total Liter Price and Total Liter"
+			{
+				type =  form
+				form = Buy_Milk_Master
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(Buying_Time == "AM")
+										{
+											var = Customer_Details_Master[ID == input.Customer_ID];
+											var.Total_Liters_AM=var.Total_Liters_AM + input.Liter_For_Today_AM;
+											var.Total_Liter_Price_AM=var.Total_Liter_Price_AM + input.Total_Liter_Price_Today_AM;
+											var.Total_Liter=var.Total_Liter + input.Liter_For_Today_AM;
+											var.Total_Price=var.Total_Price + input.Total_Liter_Price_Today_AM;
+											var.Count_field=1;
+										}
+										// 
+										// 
+										// 
+										if(Product_Name == "Buffalo Milk" && input.Buying_Time = "AM")
+										{
+											rec = Today_Buy_Millk_Total[Today_Date == input.Buying_Date && Time_Variation == input.Buying_Time];
+											rec.Total_Liter_In_Buffalo_Today=rec.Total_Liter_In_Buffalo_Today + input.Liter_For_Today_AM;
+											rec.Total_Price_In_Buffalo_Today=rec.Total_Price_In_Buffalo_Today + input.Total_Liter_Price_Today_AM;
+										}
+										else if(Product_Name == "Cow Milk" && input.Buying_Time = "AM")
+										{
+											data = Today_Buy_Millk_Total[Today_Date == input.Buying_Date && Time_Variation == input.Buying_Time];
+											data.Total_Liter_In_Cow_Today=data.Total_Liter_In_Cow_Today + input.Liter_For_Today_AM;
+											data.Total_Liter_Price_In_Today_Cow=data.Total_Liter_Price_In_Today_Cow + input.Total_Liter_Price_Today_AM;
+										}
+										// 
+										// 
+										// 
+										// if(Product_Name == "Buffalo Milk" && input.Buying_Time = "PM")
+										// {
+										// 	rec = Today_Buy_Millk_Total[Today_Date == input.Buying_Date && Time_Variation == input.Buying_Time];
+										// 	rec.Total_Liter_In_Buffalo_Today=rec.Total_Liter_In_Buffalo_Today + input.Liter_For_Today_PM;
+										// 	rec.Total_Price_In_Buffalo_Today=rec.Total_Price_In_Buffalo_Today + input.Total_Liter_Price_Today_PM;
+										// }
+										// else if(Product_Name == "Cow Milk" && input.Buying_Time = "PM")
+										// {
+										// 	data = Today_Buy_Millk_Total[Today_Date == input.Buying_Date && Time_Variation == input.Buying_Time];
+										// 	data.Total_Liter_In_Cow_Today=data.Total_Liter_In_Cow_Today + input.Liter_For_Today_PM;
+										// 	data.Total_Liter_Price_In_Today_Cow=data.Total_Liter_Price_In_Today_Cow + input.Total_Liter_Price_Today_PM;
+										// }
+						)
+					}
+				}
+
+			}
+			Changes_Status_And_Send_M as "Changes Status And Send Mail"
+			{
+				type =  form
+				form = Customer_Approval_Status_Reson
+				button = Submit
+				on click
+				{
+					actions 
+					{
+					on click
+					(
+						if(Customer_Apporval_Status == "Approval")
+										{
+											sendmail
+											[
+												from :zoho.adminuserid
+												to :input.Customer_Email
+												subject :"Customer Appoval Status"
+												message :"Congratulations your request is accept" + input.Approval_Or_Reject_Reson
+											]
+											ver = Customer_Details_Master[Customer_ID == input.Customer_ID];
+											ver.Customer_Apporval_Status=input.Customer_Apporval_Status;
+											openUrl("#Script:page.parent.refresh","same window");
+										}
+										else if(Customer_Apporval_Status == "Reject")
+										{
+											sendmail
+											[
+												from :zoho.adminuserid
+												to :input.Customer_Email
+												subject :"Customer Appoval Status"
+												message :"Sorry your request is reject" + input.Approval_Or_Reject_Reson
+											]
+											new = Customer_Details_Master[Customer_ID == input.Customer_ID];
+											new.Customer_Apporval_Status=input.Customer_Apporval_Status;
+											openUrl("#Script:page.parent.refresh","same window");
+										}
+					)
+					}
+				}
+			}
+			Calculate_The_Total_Price as "Calculate The Total Price"
+			{
+				type =  form
+				form = Buy_Milk_Master
+				record event = on add or edit
+
+				on user input of Liter_For_Today_PM
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Liter_For_Today_PM != null)
+										{
+											if(input.Liter_For_Today_PM <= 0)
+											{
+												alert "Not Valid Reson For You Type For Negative Value";
+												input.Liter_For_Today_PM = null;
+											}
+											else
+											{
+												input.Total_Liter_Price_Today_PM = input.Liter_For_Today_PM * input.Liter_Per_Price;
+											}
+										}
+										else
+										{
+											input.Total_Liter_Price_Today_PM = null;
+										}
+						)
+					}
+				}
+
+			}
+			hide_and_show as "hide and show"
+			{
+				type =  form
+				form = Buy_Milk_Master
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						disable Customer_Email,Customer_Name,Customer_phone,Liter_Per_Price,Buying_Date,Total_Liter_Price_Today_AM,Customer_Type,Total_Liter_Price_Today_PM,Product_Name;
+					}
+					actions  (Buying_Time == "PM")
+					{
+						show Total_Liter_Price_Today_PM,Liter_For_Today_PM;
+					}
+					actions  (Buying_Time == "AM")
+					{
+						show Liter_For_Today_AM,Total_Liter_Price_Today_AM;
+					}
+					actions 
+					{
+						hide Buying_Transaction_ID;
+					}
+				}
+
+			}
+			hide_and_disable as "hide and disable"
+			{
+				type =  form
+				form = Customer_Details_Master
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						disable Date_Of_Jouning,Customer_Age,Total_Liter,Total_Liter_Price_AM,Total_Liter_Price_PM,Total_Liters_PM,Total_Liters_AM,Customer_Apporval_Status,Total_Price,Product_Price;
+					}
+					actions 
+					{
+						hide Customer_ID,Approval_Or_Reject_Reson,Count_field;
+					}
+					actions  (Customer_Type == "Sale Of Customer")
+					{
+						show Pay_Time_Type;
+					}
+				}
+
+			}
+			fetch_Customer_details as "fetch Customer details"
+			{
+				type =  form
+				form = Buy_Milk_Master
+				record event = on add or edit
+
+				on user input of Customer_ID
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											var = Customer_Details_Master[ID == input.Customer_ID];
+										input.Customer_Name = var.Customer_Name;
+										input.Customer_Email = var.Customer_Email;
+										input.Customer_phone = var.Customer_Phone;
+										input.Product_Name = var.Product_Name.Product_Name;
+										input.Liter_Per_Price = var.Product_Price;
+						)
+					}
+				}
+
+			}
+			fetch_From_Product_Price as "fetch From Product Price"
+			{
+				type =  form
+				form = Customer_Details_Master
+				record event = on add or edit
+
+				on user input of Product_Name
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Product_Price = input.Product_Name.Product_Price;
+						)
+					}
+				}
+
+			}
+			Generate_The_Customer_ID as "Generate The Customer ID"
+			{
+				type =  form
+				form = Customer_Details_Master
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Customer_ID = "JD" + "_" + input.Customer_Type.subString(0,3) + "_" + zoho.currentdate.getYear() + "_" + input.Customer_Name.subString(0,3) + "_" + input.Auto_Number;
+						)
+					}
+				}
+
+			}
+			Update_Recode as "Update Recode"
+			{
+				type =  form
+				form = Buy_Milk_Master
+				record event = on edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											var = Customer_Details_Master[ID == input.Customer_ID];
+										var.Total_Liters_PM=input.Liter_For_Today_PM;
+										var.Total_Liter_Price_PM=input.Total_Liter_Price_Today_PM;
+										var.Total_Liter=var.Total_Liter + input.Liter_For_Today_PM;
+										var.Total_Price=var.Total_Price + input.Total_Liter_Price_Today_PM;
+										var.Count_field=1;
+										// 
+										if(Product_Name == "Buffalo Milk" && input.Buying_Time = "PM")
+										{
+											rec = Today_Buy_Millk_Total[Today_Date == input.Buying_Date && Time_Variation == input.Buying_Time];
+											rec.Total_Liter_In_Buffalo_Today=rec.Total_Liter_In_Buffalo_Today + input.Liter_For_Today_PM;
+											rec.Total_Price_In_Buffalo_Today=rec.Total_Price_In_Buffalo_Today + input.Total_Liter_Price_Today_PM;
+										}
+										else if(Product_Name == "Cow Milk" && input.Buying_Time = "PM")
+										{
+											data = Today_Buy_Millk_Total[Today_Date == input.Buying_Date && Time_Variation == input.Buying_Time];
+											data.Total_Liter_In_Cow_Today=data.Total_Liter_In_Cow_Today + input.Liter_For_Today_PM;
+											data.Total_Liter_Price_In_Today_Cow=data.Total_Liter_Price_In_Today_Cow + input.Total_Liter_Price_Today_PM;
+										}
+						)
+					}
+				}
+
+			}
+			Check_Same_Product_Name as "Check Same Product Name"
+			{
+				type =  form
+				form = PRODUCT_TYPE_LIST
+				record event = on add or edit
+
+				on validate
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = PRODUCT_TYPE_LIST[ID != null];
+										if(Product_Name.equalsIgnoreCase(input.Product_Name) && Product_Type.endsWithIgnoreCase(input.Product_Type))
+										{
+											alert "You Already Save The Same Product Name ";
+											cancel submit;
+										}
+						)
+					}
+				}
+
+			}
+			aleat_for_null as "aleat for null"
+			{
+				type =  form
+				form = Customer_Details_Master
+				record event = on add or edit
+
+				on validate
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(Customer_Type == "Sale Of Customer")
+										{
+											if(Pay_Time_Type == null)
+											{
+												cancel submit;
+											}
+										}
+						)
+					}
+				}
+
+			}
+			aleat_for_negative as "aleat for negative"
+			{
+				type =  form
+				form = stateles_form_Buy_Milk_Master_Form
+				record event = on add
+
+				on user input of From_Date
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.From_Date > zoho.currentdate || input.From_Date > input.To_Date)
+										{
+											alert "Not Valid For From Date";
+											input.From_Date = null;
+											input.To_Date = null;
+										}
+						)
+					}
+				}
+
+			}
+			aleat_for_negative1 as "aleat for negative"
+			{
+				type =  form
+				form = stateles_form_Buy_Milk_Master_Form
+				record event = on add
+
+				on user input of To_Date
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.To_Date > zoho.currentdate || input.From_Date > input.To_Date)
+										{
+											alert "Not Valid For From Date";
+											input.From_Date = null;
+											input.To_Date = null;
+										}
+						)
+					}
+				}
+
+			}
+			filter_The_Customer_Id_Fr as "filter The Customer Id && From Date && To Date"
+			{
+				type =  form
+				form = stateles_form_Buy_Milk_Master_Form
+				button = Submit
+				on click
+				{
+					actions 
+					{
+					on click
+					(
+						openUrl("#Report:All_Milk_Masters?zc_LoadIn=embed-JD&Customer_ID=" + input.Customer_ID.Customer_ID + "&Buying_Date=" + input.From_Date + ";" + input.To_Date + "&Buying_Date_op=58","same window");
+					)
+					}
+				}
+			}
+			hide_and_disable1 as "hide and disable"
+			{
+				type =  form
+				form = Customer_Approval_Status_Reson
+				record event = on add
+
+				field rules
+				{
+					actions 
+					{
+						disable Customer_Apporval_Status,Customer_Email,Customer_ID,Customer_Name;
+					}
+				}
+
+			}
+			hide_and_disable2 as "hide and disable"
+			{
+				type =  form
+				form = Today_Buy_Millk_Total
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						disable Time_Variation,Today_Date,Total_Liter_In_Buffalo_Today,Total_Liter_In_Cow_Today,Total_Liter_Price_In_Today_Cow,Total_Price_In_Buffalo_Today;
+					}
+				}
+
+			}
+			use_ui_add as "use ui.add"
+			{
+				type =  form
+				form = Sales_Milk_Master_Details
+				record event = on add or edit
+
+				on add row of Product_List_And_Price
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											var = PRODUCT_TYPE_LIST[Product_Type == input.Customer_Type].ID.getAll();
+										new = input.Product_List_And_Price.Product_Name.getall();
+										var.removeAll(new);
+										row.Product_Name:ui.add(var);
+						)
+					}
+				}
+
+			}
+			Less_Liter_Total as "Less Liter Total"
+			{
+				type =  form
+				form = Sales_Milk_Master_Details
+				record event = on add or edit
+
+				on delete row of Product_List_And_Price
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Total_Liter != null || input.Total_Price_Today != null)
+										{
+											input.Total_Price_Today = input.Total_Price_Today - row.Total_Price_For_Liter_Buffalo;
+											input.Total_Liter = input.Total_Liter - row.Liter_For_Today_Buffalo_Milk;
+										}
+						)
+					}
+				}
+
+			}
+			Add_Total_Liter_Price_and1 as "Add Total Liter Price and Total Liter"
+			{
+				type =  form
+				form = Sales_Milk_Master_Details
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(Pay_Time_Type == "Debtors" && Time_Variation == "AM")
+										{
+											ver = Customer_Details_Master[ID == input.Customer_ID];
+											ver.Total_Liters_AM=ver.Total_Liters_AM + input.Total_Liter;
+											ver.Total_Liter_Price_AM=ver.Total_Liter_Price_AM + input.Total_Price_Today;
+											ver.Total_Liter=ver.Total_Liter + input.Total_Liter;
+											ver.Total_Price=ver.Total_Price + input.Total_Price_Today;
+										}
+										if(Pay_Time_Type == "Debtors" && Time_Variation == "PM")
+										{
+											ver = Customer_Details_Master[ID == input.Customer_ID];
+											ver.Total_Liters_PM=ver.Total_Liters_PM + input.Total_Liter;
+											ver.Total_Liter_Price_PM=ver.Total_Liter_Price_PM + input.Total_Price_Today;
+											ver.Total_Liter=ver.Total_Liter + input.Total_Liter;
+											ver.Total_Price=ver.Total_Price + input.Total_Price_Today;
+										}
+										new = Today_Buy_Millk_Total[Today_Date == input.Sales_Date && Time_Variation == input.Time_Variation];
+										count = 1;
+										for each  rec in input.Product_List_And_Price
+										{
+											if(count == 1)
+											{
+												new.Total_Liter_In_Buffalo_Today=new.Total_Liter_In_Buffalo_Today - rec.Liter_For_Today_Buffalo_Milk;
+												new.Total_Liter_In_Cow_Today=new.Total_Liter_In_Cow_Today - rec.Liter_For_Today_Buffalo_Milk;
+											}
+											count = count + 1;
+										}
+						)
+					}
+				}
+
+			}
+			aleat_for_Phone_Max_Numbe as "aleat for Phone Max Number"
+			{
+				type =  form
+				form = Customer_Details_Master
+				record event = on add or edit
+
+				on user input of Customer_Phone
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(!input.Customer_Phone.isEmpty() && input.Customer_Phone.length() != 13)
+										{
+											alert "Not Valid Reson For You Type Less Than Or Greater Than 13th Numbers ";
+											input.Customer_Phone = null;
+										}
+						)
+					}
+				}
+
+			}
+			aleat_for_Negative_Value as "aleat for Negative Value"
+			{
+				type =  form
+				form = PRODUCT_TYPE_LIST
+				record event = on add or edit
+
+				on user input of Product_Price
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(Product_Price != null)
+										{
+											if(input.Product_Price < 0)
+											{
+												alert "Not Valid Reson For You Enter The Negative Value ";
+												input.Product_Price = null;
+											}
+										}
+						)
+					}
+				}
+
+			}
+			fetch_Customer_Details1 as "fetch Customer Details"
+			{
+				type =  form
+				form = Sales_Milk_Master_Details
+				record event = on add or edit
+
+				on user input of Customer_ID
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = Customer_Details_Master[ID == input.Customer_ID];
+										input.Customer_Name = ver.Customer_Name;
+										input.Customer_Email = ver.Customer_Email;
+										input.Customer_phone = ver.Customer_Phone;
+										input.Customer_Type = ver.Customer_Type;
+						)
+					}
+				}
+
+			}
+			hide_and_disable3 as "hide and disable"
+			{
+				type =  form
+				form = Sales_Milk_Master_Details
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											disable Customer_Type;
+										disable Customer_Email;
+										disable Sales_Date;
+										disable Customer_Name;
+										disable Customer_phone;
+										disable Product_List_And_Price.Price_Per_Liter;
+										disable Product_List_And_Price.Total_Price_For_Liter_Buffalo;
+										hide Sale_Transaction_ID;
+										disable Total_Liter;
+										disable Total_Price_Today;
+						)
+					}
+				}
+
+			}
+			Generate_The_Buying_Trans as "Generate The  Buying Transaction ID"
+			{
+				type =  form
+				form = Buy_Milk_Master
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Buying_Transaction_ID = input.Customer_Type.subString(0,3) + "_" + input.Customer_Name.subString(0,3) + "_" + input.Buying_Date.getDay() + "_" + input.Auto_Number;
+						)
+					}
+				}
+
+			}
+			Generate_The_Sale_Transac as "Generate The Sale Transaction ID"
+			{
+				type =  form
+				form = Sales_Milk_Master_Details
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Sale_Transaction_ID = input.Customer_Type.subString(0,3) + "_" + input.Customer_Name.subString(0,3) + "_" + input.Sales_Date.getDay() + "_" + input.Auto_Number;
+						)
+					}
+				}
+
+			}
+			Fetch_Product_Price as "Fetch Product Price"
+			{
+				type =  form
+				form = Sales_Milk_Master_Details
+				record event = on add or edit
+
+				on user input of Product_List_And_Price.Product_Name
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											row.Price_Per_Liter=row.Product_Name.Product_Price;
+										hide row.Total_Milk_In_Buffalo;
+										hide row.Total_Milk_In_Cow;
+										hide row.Liter_For_Today_Buffalo_Milk;
+										hide row.Liter_For_Today_Cow_Milk;
+										hide row.Total_Milk_In_Buffalo;
+										hide row.Total_Milk_In_Cow;
+										if(row.Product_Name.Product_Name == "Buffalo Milk")
+										{
+											show row.Total_Milk_In_Buffalo;
+											show row.Liter_For_Today_Buffalo_Milk;
+											show row.Total_Milk_In_Buffalo;
+										}
+										else if(row.Product_Name.Product_Name == "Cow Milk")
+										{
+											show row.Total_Milk_In_Cow;
+											show row.Liter_For_Today_Cow_Milk;
+											show row.Total_Milk_In_Cow;
+										}
+										// 
+										// 
+										if(row.Product_Name == null)
+										{
+											row.Liter_For_Today_Buffalo_Milk=0;
+											row.Price_Per_Liter=0;
+											row.Total_Price_For_Liter_Buffalo=0;
+										}
+										// 
+										// 
+										ver = Today_Buy_Millk_Total[Today_Date == input.Sales_Date && ID != null && Time_Variation == input.Time_Variation];
+										row.Total_Milk_In_Cow=ver.Total_Liter_In_Cow_Today;
+										row.Total_Milk_In_Buffalo=ver.Total_Liter_In_Buffalo_Today;
+						)
+					}
+				}
+
+			}
+			Calculate_The_Total_Price1 as "Calculate The Total Price"
+			{
+				type =  form
+				form = Sales_Milk_Master_Details
+				record event = on add or edit
+
+				on user input of Product_List_And_Price.Liter_For_Today_Buffalo_Milk
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(row.Liter_For_Today_Buffalo_Milk > row.Total_Milk_In_Buffalo)
+										{
+											alert "Not Valid Reson For No Stock For Today";
+											row.Liter_For_Today_Buffalo_Milk=null;
+											row.Total_Price_For_Liter_Buffalo=null;
+											row.Liter_For_Today_Buffalo_Milk=0;
+										}
+										else if(row.Liter_For_Today_Buffalo_Milk > row.Total_Milk_In_Cow)
+										{
+											alert "Not Valid Reson For No Stock For Today";
+											row.Liter_For_Today_Buffalo_Milk=null;
+											row.Total_Price_For_Liter_Buffalo=null;
+											row.Liter_For_Today_Buffalo_Milk=0;
+										}
+										else if(row.Liter_For_Today_Buffalo_Milk != null)
+										{
+											if(row.Liter_For_Today_Buffalo_Milk < 0 || row.Product_Name == null)
+											{
+												alert "Not Valid Reson For You Type The Negative Value Or You Not Select The Product Name";
+												row.Liter_For_Today_Buffalo_Milk=null;
+											}
+										}
+										else
+										{
+											row.Product_Name=null;
+											row.Liter_For_Today_Buffalo_Milk=null;
+											row.Total_Price_For_Liter_Buffalo=null;
+										}
+										input.Total_Liter = input.Product_List_And_Price.sum(Liter_For_Today_Buffalo_Milk);
+										row.Total_Price_For_Liter_Buffalo=row.Liter_For_Today_Buffalo_Milk * row.Price_Per_Liter;
+										input.Total_Price_Today = input.Product_List_And_Price.sum(Total_Price_For_Liter_Buffalo);
+										row.Total_Price_For_Liter_Buffalo=row.Liter_For_Today_Cow_Milk * row.Price_Per_Liter;
+										input.Total_Liter = input.Product_List_And_Price.sum(Liter_For_Today_Cow_Milk);
+						)
+					}
+				}
+
+			}
+			create_Worker_ID as "create Worker ID"
+			{
+				type =  form
+				form = worker_deatils
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Worker_ID = "JD" + "_" + input.Worker_Name.subString(0,3) + "_" + "_" + input.Auto_Number;
+						)
+					}
+				}
+
+			}
+		}
+
+		schedule
+		{
+			feach_max_count as "feach max count"
+			{
+				type =  schedule
+				start = "2025-09-15 12:00:00"
+				frequency = daily
+				time zone = "Asia/Kolkata"
+				on start
+				{
+					actions 
+					{
+					on load
+					(
+						ver = Customer_Details_Master[ID != null];
+										ver.Count_field=0;
+					)
+					}
+				}
+			}
+			feach_max_count1 as "feach max count"
+			{
+				type =  schedule
+				start = "2025-09-15 01:00:00"
+				frequency = daily
+				time zone = "Asia/Kolkata"
+				on start
+				{
+					actions 
+					{
+					on load
+					(
+						var = Customer_Details_Master[ID != null];
+										var.Count_field=0;
+					)
+					}
+				}
+			}
+			Inset_Record as "Inset Record"
+			{
+				type =  schedule
+				start = "2025-09-16 01:00:00"
+				frequency = daily
+				time zone = "Asia/Kolkata"
+				on start
+				{
+					actions 
+					{
+					on load
+					(
+						var = insert into Today_Buy_Millk_Total
+										[
+											Added_User=zoho.loginuser
+											Total_Liter_In_Buffalo_Today=0
+											Total_Price_In_Buffalo_Today=0
+											Time_Variation="AM"
+										];
+					)
+					}
+				}
+			}
+			Inset_Record_PM as "Inset Record PM"
+			{
+				type =  schedule
+				start = "2025-09-16 13:00:00"
+				frequency = daily
+				time zone = "Asia/Kolkata"
+				on start
+				{
+					actions 
+					{
+					on load
+					(
+						var = insert into Today_Buy_Millk_Total
+										[
+											Added_User=zoho.loginuser
+											Total_Liter_In_Buffalo_Today=0
+											Total_Price_In_Buffalo_Today=0
+											Time_Variation="PM"
+										];
+					)
+					}
+				}
+			}
+		}
+
+
+
+
+		payment	{
+			payment as "payment"
+			{
+				type =  payment
+				form = Sales_Milk_Master_Details[Pay_Time_Type == "Pay To Daily"]
+					status = inactive
+				amount field = Total_Price_Today
+				on success
+				{
+						actions 
+						{
+							sendmail
+							(
+								from : "zoho.adminuserid"
+								to : "zoho.loginuserid"
+								subject : "Payment Notification"
+								message : "<!doctype html>\n<html>\n<head>\n<meta charset=\"UTF-8\">\n<title>Email Templates</title>\n</head>\n<body>\n<table width=\"750\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n  <tr>\n    <td valign=\"top\" align=\"center\">\n   <div style=\" width:750px; padding:20px; font-family:Lato,Arial,Helvetica,sans-serif; font-size:14px; color:#000; text-align:left;\">\n          <div style=\"background:#33bc6e; height:76px; text-align:center; padding-top:20px; display:block\">\n            <div style=\"font-size:15px; color:#fff;padding-bottom:6px;\">Payment Received</div>\n            <div style=\"font-size:30px; color:#fff; \">${Total_Price_Today} INR</div> \n       </div>\n        <div style=\"padding:40px; background:#fbfbfb;\">\n        <div style=\"padding:0px 0 0 0; font-size:14px; color:#000; font-weight:bold;\">Dear ${zoho.loginuserid},</div>\n        <div style=\"padding:10px 0 70px 0; font-size:13px; color:#000; line-height:22px;\"> We’re delighted to let you know that your payment of ${Total_Price_Today} INR was successful. \n          Thank you for choosing us and we hope you had a great  experience. </div>\n        <div style=\"padding:40px 0 0 0; font-size:14px; color:#000;font-weight:bold;\">Regards,</div>\n        <div style=\"padding:8px 0 0 0; font-size:14px; color:#000;\">${zoho.adminuserid}</div>\n      </div>\n      <div style=\"height:2px; overflow:hidden;line-height:0px;background:#33bc6e;\"></div>\n   	  </div>\n      </td>\n  </tr>\n</table>\n</body>\n</html>"
+							)
+						}
+				}
+				on failure
+				{
+						actions 
+						{
+							sendmail
+							(
+								from : "zoho.adminuserid"
+								to : "zoho.loginuserid"
+								subject : "Payment Notification"
+								message : "<html><head>\n<meta charset=\"UTF-8\">\n<title>Email Templates</title>\n</head>\n<body>\n<table width=\"750\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n  <tbody><tr>\n    <td valign=\"top\" align=\"center\">\n   <div style=\" width:750px; padding:20px; font-family:Lato,Arial,Helvetica,sans-serif; font-size:14px; color:#000; text-align:left;\">\n          <div style=\"height:2px; overflow:hidden;line-height:0px;background:#33bc6e;\"></div>\n        <div style=\"padding:40px; background:#fbfbfb;\">\n        <div style=\"padding:0px 0 0 0; font-size:14px; color:#000; font-weight:bold;\">Dear ${zoho.loginuserid},</div>\n        <div style=\"padding:10px 0 70px 0; font-size:13px; color:#000; line-height:22px;\"> We’re sorry to let you know that your payment of ${Total_Price_Today} INR has failed. Please try again.</div>\n        <div style=\"padding:40px 0 0 0; font-size:14px; color:#000;font-weight:bold;\">Regards,</div>\n        <div style=\"padding:8px 0 0 0; font-size:14px; color:#000;\">${zoho.adminuserid}</div>\n      </div>\n      <div style=\"height:2px; overflow:hidden;line-height:0px;background:#33bc6e;\"></div>\n      </div>\n      </td>\n  </tr>\n</tbody></table>\n</body>\n</html>"
+							)
+						}
+				}
+			}
+		}
+		functions
+		{
+			Approval as "Approval"
+			{
+				type =  functions
+				form = Customer_Details_Master
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						openUrl("#Form:Customer_Approval_Status_Reson?Customer_Name.first_name=" + input.Customer_Name.first_name + "&Customer_Name.last_name=" + input.Customer_Name.last_name + "&Customer_Email=" + input.Customer_Email + "&Customer_ID=" + input.Customer_ID + "&Customer_Apporval_Status=" + "Approval","popup window");
+					)
+					}
+				}
+			}
+			Reject as "Reject"
+			{
+				type =  functions
+				form = Customer_Details_Master
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						openUrl("#Form:Customer_Approval_Status_Reson?Customer_Name.first_name=" + input.Customer_Name.first_name + "&Customer_Name.last_name=" + input.Customer_Name.last_name + "&Customer_Email=" + input.Customer_Email + "&Customer_ID=" + input.Customer_ID + "&Customer_Apporval_Status=" + "Reject","popup window");
+					)
+					}
+				}
+			}
+			Update_Evening_Record as "Update Evening Record"
+			{
+				type =  functions
+				form = Buy_Milk_Master
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						openurl("#Form:Buy_Milk_Master?recLinkID=" + input.ID + "&viewLinkName=All_Milk_Masters&zc_NextUrl=#Report:All_Milk_Masters","same window");
+					)
+					}
+				}
+			}
+			Check_In1 as "Check In"
+			{
+				type =  functions
+				form = worker_deatils
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						openUrl("#Form:Check_In_Check_Out?Worker ID=" + input.Worker_ID,"popup window");
+					)
+					}
+				}
+			}
+		}
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+	customize
+	{
+		icon
+		{
+			image = "image_1759550259678.jpeg"
+		}
+	}
+
+	web
+	{
+		forms
+		{
+			form Buy_Milk_Master
+			{
+				label placement = left
+			}
+			form Check_In_Check_Out
+			{
+				label placement = left
+			}
+			form Customer_Approval_Status_Reson
+			{
+				label placement = left
+			}
+			form Customer_Details_Master
+			{
+				label placement = left
+			}
+			form PRODUCT_TYPE_LIST
+			{
+				label placement = left
+			}
+			form Role
+			{
+				label placement = left
+			}
+			form Sales_Milk_Master_Details
+			{
+				label placement = left
+			}
+			form stateles_form_Buy_Milk_Master_Form
+			{
+				label placement = left
+			}
+			form Today_Buy_Millk_Total
+			{
+				label placement = left
+			}
+			form Use_Sale_Existing_Sub_Form
+			{
+				label placement = left
+			}
+			form worker_deatils
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report PRODUCT_TYPE_LIST_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Product_Name as "Product Name"
+								Product_Price as "Product Price"
+								Product_Type as "Product Type"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Product_Name as "Product Name"
+								Product_Price as "Product Price"
+								Product_Type as "Product Type"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Customer_Details_Master_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Date_Of_Jouning as "Date Of Jouning"
+								Customer_ID as "Customer ID"
+								Customer_Name as "Customer Name"
+								Customer_Phone as "Customer Phone"
+								Customer_Email as "Customer Email"
+								Customer_Apporval_Status as "Customer Apporval Status"
+								Total_Liter as "Total Liter"
+								Total_Price as "Total Price"
+								"Approval"
+								"Reject"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Date_Of_Jouning as "Date Of Jouning"
+								Customer_ID as "Customer ID"
+								Auto_Number as "Auto Number"
+								Customer_Name as "Customer Name"
+								Customer_Phone as "Customer Phone"
+								Customer_Email as "Customer Email"
+								Customer_Date_Of_Brith as "Customer Date Of Brith"
+								Customer_Address as "Customer Address"
+								Customer_Age as "Customer Age"
+								Customer_Apporval_Status as "Customer Apporval Status"
+								Customer_Type as "Customer Type "
+								Total_Liters_AM as "Total Liters AM"
+								Total_Liter_Price_AM as "Total Liter Price AM"
+								Pay_Time_Type as "Pay Time Type"
+								Total_Liters_PM as "Total Liters PM"
+								Total_Liter_Price_PM as "Total Liter Price PM"
+								Total_Liter as "Total Liter"
+								Total_Price as "Total Price"
+								Product_Name as "Product Name"
+								Product_Price as "Product Price"
+								Approval_Or_Reject_Reson as "Approval Or Reject Reson"
+								Count_field as "Count "
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Milk_Masters
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Buying_Date as "Buying Date"
+								Customer_Type as "Customer Type "
+								Customer_ID as "Customer ID"
+								Customer_Name as "Customer Name"
+								Liter_Per_Price as "Liter Per Price"
+								Liter_For_Today_AM as "Liter For Today AM"
+								Total_Liter_Price_Today_AM as "Total Liter Price Today AM"
+								Liter_For_Today_PM as "Liter For Today PM"
+								Total_Liter_Price_Today_PM as "Total Liter Price Today PM"
+								"Update Evening Record"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Buying_Date as "Buying Date"
+								Customer_Type as "Customer Type "
+								Customer_ID as "Customer ID"
+								Customer_Name as "Customer Name"
+								Customer_Email as "Customer Email"
+								Customer_phone as "Customer phone"
+								Liter_Per_Price as "Liter Per Price"
+								Liter_For_Today_AM as "Liter For Today AM"
+								Total_Liter_Price_Today_AM as "Total Liter Price Today AM"
+								Buying_Time as "Buying Time"
+								Product_Name as "Product Name"
+								Liter_For_Today_PM as "Liter For Today PM"
+								Total_Liter_Price_Today_PM as "Total Liter Price Today PM"
+								Buying_Transaction_ID as "Buying Transaction ID"
+								Auto_Number as "Auto Number"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Sales_Milk_Master_Details_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Sales_Date as "Sales Date"
+								Pay_Time_Type as "Pay Time Type"
+								Customer_ID as "Customer ID"
+								Customer_Name as "Customer Name"
+								Customer_Email as "Customer Email"
+								Customer_phone as "Customer phone"
+								Customer_Type as "Customer Type"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Sales_Date as "Sales Date"
+								Pay_Time_Type as "Pay Time Type"
+								Customer_ID as "Customer ID"
+								Customer_Name as "Customer Name"
+								Customer_Email as "Customer Email"
+								Customer_phone as "Customer phone"
+								Customer_Type as "Customer Type"
+								Sale_Transaction_ID as "Sale Transaction ID"
+								Total_Price_Today as "Total Price Today"
+								Auto_Number as "Auto Number"
+								Time_Variation as "Time Variation"
+								Total_Liter as "Total Liter"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Today_Buy_Millk_Total_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Total_Liter_In_Cow_Today as "Total Liter In Cow Today"
+								Total_Liter_Price_In_Today_Cow as "Total Liter Price In Today Cow"
+								Total_Liter_In_Buffalo_Today as "Total Liter In Buffalo Today"
+								Total_Price_In_Buffalo_Today as "Total Price In Buffalo Today"
+								Today_Date as "Today Date"
+								Time_Variation as "Time Variation"
+								Product_Name as "Product Name"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Total_Liter_In_Cow_Today as "Total Liter In Cow Today"
+								Total_Liter_Price_In_Today_Cow as "Total Liter Price In Today Cow"
+								Total_Liter_In_Buffalo_Today as "Total Liter In Buffalo Today"
+								Total_Price_In_Buffalo_Today as "Total Price In Buffalo Today"
+								Today_Date as "Today Date"
+								Time_Variation as "Time Variation"
+								Product_Name as "Product Name"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Use_Sale_Existing_Sub_Form_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Product_Name as "Product Name"
+								Price_Per_Liter as "Price Per Liter"
+								Total_Price_For_Liter_Buffalo as "Total Price For Liter Buffalo"
+								Liter_For_Today_Buffalo_Milk as "Liter For Today  Buffalo Milk"
+								Bidirectional_Look_Up as "Bidirectional Look Up"
+								Total_Milk_In_Cow as "Total Milk In Cow"
+								Total_Milk_In_Buffalo as "Total Milk In Buffalo"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Product_Name as "Product Name"
+								Price_Per_Liter as "Price Per Liter"
+								Total_Price_For_Liter_Buffalo as "Total Price For Liter Buffalo"
+								Liter_For_Today_Buffalo_Milk as "Liter For Today  Buffalo Milk"
+								Bidirectional_Look_Up as "Bidirectional Look Up"
+								Total_Milk_In_Cow as "Total Milk In Cow"
+								Total_Milk_In_Buffalo as "Total Milk In Buffalo"
+								Liter_For_Today_Cow_Milk as "Liter For Today Cow Milk"
+								Total_Price_For_Liter_cow as "Total Price For Liter cow"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Check_In_Check_Out_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Today_Date as "Today Date"
+								Check_IN_Date_And_Time as "Check IN Date And Time"
+								Check_Out_Date_And_time as "Check Out Date And time"
+								Time_Variation as "Time Variation"
+								Worker_Role as "Worker Role"
+								Worker_ID as "Worker ID"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Today_Date as "Today Date"
+								Check_IN_Date_And_Time as "Check IN Date And Time"
+								Check_Out_Date_And_time as "Check Out Date And time"
+								Time_Variation as "Time Variation"
+								Worker_Role as "Worker Role"
+								Worker_ID as "Worker ID"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Roles
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Worker_Role as "Worker Role"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Worker_Role as "Worker Role"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report worker_deatils_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Worker_ID as "Worker ID"
+								Worker_Name as "Worker Name"
+								Auto_Number as "Auto Number"
+								ID
+								"Check In "
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Worker_ID as "Worker ID"
+								Worker_Name as "Worker Name"
+								Auto_Number as "Auto Number"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Customer_Report_Filter
+				{
+					displayname = "Customer Report Filter"
+					icon = "business-laptop-71"
+					page Customer_Report_Filter
+					{
+						icon = "business-laptop-71"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section PRODUCT_TYPE_LIST
+				{
+					displayname = "PRODUCT_TYPE_LIST"
+					icon = "tech-desktop"
+					form  PRODUCT_TYPE_LIST
+					{
+						icon = "tech-desktop"
+					}
+					report PRODUCT_TYPE_LIST_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Customer_Details_Master
+				{
+					displayname = "Customer Details Master"
+					icon = "users-2-contacts-44"
+					form  Customer_Details_Master
+					{
+						icon = "users-2-contacts-44"
+					}
+					report Customer_Details_Master_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Milk_Masters
+				{
+					displayname = "Milk Masters"
+					icon = "objects-baby-bottle"
+					form  Buy_Milk_Master
+					{
+						icon = "shopping-pos"
+					}
+					report All_Milk_Masters
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Customer_Approval_Status
+				{
+					displayname = "Customer Approval Status"
+					icon = "health-heartbeat-16"
+					form  Customer_Approval_Status_Reson
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section stateles_form_Buy_Milk_Master_Form
+				{
+					displayname = "stateles form Buy Milk Master Form"
+					icon = "design-2-form"
+					form  stateles_form_Buy_Milk_Master_Form
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Sales_Milk_Master_Details
+				{
+					displayname = "Sales Milk Master Details"
+					icon = "shopping-tag-sale"
+					form  Sales_Milk_Master_Details
+					{
+						icon = "shopping-tag-sale"
+					}
+					report Sales_Milk_Master_Details_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Today_Buy_Millk_Total
+				{
+					displayname = "Today Buy Millk Total"
+					icon = "shopping-tag-sale"
+					form  Today_Buy_Millk_Total
+					{
+						icon = "shopping-tag-sale"
+					}
+					report Today_Buy_Millk_Total_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Use_Sale_Existing_Sub_Form
+				{
+					displayname = "Use Sale Existing Sub Form"
+					icon = "tech-desktop"
+					form  Use_Sale_Existing_Sub_Form
+					{
+						icon = "design-paper-dev"
+					}
+					report Use_Sale_Existing_Sub_Form_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Check_In_Check_Out
+				{
+					displayname = "Check In & Check Out"
+					icon = "shopping-pos"
+					form  Check_In_Check_Out
+					{
+						icon = "shopping-pos"
+					}
+					report Check_In_Check_Out_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Roles
+				{
+					displayname = "Roles"
+					icon = "media-1-play-69"
+					form  Role
+					{
+						icon = "tech-watch-time"
+					}
+					report All_Roles
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section worker_deatils
+				{
+					displayname = "worker deatils"
+					icon = "business-business-contact-89"
+					form  worker_deatils
+					{
+						icon = "business-business-contact-89"
+					}
+					report worker_deatils_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = solid
+					show = {component}
+				}
+			}
+		}
+		customize
+		{
+			new theme = 5
+			font = "poppins"
+			color options
+			{
+				color = "1"
+			}
+			logo
+			{
+				preference = "app_icon"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Buy_Milk_Master
+			{
+				label placement = auto
+			}
+			form Check_In_Check_Out
+			{
+				label placement = auto
+			}
+			form Customer_Approval_Status_Reson
+			{
+				label placement = auto
+			}
+			form Customer_Details_Master
+			{
+				label placement = auto
+			}
+			form PRODUCT_TYPE_LIST
+			{
+				label placement = auto
+			}
+			form Role
+			{
+				label placement = auto
+			}
+			form Sales_Milk_Master_Details
+			{
+				label placement = auto
+			}
+			form stateles_form_Buy_Milk_Master_Form
+			{
+				label placement = auto
+			}
+			form Today_Buy_Millk_Total
+			{
+				label placement = auto
+			}
+			form Use_Sale_Existing_Sub_Form
+			{
+				label placement = auto
+			}
+			form worker_deatils
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "1"
+			color options
+			{
+				color = darkgrey
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Buy_Milk_Master
+			{
+				label placement = auto
+			}
+			form Check_In_Check_Out
+			{
+				label placement = auto
+			}
+			form Customer_Approval_Status_Reson
+			{
+				label placement = auto
+			}
+			form Customer_Details_Master
+			{
+				label placement = auto
+			}
+			form PRODUCT_TYPE_LIST
+			{
+				label placement = auto
+			}
+			form Role
+			{
+				label placement = auto
+			}
+			form Sales_Milk_Master_Details
+			{
+				label placement = auto
+			}
+			form stateles_form_Buy_Milk_Master_Form
+			{
+				label placement = auto
+			}
+			form Today_Buy_Millk_Total
+			{
+				label placement = auto
+			}
+			form Use_Sale_Existing_Sub_Form
+			{
+				label placement = auto
+			}
+			form worker_deatils
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "1"
+			color options
+			{
+				color = darkgrey
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

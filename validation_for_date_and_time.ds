@@ -1,0 +1,436 @@
+/*
+ * Author       : zappyworkssoftwaresolutionst47
+ * Generated on : 22-Nov-2025 09:39:25
+ * Version      : 1.0
+ */
+ application "validation for date and time"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form create_subform
+		{
+			displayname = "create subform"
+			success message = "Data Added Successfully!"
+			SubForm
+			(
+				type = grid
+				no_count
+				(
+					type = number
+					width = medium
+				)
+				today_date
+				(
+    				type = date
+					displayname = "today date"
+					initial value = "${zoho.currentdate}"
+					alloweddays = 0,1,2,3,4,5,6
+					width = medium
+				)
+				must have start_time
+				(
+    				type = time
+					displayname = "start time"
+					timedisplayoptions = "hh:mm" 
+					width = medium
+				)
+				must have end_time
+				(
+    				type = time
+					displayname = "end time"
+					timedisplayoptions = "hh:mm" 
+					width = medium
+				)
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list create_subform_Report
+		{
+			displayName = "create subform Report"
+			show all rows from create_subform    
+			(
+				SubForm
+				(
+					field = SubForm.today_date + " " + SubForm.end_time + " " + SubForm.start_time
+				)
+			)
+		}
+	}
+
+
+		workflow
+		{
+		form
+		{
+			Add_number_count as "Add number count"
+			{
+				type =  form
+				form = create_subform
+				record event = on add or edit
+
+				on add row of SubForm
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											max_row_id = 0;
+										for each  row_ in input.SubForm
+										{
+											if(row_.no_count > max_row_id)
+											{
+												max_row_id = row_.no_count;
+											}
+										}
+										row.no_count=max_row_id + 1;
+						)
+					}
+				}
+
+			}
+			check_the_end_time as "check the end time"
+			{
+				type =  form
+				form = create_subform
+				record event = on add or edit
+
+				on user input of SubForm.end_time
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											prev_row_id = row.no_count - 1;
+										for each  subform_row in input.SubForm
+										{
+											if(subform_row.no_count == prev_row_id)
+											{
+												if(row.start_time >= subform_row.start_time && row.end_time <= subform_row.end_time)
+												{
+													alert "Enter a valid time";
+													row.end_time=null;
+													row.start_time=null;
+												}
+											}
+										}
+						)
+					}
+				}
+
+			}
+		}
+
+
+
+
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form create_subform
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report create_subform_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								SubForm.today_date as "SubForm"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								SubForm.today_date as "SubForm"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section create_subform
+				{
+					displayname = "create subform"
+					icon = "food-whisk"
+					form  create_subform
+					{
+						icon = "food-whisk"
+					}
+					report create_subform_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "lato"
+			color options
+			{
+				color = "1"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form create_subform
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = lightred
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form create_subform
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = lightred
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

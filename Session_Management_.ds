@@ -1,0 +1,2929 @@
+/*
+ * Author       : zappyworkssoftwaresolutionst47
+ * Generated on : 22-Nov-2025 09:33:05
+ * Version      : 1.0
+ */
+ application "Session Management "
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "12-hr"
+ 	forms
+	{
+		form Add_Member
+		{
+			displayname = "Add Member"
+			success message = "Member Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Create_Channel
+			(
+				type = picklist	
+				displayname = "Create Channel"
+				values  = Create_Channel.ID
+    			displayformat = [Channel_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Email
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Add"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Booking_Existing_SubFrom
+		{
+			displayname = "Booking Existing SubFrom"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Session
+			(
+    			type = date
+				displayname = "Session Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			From_Time
+			(
+    			type = time
+				displayname = "From Time"
+				timedisplayoptions = "hh:mm" 
+	 			row = 1
+	 			column = 1   
+				width = 100px
+			)
+			To_Time
+			(
+    			type = time
+				displayname = "To Time"
+				timedisplayoptions = "hh:mm" 
+	 			row = 1
+	 			column = 1   
+				width = 100px
+			)
+			Session_Time_Type
+			(
+    			type = text
+				displayname = "Session Time Type"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Employee_Name
+			(
+				type = picklist	
+				displayname = "Employee Name "
+				values  = Employee_Master.ID
+    			bidirectional = Booking_Existing_SubFrom_ID
+    			displayformat = [Employee_ID + " - " + Employee_Name.first_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Number
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Booking_From
+		{
+			displayname = "Booking From"
+			success message = "Data Added Successfully!"
+			feature property = 256
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Your_Name
+			(
+    			type = name
+				displayname = "Your Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Your_Email
+			(
+    			type = email
+				displayname = "Your Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Phone_Number
+			(
+    			type = phonenumber
+				displayname = "Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Booking_Details
+			(
+				type = grid
+				displayname = "Booking Details "
+				values  = Booking_Existing_SubFrom.ID
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Change_Session_Status
+		{
+			displayname = "Change Session Status"
+			store data in zc = false
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Session_Time_Type
+			(
+				type = picklist
+				displayname = "Session Time Type"
+				maxchar = 100
+				values = {"Morning","Afternoon","Evening"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Session_Status
+			(
+				type = picklist
+				displayname = "Session Status"
+				maxchar = 100
+				values = {"Active","In Active"}
+				initial value = "Active"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have unique From_Time
+			(
+    			type = time
+				displayname = "From Time"
+				timedisplayoptions = "hh:mm" 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have unique To_Time
+			(
+    			type = time
+				displayname = "To Time"
+				timedisplayoptions = "hh:mm" 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Reson_For_Change_Status
+			(
+    			type = textarea
+				displayname = "Reson For Change Status"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				Submit
+				(
+   					type = submit
+   					displayname = "Submit"
+				)
+			}
+		}
+		form Class_Student_Details
+		{
+			displayname = "Class Student Details"
+			success message = "Class Student Detail Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			topic
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Phone_Number
+			(
+    			type = phonenumber
+				displayname = "Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Email
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Class_Time
+			(
+    			type = datetime
+				displayname = "Class Time"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Class_End_Time
+			(
+    			type = datetime
+				displayname = "Class End Time"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Create_Channel
+		{
+			displayname = "Create Channel"
+			success message = "Channel Created Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Channel_Name
+			(
+    			type = text
+				displayname = "Channel Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Channel_Allow_Count
+			(
+    			type = text
+				displayname = "Channel Allow Count"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Channel_ID
+			(
+    			type = text
+				displayname = "Channel ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Create"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Employee_Master
+		{
+			displayname = "Employee Master"
+			success message = "Employee Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Booking_Existing_SubFrom_ID
+			(
+				type = list	
+				displayname = "Booking Existing SubFrom - ID"
+				values  = Booking_Existing_SubFrom.ID
+    			bidirectional = Employee_Name
+    			displayformat = [ID]
+				height = 60px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Date_Of_Jouning
+			(
+    			type = date
+				displayname = "Date Of Jouning"
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Employee_ID
+			(
+    			type = text
+				displayname = "Employee ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Employee_Name
+			(
+    			type = name
+				displayname = "Employee Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Date_Of_Brith
+			(
+    			type = date
+				displayname = "Date Of Brith"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Employee_Email
+			(
+    			type = email
+				displayname = "Employee Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Employee_Phone
+			(
+    			type = phonenumber
+				displayname = "Employee Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Employee_Role
+			(
+				type = picklist	
+				displayname = "Employee Role"
+				values  = Employee_Role.ID
+    			displayformat = [Role]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Session
+			(
+				type = list	
+				values  = Session_Master.ID
+    			bidirectional = Employee_Master_ID
+    			displayformat = [Session_Time_Type + " - " + From_Time + " - " + To_Time]
+				sortorder = ascending
+				height = 60px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number
+			(
+    			type = autonumber
+				displayname = "Auto Number"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Employee_Status
+			(
+				type = picklist
+				displayname = "Employee Status"
+				maxchar = 100
+				values = {"Active","In Active"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Employee_Role
+		{
+			displayname = "Employee Role"
+			success message = "Employee Role Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Role
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Session_Master
+		{
+			displayname = "Session Master"
+			success message = "Session Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Employee_Master_ID
+			(
+				type = list	
+				displayname = "Employee Master - ID"
+				values  = Employee_Master.ID
+    			bidirectional = Session
+    			displayformat = [ID]
+				height = 60px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Session_Time_Type
+			(
+				type = picklist
+				displayname = "Session Time Type"
+				maxchar = 100
+				values = {"Morning","Afternoon","Evening"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Session_Status
+			(
+				type = picklist
+				displayname = "Session Status"
+				maxchar = 100
+				values = {"Active","In Active"}
+				initial value = "Active"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have From_Time
+			(
+    			type = time
+				displayname = "From Time"
+				timedisplayoptions = "hh:mm" 
+	 			row = 1
+	 			column = 1   
+				width = 100px
+			)
+			must have To_Time
+			(
+    			type = time
+				displayname = "To Time"
+				timedisplayoptions = "hh:mm" 
+	 			row = 1
+	 			column = 1   
+				width = 100px
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Test_Questions
+		{
+			displayname = "Test Questions"
+			success message = "Test Question Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Bill_File
+			(
+    			type = upload file
+				displayname = "Bill File"
+				browse = local_drive
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Date_field
+			(
+    			type = date
+				displayname = "Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+						AI_Properties
+						(
+									fieldtype = OCR
+									modelname = "Questions"
+									basefield = Bill_File
+									taggedfield = "Date"
+						)
+			)
+			Doctor
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+						AI_Properties
+						(
+									fieldtype = OCR
+									modelname = "Questions"
+									basefield = Bill_File
+									taggedfield = "Doctor"
+						)
+			)
+			Doctor_Signature
+			(
+    			type = text
+				displayname = "Doctor Signature"
+	 			row = 1
+	 			column = 1   
+				width = medium
+						AI_Properties
+						(
+									fieldtype = OCR
+									modelname = "Questions"
+									basefield = Bill_File
+									taggedfield = "Doctor Signature"
+						)
+			)
+			Dosage
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+						AI_Properties
+						(
+									fieldtype = OCR
+									modelname = "Questions"
+									basefield = Bill_File
+									taggedfield = "Dosage"
+						)
+			)
+			Gender
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+						AI_Properties
+						(
+									fieldtype = OCR
+									modelname = "Questions"
+									basefield = Bill_File
+									taggedfield = "Gender"
+						)
+			)
+			Hospital
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+						AI_Properties
+						(
+									fieldtype = OCR
+									modelname = "Questions"
+									basefield = Bill_File
+									taggedfield = "Hospital"
+						)
+			)
+			Medicine_Name
+			(
+    			type = text
+				displayname = "Medicine Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+						AI_Properties
+						(
+									fieldtype = OCR
+									modelname = "Questions"
+									basefield = Bill_File
+									taggedfield = "Medicine Name"
+						)
+			)
+			Patient
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+						AI_Properties
+						(
+									fieldtype = OCR
+									modelname = "Questions"
+									basefield = Bill_File
+									taggedfield = "Patient"
+						)
+			)
+			S_No
+			(
+    			type = text
+				displayname = "S.No"
+	 			row = 1
+	 			column = 1   
+				width = medium
+						AI_Properties
+						(
+									fieldtype = OCR
+									modelname = "Questions"
+									basefield = Bill_File
+									taggedfield = "S.No"
+						)
+			)
+			Symtoms
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+						AI_Properties
+						(
+									fieldtype = OCR
+									modelname = "Questions"
+									basefield = Bill_File
+									taggedfield = "Symtoms"
+						)
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list All_Session_Masters
+		{
+			displayName = "All Session Masters"
+			show all rows from Session_Master    
+			(
+				Session_Time_Type as "Session Time Type"
+				Session_Status as "Session Status"
+				From_Time as "From Time"
+				To_Time as "To Time"
+				custom action "Change In Active"
+				(
+	  			workflow = Change_In_Active
+				show action in edit record menu = true
+				column header = "Change In Active"
+				condition = (Session_Status == "Active")
+				)
+			)
+		}
+		default list All_Employee_Masters
+		{
+			displayName = "All Employee Masters"
+			show all rows from Employee_Master    
+			(
+				Employee_ID as "Employee ID"
+				Employee_Name  as "Employee Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Employee_Email as "Employee Email"
+				Employee_Phone as "Employee Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Date_Of_Jouning as "Date Of Jouning"
+				Auto_Number as "Auto Number"
+				Date_Of_Brith as "Date Of Brith"
+				Employee_Role as "Employee Role"
+				Employee_Status as "Employee Status"
+				Session
+			)
+		}
+		default list All_Employee_Roles
+		{
+			displayName = "All Employee Roles"
+			show all rows from Employee_Role    
+			(
+				Role
+			)
+		}
+		default list Booking_Existing_SubFrom_Report
+		{
+			displayName = "Booking Existing SubFrom Report"
+			show all rows from Booking_Existing_SubFrom    
+			(
+				Session as "Session Date"
+				From_Time as "From Time"
+				To_Time as "To Time"
+				Employee_Name as "Employee Name "
+				Session_Time_Type as "Session Time Type"
+				Number
+			)
+		}
+		default list Booking_From_Report
+		{
+			displayName = "Booking From Report"
+			show all rows from Booking_From    
+			(
+				Your_Name  as "Your Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Your_Email as "Your Email"
+				Phone_Number as "Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+			)
+		}
+		default list All_Class_Student_Details
+		{
+			displayName = "All Class Student Details"
+			show all rows from Class_Student_Details    
+			(
+				Name 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Phone_Number as "Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Email
+				Class_Time as "Class Time"
+				Class_End_Time as "Class End Time"
+				ID
+				topic
+			)
+		}
+		default list All_Channels
+		{
+			displayName = "All Channels"
+			show all rows from Create_Channel    
+			(
+				Channel_Name as "Channel Name"
+				Channel_Allow_Count as "Channel Allow Count"
+				Channel_ID as "Channel ID"
+			)
+		}
+		default list All_Members
+		{
+			displayName = "All Members"
+			show all rows from Add_Member    
+			(
+				Create_Channel as "Create Channel"
+				Email
+			)
+		}
+		default list All_Test_Questions
+		{
+			displayName = "All Test Questions"
+			show all rows from Test_Questions    
+			(
+				Bill_File as "Bill File"
+				Date_field as "Date"
+				Doctor
+				Doctor_Signature as "Doctor Signature"
+				Dosage
+				Gender
+				Hospital
+				Medicine_Name as "Medicine Name"
+				Patient
+				S_No as "S.No"
+				Symtoms
+			)
+		}
+	}
+
+
+		workflow
+		{
+		form
+		{
+			hide_and_disable as "hide and disable"
+			{
+				type =  form
+				form = Session_Master
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						hide Session_Status,Employee_Master_ID;
+					}
+				}
+
+			}
+			hide_and_disable1 as "hide and disable"
+			{
+				type =  form
+				form = Change_Session_Status
+				record event = on add
+
+				field rules
+				{
+					actions 
+					{
+						disable From_Time,Session_Status,Session_Time_Type,To_Time;
+					}
+				}
+
+			}
+			change_status_And_Send_Ma as "change status And Send Mail"
+			{
+				type =  form
+				form = Change_Session_Status
+				button = Submit
+				on click
+				{
+					actions 
+					{
+					on click
+					(
+						var = Session_Master[Session_Time_Type == input.Session_Time_Type && From_Time == input.From_Time && To_Time == input.To_Time];
+										if(input.Session_Status == "Active")
+										{
+											var.Session_Status="Active";
+										}
+										if(input.Session_Status == "In Active")
+										{
+											var.Session_Status="In Active";
+										}
+										// sendmail
+										// [
+										// 	from: zoho.adminuserid
+										// 	to: <expression>
+										// 	subject: <expression>
+										// 	message: <expression>
+										// ]
+					)
+					}
+				}
+			}
+			hide_and_disable2 as "hide and disable"
+			{
+				type =  form
+				form = Employee_Master
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						disable Date_Of_Jouning;
+					}
+					actions 
+					{
+						hide Employee_ID,Booking_Existing_SubFrom_ID;
+					}
+				}
+
+			}
+			Calculate_Age as "Calculate Age"
+			{
+				type =  form
+				form = Employee_Master
+				record event = on add or edit
+
+				on user input of Date_Of_Brith
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Date_Of_Brith != null)
+										{
+											a = input.Date_Of_Brith.yearsBetween(zoho.currentdate);
+											if(a <= 18)
+											{
+												alert "Not Valid Reson For You Not eligible For This Work";
+												input.Date_Of_Brith = null;
+											}
+										}
+						)
+					}
+				}
+
+			}
+			Create_Employee_ID as "Create Employee ID"
+			{
+				type =  form
+				form = Employee_Master
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Employee_ID = "Wor" + "_" + input.Date_Of_Jouning.getDay() + input.Employee_Role.Role.subString(0,3) + "_" + input.Employee_Name.subString(0,3) + "_" + input.Auto_Number;
+						)
+					}
+				}
+
+			}
+			Calculate_Shift_Time as "Calculate Shift Time"
+			{
+				type =  form
+				form = Session_Master
+				record event = on add or edit
+
+				on user input of From_Time
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.From_Time != null)
+										{
+											if(input.Session_Time_Type == "Morning" && input.From_Time < '6:00:00' || input.From_Time > '11:59:00')
+											{
+												alert "Enter Valid Time";
+												input.From_Time = '';
+											}
+											else if(input.Session_Time_Type == "Afternoon" && input.From_Time < '12:00:00' || input.From_Time > '15:59:00')
+											{
+												alert "Enter Valid Time";
+												input.From_Time = '';
+											}
+											else if(input.Session_Time_Type == "Evening" && input.From_Time < '16:00:00' || input.From_Time > '20:59:00')
+											{
+												alert "Enter Valid Time";
+												input.From_Time = '';
+											}
+										}
+						)
+					}
+				}
+
+			}
+			Change_Shift_Status_In_Su as "Change Shift Status In Sumit"
+			{
+				type =  form
+				form = Session_Master
+				record event = on add or edit
+					status = inactive
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											new = Session_Master[Session_Time_Type == input.Session_Time_Type];
+										if(new != null)
+										{
+											if(new.Session_Time_Type == input.Session_Time_Type)
+											{
+												new.Session_Status="In Active";
+											}
+										}
+						)
+					}
+				}
+
+			}
+			Check_From_Time_In_to_Tim as "Check From Time In to Time"
+			{
+				type =  form
+				form = Session_Master
+				record event = on add or edit
+
+				on user input of To_Time
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.From_Time != null)
+										{
+											if(input.Session_Time_Type == "Morning" && input.To_Time <= input.From_Time || input.To_Time > '11:59:00')
+											{
+												alert "Enter Valid Date";
+												input.To_Time = '';
+											}
+											else if(input.Session_Time_Type == "Afternoon" && input.To_Time <= input.From_Time || input.To_Time > '15:59:00')
+											{
+												alert "Enter Valid Date";
+												input.To_Time = '';
+											}
+											else if(input.Session_Time_Type == "Evening" && input.To_Time <= input.From_Time || input.To_Time > '20:59:00')
+											{
+												alert "Enter Valid Date";
+												input.To_Time = '';
+											}
+										}
+										if(input.To_Time != null)
+										{
+											var = input.From_Time.hoursBetween(input.To_Time);
+										}
+										if(input.To_Time != null)
+										{
+											if(input.To_Time <= input.From_Time || var < 3)
+											{
+												alert "Not Valid Pls Enter The Valid Time";
+												input.To_Time = "";
+											}
+										}
+						)
+					}
+				}
+
+			}
+			Change_Shift_Status_In_Su1 as "Change Shift Status In Sumit"
+			{
+				type =  form
+				form = Session_Master
+				record event = on add or edit
+
+				on validate
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											new = Session_Master[Session_Time_Type == input.Session_Time_Type];
+										if(new.Session_Time_Type == input.Session_Time_Type)
+										{
+											new.Session_Status="In Active";
+										}
+						)
+					}
+				}
+
+			}
+			validation_Phone_Number as "validation Phone Number"
+			{
+				type =  form
+				form = Employee_Master
+				record event = on add or edit
+
+				on validate
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											new = input.Employee_Phone.toList("").get(3);
+										if(!input.Employee_Phone.isEmpty() && input.Employee_Phone.length() != 13 || new.startswith("1") || new.startswith("2") || new.startswith("3") || new.startswith("4") || new.startswith("5"))
+										{
+											alert "Not Valid Reson For You Type Less Than Or Greater Than 13th Numbers Or Your Enter The Start Number Is Worng =  " + input.Employee_Phone.length() + "    Start Number In Phone" + "    =   " + new;
+											cancel submit;
+										}
+						)
+					}
+				}
+
+			}
+			Fetch_The_Session_Type as "Fetch The Session Type"
+			{
+				type =  form
+				form = Booking_From
+				record event = on add or edit
+
+				on user input of Booking_Details.To_Time
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(row.To_Time != null)
+										{
+											if(row.From_Time > row.To_Time)
+											{
+												alert "Not Valid Reson For You Enter The Wrong Time Or You Check The From Time";
+												row.To_Time="";
+											}
+										}
+										if(row.To_Time != null)
+										{
+											new = Session_Master[From_Time <= row.From_Time && To_Time >= row.To_Time && Session_Status == "Active"].Session_Time_Type;
+											row.Session_Time_Type=new;
+										}
+										if(row.To_Time != null)
+										{
+											for each  rec in input.Booking_Details
+											{
+												if(rec.Number != row.Number && rec.Session == row.Session && rec.From_Time <= row.To_Time && rec.To_Time >= row.To_Time)
+												{
+													alert "Not Valid Reson For You Enter the Same Date And Same Time In Same Row";
+													row.From_Time="";
+													row.To_Time="";
+												}
+											}
+										}
+										val2 = Booking_Existing_SubFrom[Session == row.Session && From_Time <= row.From_Time && To_Time >= row.From_Time && From_Time <= row.To_Time && To_Time >= row.To_Time].Employee_Name.getAll();
+										val = Session_Master[Session_Status == "Active" && From_Time <= row.From_Time && To_Time >= row.From_Time && From_Time <= row.To_Time && To_Time >= row.To_Time].Employee_Master_ID;
+										val.removeAll(val2);
+										row.Employee_Name:ui.add(val);
+										//
+						)
+					}
+				}
+
+			}
+			validation_Session_Date as "validation Session Date"
+			{
+				type =  form
+				form = Booking_From
+				record event = on add or edit
+
+				on user input of Booking_Details.Session
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(row.Session != null)
+										{
+											if(row.Session < zoho.currentdate)
+											{
+												alert "Not Valid Reson For You Enter The Past Date";
+												row.Session=null;
+											}
+										}
+						)
+					}
+				}
+
+			}
+			hide_and_disable3 as "hide and disable"
+			{
+				type =  form
+				form = Booking_From
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											disable Booking_Details.Session_Time_Type;
+										disable Booking_Details.Number;
+										hide Booking_Details.Number;
+						)
+					}
+				}
+
+			}
+			validation_Phone_Number1 as "validation Phone Number"
+			{
+				type =  form
+				form = Employee_Master
+				record event = on add or edit
+
+				on user input of Employee_Phone
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Employee_Phone.length() >= 4)
+										{
+											new = input.Employee_Phone.toList("").get(3);
+										}
+										if(!input.Employee_Phone.isEmpty() && input.Employee_Phone.length() != 13 || new.startswith("1") || new.startswith("2") || new.startswith("3") || new.startswith("4") || new.startswith("5"))
+										{
+											alert "Not Valid Reson For You Type Less Than Or Greater Than 13th Numbers Or Your Enter The Start Number Is Worng =  " + input.Employee_Phone.length() + "    Start Number In Phone" + "    =   " + new;
+										}
+						)
+					}
+				}
+
+			}
+			Validation_From_Time as "Validation From Time"
+			{
+				type =  form
+				form = Booking_From
+				record event = on add or edit
+
+				on user input of Booking_Details.From_Time
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(row.From_Time != null)
+										{
+											count = 0;
+											for each  rec in input.Booking_Details
+											{
+												if(rec.Number != row.Number && rec.Session == row.Session && rec.From_Time <= row.From_Time && rec.To_Time >= row.From_Time)
+												{
+													count = count + 1;
+												}
+											}
+											if(count >= 1)
+											{
+												alert "Not Valid Reson For You Enter the Same Date And Same Time In Same Row";
+												row.From_Time="";
+											}
+										}
+										if(row.From_Time < zoho.currenttime)
+										{
+											alert "Not Valid";
+											row.From_Time="";
+										}
+						)
+					}
+				}
+
+			}
+			Add_Row as "Add Row"
+			{
+				type =  form
+				form = Booking_From
+				record event = on add or edit
+
+				on add row of Booking_Details
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											count = 0;
+										for each  rec in input.Booking_Details
+										{
+											row.Number=count;
+											count = count + 1;
+										}
+						)
+					}
+				}
+
+			}
+			test as "test"
+			{
+				type =  form
+				form = Class_Student_Details
+				record event = on add or edit
+					status = inactive
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											var = Map();
+										var.put("topic",input.topic);
+										var.put("agenda","Class For Student");
+										var.put("presenter",60045083914);
+										var.put("startTime",input.Class_Time.tostring("MMM dd, yyyy hh:mm a"));
+										var.put("duration","3600");
+										var.put("timezone","Asia/Calcutta");
+										var.put("participants",{{"email":input.Email}});
+										new = Map();
+										new.put("session",var);
+										rec = invokeurl
+										[
+											url :"https://meeting.zoho.in/api/v2/60045083577/sessions.json"
+											type :POST
+											parameters:new.toString()
+											connection:"zoho_meeting_connection"
+										];
+										info rec;
+						)
+					}
+				}
+
+			}
+			Create_Channel as "Create Channel"
+			{
+				type =  form
+				form = Create_Channel
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											var = Map();
+										var.put("name",input.Channel_Name);
+										var.put("level","external");
+										rec = invokeurl
+										[
+											url :" https://cliq.zoho.in/api/v2/channels"
+											type :POST
+											parameters:var.toString()
+											connection:"zoho_cliq_connection"
+										];
+										input.Channel_ID = rec.get("channel_id");
+						)
+					}
+				}
+
+			}
+			Add_Member as "Add Member"
+			{
+				type =  form
+				form = Add_Member
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											new = Create_Channel[ID == input.Create_Channel];
+										lis = List();
+										lis.add(input.Email);
+										val = Map();
+										val.put("email_ids",lis);
+										rec = invokeurl
+										[
+											url :"https://cliq.zoho.in/api/v2/channels/" + new.Channel_ID + "/members"
+											type :POST
+											parameters:val.toString()
+											connection:"zoho_cliq_connection"
+										];
+										info rec;
+						)
+					}
+				}
+
+			}
+		}
+
+		schedule
+		{
+			Start_Class_ as "Start Class "
+			{
+				type =  schedule
+				form = Class_Student_Details
+				start = before 5 minutes from Class_Time
+				end   = Class_Time
+				frequency = daily
+				time zone = "Asia/Kolkata"
+				on start
+				{
+					actions 
+					{
+					on load
+					(
+						var = Map();
+										var.put("topic",input.topic);
+										var.put("agenda","Class For Student");
+										var.put("presenter",60045083914);
+										var.put("startTime",input.Class_Time.toString("MMM dd, yyyy hh:mm a"));
+										var.put("duration","3600");
+										var.put("timezone","Asia/Calcutta");
+										var.put("participants",{{"email":input.Email}});
+										new = Map();
+										new.put("session",var);
+										rec = invokeurl
+										[
+											url :"https://meeting.zoho.in/api/v2/60045083577/sessions.json"
+											type :POST
+											parameters:new.toString()
+											connection:"zoho_meeting_connection"
+										];
+					)
+					}
+				}
+			}
+			Change_Date as "Change Date"
+			{
+				type =  schedule
+				start = "2025-11-13 23:59:59"
+				frequency = daily
+				time zone = "Asia/Kolkata"
+				on start
+				{
+					actions 
+					{
+					on load
+					(
+						new = Class_Student_Details[ID != null];
+										for each  rec in new
+										{
+											var = rec.Class_Time.addDay(1);
+											rec.Class_Time=var;
+											var2 = rec.Class_End_Time.addDay(1);
+											rec.Class_End_Time=var2;
+										}
+					)
+					}
+				}
+			}
+		}
+
+
+
+
+		functions
+		{
+			Change_In_Active as "Change In Active"
+			{
+				type =  functions
+				form = Session_Master
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						openUrl("#Form:Change_Session_Status?Session_Time_Type=" + input.Session_Time_Type + "&Session_Status=" + "Active" + "&From_Time.tostring(hh:mm)=" + input.From_Time.toString("hh:mm") + "&To_Time..tostring(hh:mm)=" + input.To_Time.tostring("hh:mm"),"popup window","height=<height>,width=<width>");
+					)
+					}
+				}
+			}
+		}
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	connections
+	{
+		zoho_meeting_connection
+		(
+			displayname = "Zoho Meeting Connection"
+			connector = zoho_meeting
+			permissions = {"all_manage_org_operations","create_meeting","create_webinar","delete_meeting","delete_recording","delete_webinar","download_recording","get_all_departments","get_all_meetings","get_all_recordings","get_all_users","get_all_webinar","get_current_language","get_current_license","get_department","get_meeting_details","get_my_user_details","get_recording_details","get_user","get_webinar","update_meeting","update_webinar"}
+		)
+		zoho_cliq_connection
+		(
+			displayname = "Zoho Cliq Connection "
+			connector = zohochat
+			permissions = {"add_bot_to_channel","add_channel_members","add_reaction","add_team_members","add_user","all_bot_operations","all_channel_operations","all_database_operations","all_extension_operations","all_message_operations","all_reminder_operations","all_team_operations","approve_channel","archive_channel","assign_users_to_reminder","check_in","check_out","create_channel","create_record","create_reminder","create_team","delete_channel","delete_channel_member","delete_completed_reminders","delete_message","delete_multiple_channel_members","delete_multiple_reminders","delete_reaction","delete_record","delete_reminder","delete_team","delete_team_member","edit_message","export_channels","get_all_channels","get_all_channel_members","get_all_chats","get_all_chat_members","get_all_departments","get_all_messages","get_all_reactions","get_all_records","get_all_reminders","get_all_statuses","get_all_teams","get_all_team_members","get_all_users","get_all_user_layouts","get_all_user_teams","get_channel","get_message","get_pinned_message","get_record","get_reminder","get_remote_status","get_team","get_user","join_channel","leave_channel","leave_chat","mark_reminder_as_complete","mark_reminder_as_incomplete","mute_chat","pin_message","post_message_to_bot","post_message_to_channel","post_message_to_chat","post_message_to_user","reject_channel","remind_assignee","remind_multiple_assignees","schedule_message","share_file_in_channel","share_file_in_chat","share_file_with_bot","share_file_with_user","unarchive_channel","unassign_user_from_reminder","unmute_chat","unpin_message","update_channel","update_channel_member_role","update_channel_permissions","update_record","update_reminder","update_team","update_user","webhook_read_operation","webhook_update_operation"}
+		)
+	}
+	web
+	{
+		forms
+		{
+			form Add_Member
+			{
+				label placement = left
+			}
+			form Booking_Existing_SubFrom
+			{
+				label placement = left
+			}
+			form Booking_From
+			{
+				label placement = left
+			}
+			form Change_Session_Status
+			{
+				label placement = left
+			}
+			form Class_Student_Details
+			{
+				label placement = left
+			}
+			form Create_Channel
+			{
+				label placement = left
+			}
+			form Employee_Master
+			{
+				label placement = left
+			}
+			form Employee_Role
+			{
+				label placement = left
+			}
+			form Session_Master
+			{
+				label placement = left
+			}
+			form Test_Questions
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report All_Session_Masters
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Session_Time_Type as "Session Time Type"
+								Session_Status as "Session Status"
+								From_Time as "From Time"
+								To_Time as "To Time"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Session_Time_Type as "Session Time Type"
+								Session_Status as "Session Status"
+								From_Time as "From Time"
+								To_Time as "To Time"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Employee_Masters
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Employee_ID as "Employee ID"
+								Employee_Name as "Employee Name"
+								Employee_Email as "Employee Email"
+								Employee_Phone as "Employee Phone"
+								Session
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Employee_ID as "Employee ID"
+								Employee_Name as "Employee Name"
+								Employee_Email as "Employee Email"
+								Employee_Phone as "Employee Phone"
+								Date_Of_Jouning as "Date Of Jouning"
+								Auto_Number as "Auto Number"
+								Date_Of_Brith as "Date Of Brith"
+								Employee_Role as "Employee Role"
+								Employee_Status as "Employee Status"
+								Session
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Employee_Roles
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Role
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Role
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Booking_Existing_SubFrom_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Session as "Session Date"
+								From_Time as "From Time"
+								To_Time as "To Time"
+								Employee_Name as "Employee Name "
+								Session_Time_Type as "Session Time Type"
+								Number
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Session as "Session Date"
+								From_Time as "From Time"
+								To_Time as "To Time"
+								Employee_Name as "Employee Name "
+								Session_Time_Type as "Session Time Type"
+								Number
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Booking_From_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Your_Name as "Your Name"
+								Your_Email as "Your Email"
+								Phone_Number as "Phone"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Your_Name as "Your Name"
+								Your_Email as "Your Email"
+								Phone_Number as "Phone"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Class_Student_Details
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Name
+								Phone_Number as "Phone"
+								Email
+								Class_Time as "Class Time"
+								Class_End_Time as "Class End Time"
+								ID
+								topic
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Name
+								Phone_Number as "Phone"
+								Email
+								Class_Time as "Class Time"
+								Class_End_Time as "Class End Time"
+								topic
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Channels
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Channel_Name as "Channel Name"
+								Channel_Allow_Count as "Channel Allow Count"
+								Channel_ID as "Channel ID"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Channel_Name as "Channel Name"
+								Channel_Allow_Count as "Channel Allow Count"
+								Channel_ID as "Channel ID"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Members
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Create_Channel as "Create Channel"
+								Email
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Create_Channel as "Create Channel"
+								Email
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Test_Questions
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Bill_File as "Bill File"
+								Date_field as "Date"
+								Doctor
+								Doctor_Signature as "Doctor Signature"
+								Dosage
+								Gender
+								Hospital
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Bill_File as "Bill File"
+								Date_field as "Date"
+								Doctor
+								Doctor_Signature as "Doctor Signature"
+								Dosage
+								Gender
+								Hospital
+								Medicine_Name as "Medicine Name"
+								Patient
+								S_No as "S.No"
+								Symtoms
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			unused
+			{
+				form  Change_Session_Status
+				{
+					icon = "tech-desktop"
+				}
+			}
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Session_Masters
+				{
+					displayname = "Session Masters"
+					icon = "weather-sun"
+					form  Session_Master
+					{
+						icon = "sport-crown"
+					}
+					report All_Session_Masters
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section Change_Session_Status
+				{
+					displayname = "Change Session Status"
+					icon = "business-coins"
+				}
+				section Employee_Masters
+				{
+					displayname = "Employee Masters"
+					icon = "business-business-contact-89"
+					form  Employee_Master
+					{
+						icon = "sport-crown"
+					}
+					report All_Employee_Masters
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Employee_Roles
+				{
+					displayname = "Employee Roles"
+					icon = "business-business-contact-89"
+					form  Employee_Role
+					{
+						icon = "business-business-contact-89"
+					}
+					report All_Employee_Roles
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Booking_Existing_SubFrom
+				{
+					displayname = "Booking Existing SubFrom"
+					icon = "tech-2-l-check"
+					form  Booking_Existing_SubFrom
+					{
+						icon = "tech-2-l-check"
+					}
+					report Booking_Existing_SubFrom_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Booking_From
+				{
+					displayname = "Booking From"
+					icon = "shopping-list"
+					form  Booking_From
+					{
+						icon = "shopping-list"
+					}
+					report Booking_From_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Class_Student_Details
+				{
+					displayname = "Class Student Details"
+					icon = "education-pencil-47"
+					form  Class_Student_Details
+					{
+						icon = "education-pencil-47"
+					}
+					report All_Class_Student_Details
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Channels
+				{
+					displayname = "Channels"
+					icon = "tech-tv-old"
+					form  Create_Channel
+					{
+						icon = "tech-tv-old"
+					}
+					report All_Channels
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Members
+				{
+					displayname = "Members"
+					icon = "users-multiple-11"
+					form  Add_Member
+					{
+						icon = "users-2-a-add"
+					}
+					report All_Members
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Test_Questions
+				{
+					displayname = "Test Questions"
+					icon = "files-question"
+					form  Test_Questions
+					{
+						icon = "files-question"
+					}
+					report All_Test_Questions
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "lato"
+			color options
+			{
+				color = "1"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Add_Member
+			{
+				label placement = auto
+			}
+			form Booking_Existing_SubFrom
+			{
+				label placement = auto
+			}
+			form Booking_From
+			{
+				label placement = auto
+			}
+			form Change_Session_Status
+			{
+				label placement = auto
+			}
+			form Class_Student_Details
+			{
+				label placement = auto
+			}
+			form Create_Channel
+			{
+				label placement = auto
+			}
+			form Employee_Master
+			{
+				label placement = auto
+			}
+			form Employee_Role
+			{
+				label placement = auto
+			}
+			form Session_Master
+			{
+				label placement = auto
+			}
+			form Test_Questions
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = rose
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Add_Member
+			{
+				label placement = auto
+			}
+			form Booking_Existing_SubFrom
+			{
+				label placement = auto
+			}
+			form Booking_From
+			{
+				label placement = auto
+			}
+			form Change_Session_Status
+			{
+				label placement = auto
+			}
+			form Class_Student_Details
+			{
+				label placement = auto
+			}
+			form Create_Channel
+			{
+				label placement = auto
+			}
+			form Employee_Master
+			{
+				label placement = auto
+			}
+			form Employee_Role
+			{
+				label placement = auto
+			}
+			form Session_Master
+			{
+				label placement = auto
+			}
+			form Test_Questions
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = rose
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

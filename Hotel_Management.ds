@@ -1,0 +1,2237 @@
+/*
+ * Author       : zappyworkssoftwaresolutionst47
+ * Generated on : 22-Nov-2025 09:35:11
+ * Version      : 1.0
+ */
+ application "Hotel Management"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form Amenities
+		{
+			success message = "Amenity Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Amenities
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Price
+			(
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Check_In_Check_Out
+		{
+			displayname = "Check In & Check Out"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			check_in_id
+			(
+    			type = text
+				displayname = "check in id"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number_5
+			(
+    			type = autonumber
+				displayname = "Auto Number 5"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Room_Booking
+			(
+				type = picklist	
+				displayname = "Room Booking"
+				values  = Room_Booking.ID
+    			displayformat = [booking_id + " - " + Customer_Name.first_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			SubForm
+			(
+				type = grid
+				room_id
+				(
+					type = picklist	
+					displayname = "room id"
+					values  = Room_Details_master.ID
+    				displayformat = [room_id]
+					sortorder = ascending
+					width = medium
+				)
+				check_in_date
+				(
+    				type = date
+					displayname = "check in date"
+					alloweddays = 0,1,2,3,4,5,6
+					width = medium
+				)
+				check_our_date
+				(
+    				type = date
+					displayname = "check our date"
+					alloweddays = 0,1,2,3,4,5,6
+					width = medium
+				)
+				Status
+				(
+					type = radiobuttons
+					maxchar = 100
+					values = {"check in","check out"}
+					width = medium
+				)
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form customer_details_master
+		{
+			displayname = "customer details master"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Customer_ID
+			(
+    			type = text
+				displayname = " Customer ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Customer_Name
+			(
+    			type = name
+				displayname = "Customer Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			customer_email
+			(
+    			type = email
+				displayname = "customer email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			cusomer_phone
+			(
+    			type = phonenumber
+				displayname = "cusomer phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Customer_address
+			(
+    			type = address
+				displayname = "Customer address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Auto_Number_4
+			(
+    			type = autonumber
+				displayname = "Auto Number 4"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			count_1
+			(
+				type = number
+				displayname = "count 1"
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Room_Booking
+		{
+			displayname = "Room Booking"
+			success message = "Room Booking Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			booking_id
+			(
+    			type = text
+				displayname = "booking id"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number_3
+			(
+    			type = autonumber
+				displayname = "Auto Number 3"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			customer_ID
+			(
+				type = picklist	
+				displayname = "customer ID"
+				values  = customer_details_master.ID
+    			displayformat = [Customer_ID]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Customer_Name
+			(
+    			type = name
+				displayname = "Customer Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			customer_email
+			(
+    			type = email
+				displayname = "customer email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			cusomer_phone
+			(
+    			type = phonenumber
+				displayname = "cusomer phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Customer_address
+			(
+    			type = address
+				displayname = "Customer address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			room_booking_all
+			(
+				type = grid
+				displayname = "room booking all"
+				room_id
+				(
+					type = picklist	
+					displayname = "room id"
+					values  = Room_Details_master[room_Status1 == "Pending" || room_Status1 == "Cancelled"].ID
+    				displayformat = [room_id + " - " + Room_Type_Name]
+					sortorder = ascending
+					width = medium
+				)
+				room_price
+				(
+					displayname = "room price"
+					type = INR
+					format = commadotindian
+					width = medium
+				)
+				check_in_date
+				(
+    				type = date
+					displayname = "check in date"
+					alloweddays = 0,1,2,3,4,5,6
+					width = medium
+				)
+				check_out_date
+				(
+    				type = date
+					displayname = "check out date"
+					alloweddays = 0,1,2,3,4,5,6
+					width = medium
+				)
+				total_days
+				(
+					type = number
+					displayname = "total days"
+					width = medium
+				)
+				booking_status
+				(
+					type = picklist
+					displayname = "booking status"
+					maxchar = 100
+					values = {"Confirmed","Pending","Cancelled"}
+					initial value = "Confirmed"
+					width = medium
+				)
+				total_amount
+				(
+					displayname = "total amount"
+					type = INR
+					format = commadotindian
+					width = medium
+				)
+				advance_amount
+				(
+					displayname = "advance amount"
+					type = INR
+					format = commadotindian
+					width = medium
+				)
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Section1
+			(
+				type = section
+				displayname = "Section"
+				visibility = true
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			GRESS_GRAND_TOTAL
+			(
+				type = INR
+				format = commadotindian
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			DISCOUNT
+			(
+				type = INR
+				format = commadotindian
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			NET_GRAND_TOTAL
+			(
+				displayname = "NET GRAND TOTAL"
+				type = INR
+				format = commadotindian
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Section2
+			(
+				type = section
+				displayname = "Section"
+				visibility = true
+	 			row = 4
+	 			column = 0   
+				width = medium
+			)
+			true_grand_total
+			(
+				displayname = "true grand total "
+				type = INR
+				format = commadotindian
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			balance
+			(
+				type = INR
+				format = commadotindian
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Room_Details_master
+		{
+			displayname = "Room Details master"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			room_id
+			(
+    			type = text
+				displayname = "room id"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			room_number
+			(
+    			type = autonumber
+				displayname = "room number"
+				start index = 100
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Room_Type_details
+			(
+				type = picklist	
+				displayname = "Room Type details"
+				values  = Room_Type_master.ID
+    			displayformat = [Room_Type_ID + " - " + Room_Type_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Room_Type_Name
+			(
+    			type = text
+				displayname = "Room Type Name "
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Capacity_in_room_member
+			(
+				type = number
+				displayname = "Capacity in room member"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Amenities_types
+			(
+    			type = text
+				displayname = "Amenities types"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			room_Status
+			(
+				type = radiobuttons
+				displayname = "room Status"
+				maxchar = 100
+				values = {"Maintenance","Available"}
+				initial value = "Available"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			total_Price_per_day
+			(
+				displayname = "total Price per day"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			room_Status1
+			(
+				type = radiobuttons
+				displayname = "room Status"
+				maxchar = 100
+				values = {"Confirmed","Pending","Cancelled"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Room_Type_master
+		{
+			displayname = "Room Type master"
+			success message = "Room Type Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Room_Type_ID
+			(
+    			type = text
+				displayname = "Room Type ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Room_Type_Name
+			(
+				type = picklist
+				displayname = "Room Type Name "
+				maxchar = 100
+				values = {"Standard","Deluxe","Suite"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Capacity_in_room_member
+			(
+				type = number
+				displayname = "Capacity in room member"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Price_per_day
+			(
+				displayname = " Price per day"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Amenities_types
+			(
+    			type = text
+				displayname = "Amenities types"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			total_Price_per_day
+			(
+				displayname = "total Price per day"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number_1
+			(
+    			type = autonumber
+				displayname = "Auto Number 1"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list All_Room_Type_Masters
+		{
+			displayName = "All Room Type Masters"
+			show all rows from Room_Type_master    
+			(
+				Room_Type_ID as "Room Type ID"
+				Auto_Number_1 as "Auto Number 1"
+				Capacity_in_room_member as "Capacity in room member"
+				Price_per_day as " Price per day"
+				Room_Type_Name as "Room Type Name "
+				total_Price_per_day as "total Price per day"
+				Amenities_types as "Amenities types"
+			)
+		}
+		default list All_Amenities
+		{
+			displayName = "All Amenities"
+			show all rows from Amenities    
+			(
+				Amenities
+				Price
+			)
+		}
+		default list Room_Details_master_Report
+		{
+			displayName = "Room Details master Report"
+			show all rows from Room_Details_master  [room_Status == "Available"]  
+			(
+				room_id as "room id"
+				room_number as "room number"
+				Room_Type_details as "Room Type details"
+				Capacity_in_room_member as "Capacity in room member"
+				Room_Type_Name as "Room Type Name "
+				Amenities_types as "Amenities types"
+				total_Price_per_day as "total Price per day"
+				room_Status as "room Status"
+				room_Status1 as "room Status"
+			)
+		}
+		default list All_Room_Bookings
+		{
+			displayName = "All Room Bookings"
+			show all rows from Room_Booking    
+			(
+				booking_id as "booking id"
+				Auto_Number_3 as "Auto Number 3"
+				Customer_Name  as "Customer Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				room_booking_all.check_in_date as "room booking all"
+				customer_ID as "customer ID"
+				customer_email as "customer email"
+				cusomer_phone as "cusomer phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Customer_address  as "Customer address"
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				GRESS_GRAND_TOTAL
+				DISCOUNT
+				NET_GRAND_TOTAL as "NET GRAND TOTAL"
+				true_grand_total as "true grand total "
+				balance
+			)
+		}
+		default list customer_details_master_Report
+		{
+			displayName = "customer details master Report"
+			show all rows from customer_details_master    
+			(
+				Customer_Name  as "Customer Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				customer_email as "customer email"
+				cusomer_phone as "cusomer phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Customer_address  as "Customer address"
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Customer_ID as " Customer ID"
+				Auto_Number_4 as "Auto Number 4"
+				count_1 as "count 1"
+			)
+		}
+		default list Check_In_Check_Out_Report
+		{
+			displayName = "Check In & Check Out Report"
+			show all rows from Check_In_Check_Out    
+			(
+				check_in_id as "check in id"
+				Auto_Number_5 as "Auto Number 5"
+				SubForm.Status as "SubForm"
+				Room_Booking as "Room Booking"
+			)
+		}
+	}
+
+
+		workflow
+		{
+		form
+		{
+			generate_the_room_type_id as "generate the room type id"
+			{
+				type =  form
+				form = Room_Type_master
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Room_Type_ID = "RTI" + "_" + input.Auto_Number_1;
+						)
+					}
+				}
+
+			}
+			hide_and_disable as "hide and disable"
+			{
+				type =  form
+				form = Room_Type_master
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						disable Room_Type_ID;
+					}
+				}
+
+			}
+			calculate_the_total_price as "calculate the total price"
+			{
+				type =  form
+				form = Room_Type_master
+				record event = on add or edit
+
+				on user input of Amenities_types
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(Amenities_types == "WIFI")
+										{
+											input.total_Price_per_day = input.Price_per_day + 500;
+										}
+										else if(Amenities_types == "TV")
+										{
+											input.total_Price_per_day = input.Price_per_day + 200;
+										}
+										else if(Amenities_types == "AC")
+										{
+											input.total_Price_per_day = input.Price_per_day + 400;
+										}
+						)
+					}
+				}
+
+			}
+			aleat_for_negative as "aleat for negative"
+			{
+				type =  form
+				form = Room_Type_master
+				record event = on add or edit
+
+				on user input of Price_per_day
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Price_per_day <= 0)
+										{
+											alert "not vaild ";
+										}
+						)
+					}
+				}
+
+			}
+			generate_the_room_id as "generate the room id"
+			{
+				type =  form
+				form = Room_Details_master
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.room_id = "RN" + "_" + input.room_number;
+						)
+					}
+				}
+
+			}
+			fetch_details as "fetch details"
+			{
+				type =  form
+				form = Room_Details_master
+				record event = on add or edit
+
+				on user input of Room_Type_details
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = Room_Type_master[ID == input.Room_Type_details];
+										input.Amenities_types = ver.Amenities_types;
+										input.Capacity_in_room_member = ver.Capacity_in_room_member;
+										input.total_Price_per_day = ver.total_Price_per_day;
+										input.Room_Type_Name = ver.Room_Type_Name;
+						)
+					}
+				}
+
+			}
+			hide_and_disable1 as "hide and disable"
+			{
+				type =  form
+				form = Room_Details_master
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						disable Amenities_types,Capacity_in_room_member,room_Status,Room_Type_Name,total_Price_per_day;
+					}
+					actions 
+					{
+						hide room_id;
+					}
+				}
+
+			}
+			generate_the_room_booking as "generate the room booking id"
+			{
+				type =  form
+				form = Room_Booking
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.booking_id = "BI" + "_" + "_" + input.Auto_Number_3;
+										// new = customer_details_master[ID == input.customer_ID];
+										// new.count_1=new.count_1 + 1;
+										// // 
+										// // 
+										// // 
+										ver = Room_Details_master[ID == input.room_booking_all];
+										ver.room_Status1=input.room_booking_all.booking_status;
+						)
+					}
+				}
+
+			}
+			CALCUALTE_THE_TOTAL_DAYS as "CALCUALTE THE TOTAL DAYS"
+			{
+				type =  form
+				form = Room_Booking
+				record event = on add or edit
+
+				on user input of room_booking_all.check_out_date
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											for each  new in input.room_booking_all
+										{
+											new.total_days=new.check_in_date.daysbetween(new.check_out_date);
+											new.total_amount=new.total_days * new.room_price;
+											new.advance_amount=new.total_amount / 2;
+										}
+										input.GRESS_GRAND_TOTAL = 0;
+										for each  rec in input.room_booking_all
+										{
+											input.GRESS_GRAND_TOTAL = input.GRESS_GRAND_TOTAL + rec.advance_amount;
+										}
+										giri = customer_details_master[ID == input.customer_ID];
+										if(giri.count_1 > 3)
+										{
+											input.DISCOUNT = input.GRESS_GRAND_TOTAL * 10 / 100;
+											input.NET_GRAND_TOTAL = input.GRESS_GRAND_TOTAL - input.DISCOUNT;
+										}
+										else
+										{
+											input.NET_GRAND_TOTAL = input.GRESS_GRAND_TOTAL;
+										}
+										// 
+										// 
+										// 
+										// 
+										// 
+										input.true_grand_total = 0;
+										for each  rec in input.room_booking_all
+										{
+											input.true_grand_total = input.true_grand_total + rec.total_amount;
+										}
+										input.balance = input.true_grand_total - input.NET_GRAND_TOTAL;
+						)
+					}
+				}
+
+			}
+			generate_the_customer_id as "generate the customer id"
+			{
+				type =  form
+				form = customer_details_master
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Customer_ID = "CI" + "_" + zoho.currentdate.getYear() + "_" + input.Auto_Number_4;
+						)
+					}
+				}
+
+			}
+			fecth_details as "fecth details"
+			{
+				type =  form
+				form = Room_Booking
+				record event = on add or edit
+
+				on user input of customer_ID
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = customer_details_master[ID == input.customer_ID];
+										input.Customer_Name = ver.Customer_Name;
+										input.Customer_address = ver.Customer_address;
+										input.customer_email = ver.customer_email;
+										input.cusomer_phone = ver.cusomer_phone;
+						)
+					}
+				}
+
+			}
+			inset_price as "inset price"
+			{
+				type =  form
+				form = Room_Booking
+				record event = on add or edit
+
+				on user input of room_booking_all.room_id
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = Room_Details_master[ID == row.room_id];
+										for each  rec in ver
+										{
+											row.room_price=ver.total_Price_per_day;
+										}
+										info ver;
+						)
+					}
+				}
+
+			}
+			grand_total as "grand total"
+			{
+				type =  form
+				form = Room_Booking
+				record event = on add or edit
+
+				on delete row of room_booking_all
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.GRESS_GRAND_TOTAL = input.GRESS_GRAND_TOTAL - row.advance_amount;
+										input.true_grand_total = input.true_grand_total - row.total_amount;
+						)
+					}
+				}
+
+			}
+			hide_and_disable2 as "hide and disable"
+			{
+				type =  form
+				form = customer_details_master
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						hide Customer_ID;
+					}
+				}
+
+			}
+			hide_and_disable3 as "hide and disable"
+			{
+				type =  form
+				form = Room_Booking
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						hide booking_id;
+					}
+					actions 
+					{
+						disable balance,cusomer_phone,Customer_address,customer_email,Customer_Name,DISCOUNT,GRESS_GRAND_TOTAL,NET_GRAND_TOTAL,true_grand_total;
+					}
+				}
+
+			}
+			hide_and_disable4 as "hide and disable"
+			{
+				type =  form
+				form = Room_Booking
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											disable room_booking_all.total_amount;
+										disable room_booking_all.total_days;
+										disable room_booking_all.advance_amount;
+						)
+					}
+				}
+
+			}
+			generate_the_check_in_id as "generate the check in id"
+			{
+				type =  form
+				form = Check_In_Check_Out
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.check_in_id = "CI" + "_" + zoho.currentdate.getYear() + "_" + input.Auto_Number_5;
+						)
+					}
+				}
+
+			}
+			fetch_details1 as "fetch details"
+			{
+				type =  form
+				form = Check_In_Check_Out
+				record event = on add or edit
+
+				on user input of Room_Booking
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = Room_Booking[ID == input.Room_Booking];
+										for each  rec in ver.room_booking_all
+										{
+											new = Check_In_Check_Out.SubForm();
+											new.check_in_date=rec.check_in_date;
+											new.check_our_date=rec.check_out_date;
+											new.room_id=rec.room_id;
+											new.Status=rec.booking_status;
+											input.SubForm.insert(new);
+										}
+						)
+					}
+				}
+
+			}
+			hide_and_disable5 as "hide and disable"
+			{
+				type =  form
+				form = Check_In_Check_Out
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											disable SubForm.check_in_date;
+										disable SubForm.check_our_date;
+										disable SubForm.room_id;
+										disable SubForm.Status;
+										hide check_in_id;
+						)
+					}
+				}
+
+			}
+		}
+
+
+
+
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form Amenities
+			{
+				label placement = left
+			}
+			form Check_In_Check_Out
+			{
+				label placement = left
+			}
+			form customer_details_master
+			{
+				label placement = left
+			}
+			form Room_Booking
+			{
+				label placement = left
+			}
+			form Room_Details_master
+			{
+				label placement = left
+			}
+			form Room_Type_master
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report All_Room_Type_Masters
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Room_Type_ID as "Room Type ID"
+								Auto_Number_1 as "Auto Number 1"
+								Capacity_in_room_member as "Capacity in room member"
+								Price_per_day as " Price per day"
+								Room_Type_Name as "Room Type Name "
+								total_Price_per_day as "total Price per day"
+								Amenities_types as "Amenities types"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Room_Type_ID as "Room Type ID"
+								Auto_Number_1 as "Auto Number 1"
+								Capacity_in_room_member as "Capacity in room member"
+								Price_per_day as " Price per day"
+								Room_Type_Name as "Room Type Name "
+								total_Price_per_day as "total Price per day"
+								Amenities_types as "Amenities types"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Amenities
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Amenities
+								Price
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Amenities
+								Price
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Room_Details_master_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								room_id as "room id"
+								room_number as "room number"
+								Room_Type_details as "Room Type details"
+								Capacity_in_room_member as "Capacity in room member"
+								Room_Type_Name as "Room Type Name "
+								total_Price_per_day as "total Price per day"
+								room_Status1 as "room Status"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								room_id as "room id"
+								room_number as "room number"
+								Room_Type_details as "Room Type details"
+								Capacity_in_room_member as "Capacity in room member"
+								Room_Type_Name as "Room Type Name "
+								Amenities_types as "Amenities types"
+								total_Price_per_day as "total Price per day"
+								room_Status as "room Status"
+								room_Status1 as "room Status"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Room_Bookings
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								booking_id as "booking id"
+								Auto_Number_3 as "Auto Number 3"
+								Customer_Name as "Customer Name"
+								room_booking_all.check_in_date as "room booking all"
+								customer_ID as "customer ID"
+								customer_email as "customer email"
+								cusomer_phone as "cusomer phone"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								booking_id as "booking id"
+								Auto_Number_3 as "Auto Number 3"
+								Customer_Name as "Customer Name"
+								room_booking_all.check_in_date as "room booking all"
+								customer_ID as "customer ID"
+								customer_email as "customer email"
+								cusomer_phone as "cusomer phone"
+								Customer_address as "Customer address"
+								GRESS_GRAND_TOTAL
+								DISCOUNT
+								NET_GRAND_TOTAL as "NET GRAND TOTAL"
+								true_grand_total as "true grand total "
+								balance
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report customer_details_master_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Customer_Name as "Customer Name"
+								customer_email as "customer email"
+								cusomer_phone as "cusomer phone"
+								Customer_address as "Customer address"
+								Customer_ID as " Customer ID"
+								Auto_Number_4 as "Auto Number 4"
+								count_1 as "count 1"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Customer_Name as "Customer Name"
+								customer_email as "customer email"
+								cusomer_phone as "cusomer phone"
+								Customer_address as "Customer address"
+								Customer_ID as " Customer ID"
+								Auto_Number_4 as "Auto Number 4"
+								count_1 as "count 1"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Check_In_Check_Out_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								check_in_id as "check in id"
+								Auto_Number_5 as "Auto Number 5"
+								SubForm.Status as "SubForm"
+								Room_Booking as "Room Booking"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								check_in_id as "check in id"
+								Auto_Number_5 as "Auto Number 5"
+								SubForm.Status as "SubForm"
+								Room_Booking as "Room Booking"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Room_Type_Masters
+				{
+					displayname = "Room Type Masters"
+					icon = "shopping-mobile-touch"
+					form  Room_Type_master
+					{
+						icon = "sport-crown"
+					}
+					report All_Room_Type_Masters
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section Amenities
+				{
+					displayname = "Amenities"
+					icon = "travel-hotel-symbol"
+					form  Amenities
+					{
+						icon = "travel-hotel-symbol"
+					}
+					report All_Amenities
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Room_Details_master
+				{
+					displayname = "Room Details master"
+					icon = "furniture-table"
+					form  Room_Details_master
+					{
+						icon = "furniture-table"
+					}
+					report Room_Details_master_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Room_Bookings
+				{
+					displayname = "Room Bookings"
+					icon = "furniture-table"
+					form  Room_Booking
+					{
+						icon = "furniture-table"
+					}
+					report All_Room_Bookings
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section customer_details_master
+				{
+					displayname = "customer details master"
+					icon = "users-2-contacts-44"
+					form  customer_details_master
+					{
+						icon = "users-2-contacts-44"
+					}
+					report customer_details_master_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Check_In_Check_Out
+				{
+					displayname = "Check In & Check Out"
+					icon = "shopping-pos"
+					form  Check_In_Check_Out
+					{
+						icon = "tech-desktop"
+					}
+					report Check_In_Check_Out_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "lato"
+			color options
+			{
+				color = "1"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Amenities
+			{
+				label placement = auto
+			}
+			form Check_In_Check_Out
+			{
+				label placement = auto
+			}
+			form customer_details_master
+			{
+				label placement = auto
+			}
+			form Room_Booking
+			{
+				label placement = auto
+			}
+			form Room_Details_master
+			{
+				label placement = auto
+			}
+			form Room_Type_master
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = turquoise
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Amenities
+			{
+				label placement = auto
+			}
+			form Check_In_Check_Out
+			{
+				label placement = auto
+			}
+			form customer_details_master
+			{
+				label placement = auto
+			}
+			form Room_Booking
+			{
+				label placement = auto
+			}
+			form Room_Details_master
+			{
+				label placement = auto
+			}
+			form Room_Type_master
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = turquoise
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

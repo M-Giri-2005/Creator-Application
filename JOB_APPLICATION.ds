@@ -1,0 +1,1691 @@
+/*
+ * Author       : zappyworkssoftwaresolutionst47
+ * Generated on : 22-Nov-2025 09:41:21
+ * Version      : 1.0
+ */
+ application "JOB APPLICATION"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form JOB_APPLICATION_DETAILS
+		{
+			displayname = "JOB APPLICATION DETAILS"
+			success message = "Job Application Detail Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			APPLICATION_NUMBER
+			(
+    			type = autonumber
+				displayname = "APPLICATION NUMBER"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have PERSON_NAME
+			(
+    			type = name
+				displayname = "PERSON NAME"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have PERSON_DOB
+			(
+    			type = date
+				displayname = "PERSON DOB"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have PERSON_AGE
+			(
+				type = number
+				displayname = "PERSON AGE"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have GENDER
+			(
+				type = radiobuttons
+				maxchar = 100
+				values = {"M","F","O"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have PERSON_EMAIL
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have unique PERSON_PHONE
+			(
+    			type = phonenumber
+				displayname = "PERSON PHONE"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have BLOOD_GROUP
+			(
+				type = picklist
+				displayname = "BLOOD GROUP"
+				maxchar = 100
+				values = {"A+","A-","B+","B-","AB+","AB-","O+","O-"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have COMMUNICATION_ADDRESS
+			(
+    			type = address
+				displayname = " COMMUNICATION ADDRESS"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			SAME_ADDRESS
+			(
+				type = checkboxes	
+				displayname = "SAME ADDRESS"
+				values = {"SAME  AS COMMUNICATION ADDRESS"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			PERSON_PERMANENT_ADDRESS
+			(
+    			type = address
+				displayname = "PERSON PERMANENT ADDRESS"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Qualification_DEPARTMENT
+			(
+				type = picklist	
+				displayname = "Qualification DEPARTMENT"
+				values  = Qualification_DEPARTMENT.ID
+    			displayformat = [QualificationDEPARTMENTS]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Qualification_FORM
+			(
+				type = picklist	
+				displayname = "Qualification FORM"
+				values  = Qualification_FORM[Qualification_DEPARTMENT.ID == input.Qualification_DEPARTMENT].ID
+    			displayformat = [Qualification_FIELD]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have JOB_OPENINGS
+			(
+				type = picklist	
+				displayname = "JOB OPENINGS"
+				values  = JOB_OPENING.ID
+    			displayformat = [JOB_TITLE]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have JOB_DESCRIPTION
+			(
+    			type = textarea
+				displayname = "JOB DESCRIPTION "
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have NUMBER_OF_OPENINGS
+			(
+				type = number
+				displayname = "NUMBER OF OPENINGS"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have PERSON_RESUME
+			(
+    			type = upload file
+				displayname = "PERSON RESUME"
+				browse = local_drive
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have FRESHER_OR_EXPERIENCED
+			(
+				type = picklist
+				displayname = "FRESHER OR EXPERIENCED"
+				maxchar = 100
+				values = {"FRESHER","EXPERIENCED"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			EXPERIENCED_DETAILS
+			(
+				type = grid
+				displayname = "EXPERIENCED DETAILS"
+				COMPANY_NAME
+				(
+    				type = text
+					displayname = "COMPANY NAME"
+					width = medium
+				)
+				ROLE
+				(
+    				type = text
+					width = medium
+				)
+				EXPERIENCED_YEAR
+				(
+					type = number
+					displayname = "EXPERIENCED YEAR"
+					width = medium
+				)
+				WORK_DETAILS
+				(
+    				type = textarea
+					displayname = "WORK DETAILS"
+					height = 100px
+					width = medium
+				)
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Section1
+			(
+				type = section
+				displayname = "Section"
+				visibility = true
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			must have Declaration
+			(
+    			type = checkbox
+				displayname = "Declaration "
+				initial value = false
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			INTERVIWE_REPORT
+			(
+				type = picklist
+				displayname = "INTERVIWE REPORT"
+				maxchar = 100
+				values = {"SECECT","REJECT"}
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form JOB_OPENING
+		{
+			displayname = "JOB OPENING"
+			success message = "Job Opening Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			JOB_TITLE
+			(
+    			type = text
+				displayname = " JOB TITLE"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			JOB_DESCRIPTION
+			(
+    			type = textarea
+				displayname = "JOB DESCRIPTION "
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			NUMBER_OF_OPENINGS
+			(
+				type = number
+				displayname = "NUMBER OF OPENINGS"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Qualification_DEPARTMENT
+		{
+			displayname = "Qualification DEPARTMENT"
+			success message = "Qualification Department Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			QualificationDEPARTMENTS
+			(
+    			type = text
+				displayname = " DEPARTMENTS"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Qualification_FORM
+		{
+			displayname = "Qualification FORM"
+			success message = "Qualification Form Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Qualification_DEPARTMENT
+			(
+				type = picklist	
+				displayname = "Qualification DEPARTMENT"
+				values  = Qualification_DEPARTMENT.ID
+    			displayformat = [QualificationDEPARTMENTS]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Qualification_FIELD
+			(
+    			type = text
+				displayname = "Qualification FIELD"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form UPDATE_TO_THE_SELECTION_REPORT_PROESS
+		{
+			displayname = "UPDATE TO THE SELECTION REPORT PROESS"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			APPLICATION_NUMBER
+			(
+				type = picklist	
+				displayname = "APPLICATION NUMBER"
+				values  = JOB_APPLICATION_DETAILS.ID
+    			displayformat = [APPLICATION_NUMBER]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			PERSON_NAME
+			(
+    			type = name
+				displayname = "PERSON NAME"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			PERSON_AGE
+			(
+				type = number
+				displayname = "PERSON AGE"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			GENDER
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			JOB_OPENINGS
+			(
+    			type = text
+				displayname = "JOB OPENINGS"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Radi
+			(
+				type = radiobuttons
+				displayname = "INTERVIWE REPORT"
+				maxchar = 100
+				values = {"SECECT","REJECT"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list All_Job_Application_Details
+		{
+			displayName = "All Job Application Details"
+			show all rows from JOB_APPLICATION_DETAILS    
+			(
+				PERSON_NAME  as "PERSON NAME"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				PERSON_DOB as "PERSON DOB"
+				GENDER
+				PERSON_EMAIL
+				PERSON_PHONE as "PERSON PHONE"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				BLOOD_GROUP as "BLOOD GROUP"
+				PERSON_PERMANENT_ADDRESS  as "PERSON PERMANENT ADDRESS"
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				FRESHER_OR_EXPERIENCED as "FRESHER OR EXPERIENCED"
+				EXPERIENCED_DETAILS.EXPERIENCED_YEAR as "EXPERIENCED DETAILS"
+				APPLICATION_NUMBER as "APPLICATION NUMBER"
+				PERSON_AGE as "PERSON AGE"
+				JOB_OPENINGS as "JOB OPENINGS"
+				JOB_DESCRIPTION as "JOB DESCRIPTION "
+				NUMBER_OF_OPENINGS as "NUMBER OF OPENINGS"
+				COMMUNICATION_ADDRESS  as " COMMUNICATION ADDRESS"
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				PERSON_RESUME as "PERSON RESUME"
+				Declaration as "Declaration "
+				SAME_ADDRESS as "SAME ADDRESS"
+				Qualification_DEPARTMENT as "Qualification DEPARTMENT"
+				Qualification_FORM as "Qualification FORM"
+				INTERVIWE_REPORT as "INTERVIWE REPORT"
+			)
+		}
+		default list All_Job_Openings
+		{
+			displayName = "All Job Openings"
+			show all rows from JOB_OPENING    
+			(
+				JOB_TITLE as " JOB TITLE"
+				JOB_DESCRIPTION as "JOB DESCRIPTION "
+				NUMBER_OF_OPENINGS as "NUMBER OF OPENINGS"
+			)
+		}
+		default list All_Qualification_Forms
+		{
+			displayName = "All Qualification Forms"
+			show all rows from Qualification_FORM    
+			(
+				Qualification_FIELD as "Qualification FIELD"
+				Qualification_DEPARTMENT as "Qualification DEPARTMENT"
+			)
+		}
+		default list All_Qualification_Departments
+		{
+			displayName = "All Qualification Departments"
+			show all rows from Qualification_DEPARTMENT    
+			(
+				QualificationDEPARTMENTS as " DEPARTMENTS"
+			)
+		}
+		default list UPDATE_TO_THE_SELECTION_REPORT_PROESS_Report
+		{
+			displayName = "UPDATE TO THE SELECTION REPORT PROESS Report"
+			show all rows from UPDATE_TO_THE_SELECTION_REPORT_PROESS    
+			(
+				APPLICATION_NUMBER as "APPLICATION NUMBER"
+				PERSON_NAME  as "PERSON NAME"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				PERSON_AGE as "PERSON AGE"
+				GENDER
+				Radi as "INTERVIWE REPORT"
+				JOB_OPENINGS as "JOB OPENINGS"
+				custom action "SELECT"
+				(
+	  			workflow = report_for_interviwe
+				show action in edit record menu = true
+				column header = "SELECT"
+				confirmation before execution
+				(
+					message for individual record = "Execute the SELECT action for this record?"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+				custom action "REJECT"
+				(
+	  			workflow = REPORT_FOR_INTERVIWE1
+				show action in edit record menu = true
+				column header = "REJECT"
+				confirmation before execution
+				(
+					message for individual record = "Execute the REJECT action for this record?"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+			)
+		}
+	}
+
+
+		workflow
+		{
+		form
+		{
+			lookup_to_the_job_title_a as "lookup to the job title and come to job opening"
+			{
+				type =  form
+				form = JOB_APPLICATION_DETAILS
+				record event = on add or edit
+
+				on user input of JOB_OPENINGS
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											connect = JOB_OPENING[ID == input.JOB_OPENINGS];
+										input.JOB_DESCRIPTION = connect.JOB_DESCRIPTION;
+										input.NUMBER_OF_OPENINGS = connect.NUMBER_OF_OPENINGS;
+						)
+					}
+				}
+
+			}
+			HIDE_for_experience as "HIDE for experience"
+			{
+				type =  form
+				form = JOB_APPLICATION_DETAILS
+				record event = on add or edit
+
+				on user input of FRESHER_OR_EXPERIENCED
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											hide EXPERIENCED_DETAILS;
+										if(input.FRESHER_OR_EXPERIENCED == "EXPERIENCED")
+										{
+											show EXPERIENCED_DETAILS;
+										}
+						)
+					}
+				}
+
+			}
+			CALCULATE_THE_AGE_AND_PER as "CALCULATE THE AGE AND PERSON DOB"
+			{
+				type =  form
+				form = JOB_APPLICATION_DETAILS
+				record event = on add or edit
+
+				on user input of PERSON_DOB
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = zoho.currentdate;
+										ver2 = ver.getYear();
+										ver3 = input.PERSON_DOB;
+										ver4 = ver3.getYear();
+										input.PERSON_AGE = ver2 - ver4;
+										if(input.PERSON_DOB != null && PERSON_AGE < 18)
+										{
+											alert "YOU ARE NOT ELIGIBLE FOR THIS JOB APPLICATION";
+											input.PERSON_DOB = null;
+										}
+						)
+					}
+				}
+
+			}
+			COPY_THE_SAME_ADDRESS as "COPY THE SAME ADDRESS"
+			{
+				type =  form
+				form = JOB_APPLICATION_DETAILS
+				record event = on add or edit
+
+				on user input of SAME_ADDRESS
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.SAME_ADDRESS == "SAME  AS COMMUNICATION ADDRESS")
+										{
+											input.PERSON_PERMANENT_ADDRESS = input.COMMUNICATION_ADDRESS;
+										}
+						)
+					}
+				}
+
+			}
+			fiech_the_type_types_deta as "fiech the type && types details"
+			{
+				type =  form
+				form = UPDATE_TO_THE_SELECTION_REPORT_PROESS
+				record event = on add or edit
+
+				on user input of APPLICATION_NUMBER
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = JOB_APPLICATION_DETAILS[ID = input.APPLICATION_NUMBER];
+										input.GENDER = ver.GENDER;
+										input.PERSON_AGE = ver.PERSON_AGE;
+										input.PERSON_NAME = ver.PERSON_NAME;
+										input.JOB_OPENINGS = ver.JOB_OPENINGS.JOB_TITLE;
+						)
+					}
+				}
+
+			}
+			check_the_phone_number as "check the phone number"
+			{
+				type =  form
+				form = JOB_APPLICATION_DETAILS
+				record event = on add or edit
+
+				on user input of PERSON_PHONE
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// if ( input.PERSON_PHONE.isEmpty()&& input.PERSON_PHONE not\ ) 
+										// {
+										// }
+						)
+					}
+				}
+
+			}
+		}
+
+
+
+
+
+
+		functions
+		{
+			report_for_interviwe as "report for interviwe"
+			{
+				type =  functions
+				form = UPDATE_TO_THE_SELECTION_REPORT_PROESS
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						input.Radi = "SELECT";
+					)
+					}
+				}
+			}
+			REPORT_FOR_INTERVIWE1 as "REPORT FOR INTERVIWE"
+			{
+				type =  functions
+				form = UPDATE_TO_THE_SELECTION_REPORT_PROESS
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						input.Radi = "REJECT";
+					)
+					}
+				}
+			}
+		}
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form JOB_APPLICATION_DETAILS
+			{
+				label placement = left
+			}
+			form JOB_OPENING
+			{
+				label placement = left
+			}
+			form Qualification_DEPARTMENT
+			{
+				label placement = left
+			}
+			form Qualification_FORM
+			{
+				label placement = left
+			}
+			form UPDATE_TO_THE_SELECTION_REPORT_PROESS
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report All_Job_Application_Details
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								PERSON_NAME as "PERSON NAME"
+								PERSON_DOB as "PERSON DOB"
+								GENDER
+								PERSON_EMAIL
+								PERSON_PHONE as "PERSON PHONE"
+								BLOOD_GROUP as "BLOOD GROUP"
+								PERSON_AGE as "PERSON AGE"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								PERSON_NAME as "PERSON NAME"
+								PERSON_DOB as "PERSON DOB"
+								GENDER
+								PERSON_EMAIL
+								PERSON_PHONE as "PERSON PHONE"
+								BLOOD_GROUP as "BLOOD GROUP"
+								PERSON_PERMANENT_ADDRESS as "PERSON PERMANENT ADDRESS"
+								FRESHER_OR_EXPERIENCED as "FRESHER OR EXPERIENCED"
+								EXPERIENCED_DETAILS.EXPERIENCED_YEAR as "EXPERIENCED DETAILS"
+								APPLICATION_NUMBER as "APPLICATION NUMBER"
+								PERSON_AGE as "PERSON AGE"
+								JOB_OPENINGS as "JOB OPENINGS"
+								JOB_DESCRIPTION as "JOB DESCRIPTION "
+								NUMBER_OF_OPENINGS as "NUMBER OF OPENINGS"
+								COMMUNICATION_ADDRESS as " COMMUNICATION ADDRESS"
+								PERSON_RESUME as "PERSON RESUME"
+								Declaration as "Declaration "
+								SAME_ADDRESS as "SAME ADDRESS"
+								Qualification_DEPARTMENT as "Qualification DEPARTMENT"
+								Qualification_FORM as "Qualification FORM"
+								INTERVIWE_REPORT as "INTERVIWE REPORT"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Job_Openings
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								JOB_TITLE as " JOB TITLE"
+								JOB_DESCRIPTION as "JOB DESCRIPTION "
+								NUMBER_OF_OPENINGS as "NUMBER OF OPENINGS"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								JOB_TITLE as " JOB TITLE"
+								JOB_DESCRIPTION as "JOB DESCRIPTION "
+								NUMBER_OF_OPENINGS as "NUMBER OF OPENINGS"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Qualification_Forms
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Qualification_FIELD as "Qualification FIELD"
+								Qualification_DEPARTMENT as "Qualification DEPARTMENT"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Qualification_FIELD as "Qualification FIELD"
+								Qualification_DEPARTMENT as "Qualification DEPARTMENT"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Qualification_Departments
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								QualificationDEPARTMENTS as " DEPARTMENTS"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								QualificationDEPARTMENTS as " DEPARTMENTS"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report UPDATE_TO_THE_SELECTION_REPORT_PROESS_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								APPLICATION_NUMBER as "APPLICATION NUMBER"
+								PERSON_NAME as "PERSON NAME"
+								PERSON_AGE as "PERSON AGE"
+								GENDER
+								Radi as "INTERVIWE REPORT"
+								JOB_OPENINGS as "JOB OPENINGS"
+								"SELECT"
+								"REJECT"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								APPLICATION_NUMBER as "APPLICATION NUMBER"
+								PERSON_NAME as "PERSON NAME"
+								PERSON_AGE as "PERSON AGE"
+								GENDER
+								Radi as "INTERVIWE REPORT"
+								JOB_OPENINGS as "JOB OPENINGS"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Job_Application_Details
+				{
+					displayname = "Job Application Details"
+					icon = "users-2-contacts-44"
+					form  JOB_APPLICATION_DETAILS
+					{
+						icon = "users-2-contacts-44"
+					}
+					report All_Job_Application_Details
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section Job_Openings
+				{
+					displayname = "Job Openings"
+					icon = "users-2-a-time"
+					form  JOB_OPENING
+					{
+						icon = "users-2-a-time"
+					}
+					report All_Job_Openings
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Qualification_Forms
+				{
+					displayname = "Qualification Forms"
+					icon = "design-2-form"
+					form  Qualification_FORM
+					{
+						icon = "design-2-form"
+					}
+					report All_Qualification_Forms
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Qualification_Departments
+				{
+					displayname = "Qualification Departments"
+					icon = "business-hierarchy-53"
+					form  Qualification_DEPARTMENT
+					{
+						icon = "education-board-51"
+					}
+					report All_Qualification_Departments
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section UPDATE_TO_THE_SELECTION_REPORT_PROESS
+				{
+					displayname = "UPDATE TO THE SELECTION REPORT PROESS"
+					icon = "business-laptop-71"
+					form  UPDATE_TO_THE_SELECTION_REPORT_PROESS
+					{
+						icon = "business-laptop-71"
+					}
+					report UPDATE_TO_THE_SELECTION_REPORT_PROESS_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "lato"
+			color options
+			{
+				menu color = "#12132b"
+				header color = "#12132b"
+				name = "custom_color"
+				brand color = "#ef8216"
+				type = "custom"
+				sub menu color = "#2f305d"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form JOB_APPLICATION_DETAILS
+			{
+				label placement = auto
+			}
+			form JOB_OPENING
+			{
+				label placement = auto
+			}
+			form Qualification_DEPARTMENT
+			{
+				label placement = auto
+			}
+			form Qualification_FORM
+			{
+				label placement = auto
+			}
+			form UPDATE_TO_THE_SELECTION_REPORT_PROESS
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = yellow
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form JOB_APPLICATION_DETAILS
+			{
+				label placement = auto
+			}
+			form JOB_OPENING
+			{
+				label placement = auto
+			}
+			form Qualification_DEPARTMENT
+			{
+				label placement = auto
+			}
+			form Qualification_FORM
+			{
+				label placement = auto
+			}
+			form UPDATE_TO_THE_SELECTION_REPORT_PROESS
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = yellow
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

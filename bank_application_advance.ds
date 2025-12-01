@@ -1,0 +1,3922 @@
+/*
+ * Author       : zappyworkssoftwaresolutionst47
+ * Generated on : 22-Nov-2025 09:35:32
+ * Version      : 1.0
+ */
+ application "bank application advance"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form customer_details_master
+		{
+			displayname = "customer details master"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			customer_id
+			(
+    			type = text
+				displayname = "customer id"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			date_of_joning
+			(
+    			type = date
+				displayname = "date of joning"
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			customer_name
+			(
+    			type = name
+				displayname = "customer name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			customer_dob
+			(
+    			type = date
+				displayname = "customer dob"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			customer_age
+			(
+				type = number
+				displayname = "customer age"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			customer_Gender
+			(
+				type = radiobuttons
+				displayname = "customer Gender"
+				maxchar = 100
+				values = {"M","F","O"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Marital_status
+			(
+				type = radiobuttons
+				displayname = "Marital status"
+				maxchar = 100
+				values = {"married","unmarried"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			customer_number
+			(
+    			type = phonenumber
+				displayname = "customer number"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			customer_email
+			(
+    			type = email
+				displayname = "customer email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			customer_address
+			(
+    			type = address
+				displayname = "customer address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			ID_PROOF
+			(
+				type = picklist
+				displayname = "ID PROOF"
+				maxchar = 100
+				values = {"Aadhaar","PAN"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number_count
+			(
+    			type = autonumber
+				displayname = "Auto Number count"
+				start index = 100
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			account_age_type
+			(
+    			type = text
+				displayname = "account age type"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			parent_details
+			(
+				type = picklist
+				displayname = "parent details "
+				maxchar = 100
+				values = {"father","mother","Guardian"}
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+			parent_name
+			(
+    			type = name
+				displayname = "parent name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 2   
+				width = medium
+				personal data = true
+			)
+			parent_number
+			(
+    			type = phonenumber
+				displayname = "parent number"
+	 			row = 1
+	 			column = 2   
+				width = medium
+				personal data = true
+			)
+			proof
+			(
+    			type = upload file
+				browse = local_drive
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form OPEING_RD_DETAILS
+		{
+			displayname = "OPEING RD DETAILS"
+			success message = "Rd Detail Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			plain
+			(
+    			type = plaintext
+				value = "<div><span style=\"color: rgb(57, 156, 253)\" class=\"colour\">TYPE YOUR SB ACCOUNT NUMBER THAN SHOW ANOTHER DETAILS</span><br /></div>"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			customer_ID_in_SB
+			(
+				type = picklist	
+				displayname = "customer ID in SB"
+				values  = opening_saving_account.ID
+    			displayformat = [customer_ID_in_SB]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Customer_Name
+			(
+    			type = name
+				displayname = "Customer Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			RD_customer_ID
+			(
+    			type = text
+				displayname = "RD customer ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			customer_age
+			(
+				type = number
+				displayname = "customer age"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			customer_email
+			(
+    			type = email
+				displayname = "customer email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			RD_start_date
+			(
+    			type = date
+				displayname = "RD start date"
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			RD_start_date_2
+			(
+    			type = date
+				displayname = "RD start date 2"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			RD_NEXT_DUE_DATE
+			(
+    			type = date
+				displayname = "RD NEXT DUE DATE"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			month_of_installment
+			(
+				displayname = "month of installment"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			number_of_month
+			(
+				type = number
+				displayname = "number of  month"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			interest_rate
+			(
+    			type = percentage
+				displayname = "interest rate"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			total_month_of_installment
+			(
+				displayname = "total month of installment"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			RD_end_date
+			(
+    			type = date
+				displayname = "RD end date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			RD_Status
+			(
+				type = picklist
+				displayname = " RD Status"
+				maxchar = 100
+				values = {"active","pending","closed"}
+				initial value = "pending"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number_count_3
+			(
+    			type = autonumber
+				displayname = "Auto Number count 3"
+				start index = 100
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			recent_account_balance_RD
+			(
+				displayname = "recent account balance RD"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form opening_saving_account
+		{
+			displayname = "opening saving account"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			customer_ID
+			(
+				type = picklist	
+				displayname = "customer ID"
+				values  = customer_details_master.ID
+    			displayformat = [customer_id]
+				sortorder = ascending
+    			description
+    			[
+    				type = tooltip
+    			 	message = "select  correct your customer ID"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Customer_Name
+			(
+    			type = name
+				displayname = "Customer Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Enter Your Name"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			customer_age
+			(
+				type = number
+				displayname = "customer age"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Customer_address
+			(
+    			type = address
+				displayname = "Customer address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			customer_email
+			(
+    			type = email
+				displayname = "customer email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			account_age_type
+			(
+    			type = text
+				displayname = "account age type"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			customer_ID_in_SB
+			(
+    			type = text
+				displayname = "customer ID in SB"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			date_of_joning
+			(
+    			type = date
+				displayname = "date of joning"
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			account_balance
+			(
+				displayname = "account balance"
+				type = INR
+				format = commadotindian
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Frist depoit amount minmum 1500 above"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			customer_Status
+			(
+				type = radiobuttons
+				displayname = "customer Status"
+				maxchar = 100
+				values = {"pending","active","cancel"}
+				initial value = "pending"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number_count_2
+			(
+    			type = autonumber
+				displayname = "Auto Number count 2"
+				start index = 100
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			customer_account_type
+			(
+				type = radiobuttons
+				displayname = "customer account type"
+				maxchar = 100
+				values = {"saving account","RD account"}
+				initial value = "saving account"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			recent_account_balance
+			(
+				displayname = "recent account balance"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form RD_CLOSE
+		{
+			displayname = "RD CLOSE"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			RD_close_id
+			(
+    			type = text
+				displayname = "RD close id"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			RD_cusomer_id
+			(
+				type = picklist	
+				displayname = "RD cusomer id"
+				values  = OPEING_RD_DETAILS.ID
+    			displayformat = [RD_customer_ID + " - " + Customer_Name.first_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Customer_Name
+			(
+    			type = name
+				displayname = "Customer Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			customer_email
+			(
+    			type = email
+				displayname = "customer email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			customer_age
+			(
+				type = number
+				displayname = "customer age"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			end_date
+			(
+    			type = date
+				displayname = "end date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Status
+			(
+				type = radiobuttons
+				maxchar = 100
+				values = {"closed"}
+				initial value = "closed"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			transaction_type
+			(
+				type = radiobuttons
+				displayname = "transaction type"
+				maxchar = 100
+				values = {"withdraw","transfer"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			opening_saving_account
+			(
+				type = picklist	
+				displayname = "opening saving account"
+				values  = opening_saving_account.ID
+    			displayformat = [customer_ID_in_SB + " - " + Customer_Name.first_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			recent_account_balance_RD
+			(
+				displayname = "recent account balance RD"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number_count_7
+			(
+    			type = autonumber
+				displayname = "Auto Number count 7"
+				start index = 100
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Percent
+			(
+    			type = percentage
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			total_amount_add_persentage
+			(
+				displayname = "total amount add persentage"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form RD_TRANSCATIONS
+		{
+			displayname = "RD TRANSCATIONS"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			RD_transaction_id
+			(
+    			type = text
+				displayname = "RD transaction id"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			transaction_date
+			(
+    			type = date
+				displayname = "transaction date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			RD_customer_ID
+			(
+				type = picklist	
+				displayname = "RD customer ID"
+				values  = OPEING_RD_DETAILS.ID
+    			displayformat = [RD_customer_ID + " - " + Customer_Name.first_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Customer_Name
+			(
+    			type = name
+				displayname = "Customer Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			customer_age
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			customer_email
+			(
+    			type = email
+				displayname = "customer email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			start_due_date
+			(
+    			type = date
+				displayname = "start due date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			next_due_date
+			(
+    			type = date
+				displayname = "next due date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			transaction_type
+			(
+				type = radiobuttons
+				displayname = "transaction type"
+				maxchar = 100
+				values = {"deposit","withdraw"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			amount
+			(
+				displayname = "amount "
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			recent_account_balance
+			(
+				displayname = "recent account balance"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number_count_5
+			(
+    			type = autonumber
+				displayname = "Auto Number count 5"
+				start index = 100
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			fine_amount
+			(
+				displayname = "fine amount"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			total_amount
+			(
+				displayname = "total amount "
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form SB_CLOSE
+		{
+			displayname = "SB CLOSE"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			SB_close_id
+			(
+    			type = text
+				displayname = "SB close id"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			SB_customer_id
+			(
+				type = picklist	
+				displayname = "SB customer id"
+				values  = opening_saving_account.ID
+    			displayformat = [customer_ID_in_SB]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Customer_Name
+			(
+    			type = name
+				displayname = "Customer Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			customer_email
+			(
+    			type = email
+				displayname = "customer email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			customer_age
+			(
+				type = number
+				displayname = "customer age"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			close_end_date
+			(
+    			type = date
+				displayname = "close end date"
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Status
+			(
+				type = radiobuttons
+				maxchar = 100
+				values = {"cancel"}
+				initial value = "cancel"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			transaction_type
+			(
+				type = radiobuttons
+				displayname = "transaction type"
+				maxchar = 100
+				values = {"withdraw","transfer"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			SB_customer_id_in_another
+			(
+				type = picklist	
+				displayname = "SB customer id in another"
+				values  = opening_saving_account.ID
+    			displayformat = [customer_ID_in_SB]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			recent_account_balance_in_SB
+			(
+				displayname = "recent account balance in SB"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number_count_8
+			(
+    			type = autonumber
+				displayname = "Auto Number count 8"
+				start index = 100
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			reson_for_close
+			(
+    			type = textarea
+				displayname = "reson for close"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form SB_TRANSACTION
+		{
+			displayname = "SB TRANSACTION"
+			success message = "Sb Transaction Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			SB_transaction_id
+			(
+    			type = text
+				displayname = "SB transaction id"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			transaction_date
+			(
+    			type = date
+				displayname = "transaction date"
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			customer_ID_in_SB
+			(
+				type = picklist	
+				displayname = "customer ID in SB"
+				values  = opening_saving_account.ID
+    			displayformat = [customer_ID_in_SB]
+				sortorder = ascending
+    			description
+    			[
+    				type = tooltip
+    			 	message = "select your correct  SA Account ID"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Customer_Name
+			(
+    			type = name
+				displayname = "Customer Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			customer_age
+			(
+				type = number
+				displayname = "customer age"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			customer_email
+			(
+    			type = email
+				displayname = "customer email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			customer_account_type
+			(
+    			type = text
+				displayname = "customer account type"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			transaction_type
+			(
+				type = radiobuttons
+				displayname = "transaction type"
+				maxchar = 100
+				values = {"deposit","withdraw","transfer"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			amount
+			(
+				displayname = "amount "
+				type = INR
+				format = commadotindian
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Enter Amount"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			recent_account_balance
+			(
+				displayname = "recent account balance"
+				type = INR
+				format = commadotindian
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Your balance Show here"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			customer_saving_ID_another
+			(
+				type = picklist	
+				displayname = "customer saving  ID another"
+				values  = opening_saving_account.ID
+    			displayformat = [customer_ID_in_SB]
+				sortorder = ascending
+    			description
+    			[
+    				type = tooltip
+    			 	message = "select your correct SA transfer Account ID"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number_count_4
+			(
+    			type = autonumber
+				displayname = "Auto Number count 4"
+				start index = 100
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form TRANSACTION_MASTER
+		{
+			displayname = "TRANSACTION MASTER"
+			success message = "Transaction Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			transaction_date
+			(
+    			type = date
+				displayname = "transaction date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			customer_account_no
+			(
+    			type = text
+				displayname = "customer account no"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			account_type
+			(
+    			type = text
+				displayname = "account type"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			transaction_type
+			(
+    			type = text
+				displayname = "transaction type"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			amount
+			(
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			balance_after_transaction
+			(
+				displayname = "balance after transaction"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list customer_details_master_Report
+		{
+			displayName = "customer details master Report"
+			show all rows from customer_details_master    
+			(
+				customer_id as "customer id"
+				date_of_joning as "date of joning"
+				customer_name  as "customer name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				customer_dob as "customer dob"
+				customer_age as "customer age"
+				customer_Gender as "customer Gender"
+				Marital_status as "Marital status"
+				customer_number as "customer number"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				customer_email as "customer email"
+				customer_address  as "customer address"
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				ID_PROOF as "ID PROOF"
+				account_age_type as "account age type"
+				parent_details as "parent details "
+				parent_name  as "parent name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				parent_number as "parent number"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				proof
+				Auto_Number_count as "Auto Number count"
+			)
+		}
+		default list opening_saving_account_Report
+		{
+			displayName = "opening saving account Report"
+			show all rows from opening_saving_account    
+			(
+				customer_ID as "customer ID"
+				Customer_Name  as "Customer Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				customer_age as "customer age"
+				Customer_address  as "Customer address"
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				customer_email as "customer email"
+				account_age_type as "account age type"
+				customer_ID_in_SB as "customer ID in SB"
+				date_of_joning as "date of joning"
+				account_balance as "account balance"
+				customer_Status as "customer Status"
+				Auto_Number_count_2 as "Auto Number count 2"
+				customer_account_type as "customer account type"
+				recent_account_balance as "recent account balance"
+			)
+		}
+		default list All_Sb_Transactions
+		{
+			displayName = "All Sb Transactions"
+			show all rows from SB_TRANSACTION    
+			(
+				SB_transaction_id as "SB transaction id"
+				transaction_date as "transaction date"
+				customer_ID_in_SB as "customer ID in SB"
+				Customer_Name  as "Customer Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				customer_age as "customer age"
+				customer_email as "customer email"
+				customer_account_type as "customer account type"
+				transaction_type as "transaction type"
+				amount as "amount "
+				recent_account_balance as "recent account balance"
+				customer_saving_ID_another as "customer saving  ID another"
+				Auto_Number_count_4 as "Auto Number count 4"
+			)
+		}
+		default list SB_CLOSE_Report
+		{
+			displayName = "SB CLOSE Report"
+			show all rows from SB_CLOSE    
+			(
+				SB_close_id as "SB close id"
+				SB_customer_id as "SB customer id"
+				Customer_Name  as "Customer Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				customer_email as "customer email"
+				customer_age as "customer age"
+				close_end_date as "close end date"
+				Status
+				transaction_type as "transaction type"
+				SB_customer_id_in_another as "SB customer id in another"
+				recent_account_balance_in_SB as "recent account balance in SB"
+				Auto_Number_count_8 as "Auto Number count 8"
+				reson_for_close as "reson for close"
+			)
+		}
+		default list All_Transaction_Masters
+		{
+			displayName = "All Transaction Masters"
+			show all rows from TRANSACTION_MASTER    
+			(
+				transaction_date as "transaction date"
+				customer_account_no as "customer account no"
+				account_type as "account type"
+				transaction_type as "transaction type"
+				amount
+				balance_after_transaction as "balance after transaction"
+			)
+		}
+		default list All_Rd_Details
+		{
+			displayName = "All Rd Details"
+			show all rows from OPEING_RD_DETAILS    
+			(
+				customer_ID_in_SB as "customer ID in SB"
+				Customer_Name  as "Customer Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				RD_customer_ID as "RD customer ID"
+				customer_age as "customer age"
+				customer_email as "customer email"
+				RD_start_date as "RD start date"
+				RD_start_date_2 as "RD start date 2"
+				month_of_installment as "month of installment"
+				number_of_month as "number of  month"
+				interest_rate as "interest rate"
+				total_month_of_installment as "total month of installment"
+				RD_end_date as "RD end date"
+				RD_Status as " RD Status"
+				Auto_Number_count_3 as "Auto Number count 3"
+				recent_account_balance_RD as "recent account balance RD"
+				RD_NEXT_DUE_DATE as "RD NEXT DUE DATE"
+			)
+		}
+		default list RD_TRANSCATIONS_Report
+		{
+			displayName = "RD TRANSCATIONS Report"
+			show all rows from RD_TRANSCATIONS    
+			(
+				RD_transaction_id as "RD transaction id"
+				transaction_date as "transaction date"
+				RD_customer_ID as "RD customer ID"
+				Customer_Name  as "Customer Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				customer_age
+				customer_email as "customer email"
+				start_due_date as "start due date"
+				next_due_date as "next due date"
+				transaction_type as "transaction type"
+				amount as "amount "
+				recent_account_balance as "recent account balance"
+				Auto_Number_count_5 as "Auto Number count 5"
+				fine_amount as "fine amount"
+				total_amount as "total amount "
+			)
+		}
+		default list RD_CLOSE_Report
+		{
+			displayName = "RD CLOSE Report"
+			show all rows from RD_CLOSE    
+			(
+				RD_close_id as "RD close id"
+				RD_cusomer_id as "RD cusomer id"
+				Customer_Name  as "Customer Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				customer_email as "customer email"
+				customer_age as "customer age"
+				end_date as "end date"
+				Status
+				transaction_type as "transaction type"
+				opening_saving_account as "opening saving account"
+				recent_account_balance_RD as "recent account balance RD"
+				Auto_Number_count_7 as "Auto Number count 7"
+				Percent
+				total_amount_add_persentage as "total amount add persentage"
+			)
+		}
+	}
+
+
+		workflow
+		{
+		form
+		{
+			hide_and_disable as "hide and disable"
+			{
+				type =  form
+				form = customer_details_master
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						hide customer_id,customer_age;
+					}
+					actions 
+					{
+						disable date_of_joning;
+					}
+				}
+
+			}
+			generate_the_customer_id as "generate the customer id"
+			{
+				type =  form
+				form = customer_details_master
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.customer_id = "CUS" + "_" + zoho.currentdate.getYear() + "_" + input.Auto_Number_count;
+						)
+					}
+				}
+
+			}
+			calculate_age as "calculate age"
+			{
+				type =  form
+				form = customer_details_master
+				record event = on add or edit
+
+				on user input of customer_dob
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.customer_dob != null)
+										{
+											if(input.customer_dob.yearsBetween(today) < 18)
+											{
+												input.customer_age = input.customer_dob.yearsBetween(today);
+												input.account_age_type = "CHILD";
+											}
+											else
+											{
+												input.customer_age = input.customer_dob.yearsBetween(today);
+												input.account_age_type = "ADULT";
+												hide parent_number;
+												hide parent_name;
+												hide parent_details;
+											}
+										}
+										else
+										{
+											input.customer_age = null;
+											input.account_age_type = null;
+										}
+						)
+					}
+				}
+
+			}
+			generate_the_customer_id_ as "generate the customer id in saving acount"
+			{
+				type =  form
+				form = opening_saving_account
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.customer_ID_in_SB = "SA" + "_" + zoho.currentdate.getYear() + "_" + input.Auto_Number_count_2;
+						)
+					}
+				}
+
+			}
+			hide_and_disable1 as "hide and disable"
+			{
+				type =  form
+				form = opening_saving_account
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						hide customer_ID_in_SB;
+					}
+					actions 
+					{
+						disable customer_age,customer_email,Customer_address,Customer_Name,customer_Status,date_of_joning,customer_account_type,account_age_type,recent_account_balance;
+					}
+				}
+
+			}
+			fetch_the_amount_for_anot as "fetch the amount for another field"
+			{
+				type =  form
+				form = opening_saving_account
+				record event = on add or edit
+
+				on user input of account_balance
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.recent_account_balance = input.account_balance;
+						)
+					}
+				}
+
+			}
+			aleat_for_negative as "aleat for negative"
+			{
+				type =  form
+				form = opening_saving_account
+				record event = on add or edit
+
+				on user input of account_balance
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(account_balance < 0 || account_balance < 1500)
+										{
+											alert "NOT VAILD FOR RESON YOUR MINIMUM BALANCE ARE LOW AMOUNT OR YOU TYPE TO NEGATIVE VALUE ";
+											input.account_balance = null;
+										}
+						)
+					}
+				}
+
+			}
+			fetch_details as "fetch details"
+			{
+				type =  form
+				form = opening_saving_account
+				record event = on add or edit
+
+				on user input of customer_ID
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = customer_details_master[ID == input.customer_ID];
+										input.customer_age = ver.customer_age;
+										input.account_age_type = ver.account_age_type;
+										input.Customer_Name = ver.customer_name;
+										input.customer_email = ver.customer_email;
+										input.Customer_address = ver.customer_address;
+						)
+					}
+				}
+
+			}
+			hide_and_disable2 as "hide and disable"
+			{
+				type =  form
+				form = SB_TRANSACTION
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						disable customer_age,Customer_Name,SB_transaction_id,transaction_date,customer_account_type,recent_account_balance,customer_email;
+					}
+					actions 
+					{
+						hide SB_transaction_id;
+					}
+					actions  (transaction_type == "transfer")
+					{
+						show customer_saving_ID_another;
+					}
+				}
+
+			}
+			aleat_for_negative1 as "aleat for negative"
+			{
+				type =  form
+				form = SB_TRANSACTION
+				record event = on add or edit
+
+				on user input of amount
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(amount < 0)
+										{
+											alert "NOT VAILD RESON FOR YOU TYPE THE NEGATIVE VALUE";
+											input.amount = null;
+										}
+										else if(amount > recent_account_balance && transaction_type == "withdraw" || transaction_type == "transfer")
+										{
+											alert "NOT VAILD RESON FOR YOUR BANK BALANCE FOR LOW   " + input.recent_account_balance;
+											input.amount = null;
+										}
+						)
+					}
+				}
+
+			}
+			fetch_details1 as "fetch details"
+			{
+				type =  form
+				form = SB_TRANSACTION
+				record event = on add or edit
+
+				on user input of customer_ID_in_SB
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = opening_saving_account[ID == input.customer_ID_in_SB];
+										input.Customer_Name = ver.Customer_Name;
+										input.customer_age = ver.customer_age;
+										input.customer_account_type = ver.customer_account_type;
+										input.recent_account_balance = ver.recent_account_balance;
+										input.customer_email = ver.customer_email;
+						)
+					}
+				}
+
+			}
+			check_account_number as "check account number"
+			{
+				type =  form
+				form = SB_TRANSACTION
+				record event = on add or edit
+
+				on user input of customer_saving_ID_another
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.customer_ID_in_SB == input.customer_saving_ID_another)
+										{
+											alert "THE TWO ACCOUNT NUMBER IS SAME";
+											input.customer_saving_ID_another = null;
+										}
+						)
+					}
+				}
+
+			}
+			generate_the_SB_transacti as "generate the SB transaction id"
+			{
+				type =  form
+				form = SB_TRANSACTION
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.SB_transaction_id = "SAT" + "_" + zoho.currentdate.getYear() + "_" + input.Auto_Number_count_4;
+										// 
+										// 
+										// 
+										// 
+										// 
+										ver = opening_saving_account[ID == input.customer_ID_in_SB];
+										if(input.transaction_type == "deposit")
+										{
+											ver.recent_account_balance=ver.recent_account_balance + input.amount;
+										}
+										else if(input.transaction_type == "withdraw" && input.recent_account_balance > 0)
+										{
+											ver.recent_account_balance=ver.recent_account_balance - input.amount;
+										}
+										new = opening_saving_account[ID == input.customer_saving_ID_another];
+										if(input.transaction_type == "transfer" && input.recent_account_balance > 0)
+										{
+											ver.recent_account_balance=ver.recent_account_balance - input.amount;
+											new.recent_account_balance=new.recent_account_balance + input.amount;
+										}
+										REC = insert into TRANSACTION_MASTER
+										[
+											Added_User=zoho.loginuser
+											customer_account_no=input.customer_ID_in_SB.customer_ID_in_SB
+											account_type="SB"
+											transaction_date=input.transaction_date
+											transaction_type=input.transaction_type
+											amount=input.amount
+											balance_after_transaction=input.recent_account_balance
+										];
+						)
+					}
+				}
+
+			}
+			generate_the_customer_SB_ as "generate the customer SB close id"
+			{
+				type =  form
+				form = SB_CLOSE
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.SB_close_id = "SAC" + "_" + zoho.currentdate.getYear() + "_" + input.Auto_Number_count_8;
+										// 
+										// 
+										// 
+										// 
+										// 
+										// 
+										// 
+										// 
+										ver = opening_saving_account[ID == input.SB_customer_id];
+										if(input.transaction_type == "withdraw" && input.recent_account_balance_in_SB > 0)
+										{
+											ver.recent_account_balance=ver.recent_account_balance - input.recent_account_balance_in_SB;
+										}
+										new = opening_saving_account[ID == input.SB_customer_id_in_another];
+										if(input.transaction_type == "transfer" && input.recent_account_balance_in_SB > 0)
+										{
+											ver.recent_account_balance=ver.recent_account_balance - input.recent_account_balance_in_SB;
+											new.recent_account_balance=new.recent_account_balance + input.recent_account_balance_in_SB;
+										}
+										ver.customer_Status=input.Status;
+						)
+					}
+				}
+
+			}
+			hide_and_disable3 as "hide and disable"
+			{
+				type =  form
+				form = SB_CLOSE
+				record event = on add or edit
+
+				field rules
+				{
+					actions  (transaction_type == "transfer")
+					{
+						hide SB_customer_id_in_another;
+					}
+					actions 
+					{
+						hide SB_close_id;
+					}
+					actions 
+					{
+						disable close_end_date,customer_age,customer_email,Customer_Name,recent_account_balance_in_SB;
+					}
+				}
+
+			}
+			fetch_details2 as "fetch details"
+			{
+				type =  form
+				form = SB_CLOSE
+				record event = on add or edit
+
+				on user input of SB_customer_id
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = opening_saving_account[ID == input.SB_customer_id];
+										input.Customer_Name = ver.Customer_Name;
+										input.customer_age = ver.customer_age;
+										input.customer_email = ver.customer_email;
+										input.recent_account_balance_in_SB = ver.recent_account_balance;
+						)
+					}
+				}
+
+			}
+			CHECK_CUSTOMER_DATA as "CHECK CUSTOMER DATA"
+			{
+				type =  form
+				form = SB_CLOSE
+				record event = on add or edit
+
+				on validate
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = OPEING_RD_DETAILS[customer_ID_in_SB == input.SB_customer_id];
+										if(ver.customer_ID_in_SB == input.SB_customer_id && ver.RD_Status == "active")
+										{
+											alert "your have to the RD ACCOUNT please frist close for RD ACCOUNT";
+											cancel submit;
+										}
+						)
+					}
+				}
+
+			}
+			hide_and_disable4 as "hide and disable"
+			{
+				type =  form
+				form = TRANSACTION_MASTER
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						disable account_type,amount,balance_after_transaction,customer_account_no,transaction_type,transaction_date;
+					}
+				}
+
+			}
+			generate_in_RD_opening_id as "generate in RD opening id"
+			{
+				type =  form
+				form = OPEING_RD_DETAILS
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.RD_customer_ID = "RD" + "_" + zoho.currentdate.getYear() + "_" + input.Auto_Number_count_3;
+						)
+					}
+				}
+
+			}
+			hide_and_disable5 as "hide and disable"
+			{
+				type =  form
+				form = OPEING_RD_DETAILS
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						disable RD_Status,customer_age,customer_email,Customer_Name,interest_rate,RD_NEXT_DUE_DATE,RD_start_date,RD_end_date,total_month_of_installment;
+					}
+					actions 
+					{
+						hide RD_customer_ID,recent_account_balance_RD;
+					}
+					actions  (customer_ID_in_SB is not null)
+					{
+						show RD_Status,customer_age,customer_email,Customer_Name,interest_rate,month_of_installment,number_of_month,RD_end_date,RD_NEXT_DUE_DATE,RD_start_date,RD_start_date_2,total_month_of_installment;
+					}
+				}
+
+			}
+			due_date_calculation as "due date calculation"
+			{
+				type =  form
+				form = OPEING_RD_DETAILS
+				record event = on add or edit
+
+				on user input of RD_start_date_2
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.RD_start_date != null)
+										{
+											input.RD_NEXT_DUE_DATE = input.RD_start_date_2.addMonth(1);
+										}
+										else
+										{
+											input.RD_start_date = null;
+											input.RD_NEXT_DUE_DATE = null;
+											input.number_of_month = null;
+										}
+						)
+					}
+				}
+
+			}
+			fetch_details3 as "fetch details"
+			{
+				type =  form
+				form = OPEING_RD_DETAILS
+				record event = on add or edit
+
+				on user input of customer_ID_in_SB
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = opening_saving_account[ID == input.customer_ID_in_SB];
+										input.Customer_Name = ver.Customer_Name;
+										input.customer_age = ver.customer_age;
+										input.customer_email = ver.customer_email;
+						)
+					}
+				}
+
+			}
+			aleat_for_negative2 as "aleat for negative"
+			{
+				type =  form
+				form = OPEING_RD_DETAILS
+				record event = on add or edit
+
+				on user input of month_of_installment
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(month_of_installment < 0 || month_of_installment < 2000)
+										{
+											alert "NOT VAILD RESON FOR NEGATIVE VALUE OR YOUR MONTH INSTALLMENT IS VERY LOW ";
+											input.month_of_installment = null;
+										}
+						)
+					}
+				}
+
+			}
+			calculate_the_total_rd_am as "calculate the total rd amount"
+			{
+				type =  form
+				form = OPEING_RD_DETAILS
+				record event = on add or edit
+
+				on user input of number_of_month
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.number_of_month >= 12 && input.number_of_month < 24)
+										{
+											input.interest_rate = 6;
+											ver = input.month_of_installment * input.number_of_month;
+											rec = ver * input.interest_rate / 100;
+											input.total_month_of_installment = ver + rec;
+										}
+										else if(input.number_of_month >= 24 && input.number_of_month < 36)
+										{
+											input.interest_rate = 8;
+											ver = input.month_of_installment * input.number_of_month;
+											rec = ver * input.interest_rate / 100;
+											input.total_month_of_installment = ver + rec;
+										}
+										else if(input.number_of_month == 36)
+										{
+											input.interest_rate = 10;
+											ver = input.month_of_installment * input.number_of_month;
+											rec = ver * input.interest_rate / 100;
+											input.total_month_of_installment = ver + rec;
+										}
+						)
+					}
+					actions 
+					{
+						custom deluge script
+						(
+											if(number_of_month < 0)
+										{
+											alert "NOT VAILD";
+											input.number_of_month = null;
+										}
+						)
+					}
+				}
+
+			}
+			generate_in_RD_transactio as "generate in RD transaction id"
+			{
+				type =  form
+				form = RD_TRANSCATIONS
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.RD_transaction_id = "RDT" + "_" + zoho.currentdate.getYear() + "_" + input.Auto_Number_count_5;
+										// 
+										// 
+										// 
+										// 
+										// 
+										// 
+										// 
+										// 
+										ver = OPEING_RD_DETAILS[ID == input.RD_customer_ID];
+										if(input.transaction_type == "deposit")
+										{
+											ver.recent_account_balance_RD=ver.recent_account_balance_RD + input.amount;
+										}
+										else if(input.transaction_type == "withdraw")
+										{
+											ver.recent_account_balance_RD=ver.recent_account_balance_RD - input.amount;
+										}
+										// 
+										// 
+										// 
+										ver.RD_start_date_2=input.start_due_date;
+										ver.RD_NEXT_DUE_DATE=input.next_due_date;
+										// 
+										// 
+										// 
+										// 
+										// 
+										REC = insert into TRANSACTION_MASTER
+										[
+											Added_User=zoho.loginuser
+											customer_account_no=input.RD_customer_ID.RD_customer_ID
+											account_type="RD"
+											transaction_date=input.transaction_date
+											transaction_type=input.transaction_type
+											amount=input.amount
+											balance_after_transaction=input.recent_account_balance
+										];
+						)
+					}
+				}
+
+			}
+			hide_and_disable6 as "hide and disable"
+			{
+				type =  form
+				form = RD_TRANSCATIONS
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						disable customer_email,Customer_Name,customer_age,recent_account_balance,transaction_date,transaction_type;
+					}
+					actions 
+					{
+						hide RD_transaction_id,fine_amount,total_amount;
+					}
+				}
+
+			}
+			fetch_details4 as "fetch details"
+			{
+				type =  form
+				form = RD_TRANSCATIONS
+				record event = on add or edit
+
+				on user input of RD_customer_ID
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = OPEING_RD_DETAILS[ID == input.RD_customer_ID];
+										Customer_Name1 = ver.Customer_Name;
+										input.customer_age = ver.customer_age;
+										input.recent_account_balance = ver.recent_account_balance_RD;
+										input.customer_email = ver.customer_email;
+										input.start_due_date = ver.RD_NEXT_DUE_DATE;
+										input.next_due_date = input.start_due_date.addMonth(1);
+						)
+					}
+				}
+
+			}
+			calculate_the_fine_amount as "calculate the fine amount"
+			{
+				type =  form
+				form = RD_TRANSCATIONS
+				record event = on add or edit
+
+				on user input of RD_customer_ID
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.transaction_date > input.next_due_date)
+										{
+											show fine_amount;
+											show total_amount;
+											ver = input.transaction_date.daysBetween(input.next_due_date);
+											input.fine_amount = ver * 100;
+											input.total_amount = input.fine_amount + input.amount;
+										}
+										else
+										{
+											hide fine_amount;
+											hide total_amount;
+										}
+						)
+					}
+				}
+
+			}
+			aleat_for_negative3 as "aleat for negative"
+			{
+				type =  form
+				form = RD_TRANSCATIONS
+				record event = on add or edit
+
+				on user input of amount
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(amount < 0)
+										{
+											alert "NOT VAILD";
+											input.amount = null;
+										}
+						)
+					}
+				}
+
+			}
+			generate_the_customer_RD_ as "generate the customer RD close id"
+			{
+				type =  form
+				form = RD_CLOSE
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.RD_close_id = "RDC" + "_" + zoho.currentdate.getYear() + "_" + input.Auto_Number_count_7;
+										// 
+										// 
+										// 
+										// 
+										// 
+										// 
+										// 
+										// 
+										if(input.transaction_type == "transfer")
+										{
+											rec = opening_saving_account[ID == input.opening_saving_account];
+											rec.recent_account_balance=rec.recent_account_balance + input.total_amount_add_persentage;
+											// 
+											ver = OPEING_RD_DETAILS[ID == input.RD_cusomer_id];
+											ver.recent_account_balance_RD=ver.recent_account_balance_RD - input.recent_account_balance_RD;
+										}
+										else
+										{
+											ver = OPEING_RD_DETAILS[ID == input.RD_cusomer_id];
+											ver.recent_account_balance_RD=ver.recent_account_balance_RD - input.recent_account_balance_RD;
+										}
+										ver.RD_Status=input.Status;
+						)
+					}
+				}
+
+			}
+			hide_and_disable7 as "hide and disable"
+			{
+				type =  form
+				form = RD_CLOSE
+				record event = on add or edit
+
+				field rules
+				{
+					actions  (transaction_type == "transfer")
+					{
+						show opening_saving_account;
+					}
+					actions 
+					{
+						hide RD_close_id;
+					}
+					actions 
+					{
+						disable customer_age,Customer_Name,customer_email,Percent,recent_account_balance_RD,total_amount_add_persentage;
+					}
+				}
+
+			}
+			fetch_details5 as "fetch details"
+			{
+				type =  form
+				form = RD_CLOSE
+				record event = on add or edit
+
+				on user input of RD_cusomer_id
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = OPEING_RD_DETAILS[ID == input.RD_cusomer_id];
+										input.Customer_Name = ver.Customer_Name;
+										input.customer_email = ver.customer_email;
+										input.customer_age = ver.customer_age;
+										input.Percent = ver.interest_rate;
+										input.recent_account_balance_RD = ver.recent_account_balance_RD;
+										rec = RD_TRANSCATIONS[ID == input.RD_cusomer_id];
+										input.end_date = rec.next_due_date;
+						)
+					}
+				}
+
+			}
+			calculate_the_RD_total_am as "calculate the  RD total amount"
+			{
+				type =  form
+				form = RD_CLOSE
+				record event = on add or edit
+
+				on user input of recent_account_balance_RD
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = input.recent_account_balance_RD * input.Percent / 100;
+										input.total_amount_add_persentage = ver + input.recent_account_balance_RD;
+						)
+					}
+				}
+
+			}
+		}
+
+
+
+		approval
+		{
+			approval as "approval"
+			{
+				type =  approval
+				form = opening_saving_account
+				display fields = [customer_ID,Customer_Name,customer_age,Customer_address,customer_email,account_age_type,customer_ID_in_SB]
+				on start
+				{
+				}
+				on level 1
+				{
+					on approve 
+					{
+		    			display name = "Approve create account"
+						actions 
+						{
+							sendmail
+							(
+								from : zoho.loginuserid
+								to : customer_email
+								subject : "Approval Request"
+								message : "<div>Your request has been approved.<br></div><div><br></div><p data-end=\"367\" data-start=\"335\"><b>Dear ${Customer_Name.first_name},</b><br></p><p data-end=\"489\" data-start=\"369\">We are pleased to inform you that your application for a <b>[Bank Name] Savings Account</b> has been successfully approved.<br></p><p data-end=\"513\" data-start=\"491\"><b>Account Details:</b><br></p><ul data-end=\"675\" data-start=\"514\"><li data-end=\"560\" data-start=\"514\"><p data-end=\"560\" data-start=\"516\" style=\"margin-top: 0px;\"><b>Account Holder:</b>&nbsp;${Customer_Name}<br></p></li><li data-end=\"601\" data-start=\"561\"><p data-end=\"601\" data-start=\"563\" style=\"margin-top: 0px;\"><b>Account Number:</b> [XXXX-XXXX-XXXX]<br></p></li><li data-end=\"639\" data-start=\"602\"><p data-end=\"639\" data-start=\"604\" style=\"margin-top: 0px;\"><b>Account Type:</b> Savings Account<br></p></li><li data-end=\"675\" data-start=\"640\"><p data-end=\"675\" data-start=\"642\" style=\"margin-top: 0px;\"><b>Branch:</b> [Branch Name or Code]<br></p></li></ul><p data-end=\"819\" data-start=\"677\">Your account is now active and ready for use. You can start depositing funds, making transactions, and accessing our digital banking services.<br></p><p data-end=\"836\" data-start=\"821\">To get started:<br></p><ul data-end=\"992\" data-start=\"837\"><li data-end=\"882\" data-start=\"837\"><p data-end=\"882\" data-start=\"839\" style=\"margin-top: 0px;\"><b>Log in to online banking:</b> [Login URL]<br></p></li><li data-end=\"945\" data-start=\"883\"><p data-end=\"945\" data-start=\"885\" style=\"margin-top: 0px;\"><b>Download our mobile app:</b> [App Store / Play Store Link]<br></p></li><li data-end=\"992\" data-start=\"946\"><p data-end=\"992\" data-start=\"948\" style=\"margin-top: 0px;\"><b>Set up your security PIN and preferences</b><br></p></li></ul><p data-end=\"1119\" data-start=\"994\">If you have requested a debit card or cheque book, it will be dispatched to your registered address within 5–7 business days.<br></p><p data-end=\"1276\" data-start=\"1121\">If you have any questions or need further assistance, feel free to contact our customer care team at [Customer Care Number] or email us at [Support Email].<br></p><p data-end=\"1360\" data-start=\"1278\">Thank you for choosing [Bank Name]. We look forward to serving your banking needs.<br></p><hr data-end=\"1365\" data-start=\"1362\"><p data-end=\"1471\" data-start=\"1367\"><br></p><div><b>Warm regards,</b><br></div><div>[Your Name]<br></div><div>[Your Position]<br></div><div><b>[Bank Name]</b><br></div><div>[Contact Details]<br></div><div>[Bank Website]<br></div><p><br></p><div><br></div>"
+							)
+						}
+						actions 
+						{
+						on load
+						(
+							input.customer_Status = "active";
+						)
+						}
+					}
+					on reject
+					{
+						display name =  "Reject create account"
+						actions 
+						{
+							sendmail
+							(
+								from : zoho.loginuserid
+								to : customer_email
+								subject : "Approval Request"
+								message : "<div>Your request has been rejected.<br></div><div><br></div><div><br></div>"
+							)
+						}
+						actions 
+						{
+						on load
+						(
+							input.customer_Status = "cancel";
+												sendmail
+												[
+													from :zoho.adminuserid
+													to :input.customer_email
+													subject :"APPROVE FOR BANKING"
+													message :"sorry your request is rejected better luck next time"
+												]
+						)
+						}
+					}
+				}
+			}
+			RD_APPROVAL as "RD APPROVAL"
+			{
+				type =  approval
+				form = OPEING_RD_DETAILS
+				display fields = [customer_ID_in_SB,Customer_Name,RD_customer_ID,customer_age,customer_email,RD_start_date,RD_start_date_2]
+				on start
+				{
+				}
+				on level 1
+				{
+					on approve 
+					{
+		    			display name = "Approve create account"
+						actions 
+						{
+							sendmail
+							(
+								from : zoho.loginuserid
+								to : customer_email
+								subject : "Approval Request"
+								message : "<div>Your request has been approved.<br></div>"
+							)
+						}
+						actions 
+						{
+						on load
+						(
+							input.RD_Status = "active";
+												sendmail
+												[
+													from :zoho.adminuserid
+													to :input.customer_email
+													subject :"APPROVE FOR BANKING"
+													message :"congratulations your request is approve"
+												]
+						)
+						}
+					}
+					on reject
+					{
+						display name =  "Reject create account"
+						actions 
+						{
+							sendmail
+							(
+								from : zoho.loginuserid
+								to : customer_email
+								subject : "Approval Request"
+								message : "<div>Your request has been rejected.<br></div>"
+							)
+						}
+						actions 
+						{
+						on load
+						(
+							customer_Status = "cancel";
+												sendmail
+												[
+													from :zoho.adminuserid
+													to :input.customer_email
+													subject :"APPROVE FOR BANKING"
+													message :"sorry your request is rejected better luck next time"
+												]
+						)
+						}
+					}
+				}
+			}
+		}
+
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form customer_details_master
+			{
+				label placement = labelinplace
+			}
+			form OPEING_RD_DETAILS
+			{
+				label placement = left
+			}
+			form opening_saving_account
+			{
+				label placement = left
+			}
+			form RD_CLOSE
+			{
+				label placement = left
+			}
+			form RD_TRANSCATIONS
+			{
+				label placement = left
+			}
+			form SB_CLOSE
+			{
+				label placement = left
+			}
+			form SB_TRANSACTION
+			{
+				label placement = left
+			}
+			form TRANSACTION_MASTER
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report customer_details_master_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								customer_id as "customer id"
+								date_of_joning as "date of joning"
+								customer_name as "customer name"
+								customer_dob as "customer dob"
+								customer_age as "customer age"
+								customer_Gender as "customer Gender"
+								Marital_status as "Marital status"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								customer_id as "customer id"
+								date_of_joning as "date of joning"
+								customer_name as "customer name"
+								customer_dob as "customer dob"
+								customer_age as "customer age"
+								customer_Gender as "customer Gender"
+								Marital_status as "Marital status"
+								customer_number as "customer number"
+								customer_email as "customer email"
+								customer_address as "customer address"
+								ID_PROOF as "ID PROOF"
+								account_age_type as "account age type"
+								parent_details as "parent details "
+								parent_name as "parent name"
+								parent_number as "parent number"
+								proof
+								Auto_Number_count as "Auto Number count"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report opening_saving_account_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								customer_ID as "customer ID"
+								Customer_Name as "Customer Name"
+								customer_age as "customer age"
+								Customer_address as "Customer address"
+								customer_email as "customer email"
+								account_age_type as "account age type"
+								customer_ID_in_SB as "customer ID in SB"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 2
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								customer_ID as "customer ID"
+								Customer_Name as "Customer Name"
+								customer_age as "customer age"
+								Customer_address as "Customer address"
+								customer_email as "customer email"
+								account_age_type as "account age type"
+								customer_ID_in_SB as "customer ID in SB"
+								date_of_joning as "date of joning"
+								account_balance as "account balance"
+								customer_Status as "customer Status"
+								Auto_Number_count_2 as "Auto Number count 2"
+								customer_account_type as "customer account type"
+								recent_account_balance as "recent account balance"
+							)
+						)
+						datablock2
+						(
+							layout type = -2
+		     				title = "customer ID"
+		     				related field = customer_ID
+							fields
+							(
+								customer_id as "customer id"
+								date_of_joning as "date of joning"
+								customer_name as "customer name"
+								customer_dob as "customer dob"
+								customer_age as "customer age"
+								customer_Gender as "customer Gender"
+								Marital_status as "Marital status"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Duplicate 
+    		 				Delete 
+    		 				Edit 
+    	 				)
+    				)
+				)
+			}
+			report All_Sb_Transactions
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								SB_transaction_id as "SB transaction id"
+								transaction_date as "transaction date"
+								customer_ID_in_SB as "customer ID in SB"
+								Customer_Name as "Customer Name"
+								customer_age as "customer age"
+								customer_email as "customer email"
+								customer_account_type as "customer account type"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								SB_transaction_id as "SB transaction id"
+								transaction_date as "transaction date"
+								customer_ID_in_SB as "customer ID in SB"
+								Customer_Name as "Customer Name"
+								customer_age as "customer age"
+								customer_email as "customer email"
+								customer_account_type as "customer account type"
+								transaction_type as "transaction type"
+								amount as "amount "
+								recent_account_balance as "recent account balance"
+								customer_saving_ID_another as "customer saving  ID another"
+								Auto_Number_count_4 as "Auto Number count 4"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report SB_CLOSE_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								SB_close_id as "SB close id"
+								SB_customer_id as "SB customer id"
+								Customer_Name as "Customer Name"
+								customer_email as "customer email"
+								customer_age as "customer age"
+								close_end_date as "close end date"
+								Status
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								SB_close_id as "SB close id"
+								SB_customer_id as "SB customer id"
+								Customer_Name as "Customer Name"
+								customer_email as "customer email"
+								customer_age as "customer age"
+								close_end_date as "close end date"
+								Status
+								transaction_type as "transaction type"
+								SB_customer_id_in_another as "SB customer id in another"
+								recent_account_balance_in_SB as "recent account balance in SB"
+								Auto_Number_count_8 as "Auto Number count 8"
+								reson_for_close as "reson for close"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Transaction_Masters
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								transaction_date as "transaction date"
+								customer_account_no as "customer account no"
+								account_type as "account type"
+								transaction_type as "transaction type"
+								amount
+								balance_after_transaction as "balance after transaction"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								transaction_date as "transaction date"
+								customer_account_no as "customer account no"
+								account_type as "account type"
+								transaction_type as "transaction type"
+								amount
+								balance_after_transaction as "balance after transaction"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Rd_Details
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								customer_ID_in_SB as "customer ID in SB"
+								Customer_Name as "Customer Name"
+								RD_customer_ID as "RD customer ID"
+								customer_age as "customer age"
+								customer_email as "customer email"
+								RD_start_date as "RD start date"
+								RD_start_date_2 as "RD start date 2"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								customer_ID_in_SB as "customer ID in SB"
+								Customer_Name as "Customer Name"
+								RD_customer_ID as "RD customer ID"
+								customer_age as "customer age"
+								customer_email as "customer email"
+								RD_start_date as "RD start date"
+								RD_start_date_2 as "RD start date 2"
+								month_of_installment as "month of installment"
+								number_of_month as "number of  month"
+								interest_rate as "interest rate"
+								total_month_of_installment as "total month of installment"
+								RD_end_date as "RD end date"
+								RD_Status as " RD Status"
+								Auto_Number_count_3 as "Auto Number count 3"
+								recent_account_balance_RD as "recent account balance RD"
+								RD_NEXT_DUE_DATE as "RD NEXT DUE DATE"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report RD_TRANSCATIONS_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								RD_transaction_id as "RD transaction id"
+								transaction_date as "transaction date"
+								RD_customer_ID as "RD customer ID"
+								Customer_Name as "Customer Name"
+								customer_age
+								customer_email as "customer email"
+								start_due_date as "start due date"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								RD_transaction_id as "RD transaction id"
+								transaction_date as "transaction date"
+								RD_customer_ID as "RD customer ID"
+								Customer_Name as "Customer Name"
+								customer_age
+								customer_email as "customer email"
+								start_due_date as "start due date"
+								next_due_date as "next due date"
+								transaction_type as "transaction type"
+								amount as "amount "
+								recent_account_balance as "recent account balance"
+								Auto_Number_count_5 as "Auto Number count 5"
+								fine_amount as "fine amount"
+								total_amount as "total amount "
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report RD_CLOSE_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								RD_close_id as "RD close id"
+								RD_cusomer_id as "RD cusomer id"
+								Customer_Name as "Customer Name"
+								customer_email as "customer email"
+								customer_age as "customer age"
+								end_date as "end date"
+								Status
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								RD_close_id as "RD close id"
+								RD_cusomer_id as "RD cusomer id"
+								Customer_Name as "Customer Name"
+								customer_email as "customer email"
+								customer_age as "customer age"
+								end_date as "end date"
+								Status
+								transaction_type as "transaction type"
+								opening_saving_account as "opening saving account"
+								recent_account_balance_RD as "recent account balance RD"
+								Auto_Number_count_7 as "Auto Number count 7"
+								Percent
+								total_amount_add_persentage as "total amount add persentage"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section customer_details_master
+				{
+					displayname = "customer details master"
+					icon = "users-2-contacts-44"
+					form  customer_details_master
+					{
+						icon = "users-2-contacts-44"
+					}
+					report customer_details_master_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section opening_saving_account
+				{
+					displayname = "opening saving account"
+					icon = "shopping-tag-sale"
+					form  opening_saving_account
+					{
+						icon = "shopping-tag-sale"
+					}
+					report opening_saving_account_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Sb_Transactions
+				{
+					displayname = "Sb Transactions"
+					icon = "business-calculator"
+					form  SB_TRANSACTION
+					{
+						icon = "business-calculator"
+					}
+					report All_Sb_Transactions
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section SB_CLOSE
+				{
+					displayname = "SB CLOSE"
+					icon = "food-egg"
+					form  SB_CLOSE
+					{
+						icon = "food-egg"
+					}
+					report SB_CLOSE_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Transaction_Masters
+				{
+					displayname = "Transaction Masters"
+					icon = "shopping-box-3d-67"
+					form  TRANSACTION_MASTER
+					{
+						icon = "sport-crown"
+					}
+					report All_Transaction_Masters
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Rd_Details
+				{
+					displayname = "Rd Details"
+					icon = "users-2-a-edit"
+					form  OPEING_RD_DETAILS
+					{
+						icon = "users-2-a-edit"
+					}
+					report All_Rd_Details
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section RD_TRANSCATIONS
+				{
+					displayname = "RD TRANSCATIONS"
+					icon = "tech-desktop"
+					form  RD_TRANSCATIONS
+					{
+						icon = "tech-desktop"
+					}
+					report RD_TRANSCATIONS_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section RD_CLOSE
+				{
+					displayname = "RD CLOSE"
+					icon = "location-route-open"
+					form  RD_CLOSE
+					{
+						icon = "location-route-open"
+					}
+					report RD_CLOSE_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 9
+			font = "lato"
+			color options
+			{
+				color = "1"
+			}
+			logo
+			{
+				preference = "app_icon"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form customer_details_master
+			{
+				label placement = auto
+			}
+			form OPEING_RD_DETAILS
+			{
+				label placement = auto
+			}
+			form opening_saving_account
+			{
+				label placement = auto
+			}
+			form RD_CLOSE
+			{
+				label placement = auto
+			}
+			form RD_TRANSCATIONS
+			{
+				label placement = auto
+			}
+			form SB_CLOSE
+			{
+				label placement = auto
+			}
+			form SB_TRANSACTION
+			{
+				label placement = auto
+			}
+			form TRANSACTION_MASTER
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = rose
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form customer_details_master
+			{
+				label placement = auto
+			}
+			form OPEING_RD_DETAILS
+			{
+				label placement = auto
+			}
+			form opening_saving_account
+			{
+				label placement = auto
+			}
+			form RD_CLOSE
+			{
+				label placement = auto
+			}
+			form RD_TRANSCATIONS
+			{
+				label placement = auto
+			}
+			form SB_CLOSE
+			{
+				label placement = auto
+			}
+			form SB_TRANSACTION
+			{
+				label placement = auto
+			}
+			form TRANSACTION_MASTER
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = rose
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

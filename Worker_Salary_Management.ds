@@ -1,0 +1,2332 @@
+/*
+ * Author       : zappyworkssoftwaresolutionst47
+ * Generated on : 22-Nov-2025 09:32:04
+ * Version      : 1.0
+ */
+ application "Worker Salary Management"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form Role_And_Salary
+		{
+			displayname = "Role And Salary"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Role
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Salary
+			(
+				type = INR
+				format = commadotindian
+				maxchar = 16
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Worker_Attendance
+		{
+			displayname = "Worker Attendance"
+			success message = "Worker Attendance Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Today_Date
+			(
+    			type = date
+				displayname = "Today Date"
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Worker_ID
+			(
+				type = picklist	
+				displayname = "Worker ID"
+				values  = Worker_Details.ID
+    			displayformat = [Worker_ID]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Worker_Name
+			(
+    			type = name
+				displayname = "Worker Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Worker_Role
+			(
+				type = picklist	
+				displayname = "Worker Role"
+				values  = Role_And_Salary.ID
+    			displayformat = [Role]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Check_In_Date_And_Time
+			(
+    			type = datetime
+				displayname = "Check In Date And Time "
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Check_Out_Date_And_Time
+			(
+    			type = datetime
+				displayname = "Check Out Date And Time"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Worker_Today_Status
+			(
+				type = picklist
+				displayname = "Worker Today Status"
+				maxchar = 100
+				values = {"Check In","Check Out"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Worker_Attendance_Status
+			(
+				type = picklist
+				displayname = "Worker Attendance Status"
+				maxchar = 100
+				values = {"Present","Absent","Check Out Missing"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Total_Working_Time
+			(
+    			type = text
+				displayname = "Total Working Time"
+				initial value = "0"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Salary_Status
+			(
+				type = picklist
+				displayname = "Salary Status"
+				maxchar = 100
+				values = {"Paid","Un Paid"}
+				initial value = "Un Paid"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Worker_Details
+		{
+			displayname = "Worker Details"
+			success message = "Worker Detail Added Successfully"
+			Section1
+			(
+				type = section
+				displayname = "Worker Details"
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Worker_ID
+			(
+    			type = text
+				displayname = "Worker ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Worker_Name
+			(
+    			type = name
+				displayname = "Worker Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Worker_Date_Of_Brith
+			(
+    			type = date
+				displayname = "Worker Date Of Brith"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Worker_Phone
+			(
+    			type = phonenumber
+				displayname = "Worker Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Worker_Email
+			(
+    			type = email
+				displayname = "Worker Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Worker_Role
+			(
+				type = picklist	
+				displayname = "Worker Role"
+				values  = Role_And_Salary.ID
+    			displayformat = [Role]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Worker_Salary
+			(
+				displayname = "Worker Salary"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Worker_certificate
+			(
+    			type = upload file
+				displayname = "Worker certificate"
+				browse = local_drive
+    			description
+    			[
+    				type = tooltip
+    			 	message = "Any One Worker certificate"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number
+			(
+    			type = autonumber
+				displayname = "Auto Number"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Worker_Status
+			(
+				type = picklist
+				displayname = "Worker Status"
+				maxchar = 100
+				values = {"Active","In Active"}
+				initial value = "Active"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Worker_Books_ID
+			(
+    			type = text
+				displayname = "Worker Books ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Worker_Check_In_And_Check_Out_Count
+			(
+				type = number
+				displayname = "Worker Check In And Check Out Count"
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Worker_Existing
+		{
+			displayname = "Worker Existing"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Date_Of_Salary
+			(
+    			type = date
+				displayname = "Date Of Salary"
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Worker_ID
+			(
+				type = picklist	
+				displayname = "Worker ID"
+				values  = Worker_Details.ID
+    			displayformat = [Worker_ID]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Worker_Role
+			(
+				type = picklist	
+				displayname = "Worker Role"
+				values  = Role_And_Salary.ID
+    			displayformat = [Role]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Total_Salary_Amount
+			(
+				displayname = "Total Salary Amount"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Worker_Filter_Page
+		{
+			displayname = "Worker Filter Page"
+			store data in zc = false
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Worker_ID
+			(
+				type = picklist	
+				displayname = "Worker ID"
+				values  = Worker_Details[Worker_Status == "Active"].ID
+    			displayformat = [Worker_ID]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				Submit
+				(
+   					type = submit
+   					displayname = "Submit"
+				)
+			}
+		}
+		form Worker_Salary
+		{
+			displayname = "Worker Salary"
+			success message = "Worker Salary Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Transaction_Salary_ID
+			(
+    			type = text
+				displayname = "Transaction Salary ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number
+			(
+    			type = autonumber
+				displayname = "Auto Number"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Worker_Salary_Details
+			(
+				type = grid
+				displayname = "Worker Salary Details"
+				values  = Worker_Existing.ID
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Worker_Status
+		{
+			displayname = "Worker Status"
+			store data in zc = false
+			Section1
+			(
+				type = section
+				displayname = "Worker Details"
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Worker_ID
+			(
+    			type = text
+				displayname = "Worker ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Worker_Name
+			(
+    			type = name
+				displayname = "Worker Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Worker_Phone
+			(
+    			type = phonenumber
+				displayname = "Worker Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Worker_Email
+			(
+    			type = email
+				displayname = "Worker Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Worker_Role
+			(
+				type = picklist	
+				displayname = "Worker Role"
+				values  = Role_And_Salary.ID
+    			displayformat = [Role]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Worker_Salary
+			(
+				displayname = "Worker Salary"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Worker_Status
+			(
+				type = picklist
+				displayname = "Worker Status"
+				maxchar = 100
+				values = {"Active","In Active"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Reson
+			(
+    			type = textarea
+				displayname = "Reson "
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				Submit
+				(
+   					type = submit
+   					displayname = "Submit"
+				)
+			}
+		}
+	}
+	reports
+	{
+		default list All_Worker_Details
+		{
+			displayName = "All Worker Details"
+			show all rows from Worker_Details    
+			(
+				Worker_Name  as "Worker Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Worker_ID as "Worker ID"
+				Worker_Phone as "Worker Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Worker_Email as "Worker Email"
+				Worker_Role as "Worker Role"
+				Worker_Salary as "Worker Salary"
+				Worker_certificate as "Worker certificate"
+				Auto_Number as "Auto Number"
+				Worker_Date_Of_Brith as "Worker Date Of Brith"
+				Worker_Status as "Worker Status"
+				custom action "Active"
+				(
+	  			workflow = Active
+				show action in edit record menu = true
+				column header = "Active"
+				condition = (Worker_Status == "In Active")
+				confirmation before execution
+				(
+					message for individual record = "Execute the Active action for this record?"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+				custom action "In Active "
+				(
+	  			workflow = In_Active
+				show action in edit record menu = true
+				column header = "In Active "
+				condition = (Worker_Status == "Active")
+				confirmation before execution
+				(
+					message for individual record = "Execute the In Active  action for this record?"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+				Worker_Books_ID as "Worker Books ID"
+				Worker_Check_In_And_Check_Out_Count as "Worker Check In And Check Out Count"
+			)
+		}
+		default list Role_And_Salary_Report
+		{
+			displayName = "Role And Salary Report"
+			show all rows from Role_And_Salary    
+			(
+				Role
+				Salary
+			)
+		}
+		default list All_Worker_Attendances
+		{
+			displayName = "All Worker Attendances"
+			show all rows from Worker_Attendance    
+			(
+				Worker_Name  as "Worker Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Worker_ID as "Worker ID"
+				Check_In_Date_And_Time as "Check In Date And Time "
+				Check_Out_Date_And_Time as "Check Out Date And Time"
+				Worker_Today_Status as "Worker Today Status"
+				Worker_Attendance_Status as "Worker Attendance Status"
+				Today_Date as "Today Date"
+				Worker_Role as "Worker Role"
+				Total_Working_Time as "Total Working Time"
+				Salary_Status as "Salary Status"
+			)
+		}
+		list Worker_Check_In_And_Check_Out_Use
+		{
+			displayName = "Worker Check In And Check Out Use"
+			show all rows from Worker_Details  [Worker_Status == "Active"]  
+			(
+				Worker_Name  as "Worker Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Worker_ID as "Worker ID"
+				Worker_Phone as "Worker Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Worker_Email as "Worker Email"
+				Worker_Role as "Worker Role"
+				Worker_Salary as "Worker Salary"
+				Worker_certificate as "Worker certificate"
+				custom action "Active"
+				(
+	  			workflow = Active
+				show action in edit record menu = true
+				column header = "Active"
+				condition = (Worker_Status == "In Active")
+				)
+				Auto_Number as "Auto Number"
+				custom action "In Active "
+				(
+	  			workflow = In_Active
+				show action in edit record menu = true
+				column header = "In Active "
+				condition = (Worker_Status == "Active")
+				)
+				Worker_Date_Of_Brith as "Worker Date Of Brith"
+				Worker_Status as "Worker Status"
+				Worker_Books_ID as "Worker Books ID"
+				custom action "Check In "
+				(
+	  			workflow = Check_In
+				show action in edit record menu = true
+				column header = "Check In "
+				condition = (Worker_Check_In_And_Check_Out_Count == 0)
+				confirmation before execution
+				(
+					message for individual record = "Execute the Check In  action for this record?"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+				custom action "Check Out"
+				(
+	  			workflow = Check_Out
+				show action in edit record menu = true
+				column header = "Check Out"
+				condition = (Worker_Check_In_And_Check_Out_Count == 1)
+				confirmation before execution
+				(
+					message for individual record = "Execute the Check Out action for this record?"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+			)
+		}
+		default list All_Worker_Salaries
+		{
+			displayName = "All Worker Salaries"
+			show all rows from Worker_Salary    
+			(
+				Transaction_Salary_ID as "Transaction Salary ID"
+				Auto_Number as "Auto Number"
+			)
+		}
+		default list Worker_Existing_Report
+		{
+			displayName = "Worker Existing Report"
+			show all rows from Worker_Existing    
+			(
+				Date_Of_Salary as "Date Of Salary"
+				Worker_ID as "Worker ID"
+				Total_Salary_Amount as "Total Salary Amount"
+				Worker_Role as "Worker Role"
+			)
+		}
+		pivotchart Worker_Roles
+		{ 
+			displayname = "Worker Roles"
+						report properties
+			(
+				records displayed = all_records
+				allow export = false
+				allow drilldown and view underlying data = false
+		
+			)
+
+			based on Autoview_1763377580532_Worker_Details
+				show all rows from Worker_Details
+				(
+			Worker_ID  as "Worker ID"
+			Worker_Name  as "Worker Name"
+ 			(
+ 				first_name as "Worker Name"
+ 				prefix as "Worker Name.Prefix"
+ 				last_name as "Worker Name.Last Name"
+ 				suffix as "Worker Name.Suffix"
+     			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+ 			)
+			Worker_Date_Of_Brith  as "Worker Date Of Brith"
+			Worker_Phone  as "Worker Phone"
+			Worker_Email  as "Worker Email"
+			Worker_Role  as "Worker Role"
+			Worker_Salary  as "Worker Salary"
+			Worker_certificate  as "Worker certificate"
+			Auto_Number  as "Auto Number"
+			Worker_Status  as "Worker Status"
+			Worker_Books_ID  as "Worker Books ID"
+			Worker_Check_In_And_Check_Out_Count  as "Worker Check In And Check Out Count"
+				)
+		}
+		pivotchart Type_OF_Role
+		{ 
+			displayname = "Type OF Role"
+						report properties
+			(
+				records displayed = all_records
+				allow export = false
+				allow drilldown and view underlying data = false
+		
+			)
+
+			based on Autoview_1763378223622_Role_And_Salary
+				show all rows from Role_And_Salary
+				(
+			Role 
+			Salary 
+				)
+		}
+	}
+	pages
+	{
+		page Worker_Check_In_And_Check_Out_Page
+		{
+			displayname = "Worker Check In And Check Out Page"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet()\ncontent\n&lt;%{\n\t%&gt;\n&lt;div elName=&apos;zc-component&apos; formLinkName=&apos;Worker_Filter_Page&apos; params=&apos;zc_Header=false&amp;amp;zc_SuccMsg=Data Added Successfully!&amp;amp;zc_SubmitVal=Submit&amp;amp;zc_ResetVal=Reset&apos;&gt;Loading Form...&lt;\/div&gt;\n&lt;div elName=&apos;zc-component&apos; name= &quot;Zappy&quot; viewLinkName=&apos;Worker_Check_In_And_Check_Out_Use&apos; params=&apos;zc_Header=true&apos;&gt;Loading View...&lt;\/div&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+		page DashBoard
+		{
+			displayname = "DashBoard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='34%'\n   \t>\n\t<report \n\telementName='Report 1'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'Worker_Roles'\n\t\n\t\tiszreport = 'true'\n\theightType = 'auto'\n\theightValue = '700'\n\n\/>\n<\/column><column\n   \t\t width='32%'\n   \t>\n\t<report \n\telementName='Report 2'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'Type_OF_Role'\n\t\n\t\tiszreport = 'true'\n\theightType = 'auto'\n\theightValue = '700'\n\n\/>\n<\/column><column\n   \t\t width='34%'\n   \t>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginRight = '7px' \n\n\tcolor = '#FFFFFF'\n\tbgColor = '#0ABB51'\n\twidth = '52px'\n\theight = '52px'\n\ttype = 'icon'\n\tvalue = 'education-grammar-check'\n\tsize = '24px'\n\tcornerRadius = '26px'\n\ticonType = 'solid'\n\/>\n<\/pc><pc \n\t\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n\t\thAlign = 'left'\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#333333'\n\tsize = '16px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#333333'\n    borderWidth = '0px'\n\n\t  value = 'Today Check In'\n>\n<\/text>\n\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n\t\thAlign = 'left'\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tmarginTop = '2px'\n\tpadding = '0px'\n\tcolor = '#0ABB51'\n\tsize = '36px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#0ABB51'\n    borderWidth = '0px'\n\n\t\tcriteria = 'Today_Date is today &amp;&amp; Worker_Today_Status == &quot;Check In&quot;'\n\t  value = 'thisapp.Worker_Attendance.ID.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel 1'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginRight = '7px' \n\n\tcolor = '#FFFFFF'\n\tbgColor = '#2A70E7'\n\twidth = '52px'\n\theight = '52px'\n\ttype = 'icon'\n\tvalue = 'files-no-access'\n\tsize = '24px'\n\tcornerRadius = '26px'\n\ticonType = 'solid'\n\/>\n<\/pc><pc \n\t\n\t\thAlign = 'left'\n>\n\t<pr \n\t>\n\t<pc \n\t\n\t\thAlign = 'left'\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#333333'\n\tsize = '16px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#333333'\n    borderWidth = '0px'\n\n\t  value = 'Check Out'\n>\n<\/text>\n\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n\t\thAlign = 'left'\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tmarginTop = '2px'\n\tpadding = '0px'\n\tcolor = '#2A70E7'\n\tsize = '36px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#2A70E7'\n    borderWidth = '0px'\n\n\t\tcriteria = 'Today_Date is today &amp;&amp; Worker_Today_Status == &quot;Check Out&quot;'\n\t  value = 'thisapp.Worker_Attendance.ID.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column>\n<\/row>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width='50%'\n   \t>\n\t<form \n\telementName='Form'\n\n\tappLinkName = 'thisapp'\n\tlinkName = 'Role_And_Salary'\n\tzc_Header = 'true'\n\/> \n<\/column><column\n   \t\t width='50%'\n   \t>\n\t<report \n\telementName='Report'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'All_Worker_Details'\n\t\n\t\tiszreport = 'false'\n\n\/>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+	}
+
+
+		workflow
+		{
+		form
+		{
+			Create_Worker_ID as "Create Worker ID"
+			{
+				type =  form
+				form = Worker_Details
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Worker_ID = "WOR" + "_" + zoho.currentdate.getDay() + "_" + input.Worker_Name.subString(0,3) + "_" + input.Worker_Date_Of_Brith.getDay() + "_" + input.Worker_Role.Role.subString(0,3) + input.Auto_Number;
+										Worker = Map();
+										Worker.put("contact_name",input.Worker_Name.first_name);
+										Worker.put("company_name",input.Worker_ID);
+										Worker.put("contact_type","vendor");
+										Worker_list = List();
+										emtymap = Map();
+										emtymap.put("email",input.Worker_Email);
+										emtymap.put("phone",input.Worker_Phone);
+										Worker_list.add(emtymap);
+										Worker.put("contact_persons",Worker_list);
+										response = invokeurl
+										[
+											url :"https://www.zohoapis.in/books/v3/contacts?organization_id=60047090525"
+											type :POST
+											parameters:Worker.tostring()
+											connection:"zoho_books_interview"
+										];
+										// input.Worker_Books_ID=response.get("contact").get("contact_id");
+										var = response.get("contact").get("contact_id");
+										input.Worker_Books_ID = var;
+						)
+					}
+				}
+
+			}
+			upload_The_worker_file as "upload The worker file"
+			{
+				type =  form
+				form = Worker_Details
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											var = zoho.workdrive.createFolder(input.Worker_certificate,"sumav9e474c8800e34a3fac9ad3f7e7968e51","zoho_workdrive_connection");
+										Store_The_Upload_data = var.get("data").get("id");
+										Upload_data = zoho.workdrive.uploadFile(input.Worker_certificate,Store_The_Upload_data,input.Worker_certificate,false,"zoho_workdrive_connection");
+						)
+					}
+				}
+
+			}
+			Test_For_Work_Drive as "Test For Work Drive"
+			{
+				type =  form
+				form = Worker_Details
+				record event = on add or edit
+					status = inactive
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											var = zoho.workdrive.createFolder("Giri","sumav9e474c8800e34a3fac9ad3f7e7968e51","zoho_workdrive_connection");
+										info var;
+						)
+					}
+				}
+
+			}
+			fetch_The_Salary as "fetch The Salary"
+			{
+				type =  form
+				form = Worker_Details
+				record event = on add or edit
+
+				on user input of Worker_Role
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Worker_Role != null)
+										{
+											input.Worker_Salary = input.Worker_Role.Salary;
+										}
+						)
+					}
+				}
+
+			}
+			hide_and_disable as "hide and disable"
+			{
+				type =  form
+				form = Worker_Details
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						disable Worker_Salary;
+					}
+					actions 
+					{
+						hide Worker_ID,Worker_Books_ID,Worker_Check_In_And_Check_Out_Count,Worker_Status;
+					}
+				}
+
+			}
+			Validation_the_Worker_Dat as "Validation the Worker Date Of Brith"
+			{
+				type =  form
+				form = Worker_Details
+				record event = on add or edit
+
+				on user input of Worker_Date_Of_Brith
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Worker_Date_Of_Brith != null)
+										{
+											if(input.Worker_Date_Of_Brith > zoho.currentdate || input.Worker_Date_Of_Brith.yearsBetween(zoho.currentdate) < 18)
+											{
+												alert "Not Valid Reson For You Enter The Wrong Date Of Brith";
+												input.Worker_Date_Of_Brith = null;
+											}
+										}
+						)
+					}
+				}
+
+			}
+			hide_and_disable1 as "hide and disable"
+			{
+				type =  form
+				form = Worker_Status
+				record event = on add
+
+				field rules
+				{
+					actions 
+					{
+						disable Worker_Email,Worker_ID,Worker_Name,Worker_Phone,Worker_Salary,Worker_Role,Worker_Status;
+					}
+				}
+
+			}
+			Send_Mail as "Send Mail"
+			{
+				type =  form
+				form = Worker_Status
+				button = Submit
+				on click
+				{
+					actions 
+					{
+					on click
+					(
+						new = Worker_Details[Worker_ID == input.Worker_ID];
+										new.Worker_Status=input.Worker_Status;
+										if(input.Worker_Status == "Active")
+										{
+											sendmail
+											[
+												from :zoho.adminuserid
+												to :input.Worker_Email
+												subject :"Your Worker Status"
+												message :"Your Working Status Is Active =  " + "&Reson Is=    " + input.Reson
+											]
+										}
+										if(input.Worker_Status == "In Active")
+										{
+											sendmail
+											[
+												from :zoho.adminuserid
+												to :input.Worker_Email
+												subject :"Your Worker Status"
+												message :"Your Working Status Is In Active =  " + "&Reson Is=    " + input.Reson
+											]
+										}
+					)
+					}
+				}
+			}
+			Filter_Worker_ID as "Filter Worker ID"
+			{
+				type =  form
+				form = Worker_Filter_Page
+				record event = on add
+
+				on user input of Worker_ID
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Worker_ID != null)
+										{
+											openUrl("#Report:Worker_Check_In_And_Check_Out_Use?zc_LoadIn=embed-Zappy&Worker_ID=" + input.Worker_ID.Worker_ID,"same window");
+										}
+										else
+										{
+											openUrl("#Script:page.parent.refresh","same window");
+										}
+						)
+					}
+				}
+
+			}
+			Add_Check_Count as "Add Check Count"
+			{
+				type =  form
+				form = Worker_Attendance
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											new = Worker_Details[ID == input.Worker_ID];
+										new.Worker_Check_In_And_Check_Out_Count=1;
+										openUrl("#Script:page.parent.refresh","same window");
+						)
+					}
+				}
+
+			}
+			hide_and_disable2 as "hide and disable"
+			{
+				type =  form
+				form = Worker_Attendance
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						disable Check_In_Date_And_Time,Check_Out_Date_And_Time,Today_Date,Worker_Attendance_Status,Worker_ID,Worker_Name,Worker_Role,Worker_Today_Status;
+					}
+					actions 
+					{
+						hide Worker_Attendance_Status;
+					}
+				}
+
+			}
+			Fetch_Worker_Salary_Detai as "Fetch Worker Salary Details"
+			{
+				type =  form
+				form = Worker_Salary
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											var = Worker_Details[ID != null];
+										val1 = 0;
+										name = 0;
+										for each  rec in var
+										{
+											new = Worker_Salary.Worker_Salary_Details();
+											new.Worker_ID=rec.ID;
+											new.Worker_Role=rec.Worker_Role;
+											value2 = Worker_Attendance[Worker_ID == rec.ID && Salary_Status == "Un Paid"].Total_Working_Time.getAll();
+											add_ = 0;
+											for each  rec3 in value2
+											{
+												if(new.Worker_Role.Role == "Software developer")
+												{
+													add_ = add_ + 400 * rec3.ToNumber();
+												}
+												if(new.Worker_Role.Role == "Manager")
+												{
+													add_ = add_ + 500 * rec3.ToNumber();
+												}
+												if(new.Worker_Role.Role == "Team Leader")
+												{
+													add_ = add_ + 450 * rec3.ToNumber();
+												}
+												if(new.Worker_Role.Role == "Accountant")
+												{
+													add_ = add_ + 300 * rec3.ToNumber();
+												}
+											}
+											new.Total_Salary_Amount=add_;
+											input.Worker_Salary_Details.insert(new);
+										}
+						)
+					}
+				}
+
+			}
+			Create_Salary_Bills as "Create Salary Bills"
+			{
+				type =  form
+				form = Worker_Salary
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											new = Worker_Attendance[ID != null];
+										for each  rec in new
+										{
+											new.Salary_Status="Paid";
+										}
+						)
+					}
+				}
+
+			}
+		}
+
+		schedule
+		{
+			Inset_Absent_Worker_ as "Inset Absent Worker "
+			{
+				type =  schedule
+				start = "2025-11-17 23:59:00"
+				frequency = daily
+				time zone = "Asia/Kolkata"
+				on start
+				{
+					actions 
+					{
+					on load
+					(
+						new = Worker_Details[ID != null].Worker_ID.getAll();
+										var = Worker_Attendance[ID != null && Today_Date == zoho.currentdate].Worker_ID.Worker_ID.getAll();
+										new.removeall(var);
+										for each  val in new
+										{
+											res = insert into Worker_Attendance
+											[
+												Added_User=zoho.loginuser
+												Today_Date=zoho.currentdate
+												Worker_Name=Worker_Details[Worker_ID == val].Worker_Name
+												Check_In_Date_And_Time=null
+												Check_Out_Date_And_Time=null
+												Total_Working_Time=0
+												Worker_ID=Worker_Details[Worker_ID == val].ID
+												Worker_Role=Worker_Details[Worker_ID == val].Worker_Role.Role
+											];
+										}
+										var = Worker_Attendance[ID != null && Today_Date == zoho.currentdate];
+										for each  rec in var
+										{
+											if(rec.Check_In_Date_And_Time == null && rec.Check_Out_Date_And_Time == null)
+											{
+												rec.Worker_Attendance_Status="Absent";
+											}
+											else if(rec.Check_In_Date_And_Time != null && rec.Check_Out_Date_And_Time != null)
+											{
+												rec.Worker_Attendance_Status="Present";
+											}
+											else if(rec.Check_In_Date_And_Time != null && rec.Check_Out_Date_And_Time == null)
+											{
+												rec.Worker_Attendance_Status="Check Out Missing";
+											}
+										}
+					)
+					}
+				}
+			}
+		}
+
+
+
+
+		functions
+		{
+			Active as "Active"
+			{
+				type =  functions
+				form = Worker_Details
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						openUrl("#Form:Worker_Status?Worker_ID=" + input.Worker_ID + "&Worker_Name.first_name=" + input.Worker_Name.first_name + "&Worker_Name.last_name=" + input.Worker_Name.last_name + "&Worker_Phone=" + input.Worker_Phone + "&Worker_Role=" + input.Worker_Role.Role + "&Worker_Salary=" + input.Worker_Salary + "&Worker_Status=" + "Active","popup window","height=<height>,width=<width>");
+					)
+					}
+				}
+			}
+			In_Active as "In Active"
+			{
+				type =  functions
+				form = Worker_Details
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						openUrl("#Form:Worker_Status?Worker_ID=" + input.Worker_ID + "&Worker_Name.first_name=" + input.Worker_Name.first_name + "&Worker_Name.last_name=" + input.Worker_Name.last_name + "&Worker_Phone=" + input.Worker_Phone + "&Worker_Role=" + input.Worker_Role.Role + "&Worker_Salary=" + input.Worker_Salary + "&Worker_Status=" + "In Active","popup window","height=<height>,width=<width>");
+					)
+					}
+				}
+			}
+			Check_In as "Check In"
+			{
+				type =  functions
+				form = Worker_Details
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						openUrl("#Form:Worker_Attendance?Check_In_Date_And_Time=" + zoho.currenttime + "&Worker_Role=" + input.Worker_Role + "&Worker_ID=" + input.ID + "&Worker_Name.first_Name=" + input.Worker_Name.first_name + "&Worker_Name.last_Name=" + input.Worker_Name.last_name + "&Worker_Today_Status=" + "Check In","popup window");
+					)
+					}
+				}
+			}
+			Check_Out as "Check Out"
+			{
+				type =  functions
+				form = Worker_Details
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						Check_Out = Worker_Attendance[Worker_ID.Worker_ID == input.Worker_ID && Today_Date == zoho.currentdate && Check_Out_Date_And_Time == null];
+										Check_Out.Check_Out_Date_And_Time=zoho.currenttime;
+										Check_Out.Worker_Today_Status="Check Out";
+										input.Worker_Check_In_And_Check_Out_Count = 0;
+										Check_Out.Total_Working_Time=Check_Out.Check_In_Date_And_Time.hoursBetween(Check_Out.Check_Out_Date_And_Time);
+					)
+					}
+				}
+			}
+		}
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	connections
+	{
+		zoho_workdrive_connection
+		(
+			displayname = "Zoho WorkDrive Connection "
+			connector = zoho_workdrive
+			permissions = {"add_comment","add_members_to_team_folder","all_file_operations","all_organization_operations","create_data_template","create_external_collection","create_group","create_label","create_share_link","create_split_page","create_team_folder","delete_collection","delete_comment","delete_data_template","delete_group","delete_label","delete_member_from_team_folder","delete_team_folder","disable_collection","download_file","enable_collection","get_all_collections","get_all_comments","get_all_team_members","get_file_details","get_group","get_label","get_my_user_details","get_shared_file","get_share_link","get_team_folder","remove_file_access","rename_data_template","rename_file","rename_team_folder","search_file","share_file","update_comment","update_group_name","update_label_name","update_share_link","update_team_name","upload_file"}
+		)
+		zoho_books_interview
+		(
+			displayname = "Zoho Books interview"
+			connector = zohobooks
+			permissions = {"all_operations","create_account","create_bill","create_credit_note","create_customer","create_customer_payment","create_custom_module_record","create_expense","create_invoice","create_item","create_journal","create_location","create_purchase_order","create_quote","create_recurring_bill","create_recurring_expense","create_retainer_invoice","create_sales_order","create_vendor","create_vendor_credit","create_vendor_payment","get_account","get_all_accounts","get_all_bills","get_all_credit_notes","get_all_currencies","get_all_customers","get_all_customer_payments","get_all_custom_modules","get_all_custom_module_records","get_all_expenses","get_all_invoices","get_all_items","get_all_journals","get_all_locations","get_all_organizations","get_all_projects","get_all_purchase_accounts","get_all_purchase_orders","get_all_quotes","get_all_recurring_bills","get_all_recurring_expenses","get_all_retainer_invoices","get_all_sales_accounts","get_all_sales_orders","get_all_states","get_all_stock_accounts","get_all_taxes","get_all_tax_authorities","get_all_tds_taxes","get_all_vendors","get_all_vendor_credits","get_all_vendor_payments","get_bill","get_credit_note","get_customer","get_customer_payment","get_custom_module_record","get_expense","get_invoice","get_item","get_journal","get_purchase_order","get_quote","get_recurring_bill","get_recurring_expense","get_retainer_invoice","get_sales_order","get_vendor","get_vendor_credit","get_vendor_payment","search_bills","search_customers","search_customer_payments","search_expenses","search_invoices","search_items","search_journals","search_purchase_orders","search_quotes","search_recurring_bills","search_recurring_expenses","search_sales_orders","search_vendors","search_vendor_credits","search_vendor_payments","sync_customers","sync_invoices","sync_items","sync_purchase_orders","sync_quotes","sync_sales_orders","sync_vendors","update_account","update_bill","update_credit_note","update_customer","update_customer_payment","update_custom_module_record","update_expense","update_invoice","update_item","update_journal","update_location","update_purchase_order","update_quote","update_recurring_bill","update_recurring_expense","update_retainer_invoice","update_sales_order","update_vendor","update_vendor_credit","update_vendor_payment"}
+		)
+	}
+	web
+	{
+		forms
+		{
+			form Role_And_Salary
+			{
+				label placement = left
+			}
+			form Worker_Attendance
+			{
+				label placement = left
+			}
+			form Worker_Details
+			{
+				label placement = left
+			}
+			form Worker_Existing
+			{
+				label placement = left
+			}
+			form Worker_Filter_Page
+			{
+				label placement = left
+			}
+			form Worker_Salary
+			{
+				label placement = left
+			}
+			form Worker_Status
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report All_Worker_Details
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Worker_Name as "Worker Name"
+								Worker_ID as "Worker ID"
+								Worker_Phone as "Worker Phone"
+								Worker_Email as "Worker Email"
+								Worker_Role as "Worker Role"
+								Worker_Salary as "Worker Salary"
+								Worker_certificate as "Worker certificate"
+								"Active"
+								"In Active "
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 2
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								Worker_Name as "Worker Name"
+								Worker_ID as "Worker ID"
+								Worker_Phone as "Worker Phone"
+								Worker_Email as "Worker Email"
+								Worker_Role as "Worker Role"
+								Worker_Salary as "Worker Salary"
+								Worker_certificate as "Worker certificate"
+								Auto_Number as "Auto Number"
+								Worker_Date_Of_Brith as "Worker Date Of Brith"
+								Worker_Status as "Worker Status"
+								Worker_Books_ID as "Worker Books ID"
+								Worker_Check_In_And_Check_Out_Count as "Worker Check In And Check Out Count"
+							)
+						)
+						datablock2
+						(
+							layout type = -2
+		     				title = "Worker Role"
+		     				related field = Worker_Role
+							fields
+							(
+								Role
+								Salary
+							)
+						)
+						datablock3
+						(
+							layout type = -1
+		     				title = "Worker Attendance"
+		     				related field = Worker_Attendance.Worker_ID
+							fields
+							(
+								Today_Date as "Today Date"
+								Worker_ID as "Worker ID"
+								Worker_Name as "Worker Name"
+								Worker_Role as "Worker Role"
+								Check_In_Date_And_Time as "Check In Date And Time "
+								Check_Out_Date_And_Time as "Check Out Date And Time"
+								Worker_Today_Status as "Worker Today Status"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Role_And_Salary_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Role
+								Salary
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Role
+								Salary
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Worker_Attendances
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Worker_Name as "Worker Name"
+								Worker_ID as "Worker ID"
+								Check_In_Date_And_Time as "Check In Date And Time "
+								Check_Out_Date_And_Time as "Check Out Date And Time"
+								Worker_Today_Status as "Worker Today Status"
+								Worker_Attendance_Status as "Worker Attendance Status"
+								Today_Date as "Today Date"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Worker_Name as "Worker Name"
+								Worker_ID as "Worker ID"
+								Check_In_Date_And_Time as "Check In Date And Time "
+								Check_Out_Date_And_Time as "Check Out Date And Time"
+								Worker_Today_Status as "Worker Today Status"
+								Worker_Attendance_Status as "Worker Attendance Status"
+								Today_Date as "Today Date"
+								Worker_Role as "Worker Role"
+								Total_Working_Time as "Total Working Time"
+								Salary_Status as "Salary Status"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Worker_Check_In_And_Check_Out_Use
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Worker_Name as "Worker Name"
+								Worker_ID as "Worker ID"
+								Worker_Phone as "Worker Phone"
+								Worker_Email as "Worker Email"
+								Worker_Role as "Worker Role"
+								Worker_Salary as "Worker Salary"
+								Worker_certificate as "Worker certificate"
+								"Check In "
+								"Check Out"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Worker_Name as "Worker Name"
+								Worker_ID as "Worker ID"
+								Worker_Phone as "Worker Phone"
+								Worker_Email as "Worker Email"
+								Worker_Role as "Worker Role"
+								Worker_Salary as "Worker Salary"
+								Worker_certificate as "Worker certificate"
+								Auto_Number as "Auto Number"
+								Worker_Date_Of_Brith as "Worker Date Of Brith"
+								Worker_Status as "Worker Status"
+								Worker_Books_ID as "Worker Books ID"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Worker_Salaries
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Transaction_Salary_ID as "Transaction Salary ID"
+								Auto_Number as "Auto Number"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Transaction_Salary_ID as "Transaction Salary ID"
+								Auto_Number as "Auto Number"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Worker_Existing_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Date_Of_Salary as "Date Of Salary"
+								Worker_ID as "Worker ID"
+								Total_Salary_Amount as "Total Salary Amount"
+								Worker_Role as "Worker Role"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Date_Of_Salary as "Date Of Salary"
+								Worker_ID as "Worker ID"
+								Total_Salary_Amount as "Total Salary Amount"
+								Worker_Role as "Worker Role"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Worker_Roles
+			{
+				legend = RIGHT
+			}
+ 
+			report Type_OF_Role
+			{
+				legend = RIGHT
+			}
+		}
+		menu
+		{
+			unused
+			{
+				form  Worker_Filter_Page
+				{
+					icon = "tech-desktop"
+				}
+				form  Worker_Status
+				{
+					icon = "tech-desktop"
+				}
+				report Worker_Check_In_And_Check_Out_Use
+				{
+					icon = "users-2-contacts-44"
+				}
+ 
+				report Type_OF_Role
+				{
+					icon = "sport-cardio"
+				}
+ 
+				report Worker_Roles
+				{
+					icon = "users-2-contacts-44"
+				}
+			}
+			space Dashboard
+			{
+				displayname = "Dashboard"
+				icon = "objects-spaceship"
+
+					page DashBoard
+					{
+						icon = "ui-1-dashboard-half"
+					}
+			}
+			space Use_Worker
+			{
+				displayname = "Use Worker"
+				icon = "objects-spaceship"
+
+					page Worker_Check_In_And_Check_Out_Page
+					{
+						icon = "shopping-pos"
+					}
+			}
+			space Admin
+			{
+				displayname = "Admin"
+				icon = "objects-spaceship"
+
+				section Worker_Details
+				{
+					displayname = "Worker Details"
+					icon = "users-2-contacts-44"
+					form  Worker_Details
+					{
+						icon = "users-2-contacts-44"
+					}
+					report All_Worker_Details
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section Role_And_Salary
+				{
+					displayname = "Role And Salary"
+					icon = "sport-cardio"
+					form  Role_And_Salary
+					{
+						icon = "sport-cardio"
+					}
+					report Role_And_Salary_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Worker_Status
+				{
+					displayname = "Worker Status"
+					icon = "tech-desktop"
+				}
+				section Worker_Attendances
+				{
+					displayname = "Worker Attendances"
+					icon = "business-business-contact-89"
+					form  Worker_Attendance
+					{
+						icon = "business-business-contact-89"
+					}
+					report All_Worker_Attendances
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Worker_Check_In_And_Check_Out_Page
+				{
+					displayname = "Worker Check In And Check Out Page"
+					icon = "shopping-pos"
+				}
+				section Worker_Filter_Page
+				{
+					displayname = "Worker Filter Page"
+					icon = "design-design-dev"
+				}
+				section Worker_Salaries
+				{
+					displayname = "Worker Salaries"
+					icon = "business-business-contact-89"
+					form  Worker_Salary
+					{
+						icon = "business-business-contact-89"
+					}
+					report All_Worker_Salaries
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Worker_Existing
+				{
+					displayname = "Worker Existing"
+					icon = "business-business-contact-89"
+					form  Worker_Existing
+					{
+						icon = "business-business-contact-89"
+					}
+					report Worker_Existing_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 5
+			font = "lato"
+			color options
+			{
+				color = "1"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Role_And_Salary
+			{
+				label placement = auto
+			}
+			form Worker_Attendance
+			{
+				label placement = auto
+			}
+			form Worker_Details
+			{
+				label placement = auto
+			}
+			form Worker_Existing
+			{
+				label placement = auto
+			}
+			form Worker_Filter_Page
+			{
+				label placement = auto
+			}
+			form Worker_Salary
+			{
+				label placement = auto
+			}
+			form Worker_Status
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = rose
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Role_And_Salary
+			{
+				label placement = auto
+			}
+			form Worker_Attendance
+			{
+				label placement = auto
+			}
+			form Worker_Details
+			{
+				label placement = auto
+			}
+			form Worker_Existing
+			{
+				label placement = auto
+			}
+			form Worker_Filter_Page
+			{
+				label placement = auto
+			}
+			form Worker_Salary
+			{
+				label placement = auto
+			}
+			form Worker_Status
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = rose
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+	reports configuration
+	{
+	
+		Version = 2000045920171
+		Key     = "PSTR8fMTJdQUtwSpgTnCOeFKA0Ovw8tUCBPN2VJua6An2JUvRnDy9DFKKxnWxjQ2wCTth7nvQhtN151fDV82m2U3qnB9uhB1G2my"
+	}
+}

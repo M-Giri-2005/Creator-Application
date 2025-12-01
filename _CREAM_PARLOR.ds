@@ -1,0 +1,1752 @@
+/*
+ * Author       : zappyworkssoftwaresolutionst47
+ * Generated on : 22-Nov-2025 09:39:45
+ * Version      : 1.0
+ */
+ application " CREAM PARLOR"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form ICE_CREAM_DETAILS
+		{
+			displayname = "ICE CREAM DETAILS"
+			success message = "Ice Cream Detail Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Ice_Cream_Flavors
+			(
+    			type = text
+				displayname = "Ice Cream Flavors "
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Ice_Cream_price
+			(
+				displayname = "Ice Cream price"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form ice_toppings
+		{
+			displayname = "ice toppings"
+			success message = "Ice Topping Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			ice_toppings_list
+			(
+    			type = text
+				displayname = "ice toppings list"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			ice_toppings_price
+			(
+				displayname = "ice toppings price for(100 g)"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form ORDER_FOR_ICE_CREAM
+		{
+			displayname = "ORDER FOR ICE CREAM"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			customer_ID
+			(
+    			type = autonumber
+				displayname = "customer ID"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Phone_Number
+			(
+    			type = phonenumber
+				displayname = "Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Address
+			(
+    			type = address
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			ORDER_ITEM
+			(
+				type = grid
+				displayname = "ORDER ITEM"
+				Ice_Cream_Flavors
+				(
+					type = picklist	
+					displayname = "Ice Cream Flavors "
+					values  = ICE_CREAM_DETAILS.ID
+    				displayformat = [Ice_Cream_Flavors]
+					allow new entries
+					[
+						displayname = "Add New"
+					]
+					sortorder = ascending
+					width = medium
+				)
+				Ice_Cream_price
+				(
+					displayname = "Ice Cream price"
+					type = INR
+					format = commadotindian
+					width = medium
+				)
+				ice_toppings_list
+				(
+					type = list	
+					displayname = "ice toppings list"
+					values  = ice_toppings.ID
+    				displayformat = [ice_toppings_list + " - " + ice_toppings_price]
+					allow new entries
+					[
+						displayname = "Add New"
+					]
+					sortorder = ascending
+					height = 60px
+					width = medium
+				)
+				ice_toppings_price
+				(
+					displayname = "ice toppings price"
+					type = INR
+					format = commadotindian
+					initial value = 0
+					width = medium
+				)
+				ice_cream_total_price
+				(
+					displayname = "ice cream total price "
+					type = INR
+					format = commadotindian
+					width = medium
+				)
+				Status
+				(
+					type = picklist
+					maxchar = 100
+					values = {"accept","cancel","prosses"}
+					initial value = "prosses"
+					width = medium
+				)
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Section1
+			(
+				type = section
+				displayname = "Section"
+				visibility = true
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Checkbox
+			(
+				type = checkboxes	
+				values = {"I have one more request"}
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Drop
+			(
+				type = picklist
+				displayname = "you choice"
+				maxchar = 100
+				values = {"extra cream","extra chocolate"}
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			GRAND_TOTAL
+			(
+				type = INR
+				format = commadotindian
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form reorder_item
+		{
+			displayname = "reorder item"
+			success message = "Reorder Item Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			customer_ID
+			(
+				type = picklist	
+				displayname = "customer ID"
+				values  = ORDER_FOR_ICE_CREAM.ID
+    			displayformat = [customer_ID + " - " + Name.first_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Phone_Number
+			(
+    			type = phonenumber
+				displayname = "Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Address
+			(
+    			type = address
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			SubForm
+			(
+				type = grid
+				Ice_Cream_Flavors
+				(
+					type = picklist	
+					displayname = "Ice Cream Flavors "
+					values  = ICE_CREAM_DETAILS.ID
+    				displayformat = [Ice_Cream_Flavors]
+					sortorder = ascending
+					width = medium
+				)
+				Ice_Cream_price
+				(
+					displayname = "Ice Cream price"
+					type = INR
+					format = commadotindian
+					width = medium
+				)
+				ice_toppings_list
+				(
+					type = list	
+					displayname = "ice toppings list"
+					values  = ice_toppings.ID
+    				displayformat = [ice_toppings_list]
+					sortorder = ascending
+					height = 60px
+					width = medium
+				)
+				ice_toppings_price
+				(
+					displayname = "ice toppings price"
+					type = INR
+					format = commadotindian
+					width = medium
+				)
+				ice_cream_total_price
+				(
+					displayname = "ice cream total price "
+					type = INR
+					format = commadotindian
+					width = medium
+				)
+				Status
+				(
+					type = picklist
+					maxchar = 100
+					values = {"accept","cancel","prosses"}
+					width = medium
+				)
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Section1
+			(
+				type = section
+				displayname = "Section"
+				visibility = true
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Checkbox
+			(
+				type = checkboxes	
+				values = {"I have one more request"}
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			you_choice
+			(
+    			type = text
+				displayname = "you choice"
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			GRAND_TOTAL
+			(
+				type = INR
+				format = commadotindian
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list All_Ice_Cream_Details
+		{
+			displayName = "All Ice Cream Details"
+			show all rows from ICE_CREAM_DETAILS    
+			(
+				Ice_Cream_Flavors as "Ice Cream Flavors "
+				Ice_Cream_price as "Ice Cream price"
+			)
+		}
+		default list All_Ice_Toppings
+		{
+			displayName = "All Ice Toppings"
+			show all rows from ice_toppings    
+			(
+				ice_toppings_list as "ice toppings list"
+				ice_toppings_price as "ice toppings price for(100 g)"
+			)
+		}
+		default list ORDER_FOR_ICE_CREAM_Report
+		{
+			displayName = "ORDER FOR ICE CREAM Report"
+			show all rows from ORDER_FOR_ICE_CREAM    
+			(
+				Name 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Phone_Number as "Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Address 
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				GRAND_TOTAL
+				Checkbox
+				Drop as "you choice"
+				custom action "change"
+				(
+	  			workflow = change_the_status
+				show action in edit record menu = true
+				column header = "change"
+				confirmation before execution
+				(
+					message for individual record = "Execute the chenge action for this record?"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+				customer_ID as "customer ID"
+				ORDER_ITEM as "ORDER ITEM"
+				(
+					field = ORDER_ITEM.Ice_Cream_Flavors + " " + ORDER_ITEM.Status
+				)
+			)
+		}
+		spreadsheet new_report
+		{
+			displayName = "new report"
+			show all rows from ORDER_FOR_ICE_CREAM    
+			(
+				customer_ID as "customer ID"
+				Name 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Phone_Number as "Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Address 
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Checkbox
+				Drop as "you choice"
+				GRAND_TOTAL
+				ORDER_ITEM.Ice_Cream_Flavors as "ORDER ITEM"
+			)
+		}
+		default list All_Reorder_Items
+		{
+			displayName = "All Reorder Items"
+			show all rows from reorder_item    
+			(
+				Name 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Phone_Number as "Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Address 
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Checkbox
+				GRAND_TOTAL
+				you_choice as "you choice"
+				customer_ID as "customer ID"
+				SubForm
+				(
+					field = SubForm.Ice_Cream_Flavors + " " + SubForm.Status
+				)
+			)
+		}
+	}
+
+
+		workflow
+		{
+		form
+		{
+			calculate_the_ice_price as "calculate the ice price"
+			{
+				type =  form
+				form = ORDER_FOR_ICE_CREAM
+				record event = on add or edit
+
+				on user input of ORDER_ITEM.Ice_Cream_Flavors
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = ICE_CREAM_DETAILS[ID == row.Ice_Cream_Flavors];
+										row.Ice_Cream_price=ver.Ice_Cream_price;
+						)
+					}
+				}
+
+			}
+			calculate_the_toppings_pr as "calculate the toppings price"
+			{
+				type =  form
+				form = ORDER_FOR_ICE_CREAM
+				record event = on add or edit
+
+				on user input of ORDER_ITEM.ice_toppings_list
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = ice_toppings[ID == row.ice_toppings_list];
+										input.ORDER_ITEM.ice_cream_total_price = ver.sum(ice_toppings_price);
+										input.GRAND_TOTAL = 0;
+										for each  rec in input.ORDER_ITEM
+										{
+											input.GRAND_TOTAL = input.GRAND_TOTAL + rec.ice_cream_total_price;
+										}
+										// count = 0;
+										// for each  val in ver
+										// {
+										// 	count = count + val.ice_toppings_price;
+										// }
+										// row.ice_toppings_price=count;
+										// row.ice_cream_total_price=row.Ice_Cream_price + row.ice_toppings_price;
+										// input.GRAND_TOTAL = 0;
+										// for each  rec in input.ORDER_ITEM
+										// {
+										// 	input.GRAND_TOTAL = input.GRAND_TOTAL + rec.ice_cream_total_price;
+										// }
+						)
+					}
+				}
+
+			}
+			Send_Email_Form_Propertie as "Send Email - Form Properties"
+			{
+				type =  presuccess
+				form = ORDER_FOR_ICE_CREAM
+					status = inactive
+				on start
+				{
+					actions 
+					{
+						sendmail
+						(
+							from : "zoho.adminuserid"
+							to : "zoho.adminuserid"
+							subject : "CREAM PARLOR : New entry added"
+							message : "<div>Hello,<br><br>A new entry added in 'ORDER_FOR_ICE_CREAM' form of  CREAM PARLOR application.<br></div><br><br>"
+						)
+					}
+				}
+			}
+			jyfyyjumgkug as "jyfyyjumgkug"
+			{
+				type =  form
+				form = ORDER_FOR_ICE_CREAM
+				record event = on add or edit
+
+				field rules
+				{
+					actions  (Checkbox == "I have one more request")
+					{
+						show Drop;
+					}
+				}
+
+			}
+			delete_for_grand_total as "delete for grand total"
+			{
+				type =  form
+				form = ORDER_FOR_ICE_CREAM
+				record event = on add or edit
+
+				on delete row of ORDER_ITEM
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.GRAND_TOTAL = input.GRAND_TOTAL - row.ice_cream_total_price;
+						)
+					}
+				}
+
+			}
+			DISIBLE__FIELD as "DISIBLE_ FIELD"
+			{
+				type =  form
+				form = reorder_item
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						disable Address,Checkbox,GRAND_TOTAL,Name,Phone_Number,you_choice;
+					}
+				}
+
+			}
+			DISIBLE_FOR_SUBFORM_FIELD as "DISIBLE_FOR SUBFORM FIELD"
+			{
+				type =  form
+				form = reorder_item
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											disable SubForm.Ice_Cream_Flavors;
+										disable SubForm.ice_toppings_list;
+										disable SubForm.ice_toppings_price;
+										disable SubForm.ice_cream_total_price;
+										disable SubForm.Ice_Cream_price;
+						)
+					}
+				}
+
+			}
+			CHECK_FOR_MINUS_AMOUNT as "CHECK FOR MINUS AMOUNT"
+			{
+				type =  form
+				form = ICE_CREAM_DETAILS
+				record event = on add or edit
+
+				on user input of Ice_Cream_price
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(Ice_Cream_price != null)
+										{
+											if(Ice_Cream_price <= 0)
+											{
+												alert "NOT VAILD";
+											}
+										}
+						)
+					}
+				}
+
+			}
+			CHECK_THE_ICE_TOPPINGS_MI as "CHECK THE ICE TOPPINGS MINUS VALUE"
+			{
+				type =  form
+				form = ice_toppings
+				record event = on add or edit
+
+				on user input of ice_toppings_price
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(ice_toppings_price != null)
+										{
+											if(ice_toppings_price <= 0)
+											{
+												alert "not vaild";
+											}
+										}
+						)
+					}
+				}
+
+			}
+			NO_EDIT as "NO EDIT"
+			{
+				type =  form
+				form = ORDER_FOR_ICE_CREAM
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											disable ORDER_ITEM.ice_toppings_price;
+										disable ORDER_ITEM.ice_cream_total_price;
+										disable ORDER_ITEM.Ice_Cream_price;
+										disable GRAND_TOTAL;
+										disable ORDER_ITEM.Status;
+						)
+					}
+				}
+
+			}
+			change_status as "change status"
+			{
+				type =  form
+				form = reorder_item
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											var = ORDER_FOR_ICE_CREAM[ID == input.customer_ID];
+										for each  ver in input.SubForm
+										{
+											for each  rec in var.ORDER_ITEM
+											{
+												if(rec.Ice_Cream_Flavors == ver.Ice_Cream_Flavors)
+												{
+													rec.Status=ver.Status;
+												}
+											}
+										}
+						)
+					}
+				}
+
+			}
+			Fetch_THE_ORDER_DETAILS as "Fetch THE ORDER DETAILS"
+			{
+				type =  form
+				form = reorder_item
+				record event = on add or edit
+
+				on user input of customer_ID
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = ORDER_FOR_ICE_CREAM[ID == input.customer_ID];
+										input.Name = ver.Name;
+										input.you_choice = ver.Drop;
+										input.Phone_Number = ver.Phone_Number;
+										input.Checkbox = ver.Checkbox;
+										input.GRAND_TOTAL = ver.GRAND_TOTAL;
+										input.Address = ver.Address;
+										for each  rec in ver.ORDER_ITEM
+										{
+											var = reorder_item.SubForm();
+											var.Ice_Cream_Flavors=rec.Ice_Cream_Flavors;
+											var.ice_toppings_list=rec.ice_toppings_list;
+											var.Ice_Cream_price=rec.Ice_Cream_price;
+											var.ice_toppings_price=rec.ice_toppings_price;
+											var.ice_cream_total_price=rec.ice_cream_total_price;
+											var.Status=rec.Status;
+											input.SubForm.insert(var);
+										}
+						)
+					}
+				}
+
+			}
+			dynamic_clear as "dynamic clear"
+			{
+				type =  form
+				form = ORDER_FOR_ICE_CREAM
+				record event = on add or edit
+
+				on add row of ORDER_ITEM
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = ICE_CREAM_DETAILS[ID != null].ID.getAll();
+										new = List();
+										for each  rec in input.ORDER_ITEM
+										{
+											new.add(rec.Ice_Cream_Flavors);
+										}
+										ver.removeall(new);
+										row.Ice_Cream_Flavors:ui.add(ver);
+						)
+					}
+				}
+
+			}
+		}
+
+
+
+
+
+
+		functions
+		{
+			change_the_status as "change the status"
+			{
+				type =  functions
+				form = ORDER_FOR_ICE_CREAM
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						openUrl("#Form:reorder_item?Name.first_Name=" + input.Name.first_name + "&Name.last_Name=" + input.Name.last_name + "&Phone_Number=" + input.Phone_Number + "&Address.address_line_1=" + input.Address.address_line_1 + "&Address.address_line_2=" + input.Address.address_line_2 + "&Address.district_city=" + input.Address.district_city + "&Address.country=" + input.Address.country + "&Address.postal_Code=" + input.Address.postal_Code + "&GRAND_TOTAL=" + input.GRAND_TOTAL + "&Checkbox=" + input.Checkbox + "&you_choice=" + input.Drop,"same window");
+					)
+					}
+				}
+			}
+		}
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form ICE_CREAM_DETAILS
+			{
+				label placement = labelinplace
+			}
+			form ice_toppings
+			{
+				label placement = labelinplace
+			}
+			form ORDER_FOR_ICE_CREAM
+			{
+				label placement = labelinplace
+			}
+			form reorder_item
+			{
+				label placement = labelinplace
+			}
+		}
+		reports
+		{
+			report All_Ice_Cream_Details
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Ice_Cream_Flavors as "Ice Cream Flavors "
+								Ice_Cream_price as "Ice Cream price"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Ice_Cream_Flavors as "Ice Cream Flavors "
+								Ice_Cream_price as "Ice Cream price"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Ice_Toppings
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								ice_toppings_list as "ice toppings list"
+								ice_toppings_price as "ice toppings price for(100 g)"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								ice_toppings_list as "ice toppings list"
+								ice_toppings_price as "ice toppings price for(100 g)"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report ORDER_FOR_ICE_CREAM_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Name
+								Phone_Number as "Phone"
+								Address
+								ORDER_ITEM.Ice_Cream_Flavors as "ORDER ITEM"
+								GRAND_TOTAL
+								Checkbox
+								Drop as "you choice"
+								"change"
+								customer_ID as "customer ID"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Name
+								Phone_Number as "Phone"
+								Address
+								ORDER_ITEM.Ice_Cream_Flavors as "ORDER ITEM"
+								GRAND_TOTAL
+								Checkbox
+								Drop as "you choice"
+								customer_ID as "customer ID"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report new_report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -3
+						datablock1
+						(
+							layout type = -3
+							fields
+							(
+								customer_ID as "customer ID"
+								Name
+								Phone_Number as "Phone"
+								Address
+								Checkbox
+								Drop as "you choice"
+								GRAND_TOTAL
+								ORDER_ITEM.Ice_Cream_Flavors as "ORDER ITEM"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								customer_ID as "customer ID"
+								Name
+								Phone_Number as "Phone"
+								Address
+								Checkbox
+								Drop as "you choice"
+								GRAND_TOTAL
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Reorder_Items
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Name
+								Phone_Number as "Phone"
+								Address
+								Checkbox
+								GRAND_TOTAL
+								you_choice as "you choice"
+								SubForm.Ice_Cream_Flavors as "SubForm"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Name
+								Phone_Number as "Phone"
+								Address
+								Checkbox
+								GRAND_TOTAL
+								you_choice as "you choice"
+								SubForm.Ice_Cream_Flavors as "SubForm"
+								customer_ID as "customer ID"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Ice_Cream_Details
+				{
+					displayname = "Ice Cream Details"
+					icon = "food-ice-cream-72"
+					form  ICE_CREAM_DETAILS
+					{
+						icon = "food-ice-cream-72"
+					}
+					report All_Ice_Cream_Details
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section Ice_Toppings
+				{
+					displayname = "Ice Toppings"
+					icon = "food-ice-cream-72"
+					form  ice_toppings
+					{
+						icon = "food-ice-cream-72"
+					}
+					report All_Ice_Toppings
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section ORDER_FOR_ICE_CREAM
+				{
+					displayname = "ORDER FOR ICE CREAM"
+					icon = "food-ice-cream-72"
+					form  ORDER_FOR_ICE_CREAM
+					{
+						icon = "food-ice-cream-72"
+					}
+					report ORDER_FOR_ICE_CREAM_Report
+					{
+						icon = "tech-desktop"
+					}
+					report new_report
+					{
+						icon = "food-ice-cream-72"
+					}
+				}
+				section Reorder_Items
+				{
+					displayname = "Reorder Items"
+					icon = "shopping-cart-simple-remove"
+					form  reorder_item
+					{
+						icon = "shopping-cart-simple-remove"
+					}
+					report All_Reorder_Items
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "lato"
+			color options
+			{
+				menu color = "#12132b"
+				header color = "#ef166f"
+				name = "custom_color_1"
+				brand color = "#5051f9"
+				type = "custom"
+				sub menu color = "#2f305d"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form ICE_CREAM_DETAILS
+			{
+				label placement = auto
+			}
+			form ice_toppings
+			{
+				label placement = auto
+			}
+			form ORDER_FOR_ICE_CREAM
+			{
+				label placement = auto
+			}
+			form reorder_item
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				menu color = "#12132b"
+				header color = "#ef166f"
+				name = "custom_color_1"
+				brand color = "#5051f9"
+				type = "custom"
+				sub menu color = "#2f305d"
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form ICE_CREAM_DETAILS
+			{
+				label placement = auto
+			}
+			form ice_toppings
+			{
+				label placement = auto
+			}
+			form ORDER_FOR_ICE_CREAM
+			{
+				label placement = auto
+			}
+			form reorder_item
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				menu color = "#12132b"
+				header color = "#ef166f"
+				name = "custom_color_1"
+				brand color = "#5051f9"
+				type = "custom"
+				sub menu color = "#2f305d"
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

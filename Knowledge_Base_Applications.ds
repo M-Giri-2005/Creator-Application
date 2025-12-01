@@ -1,0 +1,3209 @@
+/*
+ * Author       : zappyworkssoftwaresolutionst47
+ * Generated on : 30-Nov-2025 11:03:28
+ * Version      : 1.0
+ */
+ application "Knowledge Base Applications"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form Add_Employee
+		{
+			displayname = "Add Employee"
+			success message = "Employee Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Employee_ID
+			(
+				type = number
+				displayname = "Employee ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Mobile_Number
+			(
+    			type = phonenumber
+				displayname = "Mobile Number"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Official_Email
+			(
+    			type = email
+				displayname = "Official Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Department
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Designation
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Date_of_Joining
+			(
+    			type = text
+				displayname = "Date of Joining"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Image
+			(
+    			type = image
+				source  = file
+				aspect ratio = original
+				camera = primary
+				show gallery = true
+				switch camera = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Add"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Add_Organization
+		{
+			displayname = "Add Organization"
+			success message = "Organization Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Organization_Name
+			(
+    			type = text
+				displayname = "Organization Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			logo
+			(
+    			type = image
+				source  = file
+				aspect ratio = original
+				camera = primary
+				show gallery = true
+				switch camera = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Phone_Number1
+			(
+    			type = phonenumber
+				displayname = "Phone Number"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Address
+			(
+    			type = address
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Add"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Add_Task
+		{
+			displayname = "Add Task"
+			success message = "Task Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Task_Name
+			(
+    			type = text
+				displayname = "Task Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Description
+			(
+    			type = textarea
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Assign_To
+			(
+				type = picklist
+				displayname = "Assign To"
+				maxchar = 100
+				values = {"kvvignesh0104@gamil.com","giri.officework@gamil.com","dilli.officework@gamil.com"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Priority
+			(
+				type = radiobuttons
+				maxchar = 100
+				values = {"High","Medium","Low"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Status
+			(
+				type = picklist
+				maxchar = 100
+				values = {"In Progress","Completed","On Hold","Open"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Dete
+			(
+    			type = date
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Add"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Car_Inspection
+		{
+			displayname = "Car Inspection"
+			success message = "Car Inspection Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Date_of_Inspection
+			(
+    			type = date
+				displayname = "Date of Inspection"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Model
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Identification_Number
+			(
+				type = number
+				displayname = "Identification Number"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Defects
+			(
+				type = grid
+				Defective_Part
+				(
+    				type = text
+					displayname = "Defective Part"
+					width = medium
+				)
+				Remarks
+				(
+    				type = text
+					width = medium
+				)
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					Inspect
+					(
+   						type = submit
+   						displayname = "Inspect"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Employee_Attendance
+		{
+			displayname = "Employee Attendance"
+			success message = "Employee Attendance Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Employee_Name
+			(
+    			type = name
+				displayname = "Employee Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Email
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Check_In_Time
+			(
+    			type = datetime
+				displayname = "Check-In Time"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Check_Out_Time
+			(
+    			type = datetime
+				displayname = "Check-Out Time"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Status
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Employee_Details
+		{
+			displayname = "Employee Details"
+			success message = "Employee Detail Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Employee_Name
+			(
+    			type = name
+				displayname = "Employee Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Employee_Email
+			(
+    			type = email
+				displayname = "Employee Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Employee_Phone
+			(
+    			type = phonenumber
+				displayname = "Employee Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Designation
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Reporting_To
+			(
+				type = picklist	
+				displayname = "Reporting To"
+				values  = Employee_Details.ID
+    			displayformat = [" " + Employee_Name.prefix + " " + Employee_Name.first_name + " " + Employee_Name.last_name + " " + Employee_Name.suffix]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Employee_Image
+			(
+    			type = image
+				displayname = "Employee Image"
+				source  = file
+				aspect ratio = original
+				camera = primary
+				show gallery = true
+				switch camera = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Employee_Details1
+		{
+			displayname = "Employee Details"
+			success message = "Employee Detail Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Employee_Name
+			(
+    			type = name
+				displayname = "Employee Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Email
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Phone_Number
+			(
+    			type = phonenumber
+				displayname = "Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Address
+			(
+    			type = address
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Date_of_Birth
+			(
+    			type = date
+				displayname = "Date of Birth"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Image
+			(
+    			type = image
+				source  = file
+				aspect ratio = original
+				camera = primary
+				show gallery = true
+				switch camera = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Question_And_Answer
+		{
+			displayname = "Question And Answer"
+			success message = "Data Added Successfully!"
+			Enter_Your_Name_And_Email
+			(
+				type = section
+				displayname = "Enter Your Name And Email"
+				visibility = true
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Student_Name
+			(
+    			type = name
+				displayname = "Student Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Student_Email
+			(
+    			type = email
+				displayname = "Student Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Section3
+			(
+				type = section
+				displayname = "01"
+				visibility = true
+	 			row = 2
+	 			column = 0   
+				width = medium
+			)
+			Your_Role
+			(
+				type = radiobuttons
+				displayname = "Your Role"
+				maxchar = 100
+				values = {"Develpers","tester"}
+				layout = 2
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Section20
+			(
+				type = section
+				displayname = "02"
+				visibility = true
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Zoho_Creator_is_primarily_used_for
+			(
+				type = radiobuttons
+				displayname = "Zoho Creator is primarily used for:"
+				maxchar = 100
+				values = {"A. Graphic design","B. Building custom business applications","C. File storage","D. Email marketing"}
+				layout = 2
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Section19
+			(
+				type = section
+				displayname = "03"
+				visibility = true
+	 			row = 4
+	 			column = 0   
+				width = medium
+			)
+			Which_programming_language_is_used_in_Zoho_Creator_for_automation
+			(
+				type = radiobuttons
+				displayname = "Which programming language is used in Zoho Creator for automation?"
+				maxchar = 100
+				values = {"A. Python","B. SQL","C. Deluge","D. Java"}
+				layout = 2
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Section18
+			(
+				type = section
+				displayname = "04"
+				visibility = true
+	 			row = 5
+	 			column = 0   
+				width = medium
+			)
+			What_is_a_Form_in_Zoho_Creator
+			(
+				type = radiobuttons
+				displayname = "What is a “Form” in Zoho Creator?"
+				maxchar = 100
+				values = {"A. A dashboard layout","B. A data-collection interface","C. A rule engine","D. A mobile app"}
+				layout = 2
+	 			row = 5
+	 			column = 1   
+				width = medium
+			)
+			Section17
+			(
+				type = section
+				displayname = "05"
+				visibility = true
+	 			row = 6
+	 			column = 0   
+				width = medium
+			)
+			Which_of_the_following_is_NOT_a_field_type_in_Zoho_Creator
+			(
+				type = radiobuttons
+				displayname = "Which of the following is NOT a field type in Zoho Creator?"
+				maxchar = 100
+				values = {"A. Single Line","B. Decision Tree","C. Number","D. Dropdown"}
+				layout = 2
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			Section16
+			(
+				type = section
+				displayname = "06"
+				visibility = true
+	 			row = 7
+	 			column = 0   
+				width = medium
+			)
+			Workflows_in_Zoho_Creator_are_used_to
+			(
+				type = radiobuttons
+				displayname = "Workflows in Zoho Creator are used to:"
+				maxchar = 100
+				values = {"A. Design UI themes","B. Automate processes","C. Backup applications","D. Publish documentation"}
+				layout = 2
+	 			row = 7
+	 			column = 1   
+				width = medium
+			)
+			Section15
+			(
+				type = section
+				displayname = "07"
+				visibility = true
+	 			row = 8
+	 			column = 0   
+				width = medium
+			)
+			Which_option_is_used_to_display_data_visually_in_Zoho_Creator
+			(
+				type = radiobuttons
+				displayname = "Which option is used to display data visually in Zoho Creator?"
+				maxchar = 100
+				values = {"A. Pages","B. Reports","C. Variables","D. Widgets"}
+				layout = 2
+	 			row = 8
+	 			column = 1   
+				width = medium
+			)
+			Section14
+			(
+				type = section
+				displayname = "08"
+				visibility = true
+	 			row = 9
+	 			column = 0   
+				width = medium
+			)
+			In_Zoho_Creator_which_report_type_allows_grouping_and_summarizing_data
+			(
+				type = radiobuttons
+				displayname = "In Zoho Creator, which report type allows grouping and summarizing data?"
+				maxchar = 100
+				values = {"A. Pivot Report","B. Calendar Report","C. List Report","D. Spreadsheet Report"}
+				layout = 2
+	 			row = 9
+	 			column = 1   
+				width = medium
+			)
+			Section13
+			(
+				type = section
+				displayname = "09"
+				visibility = true
+	 			row = 10
+	 			column = 0   
+				width = medium
+			)
+			Which_feature_allows_users_to_create_drag_and_drop_UI_components
+			(
+				type = radiobuttons
+				displayname = "Which feature allows users to create drag-and-drop UI components?"
+				maxchar = 100
+				values = {"A. Page Builder","B. Form Builder","C. Workflow Builder","D. Script Builder"}
+				layout = 2
+	 			row = 10
+	 			column = 1   
+				width = medium
+			)
+			Section12
+			(
+				type = section
+				displayname = "10"
+				visibility = true
+	 			row = 11
+	 			column = 0   
+				width = medium
+			)
+			Which_Zoho_Creator_plan_feature_allows_integrations_with_other_apps
+			(
+				type = radiobuttons
+				displayname = "What is the purpose of the Sandbox environment?"
+				maxchar = 100
+				values = {"A. Data storage","B. Test application changes safely","C. Create backups","D. Customize themes"}
+				layout = 2
+	 			row = 11
+	 			column = 1   
+				width = medium
+			)
+			Section11
+			(
+				type = section
+				displayname = "11"
+				visibility = true
+	 			row = 12
+	 			column = 0   
+				width = medium
+			)
+			Which_component_stores_and_manages_application_data
+			(
+				type = radiobuttons
+				displayname = "Which component stores and manages application data?"
+				maxchar = 100
+				values = {"A. Pages","B. Reports","C. Forms","D. Workflows"}
+				layout = 2
+	 			row = 12
+	 			column = 1   
+				width = medium
+			)
+			Section10
+			(
+				type = section
+				displayname = "12"
+				visibility = true
+	 			row = 13
+	 			column = 0   
+				width = medium
+			)
+			Deluge_stands_for
+			(
+				type = radiobuttons
+				displayname = "Deluge stands for:"
+				maxchar = 100
+				values = {"A. Data Enrichment Logic Utility Generator","B. Data Enriched Language for Universal Grid Entities","C. Data Enriched Language for the Universal Grid Environment","D. Data Enriched Language for the Universal Grid of Execution"}
+				layout = 2
+	 			row = 13
+	 			column = 1   
+				width = medium
+			)
+			Section9
+			(
+				type = section
+				displayname = "13"
+				visibility = true
+	 			row = 14
+	 			column = 0   
+				width = medium
+			)
+			Which_action_triggers_a_Workflow
+			(
+				type = radiobuttons
+				displayname = "Which action triggers a Workflow?"
+				maxchar = 100
+				values = {"A. Editing or adding a record","B. Closing the app","C. Viewing a report","D. Logging out"}
+				layout = 2
+	 			row = 14
+	 			column = 1   
+				width = medium
+			)
+			Section8
+			(
+				type = section
+				displayname = "14"
+				visibility = true
+	 			row = 15
+	 			column = 0   
+				width = medium
+			)
+			What_type_of_app_can_Zoho_Creator_publish
+			(
+				type = radiobuttons
+				displayname = "What type of app can Zoho Creator publish?"
+				maxchar = 100
+				values = {"A. Web app only","B. Mobile app only","C. Both web and mobile apps","D. Desktop app only"}
+				layout = 2
+	 			row = 15
+	 			column = 1   
+				width = medium
+			)
+			Section7
+			(
+				type = section
+				displayname = "15"
+				visibility = true
+	 			row = 16
+	 			column = 0   
+				width = medium
+			)
+			Which_field_type_is_best_for_uploading_documents
+			(
+				type = radiobuttons
+				displayname = "Which field type is best for uploading documents?"
+				maxchar = 100
+				values = {"A. Image","B. File Upload","C. URL","D. Lookup"}
+				layout = 2
+	 			row = 16
+	 			column = 1   
+				width = medium
+			)
+			Section6
+			(
+				type = section
+				displayname = "16"
+				visibility = true
+	 			row = 17
+	 			column = 0   
+				width = medium
+			)
+			Which_feature_lets_you_restrict_who_can_access_an_app
+			(
+				type = radiobuttons
+				displayname = "Which feature lets you restrict who can access an app?"
+				maxchar = 100
+				values = {"A. Themes","B. Permissions & Roles","C. Pages","D. Layouts"}
+				layout = 2
+	 			row = 17
+	 			column = 1   
+				width = medium
+			)
+			Section5
+			(
+				type = section
+				displayname = "17"
+				visibility = true
+	 			row = 18
+	 			column = 0   
+				width = medium
+			)
+			Which_report_format_displays_data_on_a_map
+			(
+				type = radiobuttons
+				displayname = "Which report format displays data on a map?"
+				maxchar = 100
+				values = {"A. Kanban","B. List","C. Map","D. Timeline"}
+				layout = 2
+	 			row = 18
+	 			column = 1   
+				width = medium
+			)
+			Section4
+			(
+				type = section
+				displayname = "18"
+				visibility = true
+	 			row = 19
+	 			column = 0   
+				width = medium
+			)
+			Connections_are_primarily_used_for
+			(
+				type = radiobuttons
+				displayname = "“Connections” are primarily used for:"
+				maxchar = 100
+				values = {"A. Data migration","B. API integrations","C. Layout design","D. Backup creation"}
+				layout = 2
+	 			row = 19
+	 			column = 1   
+				width = medium
+			)
+			Section
+			(
+				type = section
+				displayname = "19"
+				visibility = true
+	 			row = 20
+	 			column = 0   
+				width = medium
+			)
+			Which_Zoho_Creator_feature_allows_scripting_without_writing_code
+			(
+				type = radiobuttons
+				displayname = "Which Zoho Creator feature allows scripting without writing code?"
+				maxchar = 100
+				values = {"A. AI Builder","B. Workflow Rules","C. Blueprint","D. Drag-and-Drop functions"}
+				layout = 2
+	 			row = 20
+	 			column = 1   
+				width = medium
+			)
+			Section2
+			(
+				type = section
+				displayname = "20"
+				visibility = true
+	 			row = 21
+	 			column = 0   
+				width = medium
+			)
+			Which_module_allows_embedding_HTML_CSS_and_JavaScript
+			(
+				type = radiobuttons
+				displayname = "Which module allows embedding HTML, CSS, and JavaScript?"
+				maxchar = 100
+				values = {"A. Reports","B. Pages","C. Forms","D. Schedules"}
+				layout = 2
+	 			row = 21
+	 			column = 1   
+				width = medium
+			)
+			Total_Mark
+			(
+				type = section
+				displayname = "Total Mark"
+				visibility = true
+	 			row = 22
+	 			column = 0   
+				width = medium
+			)
+			Total_Mark1
+			(
+				type = number
+				displayname = "Total Mark"
+	 			row = 22
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		properties
+		{
+			end time
+			{
+				time = '29-Nov-2025 00:00:00'
+			}
+		}
+		}
+		form Salary_Structure
+		{
+			displayname = "Salary Structure"
+			success message = "Salary Structure Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Employee
+			(
+				type = picklist	
+				displayname = "Employee "
+				values  = Add_Employee.ID
+    			displayformat = [Employee_ID]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Month_field
+			(
+				type = picklist
+				displayname = "Month"
+				maxchar = 100
+				values = {"January","February","March","April","May","June","July","August","September","October","November","December"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Basic
+			(
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			HRA
+			(
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Allowance
+			(
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			PF
+			(
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			CTC
+			(
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list All_Tasks
+		{
+			displayName = "All Tasks"
+			show all rows from Add_Task    
+			(
+				Task_Name as "Task Name"
+				Description
+				Assign_To as "Assign To"
+				Priority
+				Status
+				Dete
+			)
+		}
+		default list All_Employee_Details
+		{
+			displayName = "All Employee Details"
+			show all rows from Employee_Details    
+			(
+				Employee_Name  as "Employee Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Employee_Email as "Employee Email"
+				Employee_Phone as "Employee Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Designation
+				Reporting_To as "Reporting To"
+				Employee_Image as "Employee Image"
+			)
+		}
+		default list All_Car_Inspections
+		{
+			displayName = "All Car Inspections"
+			show all rows from Car_Inspection    
+			(
+				Date_of_Inspection as "Date of Inspection"
+				Model
+				Identification_Number as "Identification Number"
+				Defects.Defective_Part as "Defects"
+			)
+		}
+		default list Question_And_Answer_Report
+		{
+			displayName = "Question And Answer Report"
+			show all rows from Question_And_Answer    
+			(
+				Zoho_Creator_is_primarily_used_for as "Zoho Creator is primarily used for:"
+				Which_programming_language_is_used_in_Zoho_Creator_for_automation as "Which programming language is used in Zoho Creator for automation?"
+				What_is_a_Form_in_Zoho_Creator as "What is a “Form” in Zoho Creator?"
+				Which_of_the_following_is_NOT_a_field_type_in_Zoho_Creator as "Which of the following is NOT a field type in Zoho Creator?"
+				Workflows_in_Zoho_Creator_are_used_to as "Workflows in Zoho Creator are used to:"
+				Which_option_is_used_to_display_data_visually_in_Zoho_Creator as "Which option is used to display data visually in Zoho Creator?"
+				In_Zoho_Creator_which_report_type_allows_grouping_and_summarizing_data as "In Zoho Creator, which report type allows grouping and summarizing data?"
+				Which_feature_allows_users_to_create_drag_and_drop_UI_components as "Which feature allows users to create drag-and-drop UI components?"
+				Which_Zoho_Creator_plan_feature_allows_integrations_with_other_apps as "What is the purpose of the Sandbox environment?"
+				Which_component_stores_and_manages_application_data as "Which component stores and manages application data?"
+				Deluge_stands_for as "Deluge stands for:"
+				Which_action_triggers_a_Workflow as "Which action triggers a Workflow?"
+				What_type_of_app_can_Zoho_Creator_publish as "What type of app can Zoho Creator publish?"
+				Which_field_type_is_best_for_uploading_documents as "Which field type is best for uploading documents?"
+				Which_feature_lets_you_restrict_who_can_access_an_app as "Which feature lets you restrict who can access an app?"
+				Which_report_format_displays_data_on_a_map as "Which report format displays data on a map?"
+				Connections_are_primarily_used_for as "“Connections” are primarily used for:"
+				Which_Zoho_Creator_feature_allows_scripting_without_writing_code as "Which Zoho Creator feature allows scripting without writing code?"
+				Which_module_allows_embedding_HTML_CSS_and_JavaScript as "Which module allows embedding HTML, CSS, and JavaScript?"
+				Your_Role as "Your Role"
+				Total_Mark1 as "Total Mark"
+				Student_Name  as "Student Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Student_Email as "Student Email"
+			)
+		}
+		default list All_Organizations
+		{
+			displayName = "All Organizations"
+			show all rows from Add_Organization    
+			(
+				Organization_Name as "Organization Name"
+				logo
+				Phone_Number1 as "Phone Number"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Address 
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+			)
+		}
+		default list All_Employees
+		{
+			displayName = "All Employees"
+			show all rows from Add_Employee    
+			(
+				Name 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Mobile_Number as "Mobile Number"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Official_Email as "Official Email"
+				Department
+				Designation
+				Date_of_Joining as "Date of Joining"
+				Employee_ID as "Employee ID"
+				Image
+			)
+		}
+		default list All_Salary_Structures
+		{
+			displayName = "All Salary Structures"
+			show all rows from Salary_Structure    
+			(
+				Employee as "Employee "
+				Month_field as "Month"
+				Basic
+				HRA
+				Allowance
+				PF
+				CTC
+			)
+		}
+		default list All_Employee_Details1
+		{
+			displayName = "All Employee Details"
+			show all rows from Employee_Details1    
+			(
+				Employee_Name  as "Employee Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Email
+				Phone_Number as "Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Address 
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Date_of_Birth as "Date of Birth"
+				Image
+			)
+		}
+		default list All_Employee_Attendances
+		{
+			displayName = "All Employee Attendances"
+			show all rows from Employee_Attendance    
+			(
+				Employee_Name  as "Employee Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Email
+				Check_In_Time as "Check-In Time"
+				Check_Out_Time as "Check-Out Time"
+				Status
+			)
+		}
+		calendar View_Employee_Attendance
+		{
+			displayName = "View Employee Attendance"
+			show all rows from Employee_Attendance  [Email == zoho.loginuserid]  
+			(
+				Employee_Name  as "Employee Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Email
+				Check_In_Time as "Check-In Time"
+				Check_Out_Time as "Check-Out Time"
+				Status
+			)
+			options
+			(
+				display type = month
+				week start day = sunday
+				display field = Check_In_Time
+				start date = Check_In_Time
+				end date = Check_Out_Time
+				default date 
+				(
+	    			day   = Today
+	    			month = Currentmonth
+	    			year  = Currentyear
+				)
+			)
+		}
+	}
+	pages
+	{
+		page Dashboard(int completed, string dashboardType, int highPriority, int inProgress, int open, string searchQuery)
+		{
+			displayname = "Dashboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#000000'\n\tsize = '36px'\n\tbold = 'true' \n\ttype = 'variable'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#000000'\n    borderWidth = '0px'\n\n\t  value = '${dashboardType}'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr><pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '17px'\n\tpaddingLeft = '17px'\n\tpaddingRight = '0px'\n\tpaddingBottom = '17px'\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n\t\twidth = '50%'\n\t\thAlign = 'center'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<button \n\t\tmargin = '0px'\n\tpaddingTop = '12px'\n\tpaddingLeft = '15px'\n\tpaddingRight = '15px'\n\tpaddingBottom = '12px'\n\n    action = 'OpenPage'\n\t\tparameters = 'dashboardType=Team Dashboard' \n\t\tcomponentLinkName = 'Dashboard'\n\t\ttarget = 'same-window'\n\tcolor = '#FFFFFF'\n\tsize = '16px'\n    borderColor = '#FFFFFF'\n    borderWidth = '0px'\n\ttext ='Team Dashboard'\n\t\tbgColor = 'theme'\n\t\tcornerRadius = '60px' \n\/>\n<\/pc>\n<\/pr>\n<\/pc><pc \n\t\tpadding = '17px'\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n\t\twidth = '50%'\n\t\thAlign = 'center'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<button \n\t\tmargin = '0px'\n\tpaddingTop = '12px'\n\tpaddingLeft = '15px'\n\tpaddingRight = '15px'\n\tpaddingBottom = '12px'\n\n    action = 'OpenPage'\n\t\tparameters = 'dashboardType=My Dashboard' \n\t\tcomponentLinkName = 'Dashboard'\n\t\ttarget = 'same-window'\n\tcolor = '#FFFFFF'\n\tsize = '16px'\n    borderColor = '#FFFFFF'\n    borderWidth = '0px'\n\ttext ='My Dashboard'\n\t\tbgColor = 'theme'\n\t\tcornerRadius = '60px' \n\/>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width='24%'\n   \t>\n\t<panel elementName='Panel 1'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#2A70E7'\n\tsize = '24px'\n\ttype = 'variable'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'COMMA'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#000000'\n    borderWidth = '0px'\n\n\t  value = '${inProgress}'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr><pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '0px'\n\tpaddingLeft = '17px'\n\tpaddingRight = '17px'\n\tpaddingBottom = '17px'\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#2A70E7'\n\tsize = '16px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#2A70E7'\n    borderWidth = '0px'\n\n\t  value = 'In Progress'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column><column\n   \t\t width='24%'\n   \t>\n\t<panel elementName='Panel 2'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#2A70E7'\n\tsize = '24px'\n\ttype = 'variable'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'COMMA'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#000000'\n    borderWidth = '0px'\n\n\t  value = '${open}'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr><pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '0px'\n\tpaddingLeft = '17px'\n\tpaddingRight = '17px'\n\tpaddingBottom = '17px'\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#2A70E7'\n\tsize = '16px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#2A70E7'\n    borderWidth = '0px'\n\n\t  value = 'Normal Text'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column><column\n   \t\t width='25%'\n   \t>\n\t<panel elementName='Panel 3'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#2A70E7'\n\tsize = '24px'\n\ttype = 'variable'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'COMMA'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#2A70E7'\n    borderWidth = '0px'\n\n\t  value = '${completed}'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr><pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '0px'\n\tpaddingLeft = '17px'\n\tpaddingRight = '17px'\n\tpaddingBottom = '17px'\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#2A70E7'\n\tsize = '16px'\n\ttype = 'Text'\n\n\tbgColor = '#FFFFFF'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#2A70E7'\n    borderWidth = '0px'\n\n\t  value = 'Completed'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column><column\n   \t\t width='27%'\n   \t>\n\t<panel elementName='Panel 4'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\n\t\twidth = '100%'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#2A70E7'\n\tsize = '24px'\n\ttype = 'variable'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'COMMA'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#2A70E7'\n    borderWidth = '0px'\n\n\t  value = '${highPriority}'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr><pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '0px'\n\tpaddingLeft = '17px'\n\tpaddingRight = '17px'\n\tpaddingBottom = '17px'\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#2A70E7'\n\tsize = '16px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#2A70E7'\n    borderWidth = '0px'\n\n\t  value = 'High Priority'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<report \n\telementName='Report'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'All_Tasks'\n\t\tcriteriaString = 'Assign_To.contains(input.searchQuery)'\n\t\n\t\tiszreport = 'false'\n\theightType = 'auto'\n\theightValue = '700'\n\n\/>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+			script
+			{
+				input.inProgress = Add_Task[Status == "In Progress" && Assign_To == zoho.loginuserid].count();
+				input.open = Add_Task[Status == "Open" && Assign_To == zoho.loginuserid].count();
+				input.completed = Add_Task[Status == "Completed" && Assign_To == zoho.loginuserid].count();
+				input.highPriority = Add_Task[Priority == "High" && Assign_To == zoho.loginuserid].count();
+				input.searchQuery = zoho.loginuserid;
+				if(input.dashboardType == "Team Dashboard")
+				{
+					input.inProgress = Add_Task[Status == "In Progress"].count();
+					input.open = Add_Task[Status == "Open"].count();
+					input.completed = Add_Task[Status == "Completed"].count();
+					input.highPriority = Add_Task[Priority == "High"].count();
+					input.searchQuery = "";
+				}
+				else
+				{
+					input.dashboardType = "My Dashboard";
+				}
+			}
+		}
+		page Organizational_Chart(string appname, string employee, string employeesubtext, string photo, string reportingto, string reportname)
+		{
+			displayname = "Organizational Chart"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<widgets elementName='Widget' importedTemplate='true'\/>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+			script
+			{
+				input.appname = "knowledge-base-applications";
+				input.reportname = "All_Employee_Details";
+				input.employee = "Employee_Name";
+				input.photo = "Employee_Image";
+				input.employeesubtext = "Designation";
+				input.reportingto = "Reporting_To";
+			}
+		}
+		page Inspection(string damagedPartFieldLinkName, string recordID, string redirectURL, string remarksFieldLinkName, string reportName, string subFormLinkName)
+		{
+			displayname = "Inspection"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<widgets elementName='Widget' importedTemplate='true'\/>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+			script
+			{
+				input.reportName = "All_Car_Inspection";
+				input.subFormLinkName = "Defects";
+				input.damagedPartFieldLinkName = "Defective_Part";
+				input.remarksFieldLinkName = "Remarks";
+				input.redirectURL = "https://creatorapp.zoho.in" + zoho.appuri + "#Form:Car_Inspection";
+			}
+		}
+		page Student_Test(string endtime, string timezone)
+		{
+			displayname = "Student Test"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<widgets elementName='Widget' importedTemplate='true'\/>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<form \n\telementName='Form'\n\n\tappLinkName = 'thisapp'\n\tlinkName = 'Question_And_Answer'\n\theightType = 'auto'\n\theightValue = '150'\n\turlType = 'none'\n\tzc_Header = 'false'\n\/> \n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+			script
+			{
+				input.endtime = "29-Nov-2025 00:00:00";
+				input.timezone = "IST";
+			}
+		}
+		page Download_Salary_Structure
+		{
+			displayname = "Download Salary Structure"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t\n<\/layout>\n<\/zml>"
+		}
+		page Check_In_Check_Out(string appname, string checkintime, string checkouttime, string criteria, string dateformat, string reportname, string status, string timezone)
+		{
+			displayname = "Check In Check Out"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='34%'\n   \t>\n\t<dsp id='html_snippet' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet()\ncontent\n&lt;%{\n\timage_link = Employee_Details1[Email == zoho.loginuserid];\n\tnew = image_link.Image.getprefix(&quot;\\&quot; lowqual&quot;).getsuffix(&quot;&lt;img src = \\&quot;&quot;).replaceAll(&quot;\/sharedBy\/appLinkName\/viewLinkName\/fieldName&quot;,zoho.appuri + &quot;All_Employee_Details1\/Image&quot;);\n\t%&gt;\n&lt;div class=&quot;hari&quot;&gt;\n    &lt;img src=&quot;&lt;%=new%&gt;&quot; alt=&quot;&quot;\/&gt;\n&lt;\/div&gt;\n&lt;div class=&quot;vicky&quot;&gt;\n   &lt;h2&gt;&lt;%=image_link.Employee_Name%&gt;&lt;\/h2&gt;\n&lt;\/div&gt;\n&lt;style&gt;\n.hari{\n    text-align: center;\n}\n\n.hari img{\n    width:150px;\n    height:150px;\n    object-fit: cover;\n}\n.vicky{\n    text-align: center;\n}\n\n\n&lt;\/style&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column><column\n   \t\t width='33%'\n   \t>\n\t<panel elementName='Panel'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#000000'\n\tsize = '24px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#000000'\n    borderWidth = '0px'\n\n\t  value = 'Employee Dashboard'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column><column\n   \t\t width='33%'\n   \t>\n\t<widgets elementName='Widget' importedTemplate='true'\/>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<report \n\telementName='Report'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'View_Employee_Attendance'\n\t\n\t\tiszreport = 'false'\n\theightType = 'custom'\n\theightValue = '600'\n\n\/>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+			script
+			{
+				input.appname = "knowledge-base-applications";
+				input.reportname = "All_Employee_Attendances";
+				input.checkintime = "Check_In_Time";
+				input.checkouttime = "Check_Out_Time";
+				input.criteria = "Email=\"" + zoho.loginuserid + "\"" + "&Added_Time=\'" + today + "\'";
+				input.dateformat = "dd-MMM-yyyy";
+				input.timezone = "IST";
+				input.status = "Status";
+			}
+		}
+	}
+
+
+		workflow
+		{
+		form
+		{
+			hide_and_disable as "hide and disable"
+			{
+				type =  form
+				form = Car_Inspection
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						hide Defects;
+					}
+				}
+
+			}
+			Open_Extension as "Open Extension"
+			{
+				type =  form
+				form = Car_Inspection
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											openUrl("#Page:Inspection?recordID=" + input.ID,"same window");
+						)
+					}
+				}
+
+			}
+			hide_and_disable1 as "hide and disable"
+			{
+				type =  form
+				form = Question_And_Answer
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						hide Total_Mark;
+					}
+				}
+
+			}
+			Check_Answer as "Check Answer"
+			{
+				type =  form
+				form = Question_And_Answer
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											count = 0;
+										if(input.Your_Role != null)
+										{
+											count = count + 1;
+										}
+										if(input.Zoho_Creator_is_primarily_used_for == "B. Building custom business applications")
+										{
+											count = count + 1;
+										}
+										if(input.Which_programming_language_is_used_in_Zoho_Creator_for_automation == "C. Deluge")
+										{
+											count = count + 1;
+										}
+										if(input.What_is_a_Form_in_Zoho_Creator == "A data-collection interface")
+										{
+											count = count + 1;
+										}
+										if(input.Which_of_the_following_is_NOT_a_field_type_in_Zoho_Creator == "B. Decision Tree")
+										{
+											count = count + 1;
+										}
+										if(input.Workflows_in_Zoho_Creator_are_used_to == "B. Automate processes")
+										{
+											count = count + 1;
+										}
+										if(input.Which_option_is_used_to_display_data_visually_in_Zoho_Creator == "B. Reports")
+										{
+											count = count + 1;
+										}
+										if(input.In_Zoho_Creator_which_report_type_allows_grouping_and_summarizing_data == "A. Pivot Report")
+										{
+											count = count + 1;
+										}
+										if(input.Which_feature_allows_users_to_create_drag_and_drop_UI_components == "A. Page Builder")
+										{
+											count = count + 1;
+										}
+										if(input.Which_Zoho_Creator_plan_feature_allows_integrations_with_other_apps == "B. Connections")
+										{
+											count = count + 1;
+										}
+										if(input.Which_component_stores_and_manages_application_data == "C. Forms")
+										{
+											count = count + 1;
+										}
+										if(input.Deluge_stands_for == "D. Data Enriched Language for the Universal Grid of Execution")
+										{
+											count = count + 1;
+										}
+										if(input.Which_action_triggers_a_Workflow == "A. Editing or adding a record")
+										{
+											count = count + 1;
+										}
+										if(input.What_type_of_app_can_Zoho_Creator_publish == "C. Both web and mobile apps")
+										{
+											count = count + 1;
+										}
+										if(input.Which_field_type_is_best_for_uploading_documents == "B. File Upload")
+										{
+											count = count + 1;
+										}
+										if(input.Which_feature_lets_you_restrict_who_can_access_an_app == "B. Permissions & Roles")
+										{
+											count = count + 1;
+										}
+										if(input.Which_report_format_displays_data_on_a_map == "C. Map")
+										{
+											count = count + 1;
+										}
+										if(input.Connections_are_primarily_used_for == "B. API integrations")
+										{
+											count = count + 1;
+										}
+										if(input.Which_Zoho_Creator_feature_allows_scripting_without_writing_code == "B. Workflow Rules")
+										{
+											count = count + 1;
+										}
+										if(input.Which_module_allows_embedding_HTML_CSS_and_JavaScript == "B. Pages")
+										{
+											count = count + 1;
+										}
+										input.Total_Mark1 = count;
+										if(input.Total_Mark1 >= 15)
+										{
+											sendmail
+											[
+												from :zoho.adminuserid
+												to :input.Student_Email
+												subject :"you Test Result"
+												message :"Pass" + "   =   " + input.Total_Mark1
+												Attachments :view:Question_And_Answer_Report[ID == input.ID] as PDF
+											]
+										}
+										if(input.Total_Mark1 <= 14)
+										{
+											sendmail
+											[
+												from :zoho.adminuserid
+												to :input.Student_Email
+												subject :"you Test Result"
+												message :"fail" + "   =     " + input.Total_Mark1
+												Attachments :view:Question_And_Answer_Report[ID == input.ID] as PDF
+											]
+										}
+						)
+					}
+				}
+
+			}
+		}
+
+		schedule
+		{
+			attendance_Entry as "attendance Entry"
+			{
+				type =  schedule
+				start = "2025-11-26 00:00:02"
+				frequency = daily
+				time zone = "Asia/Kolkata"
+				on start
+				{
+					actions 
+					{
+					on load
+					(
+						fetch_employees = Employee_Details[ID != 0];
+										for each  data in fetch_employees
+										{
+											add_entry = insert into Employee_Attendance
+											[
+												Added_User=zoho.loginuser
+												Employee_Name=data.Employee_Name
+												Email=data.Employee_Email
+											];
+										}
+										fet_absentees = Employee_Attendance[Added_Time == today.subday(1) && Status == ""];
+										if(fet_absentees != null)
+										{
+											for each  absent_rec in fet_absentees
+											{
+												absent_rec.Status="Absent";
+											}
+										}
+					)
+					}
+				}
+			}
+		}
+
+
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form Add_Employee
+			{
+				label placement = left
+			}
+			form Add_Organization
+			{
+				label placement = left
+			}
+			form Add_Task
+			{
+				label placement = left
+			}
+			form Car_Inspection
+			{
+				label placement = left
+			}
+			form Employee_Attendance
+			{
+				label placement = left
+			}
+			form Employee_Details
+			{
+				label placement = left
+			}
+			form Employee_Details1
+			{
+				label placement = left
+			}
+			form Question_And_Answer
+			{
+				label placement = left
+			}
+			form Salary_Structure
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report All_Tasks
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Task_Name as "Task Name"
+								Description
+								Assign_To as "Assign To"
+								Priority
+								Status
+								Dete
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Task_Name as "Task Name"
+								Description
+								Assign_To as "Assign To"
+								Priority
+								Status
+								Dete
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Employee_Details
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Employee_Name as "Employee Name"
+								Employee_Email as "Employee Email"
+								Employee_Phone as "Employee Phone"
+								Designation
+								Reporting_To as "Reporting To"
+								Employee_Image as "Employee Image"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Employee_Name as "Employee Name"
+								Employee_Email as "Employee Email"
+								Employee_Phone as "Employee Phone"
+								Designation
+								Reporting_To as "Reporting To"
+								Employee_Image as "Employee Image"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Car_Inspections
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Date_of_Inspection as "Date of Inspection"
+								Model
+								Identification_Number as "Identification Number"
+								Defects.Defective_Part as "Defects"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Date_of_Inspection as "Date of Inspection"
+								Model
+								Identification_Number as "Identification Number"
+								Defects.Defective_Part as "Defects"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Question_And_Answer_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Zoho_Creator_is_primarily_used_for as "Zoho Creator is primarily used for:"
+								Which_programming_language_is_used_in_Zoho_Creator_for_automation as "Which programming language is used in Zoho Creator for automation?"
+								What_is_a_Form_in_Zoho_Creator as "What is a “Form” in Zoho Creator?"
+								Which_of_the_following_is_NOT_a_field_type_in_Zoho_Creator as "Which of the following is NOT a field type in Zoho Creator?"
+								Workflows_in_Zoho_Creator_are_used_to as "Workflows in Zoho Creator are used to:"
+								Which_option_is_used_to_display_data_visually_in_Zoho_Creator as "Which option is used to display data visually in Zoho Creator?"
+								In_Zoho_Creator_which_report_type_allows_grouping_and_summarizing_data as "In Zoho Creator, which report type allows grouping and summarizing data?"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Zoho_Creator_is_primarily_used_for as "Zoho Creator is primarily used for:"
+								Which_programming_language_is_used_in_Zoho_Creator_for_automation as "Which programming language is used in Zoho Creator for automation?"
+								What_is_a_Form_in_Zoho_Creator as "What is a “Form” in Zoho Creator?"
+								Which_of_the_following_is_NOT_a_field_type_in_Zoho_Creator as "Which of the following is NOT a field type in Zoho Creator?"
+								Workflows_in_Zoho_Creator_are_used_to as "Workflows in Zoho Creator are used to:"
+								Which_option_is_used_to_display_data_visually_in_Zoho_Creator as "Which option is used to display data visually in Zoho Creator?"
+								In_Zoho_Creator_which_report_type_allows_grouping_and_summarizing_data as "In Zoho Creator, which report type allows grouping and summarizing data?"
+								Which_feature_allows_users_to_create_drag_and_drop_UI_components as "Which feature allows users to create drag-and-drop UI components?"
+								Which_Zoho_Creator_plan_feature_allows_integrations_with_other_apps as "What is the purpose of the Sandbox environment?"
+								Which_component_stores_and_manages_application_data as "Which component stores and manages application data?"
+								Deluge_stands_for as "Deluge stands for:"
+								Which_action_triggers_a_Workflow as "Which action triggers a Workflow?"
+								What_type_of_app_can_Zoho_Creator_publish as "What type of app can Zoho Creator publish?"
+								Which_field_type_is_best_for_uploading_documents as "Which field type is best for uploading documents?"
+								Which_feature_lets_you_restrict_who_can_access_an_app as "Which feature lets you restrict who can access an app?"
+								Which_report_format_displays_data_on_a_map as "Which report format displays data on a map?"
+								Connections_are_primarily_used_for as "“Connections” are primarily used for:"
+								Which_Zoho_Creator_feature_allows_scripting_without_writing_code as "Which Zoho Creator feature allows scripting without writing code?"
+								Which_module_allows_embedding_HTML_CSS_and_JavaScript as "Which module allows embedding HTML, CSS, and JavaScript?"
+								Your_Role as "Your Role"
+								Total_Mark1 as "Total Mark"
+								Student_Name as "Student Name"
+								Student_Email as "Student Email"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Organizations
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Organization_Name as "Organization Name"
+								logo
+								Phone_Number1 as "Phone Number"
+								Address
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Organization_Name as "Organization Name"
+								logo
+								Phone_Number1 as "Phone Number"
+								Address
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Employees
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Name
+								Mobile_Number as "Mobile Number"
+								Official_Email as "Official Email"
+								Department
+								Designation
+								Date_of_Joining as "Date of Joining"
+								Employee_ID as "Employee ID"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Name
+								Mobile_Number as "Mobile Number"
+								Official_Email as "Official Email"
+								Department
+								Designation
+								Date_of_Joining as "Date of Joining"
+								Employee_ID as "Employee ID"
+								Image
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Salary_Structures
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Employee as "Employee "
+								Month_field as "Month"
+								Basic
+								HRA
+								Allowance
+								PF
+								CTC
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Employee as "Employee "
+								Month_field as "Month"
+								Basic
+								HRA
+								Allowance
+								PF
+								CTC
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Employee_Details1
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Employee_Name as "Employee Name"
+								Email
+								Phone_Number as "Phone"
+								Address
+								Date_of_Birth as "Date of Birth"
+								Image
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Employee_Name as "Employee Name"
+								Email
+								Phone_Number as "Phone"
+								Address
+								Date_of_Birth as "Date of Birth"
+								Image
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Employee_Attendances
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Employee_Name as "Employee Name"
+								Email
+								Check_In_Time as "Check-In Time"
+								Check_Out_Time as "Check-Out Time"
+								Status
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Employee_Name as "Employee Name"
+								Email
+								Check_In_Time as "Check-In Time"
+								Check_Out_Time as "Check-Out Time"
+								Status
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report View_Employee_Attendance
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								Employee_Name as "Employee Name"
+								Check_In_Time as "Check-In Time"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Employee_Name as "Employee Name"
+								Email
+								Check_In_Time as "Check-In Time"
+								Check_Out_Time as "Check-Out Time"
+								Status
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Check_In_Check_Out
+			{
+				displayname = "Check In Check Out"
+				icon = "objects-spaceship"
+
+				section Employee_Details1
+				{
+					displayname = "Employee Details"
+					icon = "users-2-contacts-44"
+					form  Employee_Details1
+					{
+						icon = "users-2-contacts-44"
+					}
+					report All_Employee_Details1
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Employee_Attendances
+				{
+					displayname = "Employee Attendances"
+					icon = "business-business-contact-89"
+					form  Employee_Attendance
+					{
+						icon = "business-business-contact-89"
+					}
+					report All_Employee_Attendances
+					{
+						icon = "tech-desktop"
+					}
+					report View_Employee_Attendance
+					{
+						icon = "business-business-contact-89"
+					}
+				}
+					page Check_In_Check_Out
+					{
+						icon = "tech-desktop"
+					}
+			}
+			space Salary_Water_Mark
+			{
+				displayname = "Salary Water Mark"
+				icon = "objects-spaceship"
+
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section Dashboard
+				{
+					displayname = "Dashboard"
+					icon = "ui-1-dashboard-half"
+					page Download_Salary_Structure
+					{
+						icon = "shopping-mobile-card"
+					}
+				}
+				section Organizations
+				{
+					displayname = "Organizations"
+					icon = "design-2-filter-organization"
+					form  Add_Organization
+					{
+						icon = "tech-2-l-add"
+					}
+					report All_Organizations
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Employees
+				{
+					displayname = "Employees"
+					icon = "users-single-04"
+					form  Add_Employee
+					{
+						icon = "users-2-a-add"
+					}
+					report All_Employees
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Salary_Structures
+				{
+					displayname = "Salary Structures"
+					icon = "business-hierarchy-53"
+					form  Salary_Structure
+					{
+						icon = "business-hierarchy-53"
+					}
+					report All_Salary_Structures
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			space One_Page_Many_Report_Page
+			{
+				displayname = "One Page Many Report Page"
+				icon = "objects-spaceship"
+
+				section Tasks
+				{
+					displayname = "Tasks"
+					icon = "business-notes"
+					form  Add_Task
+					{
+						icon = "tech-2-p-add"
+					}
+					report All_Tasks
+					{
+						icon = "tech-desktop"
+					}
+					page Dashboard
+					{
+						icon = "ui-1-dashboard-half"
+					}
+				}
+			}
+			space car_Inspection
+			{
+				displayname = "car Inspection"
+				icon = "objects-spaceship"
+
+				section Car_Inspections
+				{
+					displayname = "Car Inspections"
+					icon = "transportation-car"
+					form  Car_Inspection
+					{
+						icon = "transportation-car"
+					}
+					report All_Car_Inspections
+					{
+						icon = "tech-desktop"
+					}
+					page Inspection
+					{
+						icon = "sport-whistle"
+					}
+				}
+			}
+			space Timer_Form
+			{
+				displayname = "Timer Form"
+				icon = "objects-spaceship"
+
+				section Question_And_Answer
+				{
+					displayname = "Question And Answer"
+					icon = "files-question"
+					form  Question_And_Answer
+					{
+						icon = "files-question"
+					}
+					report Question_And_Answer_Report
+					{
+						icon = "tech-desktop"
+					}
+					page Student_Test
+					{
+						icon = "education-pencil-47"
+					}
+				}
+			}
+			space Tree
+			{
+				displayname = "Tree"
+				icon = "objects-spaceship"
+
+				section Employee_Details
+				{
+					displayname = "Employee Details"
+					icon = "users-2-contacts-44"
+					form  Employee_Details
+					{
+						icon = "users-2-contacts-44"
+					}
+					report All_Employee_Details
+					{
+						icon = "tech-desktop"
+					}
+					page Organizational_Chart
+					{
+						icon = "business-hierarchy-53"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "lato"
+			color options
+			{
+				color = "1"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Add_Employee
+			{
+				label placement = auto
+			}
+			form Add_Organization
+			{
+				label placement = auto
+			}
+			form Add_Task
+			{
+				label placement = auto
+			}
+			form Car_Inspection
+			{
+				label placement = auto
+			}
+			form Employee_Attendance
+			{
+				label placement = auto
+			}
+			form Employee_Details
+			{
+				label placement = auto
+			}
+			form Employee_Details1
+			{
+				label placement = auto
+			}
+			form Question_And_Answer
+			{
+				label placement = auto
+			}
+			form Salary_Structure
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = lightred
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Add_Employee
+			{
+				label placement = auto
+			}
+			form Add_Organization
+			{
+				label placement = auto
+			}
+			form Add_Task
+			{
+				label placement = auto
+			}
+			form Car_Inspection
+			{
+				label placement = auto
+			}
+			form Employee_Attendance
+			{
+				label placement = auto
+			}
+			form Employee_Details
+			{
+				label placement = auto
+			}
+			form Employee_Details1
+			{
+				label placement = auto
+			}
+			form Question_And_Answer
+			{
+				label placement = auto
+			}
+			form Salary_Structure
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = lightred
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

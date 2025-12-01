@@ -1,0 +1,1956 @@
+/*
+ * Author       : zappyworkssoftwaresolutionst47
+ * Generated on : 22-Nov-2025 09:33:56
+ * Version      : 1.0
+ */
+ application "test Application "
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form Copy_of_employee_detail
+		{
+			displayname = "Copy of employee detail"
+			store data in zc = false
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Date_Of_Jouning
+			(
+    			type = date
+				displayname = "Date Of Jouning"
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Emp_ID
+			(
+    			type = text
+				displayname = "Emp ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Image
+			(
+    			type = image
+				source  = public_url
+				aspect ratio = original
+				camera = primary
+				show gallery = true
+				switch camera = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Emp_Name
+			(
+    			type = name
+				displayname = "Emp Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Emp_Email
+			(
+    			type = email
+				displayname = "Emp Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Emp_Phone
+			(
+    			type = phonenumber
+				displayname = "Emp Phone "
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Emp_Address
+			(
+    			type = address
+				displayname = "Emp Address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Role
+			(
+				type = picklist	
+				displayname = "Role "
+				values  = employee_Role_And_Salary.ID
+    			displayformat = [Emp_Role]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Salary
+			(
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Final_education
+			(
+				type = picklist
+				displayname = "Final education"
+				maxchar = 100
+				values = {"diploma","degree","12th"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Emp_Status
+			(
+				type = picklist
+				displayname = "Emp Status"
+				maxchar = 100
+				values = {"Active","In Active"}
+				initial value = "Active"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				Submit
+				(
+   					type = submit
+   					displayname = "Submit"
+				)
+			}
+		}
+		form employee_detail
+		{
+			displayname = "employee detail"
+			success message = "Employee Detail Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Date_Of_Jouning
+			(
+    			type = date
+				displayname = "Date Of Jouning"
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Emp_ID
+			(
+    			type = text
+				displayname = "Emp ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Image
+			(
+    			type = image
+				source  = file
+				aspect ratio = original
+				camera = primary
+				show gallery = true
+				switch camera = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Emp_Name
+			(
+    			type = name
+				displayname = "Emp Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Emp_Email
+			(
+    			type = email
+				displayname = "Emp Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Emp_Phone
+			(
+    			type = phonenumber
+				displayname = "Emp Phone "
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Emp_Address
+			(
+    			type = address
+				displayname = "Emp Address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Role
+			(
+				type = picklist	
+				displayname = "Role "
+				values  = employee_Role_And_Salary.ID
+    			displayformat = [Emp_Role]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Salary
+			(
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Final_education
+			(
+				type = picklist
+				displayname = "Final education"
+				maxchar = 100
+				values = {"diploma","degree","12th"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Mark_Shreet
+			(
+    			type = upload file
+				displayname = "12 Mark Shreet"
+				browse = local_drive
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			degree_certificate
+			(
+    			type = upload file
+				displayname = "degree certificate"
+				browse = local_drive
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			diploma_certificate
+			(
+    			type = upload file
+				displayname = "diploma certificate"
+				browse = local_drive
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number
+			(
+    			type = autonumber
+				displayname = "Auto Number"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Emp_Status
+			(
+				type = picklist
+				displayname = "Emp Status"
+				maxchar = 100
+				values = {"Active","In Active"}
+				initial value = "Active"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form employee_Role_And_Salary
+		{
+			displayname = "employee Role And Salary"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Emp_Role
+			(
+    			type = text
+				displayname = "Emp Role"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Emp_Salary
+			(
+				displayname = "Emp Salary"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form id_gen
+		{
+			displayname = "id gen"
+			success message = "Id Gen Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			staff_id
+			(
+    			type = text
+				displayname = "staff id"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form travel_Approvel
+		{
+			displayname = "travel Approvel"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Request_ID
+			(
+    			type = text
+				displayname = "Request ID "
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Request_Date
+			(
+    			type = date
+				displayname = "Request Date"
+				initial value = "${zoho.currentdate}"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have EMP_ID
+			(
+				type = picklist	
+				values  = employee_detail.ID
+    			displayformat = [Emp_ID]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			EMP_NAME
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Emp_Email
+			(
+    			type = email
+				displayname = "Emp Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			EMP_Phone
+			(
+    			type = phonenumber
+				displayname = "EMP Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			EMP_ROLE
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have From_Date
+			(
+    			type = date
+				displayname = "From Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have To_Date
+			(
+    			type = date
+				displayname = "To Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Total_Travel_Date
+			(
+				type = number
+				displayname = "Total Travel Date "
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have vehicle_Type
+			(
+    			type = text
+				displayname = "vehicle Type"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Travel_cost
+			(
+				displayname = "Travel cost"
+				type = INR
+				format = commadotindian
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Request_status
+			(
+				type = picklist
+				displayname = "Request status"
+				maxchar = 100
+				values = {"Approval","Reject","Pending"}
+				initial value = "Pending"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number
+			(
+    			type = autonumber
+				displayname = "Auto Number"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list All_Employee_Details
+		{
+			displayName = "All Employee Details"
+			show all rows from employee_detail    
+			(
+				Emp_Name  as "Emp Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Emp_ID as "Emp ID"
+				Emp_Email as "Emp Email"
+				Emp_Phone as "Emp Phone "
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Date_Of_Jouning as "Date Of Jouning"
+				Emp_Address  as "Emp Address"
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Role as "Role "
+				Salary
+				Mark_Shreet as "12 Mark Shreet"
+				Image
+				Final_education as "Final education"
+				degree_certificate as "degree certificate"
+				diploma_certificate as "diploma certificate"
+				Auto_Number as "Auto Number"
+				Emp_Status as "Emp Status"
+				custom action "Active"
+				(
+	  			workflow = Active
+				show action in edit record menu = true
+				column header = "Active"
+				condition = (Emp_Status == "In Active")
+				confirmation before execution
+				(
+					message for individual record = "Execute the Active action for this record?"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+				custom action "In Active "
+				(
+	  			workflow = In_Active
+				show action in edit record menu = true
+				column header = "In Active "
+				condition = (Emp_Status == "Active")
+				confirmation before execution
+				(
+					message for individual record = "Execute the In Active  action for this record?"
+					confirm button text = "Yes"		
+					cancel button text = "No"
+				)
+				)
+			)
+		}
+		default list employee_Role_And_Salary_Report
+		{
+			displayName = "employee Role And Salary Report"
+			show all rows from employee_Role_And_Salary    
+			(
+				Emp_Role as "Emp Role"
+				Emp_Salary as "Emp Salary"
+			)
+		}
+		default list travel_Approvel_Report
+		{
+			displayName = "travel Approvel Report"
+			show all rows from travel_Approvel    
+			(
+				EMP_ID
+				EMP_NAME 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Emp_Email as "Emp Email"
+				EMP_Phone as "EMP Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				EMP_ROLE
+				Request_Date as "Request Date"
+				From_Date as "From Date"
+				To_Date as "To Date"
+				Total_Travel_Date as "Total Travel Date "
+				vehicle_Type as "vehicle Type"
+				Travel_cost as "Travel cost"
+				Request_ID as "Request ID "
+				Request_status as "Request status"
+				Auto_Number as "Auto Number"
+			)
+		}
+		default list All_Id_Gens
+		{
+			displayName = "All Id Gens"
+			show all rows from id_gen    
+			(
+				Name 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				staff_id as "staff id"
+			)
+		}
+	}
+	pages
+	{
+		page dashboard
+		{
+			displayname = "dashboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#BDC3C7'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#FFFFFF'\n\tsize = '36px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#FF4C2F'\n    borderWidth = '0px'\n\n\t\tcriteria = 'Emp_Status == &quot;Active&quot;'\n\t  value = 'thisapp.employee_detail.ID.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#FFFFFF'\n\tsize = '24px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#000000'\n    borderWidth = '0px'\n\n\t  value = 'Total Employee Count'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+	}
+
+
+		workflow
+		{
+		form
+		{
+			hide_and_disable as "hide and disable"
+			{
+				type =  form
+				form = employee_detail
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						hide Emp_ID,Emp_Status;
+					}
+					actions 
+					{
+						disable Date_Of_Jouning,Salary;
+					}
+					actions  (Final_education == "12th")
+					{
+						hide degree_certificate,diploma_certificate;
+					}
+					actions  (Final_education == "degree")
+					{
+						hide diploma_certificate;
+					}
+				}
+
+			}
+			Fecth_The_Salary as "Fecth The Salary"
+			{
+				type =  form
+				form = employee_detail
+				record event = on add or edit
+
+				on user input of Role
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											new = employee_Role_And_Salary[ID == input.Role];
+										input.Salary = new.Emp_Salary;
+						)
+					}
+				}
+
+			}
+			validation as "validation"
+			{
+				type =  form
+				form = employee_detail
+				record event = on add or edit
+
+				on validate
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Final_education == "diploma")
+										{
+											if(input.diploma_certificate == null)
+											{
+												alert "Not Valid Reson for you not upload the diploma_certificate";
+												cancel submit;
+											}
+										}
+										if(input.Final_education == "degree")
+										{
+											if(input.degree_certificate == null)
+											{
+												alert "Not Valid Reson for you not upload the degree_certificate";
+												cancel submit;
+											}
+										}
+										if(input.Final_education == "12th")
+										{
+											if(input.Mark_Shreet == null)
+											{
+												alert "Not Valid Reson for you not upload the Mark_Shreet";
+												cancel submit;
+											}
+										}
+						)
+					}
+				}
+
+			}
+			Create_the_Emp_ID as "Create the Emp ID"
+			{
+				type =  form
+				form = employee_detail
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Emp_ID = "JD" + input.Date_Of_Jouning.getDay() + input.Role.Emp_Role.subString(0,3) + input.Auto_Number;
+										var = zoho.workdrive.createFolder(input.Emp_Name.first_name,"qbiec4c5b959699ac431dbabf158234f82c45","zoho_oauth_connection");
+										new = var.get("data").get("id");
+										rec = {"diploma certificate":if(input.diploma_certificate != null,input.diploma_certificate,""),"12th Mark Shreet":if(input.Mark_Shreet != null,input.Mark_Shreet,""),"degree certificate":if(input.degree_certificate != null,input.degree_certificate,"")};
+										for each  val in rec
+										{
+											if(val != null)
+											{
+												responces = zoho.workdrive.uploadFile(val,new,val,false,"zoho_oauth_connection");
+											}
+										}
+						)
+					}
+				}
+
+			}
+			hide_and_disable1 as "hide and disable"
+			{
+				type =  form
+				form = travel_Approvel
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						disable Request_Date,Emp_Email,EMP_Phone,EMP_NAME,EMP_ROLE,Total_Travel_Date,Request_ID;
+					}
+					actions 
+					{
+						hide Request_ID,Request_status;
+					}
+				}
+
+			}
+			Fecth_The_Emp_Details as "Fecth The Emp Details"
+			{
+				type =  form
+				form = travel_Approvel
+				record event = on add or edit
+
+				on user input of EMP_ID
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											new = employee_detail[ID == input.EMP_ID];
+										input.EMP_ROLE = new.Role.Emp_Role;
+										input.EMP_NAME = new.Emp_Name;
+										input.EMP_Phone = new.Emp_Phone;
+										input.Emp_Email = new.Emp_Email;
+						)
+					}
+				}
+
+			}
+			CALCULATE_THE_Total_Data as "CALCULATE THE Total Data"
+			{
+				type =  form
+				form = travel_Approvel
+				record event = on add or edit
+
+				on user input of From_Date
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.To_Date != null)
+										{
+											if(input.From_Date != null)
+											{
+												var = input.From_Date.daysBetween(input.To_Date);
+												input.Total_Travel_Date = var;
+											}
+										}
+										else
+										{
+											input.Total_Travel_Date = 0;
+										}
+										if(input.From_Date < zoho.currentdate)
+										{
+											alert "Not Valid Reson For The From Date Is Past";
+											input.From_Date = null;
+											input.Total_Travel_Date = 0;
+										}
+						)
+					}
+				}
+
+			}
+			CALCULATE_THE_Total_Treva as "CALCULATE THE Total Treval Date"
+			{
+				type =  form
+				form = travel_Approvel
+				record event = on add or edit
+
+				on user input of To_Date
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.From_Date != null)
+										{
+											if(input.To_Date != null)
+											{
+												var = input.From_Date.daysBetween(input.To_Date);
+												input.Total_Travel_Date = var;
+											}
+										}
+										else
+										{
+											input.Total_Travel_Date = 0;
+										}
+										if(input.From_Date > input.To_Date)
+										{
+											alert "Not Valid Reson For The To Date Is Past";
+											input.To_Date = null;
+											input.Total_Travel_Date = 0;
+										}
+										if(input.From_Date == null)
+										{
+											if(input.To_Date != null)
+											{
+												alert "Not Valid Reson For You Frist Enter The From Date";
+												input.To_Date = null;
+												input.Total_Travel_Date = 0;
+											}
+										}
+						)
+					}
+				}
+
+			}
+			id_genrate as "id genrate"
+			{
+				type =  form
+				form = id_gen
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											var1 = id_gen[ID == null].staff_id;
+										if(var1.isEmpty())
+										{
+											input.staff_id = 0;
+										}
+										var = id_gen[staff_id != null].staff_id sort by staff_id desc;
+										input.staff_id = var.toNumber() + 1;
+						)
+					}
+				}
+
+			}
+		}
+
+
+
+		approval
+		{
+			Travel_Approval as "Travel Approval"
+			{
+				type =  approval
+				form = travel_Approvel[Travel_cost > 5000 && Request_status == "Pending"]
+				display fields = [Request_ID,Request_Date,EMP_ID,EMP_NAME,Emp_Email,EMP_Phone,EMP_ROLE,Total_Travel_Date,Travel_cost]
+				on start
+				{
+				}
+				on level 1
+				{
+					approvers
+					(
+		 				role = "Manager"
+					)
+					on approve 
+					{
+		    			display name = "Approve The Travel"
+						actions 
+						{
+							sendmail
+							(
+								from : zoho.loginuserid
+								to : approver.submitter
+								subject : "Approval Request"
+								message : "Your request has been approved."
+							)
+						}
+						actions 
+						{
+						on load
+						(
+							sendmail
+												[
+													from :zoho.adminuserid
+													to :input.Emp_Email
+													subject :"Your Travel Approval Status"
+													message :"Your Request Is Approval"
+												]
+												input.Request_status = "Approval";
+						)
+						}
+					}
+					on reject
+					{
+						display name =  "Reject The  Travel"
+						actions 
+						{
+							sendmail
+							(
+								from : zoho.loginuserid
+								to : approver.submitter
+								subject : "Approval Request"
+								message : "Your request has been rejected."
+							)
+						}
+						actions 
+						{
+						on load
+						(
+							sendmail
+												[
+													from :zoho.adminuserid
+													to :input.Emp_Email
+													subject :"Your Travel Approval Status"
+													message :"Your Travel Apprioval Status Is Reject"
+												]
+												input.Request_status = "Reject";
+						)
+						}
+					}
+				}
+			}
+		}
+
+
+
+		functions
+		{
+			Active as "Active"
+			{
+				type =  functions
+				form = employee_detail
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						input.Emp_Status = "Active";
+					)
+					}
+				}
+			}
+			In_Active as "In Active"
+			{
+				type =  functions
+				form = employee_detail
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						input.Emp_Status = "In Active";
+					)
+					}
+				}
+			}
+		}
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Manager"
+			{
+				name = "Manager"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Role\n"
+				ModulePermissions
+				{
+					employee_Role_And_Salary
+					{
+						allFieldsVisible= true 
+					}
+					employee_detail
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							All_Employee_Details={"View","Edit","Delete"}
+						}
+					}
+					travel_Approvel
+					{
+						enabled= Create,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							travel_Approvel_Report={"View"}
+						}
+					}
+				}
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+					"Manager"
+					{
+						description = "Role"
+					}
+				}
+			}
+	}
+
+
+	connections
+	{
+		zoho_oauth_connection
+		(
+			displayname = "Zoho OAuth Connection"
+			connector = zoho_oauth
+			permissions = {"WorkDrive.files.CREATE"}
+		)
+	}
+	web
+	{
+		forms
+		{
+			form Copy_of_employee_detail
+			{
+				label placement = left
+			}
+			form employee_detail
+			{
+				label placement = left
+			}
+			form employee_Role_And_Salary
+			{
+				label placement = left
+			}
+			form id_gen
+			{
+				label placement = left
+			}
+			form travel_Approvel
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report All_Employee_Details
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Emp_Name as "Emp Name"
+								Emp_ID as "Emp ID"
+								Emp_Email as "Emp Email"
+								Emp_Phone as "Emp Phone "
+								Date_Of_Jouning as "Date Of Jouning"
+								Emp_Address as "Emp Address"
+								Role as "Role "
+								"Active"
+								"In Active "
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Emp_Name as "Emp Name"
+								Emp_ID as "Emp ID"
+								Emp_Email as "Emp Email"
+								Emp_Phone as "Emp Phone "
+								Date_Of_Jouning as "Date Of Jouning"
+								Emp_Address as "Emp Address"
+								Role as "Role "
+								Salary
+								Mark_Shreet as "12 Mark Shreet"
+								Image
+								Final_education as "Final education"
+								degree_certificate as "degree certificate"
+								diploma_certificate as "diploma certificate"
+								Auto_Number as "Auto Number"
+								Emp_Status as "Emp Status"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report employee_Role_And_Salary_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Emp_Role as "Emp Role"
+								Emp_Salary as "Emp Salary"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Emp_Role as "Emp Role"
+								Emp_Salary as "Emp Salary"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report travel_Approvel_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								EMP_ID
+								EMP_NAME
+								Emp_Email as "Emp Email"
+								EMP_Phone as "EMP Phone"
+								EMP_ROLE
+								Request_Date as "Request Date"
+								From_Date as "From Date"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								EMP_ID
+								EMP_NAME
+								Emp_Email as "Emp Email"
+								EMP_Phone as "EMP Phone"
+								EMP_ROLE
+								Request_Date as "Request Date"
+								From_Date as "From Date"
+								To_Date as "To Date"
+								Total_Travel_Date as "Total Travel Date "
+								vehicle_Type as "vehicle Type"
+								Travel_cost as "Travel cost"
+								Request_ID as "Request ID "
+								Request_status as "Request status"
+								Auto_Number as "Auto Number"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Id_Gens
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Name
+								staff_id as "staff id"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Name
+								staff_id as "staff id"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "tech-desktop"
+
+				section Employee_Details
+				{
+					displayname = "Employee Details"
+					icon = "users-2-contacts-44"
+					form  employee_detail
+					{
+						icon = "business-business-contact-89"
+					}
+					report All_Employee_Details
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section employee_Role_And_Salary
+				{
+					displayname = "employee Role And Salary"
+					icon = "users-2-a-time"
+					form  employee_Role_And_Salary
+					{
+						icon = "users-2-a-time"
+					}
+					report employee_Role_And_Salary_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section travel_Approvel
+				{
+					displayname = "travel Approvel"
+					icon = "travel-worldmap"
+					form  travel_Approvel
+					{
+						icon = "travel-worldmap"
+					}
+					report travel_Approvel_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section dashboard
+				{
+					displayname = "dashboard"
+					icon = "ui-1-dashboard-half"
+					page dashboard
+					{
+						icon = "ui-1-dashboard-half"
+					}
+				}
+				section Copy_of_employee_detail
+				{
+					displayname = "Copy of employee detail"
+					icon = "users-2-contacts-44"
+					form  Copy_of_employee_detail
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Id_Gens
+				{
+					displayname = "Id Gens"
+					icon = "users-2-contacts-45"
+					form  id_gen
+					{
+						icon = "users-2-contacts-45"
+					}
+					report All_Id_Gens
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "lato"
+			color options
+			{
+				color = "1"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Copy_of_employee_detail
+			{
+				label placement = auto
+			}
+			form employee_detail
+			{
+				label placement = auto
+			}
+			form employee_Role_And_Salary
+			{
+				label placement = auto
+			}
+			form id_gen
+			{
+				label placement = auto
+			}
+			form travel_Approvel
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = turquoise
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Copy_of_employee_detail
+			{
+				label placement = auto
+			}
+			form employee_detail
+			{
+				label placement = auto
+			}
+			form employee_Role_And_Salary
+			{
+				label placement = auto
+			}
+			form id_gen
+			{
+				label placement = auto
+			}
+			form travel_Approvel
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = turquoise
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

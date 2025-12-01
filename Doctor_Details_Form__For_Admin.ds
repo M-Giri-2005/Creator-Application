@@ -1,0 +1,1180 @@
+/*
+ * Author       : zappyworkssoftwaresolutionst47
+ * Generated on : 22-Nov-2025 09:43:00
+ * Version      : 1.0
+ */
+ application "Doctor Details Form  For Admin"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form Appointment_Booking
+		{
+			displayname = "Appointment Booking"
+			success message = "Appointment Booking Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Patient_id
+			(
+    			type = autonumber
+				displayname = "Patient id"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Date_of_Appointment
+			(
+    			type = datetime
+				displayname = "Date of Appointment"
+				initial value = "${zoho.currenttime}"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Patient_Name
+			(
+    			type = name
+				displayname = "Patient Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Patient_address
+			(
+    			type = address
+				displayname = "Patient address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+	     			 visibility = false
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+	     			 visibility = false
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+	     			 visibility = false
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+	     			 visibility = false
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Email
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Complaints
+			(
+    			type = textarea
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Specialty
+			(
+				type = picklist
+				maxchar = 100
+				values = {"Cardiology","Dermatology","Orthopedics"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			DOCTOR_NAME
+			(
+				type = picklist	
+				displayname = "DOCTOR NAME"
+				values  = Doctor_Details_Form.ID
+    			displayformat = [" " + DOCTOR_NAME.first_name + " " + DOCTOR_NAME.last_name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			max_count
+			(
+				type = number
+				displayname = "max count"
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Available_Time
+			(
+				type = picklist	
+				displayname = "Available Time"
+				values  = Doctor_Details_Form[Specialty == input.Specialty && ID == input.DOCTOR_NAME].ID
+    			displayformat = [Available_Time]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			start_Available_Time_and_date
+			(
+    			type = datetime
+				displayname = "start Available Time  and date"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Status_for_booking
+			(
+				type = picklist
+				displayname = "Status"
+				maxchar = 100
+				values = {"sucess","cancel","you appointment date is expiry"}
+				initial value = "sucess"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Doctor_Details_Form
+		{
+			displayname = "Doctor Details Form"
+			success message = "Doctor Detail Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			DOCTOR_ID
+			(
+    			type = autonumber
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have DOCTOR_NAME
+			(
+    			type = name
+				displayname = "DOCTOR NAME"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have Available_Time
+			(
+    			type = text
+				displayname = "Available Time"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Specialty
+			(
+				type = picklist
+				maxchar = 100
+				values = {"Cardiology","Dermatology","Orthopedics"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Date_Time
+			(
+    			type = datetime
+				displayname = "Date-Time"
+				initial value = "${zoho.currenttime}"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have max_count
+			(
+				type = number
+				displayname = "max count"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			from_time
+			(
+    			type = time
+				timedisplayoptions = "hh:mm:ss" 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			to_time
+			(
+    			type = time
+				displayname = "to time"
+				timedisplayoptions = "hh:mm:ss" 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form doctor_name
+		{
+			displayname = "doctor name"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Specialty
+			(
+				type = picklist
+				maxchar = 100
+				values = {"Cardiology","Dermatology","Orthopedics"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			DOCTOR_NAME
+			(
+    			type = text
+				displayname = "DOCTOR NAME"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list All_Doctor_Details
+		{
+			displayName = "All Doctor Details"
+			show all rows from Doctor_Details_Form    
+			(
+				DOCTOR_NAME  as "DOCTOR NAME"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Specialty
+				DOCTOR_ID
+				Available_Time as "Available Time"
+				max_count as "max count"
+				Date_Time as "Date-Time"
+				from_time
+				to_time as "to time"
+			)
+			sort by
+			(
+				DOCTOR_ID ascending
+			)
+		}
+		default list All_Appointment_Bookings
+		{
+			displayName = "All Appointment Bookings"
+			show all rows from Appointment_Booking    
+			(
+				Patient_Name  as "Patient Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Patient_address  as "Patient address"
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Complaints
+				Specialty
+				DOCTOR_NAME as "DOCTOR NAME"
+				Available_Time as "Available Time"
+				max_count as "max count"
+				Date_of_Appointment as "Date of Appointment"
+				start_Available_Time_and_date as "start Available Time  and date"
+				Email
+				Status_for_booking as "Status"
+				Patient_id as "Patient id"
+				ID
+			)
+		}
+		default list doctor_name_Report
+		{
+			displayName = "doctor name Report"
+			show all rows from doctor_name    
+			(
+				Specialty
+				DOCTOR_NAME as "DOCTOR NAME"
+			)
+		}
+	}
+
+
+		 functions
+		 {
+			 Deluge
+			 {
+				 void test()
+                 {
+                 }
+			 }
+		 }
+		workflow
+		{
+		form
+		{
+			minus_max_count as "minus max count"
+			{
+				type =  form
+				form = Appointment_Booking
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = Doctor_Details_Form[ID == input.DOCTOR_NAME];
+										ver.max_count=ver.max_count - 1;
+						)
+					}
+				}
+
+			}
+			fetch_the_time as "fetch the time"
+			{
+				type =  form
+				form = Appointment_Booking
+				record event = on add or edit
+
+				on user input of Available_Time
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Available_Time != null)
+										{
+											var = input.Available_Time.Available_Time.substring(0,2);
+											var1 = input.Available_Time.Available_Time.substring(3,6);
+											var2 = zoho.currentdate + " " + var + ":" + var1;
+											input.start_Available_Time_and_date = var2.toDateTime();
+										}
+										else
+										{
+											input.start_Available_Time_and_date = null;
+										}
+										// new_var = Doctor_Details_Form[ID == input.Available_Time];
+										// gettime = input.Date_of_Appointment.getTime();
+										// info gettime ;
+										// prefix_time = new_var.Added_Time.getprefix("-");
+										// suffix_time = new_var.Added_Time.getsuffix("-");
+										// if(!totime(prefix_time,"hh:mm:ss") >= gettime && gettime <= totime(suffix_time,"hh:mm:ss") )
+										// {
+										// 	alert "Enter different doctor" ;
+										// }
+						)
+					}
+				}
+
+			}
+			fetch_max_count as "fetch max count"
+			{
+				type =  form
+				form = Appointment_Booking
+				record event = on add or edit
+
+				on user input of DOCTOR_NAME
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = Doctor_Details_Form[ID == input.DOCTOR_NAME];
+										input.max_count = ver.max_count;
+						)
+					}
+				}
+
+			}
+			test as "test"
+			{
+				type =  form
+				form = Appointment_Booking
+				record event = on add or edit
+
+				on user input of Specialty
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = Doctor_Details_Form[from_time <= zoho.currenttime && to_time >= zoho.currenttime && Specialty == input.Specialty && max_count > 0].ID.getAll();
+										input.DOCTOR_NAME:ui.add(ver);
+						)
+					}
+				}
+
+			}
+		}
+
+		schedule
+		{
+			feach_max_count as "feach max count"
+			{
+				type =  schedule
+				start = "2025-08-29 01:00:00"
+				frequency = daily
+				time zone = "Asia/Kolkata"
+				on start
+				{
+					actions 
+					{
+					on load
+					(
+						ver = Doctor_Details_Form[max_count != null];
+										for each  rec in ver
+										{
+											rec.max_count=10;
+										}
+					)
+					}
+				}
+			}
+			send_mgs as "send mgs"
+			{
+				type =  schedule
+				form = Appointment_Booking[Status_for_booking == "sucess"]
+				start = before 1 hours from start_Available_Time_and_date
+				time zone = "Asia/Kolkata"
+				on start
+				{
+					actions 
+					{
+					on load
+					(
+						sendmail
+										[
+											from :zoho.adminuserid
+											to :input.Email
+											subject :" appointment booking"
+											message :"your appointment is very early"
+											Attachments :view:All_Appointment_Bookings[ID == input.ID] as PDF
+										]
+					)
+					}
+				}
+			}
+			zoho_current_date_and_tim as "zoho.current date and time"
+			{
+				type =  schedule
+				start = "2025-08-31 23:59:59"
+				frequency = daily
+				time zone = "Asia/Kolkata"
+				on start
+				{
+					actions 
+					{
+					on load
+					(
+						ver = Doctor_Details_Form[Date_Time != null];
+										for each  rec in ver
+										{
+											rec.Date_Time=zoho.currenttime;
+										}
+					)
+					}
+				}
+			}
+		}
+
+
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form Appointment_Booking
+			{
+				label placement = left
+			}
+			form Doctor_Details_Form
+			{
+				label placement = left
+			}
+			form doctor_name
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report All_Doctor_Details
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								DOCTOR_NAME as "DOCTOR NAME"
+								Specialty
+								DOCTOR_ID
+								Available_Time as "Available Time"
+								max_count as "max count"
+								Date_Time as "Date-Time"
+								from_time
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								DOCTOR_NAME as "DOCTOR NAME"
+								Specialty
+								DOCTOR_ID
+								Available_Time as "Available Time"
+								max_count as "max count"
+								Date_Time as "Date-Time"
+								from_time
+								to_time as "to time"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Appointment_Bookings
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Patient_Name as "Patient Name"
+								Patient_address as "Patient address"
+								Complaints
+								Specialty
+								DOCTOR_NAME as "DOCTOR NAME"
+								Available_Time as "Available Time"
+								Date_of_Appointment as "Date of Appointment"
+								ID
+								Patient_id as "Patient id"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Patient_Name as "Patient Name"
+								Patient_address as "Patient address"
+								Complaints
+								Specialty
+								DOCTOR_NAME as "DOCTOR NAME"
+								Available_Time as "Available Time"
+								max_count as "max count"
+								Date_of_Appointment as "Date of Appointment"
+								start_Available_Time_and_date as "start Available Time  and date"
+								Email
+								Status_for_booking as "Status"
+								Patient_id as "Patient id"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report doctor_name_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Specialty
+								DOCTOR_NAME as "DOCTOR NAME"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Specialty
+								DOCTOR_NAME as "DOCTOR NAME"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Doctor_Details
+				{
+					displayname = "Doctor Details"
+					icon = "health-bag-49"
+					form  Doctor_Details_Form
+					{
+						icon = "design-2-form"
+					}
+					report All_Doctor_Details
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section Appointment_Bookings
+				{
+					displayname = "Appointment Bookings"
+					icon = "location-appointment"
+					form  Appointment_Booking
+					{
+						icon = "location-appointment"
+					}
+					report All_Appointment_Bookings
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section doctor_name
+				{
+					displayname = "doctor name"
+					icon = "health-bag-49"
+					form  doctor_name
+					{
+						icon = "health-bag-49"
+					}
+					report doctor_name_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "lato"
+			color options
+			{
+				color = "1"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Appointment_Booking
+			{
+				label placement = auto
+			}
+			form Doctor_Details_Form
+			{
+				label placement = auto
+			}
+			form doctor_name
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = lightred
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Appointment_Booking
+			{
+				label placement = auto
+			}
+			form Doctor_Details_Form
+			{
+				label placement = auto
+			}
+			form doctor_name
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = lightred
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

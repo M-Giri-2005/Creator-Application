@@ -1,0 +1,1734 @@
+/*
+ * Author       : zappyworkssoftwaresolutionst47
+ * Generated on : 22-Nov-2025 09:40:33
+ * Version      : 1.0
+ */
+ application "BUS TICKET BOOKING"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form APPLY_TO_THE_BUS_PASS
+		{
+			displayname = "APPLY TO THE BUS PASS"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			PERSON_NAME
+			(
+    			type = name
+				displayname = "PERSON NAME"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Phone_Number
+			(
+    			type = phonenumber
+				displayname = "Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			START_PLACE
+			(
+				type = picklist	
+				displayname = "START PLACE"
+				values  = BUS_NAMES_AND_ROTE.ID
+    			displayformat = [START_PLACE]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			END_PLACE
+			(
+				type = picklist	
+				displayname = "END PLACE"
+				values  = BUS_NAMES_AND_ROTE[ID == input.START_PLACE].ID
+    			displayformat = [END_PLACE]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			BUS_TYPES
+			(
+				type = picklist	
+				displayname = "BUS TYPES"
+				values  = BUS_TYPES.ID
+    			displayformat = [BUS_TYPES]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			BUS_NAMES
+			(
+				type = picklist	
+				displayname = "BUS NAMES"
+				values  = BUS_NAMES_AND_ROTE[BUS_TYPES.ID == input.BUS_TYPES && ID == input.START_PLACE && ID == input.END_PLACE].ID
+    			displayformat = [BUS_NAMES]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form BUS_NAMES_AND_ROTE
+		{
+			displayname = "BUS NAMES AND ROTE"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			BUS_TYPES
+			(
+				type = picklist	
+				displayname = "BUS TYPES"
+				values  = BUS_TYPES.ID
+    			displayformat = [BUS_TYPES]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			BUS_TYPES_AND_POINT_TO_POINT
+			(
+				type = picklist	
+				displayname = "BUS TYPES AND POINT TO POINT"
+				values  = BUS_TYPES_AND_POINT_TO_POINT[BUS_TYPES.ID == input.BUS_TYPES].ID
+    			displayformat = [LOCAL_OR_AC_BUS]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			BUS_NAMES
+			(
+    			type = text
+				displayname = "BUS NAMES"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			START_PLACE
+			(
+    			type = text
+				displayname = "START PLACE"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			END_PLACE
+			(
+    			type = text
+				displayname = "END PLACE"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			START_TIME
+			(
+    			type = time
+				timedisplayoptions = "hh:mm:ss" 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			END_TIME
+			(
+    			type = time
+				timedisplayoptions = "hh:mm:ss" 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			TOTAL_AVAILABLE_SEAT
+			(
+				type = number
+				displayname = "TOTAL AVAILABLE SEAT"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			FRIST_CLASS_AVAILABLE_SEAT
+			(
+				type = number
+				displayname = "FRIST CLASS AVAILABLE SEAT"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			SECOND_CLASS_AVAILABLE_SEAT
+			(
+				type = number
+				displayname = "SECOND CLASS AVAILABLE SEAT"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			TICKET_PRICE
+			(
+				displayname = "TICKET PRICE"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			TICKET_PRICE_FOR_CHILD
+			(
+				displayname = "TICKET PRICE FOR CHILD"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form BUS_TYPES
+		{
+			displayname = "BUS TYPES"
+			success message = "Bus Type Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			BUS_TYPES
+			(
+    			type = text
+				displayname = "BUS TYPES"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form BUS_TYPES_AND_POINT_TO_POINT
+		{
+			displayname = "BUS TYPES AND POINT TO POINT"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			BUS_TYPES
+			(
+				type = picklist	
+				displayname = "BUS TYPES"
+				values  = BUS_TYPES.ID
+    			displayformat = [BUS_TYPES]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			LOCAL_OR_AC_BUS
+			(
+    			type = text
+				displayname = "LOCAL OR AC BUS"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form PERSON_TICKET_BOOKING
+		{
+			displayname = "PERSON TICKET BOOKING"
+			success message = "Person Ticket Booking Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			PERSON_NAME
+			(
+    			type = name
+				displayname = "PERSON NAME"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			PERSON_NUMBER
+			(
+    			type = phonenumber
+				displayname = "PERSON NUMBER"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			START_PLACE
+			(
+				type = picklist	
+				displayname = "START PLACE"
+				values  = BUS_NAMES_AND_ROTE.ID
+    			displayformat = [START_PLACE]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			END_PLACE
+			(
+				type = picklist	
+				displayname = "END PLACE"
+				values  = BUS_NAMES_AND_ROTE[ID == input.START_PLACE].ID
+    			displayformat = [END_PLACE]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			BUS_TYPES
+			(
+				type = picklist	
+				displayname = "BUS TYPES"
+				values  = BUS_TYPES.ID
+    			displayformat = [BUS_TYPES]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			BUS_NAMES
+			(
+				type = picklist	
+				displayname = "BUS NAMES"
+				values  = BUS_NAMES_AND_ROTE[BUS_TYPES.ID == input.BUS_TYPES && ID == input.START_PLACE && ID == input.END_PLACE].ID
+    			displayformat = [BUS_NAMES]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			START_TIME
+			(
+				type = picklist	
+				values  = BUS_NAMES_AND_ROTE[ID == input.BUS_NAMES].ID
+    			displayformat = [START_TIME]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			END_TIME
+			(
+				type = picklist	
+				values  = BUS_NAMES_AND_ROTE[ID == input.BUS_NAMES && ID == input.START_TIME].ID
+    			displayformat = [END_TIME]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			BUS_PRICE_FOR_ONE_PERSON_CHILD
+			(
+				type = picklist	
+				displayname = "BUS PRICE FOR ONE PERSON CHILD"
+				values  = BUS_NAMES_AND_ROTE[ID == input.BUS_NAMES && ID == input.START_TIME && ID == input.END_TIME && ID == input.START_PLACE].ID
+    			displayformat = [TICKET_PRICE_FOR_CHILD]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			TOTAL_BOOKING_SEAT_FOR_CHILD
+			(
+				type = number
+				displayname = "TOTAL_BOOKING SEAT FOR CHILD"
+				initial value = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			TOTAL_BUS_COST_IN_CHILD
+			(
+				displayname = "TOTAL BUS COST IN CHILD"
+				type = INR
+				format = commadotindian
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			BUS_PRICE_FOR_ONE_PERSON_ADULT
+			(
+				type = picklist	
+				displayname = "BUS PRICE FOR ONE PERSON ADULT"
+				values  = BUS_NAMES_AND_ROTE[ID == input.BUS_NAMES && ID == input.START_TIME && ID == input.END_TIME && ID == input.START_PLACE].ID
+    			displayformat = [TICKET_PRICE]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			TOTAL_BOOKING_SEAT_FOR_ADULT
+			(
+				type = number
+				displayname = "TOTAL_BOOKING SEAT FOR ADULT"
+				initial value = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			TOTAL_BUS_COST_IN_ADULT
+			(
+				displayname = "TOTAL BUS COST IN ADULT"
+				type = INR
+				format = commadotindian
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			TOTAL_BUS_COST_IN_CHILD_AND_ADULT
+			(
+				displayname = "TOTAL BUS COST IN CHILD AND ADULT"
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form TICKET_TYPES
+		{
+			displayname = "TICKET TYPES"
+			success message = "Ticket Type Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			TICKET_TYPES
+			(
+    			type = text
+				displayname = "TICKET TYPES"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list All_Bus_Types
+		{
+			displayName = "All Bus Types"
+			show all rows from BUS_TYPES    
+			(
+				BUS_TYPES as "BUS TYPES"
+			)
+		}
+		default list BUS_NAMES_AND_ROTE_Report
+		{
+			displayName = "BUS NAMES AND ROTE Report"
+			show all rows from BUS_NAMES_AND_ROTE    
+			(
+				BUS_TYPES as "BUS TYPES"
+				BUS_NAMES as "BUS NAMES"
+				START_PLACE as "START PLACE"
+				END_PLACE as "END PLACE"
+				START_TIME
+				END_TIME
+				BUS_TYPES_AND_POINT_TO_POINT as "BUS TYPES AND POINT TO POINT"
+				TICKET_PRICE as "TICKET PRICE"
+				FRIST_CLASS_AVAILABLE_SEAT as "FRIST CLASS AVAILABLE SEAT"
+				TOTAL_AVAILABLE_SEAT as "TOTAL AVAILABLE SEAT"
+				SECOND_CLASS_AVAILABLE_SEAT as "SECOND CLASS AVAILABLE SEAT"
+				TICKET_PRICE_FOR_CHILD as "TICKET PRICE FOR CHILD"
+			)
+		}
+		default list BUS_TYPES_AND_POINT_TO_POINT_Report
+		{
+			displayName = "BUS TYPES AND POINT TO POINT Report"
+			show all rows from BUS_TYPES_AND_POINT_TO_POINT    
+			(
+				BUS_TYPES as "BUS TYPES"
+				LOCAL_OR_AC_BUS as "LOCAL OR AC BUS"
+			)
+		}
+		default list All_Ticket_Types
+		{
+			displayName = "All Ticket Types"
+			show all rows from TICKET_TYPES    
+			(
+				TICKET_TYPES as "TICKET TYPES"
+			)
+		}
+		default list All_Person_Ticket_Bookings
+		{
+			displayName = "All Person Ticket Bookings"
+			show all rows from PERSON_TICKET_BOOKING    
+			(
+				PERSON_NAME  as "PERSON NAME"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				PERSON_NUMBER as "PERSON NUMBER"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				START_PLACE as "START PLACE"
+				END_PLACE as "END PLACE"
+				BUS_NAMES as "BUS NAMES"
+				START_TIME
+				END_TIME
+				BUS_TYPES as "BUS TYPES"
+				BUS_PRICE_FOR_ONE_PERSON_ADULT as "BUS PRICE FOR ONE PERSON ADULT"
+				TOTAL_BUS_COST_IN_CHILD_AND_ADULT as "TOTAL BUS COST IN CHILD AND ADULT"
+				TOTAL_BOOKING_SEAT_FOR_ADULT as "TOTAL_BOOKING SEAT FOR ADULT"
+				TOTAL_BUS_COST_IN_CHILD as "TOTAL BUS COST IN CHILD"
+				TOTAL_BOOKING_SEAT_FOR_CHILD as "TOTAL_BOOKING SEAT FOR CHILD"
+				TOTAL_BUS_COST_IN_ADULT as "TOTAL BUS COST IN ADULT"
+				BUS_PRICE_FOR_ONE_PERSON_CHILD as "BUS PRICE FOR ONE PERSON CHILD"
+			)
+		}
+		default list APPLY_TO_THE_BUS_PASS_Report
+		{
+			displayName = "APPLY TO THE BUS PASS Report"
+			show all rows from APPLY_TO_THE_BUS_PASS    
+			(
+				PERSON_NAME  as "PERSON NAME"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Phone_Number as "Phone"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				START_PLACE as "START PLACE"
+				END_PLACE as "END PLACE"
+				BUS_TYPES as "BUS TYPES"
+				BUS_NAMES as "BUS NAMES"
+			)
+		}
+	}
+	pages
+	{
+		page bus_dashboard
+		{
+			displayname = "bus dashboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='50%'\n   \t>\n\t<panel elementName='Panel'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#FF4C2F'\n\tsize = '36px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#FF4C2F'\n    borderWidth = '0px'\n\n\t  value = 'thisapp.BUS_NAMES_AND_ROTE.ID.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#333333'\n\tsize = '16px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#333333'\n    borderWidth = '0px'\n\n\t  value = 'total bus count'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column><column\n   \t\t width='50%'\n   \t>\n\t<panel elementName='Panel 1'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#FF4C2F'\n\tsize = '36px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#FF4C2F'\n    borderWidth = '0px'\n\n\t  value = 'thisapp.PERSON_TICKET_BOOKING.ID.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#333333'\n\tsize = '16px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#333333'\n    borderWidth = '0px'\n\n\t  value = 'total bus booking'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column>\n<\/row><row>\n\t<column\n   \t\t width='50%'\n   \t>\n\t<panel elementName='Panel 2'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#FF4C2F'\n\tsize = '36px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#FF4C2F'\n    borderWidth = '0px'\n\n\t  value = 'thisapp.APPLY_TO_THE_BUS_PASS.ID.count'\n>\n<\/text>\n\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#333333'\n\tsize = '16px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#333333'\n    borderWidth = '0px'\n\n\t  value = 'total bus pass booking'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column><column\n   \t\t width='50%'\n   \t>\n\t<panel elementName='Panel 3'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#FF4C2F'\n\tsize = '36px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tdecimalPlaces = '2'\n\tthousandsSeperator = 'COMMA'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#FF4C2F'\n    borderWidth = '0px'\n\n\t  value = 'thisapp.PERSON_TICKET_BOOKING.TOTAL_BUS_COST_IN_CHILD_AND_ADULT.sum'\n>\n<\/text>\n\n<\/pc>\n<\/pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#333333'\n\tsize = '16px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#333333'\n    borderWidth = '0px'\n\n\t  value = 'total revenue'\n>\n<\/text>\n\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/pc>\n<\/pr>\n<\/panel>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+		page bus_dashboard_advance
+		{
+			displayname = "bus dashboard advance"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet()\ncontent\n&lt;%{\n\t%&gt;\n&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n  &lt;title&gt;Bus Booking App&lt;\/title&gt;\n&lt;\/head&gt;\n&lt;body style=&quot;margin:0; font-family: &apos;Segoe UI&apos;, sans-serif; background: linear-gradient(to right, #4facfe, #00f2fe); color: #333;&quot;&gt;\n\n  &lt;!-- Header --&gt;\n  &lt;div style=&quot;background-color: #ffffffcc; padding: 20px 40px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1);&quot;&gt;\n    &lt;h1 style=&quot;margin: 0; font-size: 36px; color: #0d47a1;&quot;&gt;\uD83D\uDE8C EasyGo Bus Booking&lt;\/h1&gt;\n    &lt;p style=&quot;margin: 5px 0; font-size: 18px; color: #555;&quot;&gt;Fast, Safe &amp; Colorful Bus Reservations&lt;\/p&gt;\n  &lt;\/div&gt;\n\n  &lt;!-- Form Container --&gt;\n  &lt;div style=&quot;max-width: 600px; margin: 40px auto; background-color: #ffffffcc; padding: 30px 40px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);&quot;&gt;\n\n    &lt;h2 style=&quot;text-align: center; color: #0288d1; margin-bottom: 20px;&quot;&gt;Book Your Trip&lt;\/h2&gt;\n\n    &lt;!-- Form --&gt;\n    &lt;form&gt;\n      &lt;label style=&quot;display:block; margin-bottom: 10px; font-weight: bold; color: #0d47a1;&quot;&gt;From:&lt;\/label&gt;\n      &lt;input type=&quot;text&quot; placeholder=&quot;Enter departure city&quot; style=&quot;width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 20px;&quot;&gt;\n\n      &lt;label style=&quot;display:block; margin-bottom: 10px; font-weight: bold; color: #0d47a1;&quot;&gt;To:&lt;\/label&gt;\n      &lt;input type=&quot;text&quot; placeholder=&quot;Enter destination city&quot; style=&quot;width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 20px;&quot;&gt;\n\n      &lt;label style=&quot;display:block; margin-bottom: 10px; font-weight: bold; color: #0d47a1;&quot;&gt;Date of Journey:&lt;\/label&gt;\n      &lt;input type=&quot;date&quot; style=&quot;width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 20px;&quot;&gt;\n\n      &lt;label style=&quot;display:block; margin-bottom: 10px; font-weight: bold; color: #0d47a1;&quot;&gt;Bus Type:&lt;\/label&gt;\n      &lt;select style=&quot;width: 100%; padding: 10px; border-radius: 5px; margin-bottom: 30px; border: 1px solid #ccc;&quot;&gt;\n        &lt;option&gt;AC Sleeper&lt;\/option&gt;\n        &lt;option&gt;Non-AC Seater&lt;\/option&gt;\n        &lt;option&gt;Luxury Coach&lt;\/option&gt;\n      &lt;\/select&gt;\n\n      &lt;button type=&quot;submit&quot; style=&quot;background-color: #0288d1; color: white; padding: 12px 25px; font-size: 16px; border: none; border-radius: 6px; cursor: pointer; width: 100%; transition: background 0.3s;&quot;&gt;\n        \uD83D\uDE80 Book Now\n      &lt;\/button&gt;\n    &lt;\/form&gt;\n  &lt;\/div&gt;\n\n  &lt;!-- Footer --&gt;\n  &lt;div style=&quot;text-align: center; padding: 20px; background-color: #ffffff80; margin-top: 50px; font-size: 14px; color: #444;&quot;&gt;\n    &amp;copy; 2025 EasyGo Buses. All rights reserved.\n  &lt;\/div&gt;\n\n&lt;\/body&gt;\n&lt;\/html&gt;\n\n&lt;iframe \n  src=&quot;https:\/\/creatorapp.zoho.com\/YOUR_USERNAME\/YOUR_APP_NAME\/form-embed\/Bus_Booking&quot; \n  width=&quot;100%&quot; \n  height=&quot;700&quot; \n  frameborder=&quot;0&quot; \n  style=&quot;border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.1);&quot;&gt;\n&lt;\/iframe&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+	}
+
+
+		workflow
+		{
+		form
+		{
+			GET_TO_THE_BUS_TYPE_WITH_ as "GET TO THE BUS TYPE WITH UI.ADD"
+			{
+				type =  form
+				form = PERSON_TICKET_BOOKING
+				record event = on add or edit
+
+				on user input of END_PLACE
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = BUS_NAMES_AND_ROTE[START_PLACE == input.START_PLACE.START_PLACE && END_PLACE == input.END_PLACE.END_PLACE];
+										new = ver.BUS_TYPES.getall();
+										input.BUS_TYPES:ui.add(new);
+						)
+					}
+				}
+
+			}
+			SHARE_SEAT as "SHARE SEAT"
+			{
+				type =  form
+				form = BUS_NAMES_AND_ROTE
+				record event = on add or edit
+
+				on user input of TOTAL_AVAILABLE_SEAT
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.FRIST_CLASS_AVAILABLE_SEAT = input.TOTAL_AVAILABLE_SEAT / 100 * 40;
+										input.SECOND_CLASS_AVAILABLE_SEAT = input.TOTAL_AVAILABLE_SEAT - input.FRIST_CLASS_AVAILABLE_SEAT;
+						)
+					}
+				}
+
+			}
+			CALCULATE_THE_PRICE_IN_CH as "CALCULATE THE PRICE IN CHILD"
+			{
+				type =  form
+				form = BUS_NAMES_AND_ROTE
+				record event = on add or edit
+
+				on user input of TICKET_PRICE
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.TICKET_PRICE_FOR_CHILD = input.TICKET_PRICE / 2;
+						)
+					}
+				}
+
+			}
+			CALCULATE_THE_TOTAL_PRICE as "CALCULATE THE TOTAL PRICE IN CHILD"
+			{
+				type =  form
+				form = PERSON_TICKET_BOOKING
+				record event = on add or edit
+
+				on user input of TOTAL_BOOKING_SEAT_FOR_CHILD
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.TOTAL_BUS_COST_IN_CHILD = input.BUS_PRICE_FOR_ONE_PERSON_CHILD.TICKET_PRICE_FOR_CHILD * input.TOTAL_BOOKING_SEAT_FOR_CHILD;
+						)
+					}
+				}
+
+			}
+			CALCULATE_THE_TOTAL_BUS_C as "CALCULATE THE TOTAL BUS COST FOR AUDLT"
+			{
+				type =  form
+				form = PERSON_TICKET_BOOKING
+				record event = on add or edit
+
+				on user input of TOTAL_BOOKING_SEAT_FOR_ADULT
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.TOTAL_BUS_COST_IN_ADULT = input.BUS_PRICE_FOR_ONE_PERSON_ADULT.TICKET_PRICE * input.TOTAL_BOOKING_SEAT_FOR_ADULT;
+						)
+					}
+				}
+
+			}
+			CALCULATE_THE_TOTAL_BUS_C1 as "CALCULATE THE TOTAL BUS COST FOR AUDLT AND CHILD"
+			{
+				type =  form
+				form = PERSON_TICKET_BOOKING
+				record event = on add or edit
+
+				on user input of TOTAL_BUS_COST_IN_ADULT
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.TOTAL_BUS_COST_IN_CHILD_AND_ADULT = input.TOTAL_BUS_COST_IN_ADULT + input.TOTAL_BUS_COST_IN_CHILD;
+						)
+					}
+				}
+
+			}
+			GET_TO_THE_BUS_TYPE_WITH_1 as "GET TO THE BUS TYPE WITH UI.ADD"
+			{
+				type =  form
+				form = APPLY_TO_THE_BUS_PASS
+				record event = on add or edit
+
+				on user input of END_PLACE
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = BUS_NAMES_AND_ROTE[START_PLACE == input.START_PLACE.START_PLACE && END_PLACE == input.END_PLACE.END_PLACE];
+										new = ver.BUS_TYPES.getall();
+										input.BUS_TYPES:ui.add(new);
+						)
+					}
+				}
+
+			}
+		}
+
+
+
+
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form APPLY_TO_THE_BUS_PASS
+			{
+				label placement = left
+			}
+			form BUS_NAMES_AND_ROTE
+			{
+				label placement = left
+			}
+			form BUS_TYPES
+			{
+				label placement = left
+			}
+			form BUS_TYPES_AND_POINT_TO_POINT
+			{
+				label placement = left
+			}
+			form PERSON_TICKET_BOOKING
+			{
+				label placement = left
+			}
+			form TICKET_TYPES
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report All_Bus_Types
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								BUS_TYPES as "BUS TYPES"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								BUS_TYPES as "BUS TYPES"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report BUS_NAMES_AND_ROTE_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								BUS_TYPES as "BUS TYPES"
+								BUS_NAMES as "BUS NAMES"
+								START_PLACE as "START PLACE"
+								END_PLACE as "END PLACE"
+								START_TIME
+								END_TIME
+								BUS_TYPES_AND_POINT_TO_POINT as "BUS TYPES AND POINT TO POINT"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								BUS_TYPES as "BUS TYPES"
+								BUS_NAMES as "BUS NAMES"
+								START_PLACE as "START PLACE"
+								END_PLACE as "END PLACE"
+								START_TIME
+								END_TIME
+								BUS_TYPES_AND_POINT_TO_POINT as "BUS TYPES AND POINT TO POINT"
+								TICKET_PRICE as "TICKET PRICE"
+								FRIST_CLASS_AVAILABLE_SEAT as "FRIST CLASS AVAILABLE SEAT"
+								TOTAL_AVAILABLE_SEAT as "TOTAL AVAILABLE SEAT"
+								SECOND_CLASS_AVAILABLE_SEAT as "SECOND CLASS AVAILABLE SEAT"
+								TICKET_PRICE_FOR_CHILD as "TICKET PRICE FOR CHILD"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report BUS_TYPES_AND_POINT_TO_POINT_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								BUS_TYPES as "BUS TYPES"
+								LOCAL_OR_AC_BUS as "LOCAL OR AC BUS"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								BUS_TYPES as "BUS TYPES"
+								LOCAL_OR_AC_BUS as "LOCAL OR AC BUS"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Ticket_Types
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								TICKET_TYPES as "TICKET TYPES"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								TICKET_TYPES as "TICKET TYPES"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Person_Ticket_Bookings
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								PERSON_NAME as "PERSON NAME"
+								PERSON_NUMBER as "PERSON NUMBER"
+								START_PLACE as "START PLACE"
+								END_PLACE as "END PLACE"
+								BUS_NAMES as "BUS NAMES"
+								START_TIME
+								BUS_TYPES as "BUS TYPES"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								PERSON_NAME as "PERSON NAME"
+								PERSON_NUMBER as "PERSON NUMBER"
+								START_PLACE as "START PLACE"
+								END_PLACE as "END PLACE"
+								BUS_NAMES as "BUS NAMES"
+								START_TIME
+								END_TIME
+								BUS_TYPES as "BUS TYPES"
+								BUS_PRICE_FOR_ONE_PERSON_ADULT as "BUS PRICE FOR ONE PERSON ADULT"
+								TOTAL_BUS_COST_IN_CHILD_AND_ADULT as "TOTAL BUS COST IN CHILD AND ADULT"
+								TOTAL_BOOKING_SEAT_FOR_ADULT as "TOTAL_BOOKING SEAT FOR ADULT"
+								TOTAL_BUS_COST_IN_CHILD as "TOTAL BUS COST IN CHILD"
+								TOTAL_BOOKING_SEAT_FOR_CHILD as "TOTAL_BOOKING SEAT FOR CHILD"
+								TOTAL_BUS_COST_IN_ADULT as "TOTAL BUS COST IN ADULT"
+								BUS_PRICE_FOR_ONE_PERSON_CHILD as "BUS PRICE FOR ONE PERSON CHILD"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report APPLY_TO_THE_BUS_PASS_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								PERSON_NAME as "PERSON NAME"
+								Phone_Number as "Phone"
+								START_PLACE as "START PLACE"
+								END_PLACE as "END PLACE"
+								BUS_TYPES as "BUS TYPES"
+								BUS_NAMES as "BUS NAMES"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								PERSON_NAME as "PERSON NAME"
+								Phone_Number as "Phone"
+								START_PLACE as "START PLACE"
+								END_PLACE as "END PLACE"
+								BUS_TYPES as "BUS TYPES"
+								BUS_NAMES as "BUS NAMES"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Bus_Types
+				{
+					displayname = "Bus Types"
+					icon = "transportation-bus"
+					form  BUS_TYPES
+					{
+						icon = "transportation-bus"
+					}
+					report All_Bus_Types
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section BUS_NAMES_AND_ROTE
+				{
+					displayname = "BUS NAMES AND ROTE"
+					icon = "travel-world"
+					form  BUS_NAMES_AND_ROTE
+					{
+						icon = "travel-world"
+					}
+					report BUS_NAMES_AND_ROTE_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section BUS_TYPES_AND_POINT_TO_POINT
+				{
+					displayname = "BUS TYPES AND POINT TO POINT"
+					icon = "users-2-woman-up"
+					form  BUS_TYPES_AND_POINT_TO_POINT
+					{
+						icon = "users-2-woman-up"
+					}
+					report BUS_TYPES_AND_POINT_TO_POINT_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Ticket_Types
+				{
+					displayname = "Ticket Types"
+					icon = "media-1-ticket-75"
+					form  TICKET_TYPES
+					{
+						icon = "media-1-ticket-75"
+					}
+					report All_Ticket_Types
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Person_Ticket_Bookings
+				{
+					displayname = "Person Ticket Bookings"
+					icon = "media-1-ticket-75"
+					form  PERSON_TICKET_BOOKING
+					{
+						icon = "media-1-ticket-75"
+					}
+					report All_Person_Ticket_Bookings
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section APPLY_TO_THE_BUS_PASS
+				{
+					displayname = "APPLY TO THE BUS PASS"
+					icon = "media-1-action-74"
+					form  APPLY_TO_THE_BUS_PASS
+					{
+						icon = "media-1-action-74"
+					}
+					report APPLY_TO_THE_BUS_PASS_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section bus_dashboard
+				{
+					displayname = "bus dashboard"
+					icon = "transportation-bus"
+					page bus_dashboard
+					{
+						icon = "transportation-bus"
+					}
+					page bus_dashboard_advance
+					{
+						icon = "transportation-bus"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "lato"
+			color options
+			{
+				color = "1"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form APPLY_TO_THE_BUS_PASS
+			{
+				label placement = auto
+			}
+			form BUS_NAMES_AND_ROTE
+			{
+				label placement = auto
+			}
+			form BUS_TYPES
+			{
+				label placement = auto
+			}
+			form BUS_TYPES_AND_POINT_TO_POINT
+			{
+				label placement = auto
+			}
+			form PERSON_TICKET_BOOKING
+			{
+				label placement = auto
+			}
+			form TICKET_TYPES
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = blue
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form APPLY_TO_THE_BUS_PASS
+			{
+				label placement = auto
+			}
+			form BUS_NAMES_AND_ROTE
+			{
+				label placement = auto
+			}
+			form BUS_TYPES
+			{
+				label placement = auto
+			}
+			form BUS_TYPES_AND_POINT_TO_POINT
+			{
+				label placement = auto
+			}
+			form PERSON_TICKET_BOOKING
+			{
+				label placement = auto
+			}
+			form TICKET_TYPES
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = blue
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}

@@ -1,0 +1,928 @@
+/*
+ * Author       : zappyworkssoftwaresolutionst47
+ * Generated on : 22-Nov-2025 09:32:41
+ * Version      : 1.0
+ */
+ application "Session Management Advance"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "12-hr"
+ 	forms
+	{
+		form Customer_Time_Details
+		{
+			displayname = "Customer Time Details"
+			success message = "Customer Time Detail Added Successfully"
+			Customer_Details
+			(
+				type = section
+				displayname = "Customer Details"
+				visibility = true
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Customer_Name
+			(
+    			type = text
+				displayname = "Customer Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Sort
+			(
+				type = section
+				visibility = true
+	 			row = 2
+	 			column = 0   
+				width = medium
+			)
+			From_Time
+			(
+    			type = time
+				displayname = "From Time"
+				timedisplayoptions = "hh:mm" 
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			To_Time
+			(
+    			type = time
+				displayname = "To Time"
+				timedisplayoptions = "hh:mm" 
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Trainer_Name
+			(
+				type = section
+				displayname = "Trainer Name"
+				visibility = true
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Trainer_Name2
+			(
+				type = picklist	
+				displayname = "Trainer Name"
+				values  = Trainer_Details.ID
+    			displayformat = [Trainer_Name]
+				sortorder = ascending
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form stateless_Trainer_Details
+		{
+			displayname = "stateless Trainer Details"
+			store data in zc = false
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Date_field
+			(
+    			type = date
+				displayname = "Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Trainer_Name
+			(
+				type = picklist	
+				displayname = "Trainer Name"
+				values  = Trainer_Details.ID
+    			displayformat = [Trainer_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+	
+		}
+		form Trainer_Details
+		{
+			displayname = "Trainer Details"
+			success message = "Trainer Detail Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Trainer_Name
+			(
+    			type = text
+				displayname = "Trainer Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Trainer_Work_Details
+			(
+				type = grid
+				displayname = "Trainer Work Details"
+				values  = Trainer_Existing.ID
+    			bidirectional = Trainer_Details
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Trainer_Existing
+		{
+			displayname = "Trainer Existing"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Days
+			(
+				type = picklist
+				maxchar = 100
+				values = {"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			From_Time
+			(
+    			type = time
+				displayname = "From Time"
+				timedisplayoptions = "hh:mm" 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			To_Time
+			(
+    			type = time
+				displayname = "To Time"
+				timedisplayoptions = "hh:mm" 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Trainer_Details
+			(
+				type = picklist	
+				displayname = "Trainer Details"
+				values  = Trainer_Details.ID
+    			bidirectional = Trainer_Work_Details
+    			displayformat = [Trainer_Name]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list All_Trainer_Details
+		{
+			displayName = "All Trainer Details"
+			show all rows from Trainer_Details    
+			(
+				Trainer_Name as "Trainer Name"
+			)
+		}
+		default list Trainer_Existing_Report
+		{
+			displayName = "Trainer Existing Report"
+			show all rows from Trainer_Existing    
+			(
+				Days
+				From_Time as "From Time"
+				To_Time as "To Time"
+				Trainer_Details as "Trainer Details"
+			)
+		}
+		default list All_Customer_Time_Details
+		{
+			displayName = "All Customer Time Details"
+			show all rows from Customer_Time_Details    
+			(
+				Customer_Name as "Customer Name"
+				From_Time as "From Time"
+				To_Time as "To Time"
+				Trainer_Name2 as "Trainer Name"
+			)
+		}
+	}
+	pages
+	{
+		page Dash_Board(int coachID, string day)
+		{
+			displayname = "Dash Board"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet()\ncontent\n&lt;%{\n\t%&gt;\n&lt;!-- OUTER MASTER --&gt;\n&lt;div class=&quot;master-container&quot;&gt;\n  &lt;div class=&quot;particles&quot;&gt;\n    &lt;div class=&quot;particle&quot;&gt;&lt;\/div&gt;\n    &lt;div class=&quot;particle&quot;&gt;&lt;\/div&gt;\n    &lt;div class=&quot;particle&quot;&gt;&lt;\/div&gt;\n    &lt;div class=&quot;particle&quot;&gt;&lt;\/div&gt;\n    &lt;div class=&quot;particle&quot;&gt;&lt;\/div&gt;\n    &lt;div class=&quot;particle&quot;&gt;&lt;\/div&gt;\n    &lt;div class=&quot;particle&quot;&gt;&lt;\/div&gt;\n    &lt;div class=&quot;particle&quot;&gt;&lt;\/div&gt;\n  &lt;\/div&gt;\n  &lt;div class=&quot;gradient-orb orb-1&quot;&gt;&lt;\/div&gt;\n  &lt;div class=&quot;gradient-orb orb-2&quot;&gt;&lt;\/div&gt;\n  &lt;div class=&quot;gradient-orb orb-3&quot;&gt;&lt;\/div&gt;\n  &lt;div class=&quot;gradient-orb orb-4&quot;&gt;&lt;\/div&gt;\n&lt;%\n\tif(input.coachID != null &amp;&amp; input.day != null)\n\t{\n\t\tsession_fetch = Trainer_Existing[Days == Days &amp;&amp; Trainer_Details == input.coachID];\n\t\tstartTime = session_fetch.From_Time;\n\t\tendTime = startTime.addHour(1);\n\t\thoursBetween = session_fetch.From_Time.hoursBetween(session_fetch.To_Time);\n\t\tdyn = &quot;&quot;.leftPad(hoursBetween).toList(&quot;&quot;);\n\t\tfor each  i in dyn\n\t\t{\n\t\t\t%&gt;\n&lt;!-- ROW CONTAINER: time at left + customers to the right --&gt;\n  &lt;div class=&quot;row&quot;&gt;\n    &lt;div class=&quot;row-glow&quot;&gt;&lt;\/div&gt;\n    &lt;div class=&quot;time&quot;&gt;\n      &lt;div class=&quot;time-decoration top&quot;&gt;&lt;\/div&gt;\n      &lt;div class=&quot;time-decoration bottom&quot;&gt;&lt;\/div&gt;\n      &lt;div class=&quot;time-inner&quot;&gt;\n        &lt;div class=&quot;clock-icon&quot;&gt;\n          &lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot;&gt;\n            &lt;circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;10&quot;&gt;&lt;\/circle&gt;\n            &lt;polyline points=&quot;12 6 12 12 16 14&quot;&gt;&lt;\/polyline&gt;\n          &lt;\/svg&gt;\n          &lt;div class=&quot;clock-pulse&quot;&gt;&lt;\/div&gt;\n        &lt;\/div&gt;\n        &lt;div class=&quot;time-display&quot;&gt;\n          &lt;span class=&quot;time-label&quot;&gt;From&lt;\/span&gt;\n          &lt;span class=&quot;time-value&quot;&gt;&lt;%=startTime%&gt;&lt;\/span&gt;\n        &lt;\/div&gt;\n        &lt;div class=&quot;time-divider&quot;&gt;\n          &lt;div class=&quot;divider-line&quot;&gt;&lt;\/div&gt;\n          &lt;div class=&quot;divider-dot&quot;&gt;&lt;\/div&gt;\n          &lt;div class=&quot;divider-line&quot;&gt;&lt;\/div&gt;\n        &lt;\/div&gt;\n        &lt;div class=&quot;time-display&quot;&gt;\n          &lt;span class=&quot;time-label&quot;&gt;To&lt;\/span&gt;\n          &lt;span class=&quot;time-value&quot;&gt;&lt;%=endTime%&gt;&lt;\/span&gt;\n        &lt;\/div&gt;\n      &lt;\/div&gt;\n      &lt;div class=&quot;time-sparkle sparkle-1&quot;&gt;\u2726&lt;\/div&gt;\n      &lt;div class=&quot;time-sparkle sparkle-2&quot;&gt;\u2726&lt;\/div&gt;\n      &lt;div class=&quot;time-sparkle sparkle-3&quot;&gt;\u2726&lt;\/div&gt;\n    &lt;\/div&gt;\n    &lt;div class=&quot;customer-container&quot;&gt;\n&lt;%\n\t\t\tcustomer_fetch = Customer_Time_Details[Trainer_Name2 == input.coachID &amp;&amp; From_Time &gt;= startTime &amp;&amp; From_Time &lt; endTime];\n\t\t\tfor each  custom in customer_fetch\n\t\t\t{\n\t\t\t\t%&gt;\n&lt;div class=&quot;Customer-card&quot;&gt;\n        &lt;div class=&quot;card-shine&quot;&gt;&lt;\/div&gt;\n        &lt;div class=&quot;card-border&quot;&gt;&lt;\/div&gt;\n        &lt;div class=&quot;card-content&quot;&gt;\n          &lt;div class=&quot;card-header&quot;&gt;\n            &lt;div class=&quot;avatar-wrapper&quot;&gt;\n              &lt;div class=&quot;avatar&quot;&gt;\n                &lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.5&quot; stroke-linecap=&quot;round&quot;&gt;\n                  &lt;path d=&quot;M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2&quot;&gt;&lt;\/path&gt;\n                  &lt;circle cx=&quot;12&quot; cy=&quot;7&quot; r=&quot;4&quot;&gt;&lt;\/circle&gt;\n                &lt;\/svg&gt;\n              &lt;\/div&gt;\n              &lt;div class=&quot;avatar-ring&quot;&gt;&lt;\/div&gt;\n              &lt;div class=&quot;avatar-glow&quot;&gt;&lt;\/div&gt;\n            &lt;\/div&gt;\n            &lt;div class=&quot;card-title-section&quot;&gt;\n              &lt;h3 class=&quot;card-name&quot;&gt;&lt;%=custom.Customer_Name%&gt;&lt;\/h3&gt;\n              &lt;div class=&quot;badge-container&quot;&gt;\n                &lt;span class=&quot;badge active&quot;&gt;\n                  &lt;span class=&quot;badge-dot&quot;&gt;&lt;\/span&gt;\n                  Active Session\n                &lt;\/span&gt;\n              &lt;\/div&gt;\n            &lt;\/div&gt;\n          &lt;\/div&gt;\n          \n          &lt;div class=&quot;card-body&quot;&gt;\n            &lt;div class=&quot;info-card start-card&quot;&gt;\n              &lt;div class=&quot;info-icon-wrapper&quot;&gt;\n                &lt;div class=&quot;info-icon&quot;&gt;\n                  &lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.5&quot;&gt;\n                    &lt;path d=&quot;M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83&quot;\/&gt;\n                  &lt;\/svg&gt;\n                &lt;\/div&gt;\n                &lt;div class=&quot;icon-ripple&quot;&gt;&lt;\/div&gt;\n              &lt;\/div&gt;\n              &lt;div class=&quot;info-details&quot;&gt;\n                &lt;span class=&quot;info-label&quot;&gt;Start Time&lt;\/span&gt;\n                &lt;span class=&quot;info-value&quot;&gt;&lt;%=custom.From_Time%&gt;&lt;\/span&gt;\n              &lt;\/div&gt;\n            &lt;\/div&gt;\n            \n            &lt;div class=&quot;info-card end-card&quot;&gt;\n              &lt;div class=&quot;info-icon-wrapper&quot;&gt;\n                &lt;div class=&quot;info-icon&quot;&gt;\n                  &lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.5&quot;&gt;\n                    &lt;circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;10&quot;&gt;&lt;\/circle&gt;\n                    &lt;path d=&quot;M12 6v6l4 2&quot;\/&gt;\n                  &lt;\/svg&gt;\n                &lt;\/div&gt;\n                &lt;div class=&quot;icon-ripple&quot;&gt;&lt;\/div&gt;\n              &lt;\/div&gt;\n              &lt;div class=&quot;info-details&quot;&gt;\n                &lt;span class=&quot;info-label&quot;&gt;End Time&lt;\/span&gt;\n                &lt;span class=&quot;info-value&quot;&gt;&lt;%=custom.To_Time%&gt;&lt;\/span&gt;\n              &lt;\/div&gt;\n            &lt;\/div&gt;\n          &lt;\/div&gt;\n          \n          &lt;div class=&quot;card-footer&quot;&gt;\n            &lt;div class=&quot;progress-bar&quot;&gt;\n              &lt;div class=&quot;progress-fill&quot;&gt;&lt;\/div&gt;\n              &lt;div class=&quot;progress-glow&quot;&gt;&lt;\/div&gt;\n            &lt;\/div&gt;\n            &lt;div class=&quot;footer-info&quot;&gt;\n              &lt;span class=&quot;status-indicator&quot;&gt;\n                &lt;span class=&quot;status-pulse&quot;&gt;&lt;\/span&gt;\n                Confirmed\n              &lt;\/span&gt;\n              &lt;span class=&quot;duration-badge&quot;&gt;\n                &lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;currentColor&quot; width=&quot;14&quot; height=&quot;14&quot;&gt;\n                  &lt;path d=&quot;M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z&quot;\/&gt;\n                &lt;\/svg&gt;\n                1 Hour\n              &lt;\/span&gt;\n            &lt;\/div&gt;\n          &lt;\/div&gt;\n        &lt;\/div&gt;\n      &lt;\/div&gt;\n&lt;%\n\t\t\t}\n\t\t\t%&gt;\n&lt;\/div&gt; &lt;!-- \/.customer-container --&gt;\n  &lt;\/div&gt; &lt;!-- \/.row --&gt;\n&lt;%\n\t\t\tstartTime = endTime;\n\t\t\tendTime = startTime.addHour(1);\n\t\t}\n\t}\n\t%&gt;\n&lt;\/div&gt; &lt;!-- \/.master-container --&gt;\n&lt;style&gt;\n@import url(&apos;https:\/\/fonts.googleapis.com\/css2?family=Poppins:wght@400;500;600;700;800;900&amp;display=swap&apos;);\n\n* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\nbody {\n  font-family: &apos;Poppins&apos;, sans-serif;\n  overflow-x: hidden;\n}\n\n.master-container {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  gap: 32px;\n  width: 100%;\n  padding: 60px 40px;\n  background: radial-gradient(ellipse at top, #001845 0%, #000d1f 50%, #000000 100%);\n  min-height: 100vh;\n  overflow: hidden;\n}\n\n.particles {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  z-index: 0;\n}\n\n.particle {\n  position: absolute;\n  width: 4px;\n  height: 4px;\n  background: rgba(100, 181, 246, 0.8);\n  border-radius: 50%;\n  box-shadow: 0 0 10px rgba(100, 181, 246, 0.8);\n  animation: particleFloat 15s infinite ease-in-out;\n}\n\n.particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; animation-duration: 12s; }\n.particle:nth-child(2) { left: 80%; top: 10%; animation-delay: 2s; animation-duration: 14s; }\n.particle:nth-child(3) { left: 30%; top: 60%; animation-delay: 4s; animation-duration: 16s; }\n.particle:nth-child(4) { left: 70%; top: 70%; animation-delay: 1s; animation-duration: 13s; }\n.particle:nth-child(5) { left: 50%; top: 30%; animation-delay: 3s; animation-duration: 15s; }\n.particle:nth-child(6) { left: 20%; top: 80%; animation-delay: 5s; animation-duration: 11s; }\n.particle:nth-child(7) { left: 90%; top: 50%; animation-delay: 2.5s; animation-duration: 14s; }\n.particle:nth-child(8) { left: 40%; top: 40%; animation-delay: 4.5s; animation-duration: 12s; }\n\n@keyframes particleFloat {\n  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }\n  25% { transform: translate(100px, -100px) scale(1.5); opacity: 0.8; }\n  50% { transform: translate(-50px, 100px) scale(1); opacity: 0.5; }\n  75% { transform: translate(150px, 50px) scale(1.2); opacity: 0.6; }\n}\n\n.gradient-orb {\n  position: absolute;\n  border-radius: 50%;\n  filter: blur(80px);\n  opacity: 0.3;\n  animation: orbFloat 20s infinite ease-in-out;\n}\n\n.orb-1 {\n  width: 600px;\n  height: 600px;\n  background: radial-gradient(circle, rgba(33, 150, 243, 0.6) 0%, transparent 70%);\n  top: -200px;\n  left: -100px;\n  animation-delay: 0s;\n}\n\n.orb-2 {\n  width: 500px;\n  height: 500px;\n  background: radial-gradient(circle, rgba(100, 181, 246, 0.5) 0%, transparent 70%);\n  bottom: -150px;\n  right: -100px;\n  animation-delay: 5s;\n}\n\n.orb-3 {\n  width: 400px;\n  height: 400px;\n  background: radial-gradient(circle, rgba(3, 169, 244, 0.4) 0%, transparent 70%);\n  top: 40%;\n  right: 20%;\n  animation-delay: 10s;\n}\n\n.orb-4 {\n  width: 450px;\n  height: 450px;\n  background: radial-gradient(circle, rgba(41, 182, 246, 0.4) 0%, transparent 70%);\n  top: 60%;\n  left: 30%;\n  animation-delay: 15s;\n}\n\n@keyframes orbFloat {\n  0%, 100% { transform: translate(0, 0); }\n  33% { transform: translate(100px, -100px); }\n  66% { transform: translate(-100px, 100px); }\n}\n\n.row {\n  position: relative;\n  display: flex;\n  align-items: stretch;\n  gap: 28px;\n  width: 100%;\n  padding: 0;\n  background: rgba(255, 255, 255, 0.03);\n  border-radius: 28px;\n  backdrop-filter: blur(20px);\n  border: 1px solid rgba(100, 181, 246, 0.2);\n  overflow: hidden;\n  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);\n  z-index: 1;\n  box-shadow: \n    0 25px 70px rgba(0, 0, 0, 0.5),\n    inset 0 1px 0 rgba(255, 255, 255, 0.1);\n}\n\n.row-glow {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  height: 2px;\n  background: linear-gradient(90deg, \n    transparent 0%,\n    rgba(100, 181, 246, 0.8) 50%,\n    transparent 100%);\n  opacity: 0;\n  transition: opacity 0.5s ease;\n}\n\n.row:hover .row-glow {\n  opacity: 1;\n}\n\n.row:hover {\n  transform: translateY(-10px) scale(1.01);\n  border-color: rgba(100, 181, 246, 0.4);\n  box-shadow: \n    0 35px 90px rgba(33, 150, 243, 0.4),\n    inset 0 1px 0 rgba(255, 255, 255, 0.2);\n}\n\n.time {\n  position: relative;\n  min-width: 200px;\n  max-width: 200px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: linear-gradient(135deg, #0066ff 0%, #00b4ff 50%, #00d4ff 100%);\n  padding: 36px 24px;\n  flex-shrink: 0;\n  overflow: hidden;\n}\n\n.time::before {\n  content: &apos;&apos;;\n  position: absolute;\n  top: -50%;\n  left: -50%;\n  width: 200%;\n  height: 200%;\n  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.15), transparent);\n  animation: timeShine 4s infinite linear;\n}\n\n@keyframes timeShine {\n  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }\n  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }\n}\n\n.time-decoration {\n  position: absolute;\n  left: 0;\n  right: 0;\n  height: 3px;\n  background: linear-gradient(90deg, \n    transparent 0%,\n    rgba(255, 255, 255, 0.6) 50%,\n    transparent 100%);\n}\n\n.time-decoration.top { top: 0; }\n.time-decoration.bottom { bottom: 0; }\n\n.time-inner {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: 16px;\n  z-index: 1;\n}\n\n.clock-icon {\n  position: relative;\n  width: 56px;\n  height: 56px;\n  background: rgba(255, 255, 255, 0.2);\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);\n  border: 3px solid rgba(255, 255, 255, 0.3);\n}\n\n.clock-icon svg {\n  width: 30px;\n  height: 30px;\n  color: white;\n  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));\n}\n\n.clock-pulse {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  border: 2px solid rgba(255, 255, 255, 0.6);\n  animation: clockPulse 2s infinite;\n}\n\n@keyframes clockPulse {\n  0% { transform: scale(1); opacity: 1; }\n  100% { transform: scale(1.5); opacity: 0; }\n}\n\n.time-display {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: 4px;\n}\n\n.time-label {\n  font-size: 11px;\n  font-weight: 600;\n  color: rgba(255, 255, 255, 0.8);\n  text-transform: uppercase;\n  letter-spacing: 1.5px;\n}\n\n.time-value {\n  font-size: 20px;\n  font-weight: 900;\n  color: white;\n  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);\n  letter-spacing: 1px;\n}\n\n.time-divider {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  width: 100%;\n}\n\n.divider-line {\n  flex: 1;\n  height: 2px;\n  background: rgba(255, 255, 255, 0.4);\n}\n\n.divider-dot {\n  width: 8px;\n  height: 8px;\n  background: white;\n  border-radius: 50%;\n  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);\n}\n\n.time-sparkle {\n  position: absolute;\n  color: white;\n  font-size: 20px;\n  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);\n  animation: sparkle 3s infinite ease-in-out;\n  opacity: 0;\n}\n\n.sparkle-1 { top: 20%; right: 15%; animation-delay: 0s; }\n.sparkle-2 { top: 50%; left: 10%; animation-delay: 1s; }\n.sparkle-3 { bottom: 25%; right: 20%; animation-delay: 2s; }\n\n@keyframes sparkle {\n  0%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }\n  50% { opacity: 1; transform: scale(1) rotate(180deg); }\n}\n\n.customer-container {\n  display: flex;\n  align-items: center;\n  gap: 24px;\n  flex: 1;\n  flex-wrap: wrap;\n  padding: 32px;\n  min-height: 200px;\n}\n\n.customer-container:empty::after {\n  content: &apos;\u2728 No sessions scheduled for this time slot&apos;;\n  color: rgba(100, 181, 246, 0.6);\n  font-style: italic;\n  font-size: 16px;\n  font-weight: 600;\n  text-align: center;\n  width: 100%;\n}\n\n.Customer-card {\n  position: relative;\n  min-width: 360px;\n  max-width: 400px;\n  border-radius: 24px;\n  overflow: hidden;\n  background: rgba(255, 255, 255, 0.05);\n  backdrop-filter: blur(20px);\n  border: 1px solid rgba(100, 181, 246, 0.3);\n  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);\n  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);\n}\n\n.Customer-card:hover {\n  transform: translateY(-15px) scale(1.03);\n  border-color: rgba(100, 181, 246, 0.6);\n  box-shadow: \n    0 25px 70px rgba(33, 150, 243, 0.5),\n    0 0 0 1px rgba(100, 181, 246, 0.3);\n}\n\n.card-shine {\n  position: absolute;\n  top: -50%;\n  left: -50%;\n  width: 200%;\n  height: 200%;\n  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);\n  animation: cardShine 4s infinite;\n  opacity: 0;\n  transition: opacity 0.5s ease;\n}\n\n.Customer-card:hover .card-shine {\n  opacity: 1;\n}\n\n@keyframes cardShine {\n  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }\n  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }\n}\n\n.card-border {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  border-radius: 24px;\n  padding: 2px;\n  background: linear-gradient(135deg, rgba(100, 181, 246, 0.5), rgba(33, 150, 243, 0.5));\n  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);\n  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);\n  -webkit-mask-composite: xor;\n  mask-composite: exclude;\n  opacity: 0;\n  transition: opacity 0.5s ease;\n}\n\n.Customer-card:hover .card-border {\n  opacity: 1;\n}\n\n.card-content {\n  position: relative;\n  padding: 28px;\n  display: flex;\n  flex-direction: column;\n  gap: 24px;\n  z-index: 1;\n}\n\n.card-header {\n  display: flex;\n  gap: 18px;\n  align-items: center;\n}\n\n.avatar-wrapper {\n  position: relative;\n  flex-shrink: 0;\n}\n\n.avatar {\n  width: 70px;\n  height: 70px;\n  background: linear-gradient(135deg, #0066ff 0%, #00b4ff 100%);\n  border-radius: 20px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  box-shadow: 0 12px 35px rgba(0, 102, 255, 0.5);\n  border: 3px solid rgba(255, 255, 255, 0.2);\n  transition: all 0.4s ease;\n  z-index: 2;\n}\n\n.Customer-card:hover .avatar {\n  transform: scale(1.1) rotate(-5deg);\n  box-shadow: 0 15px 45px rgba(0, 180, 255, 0.7);\n}\n\n.avatar svg {\n  width: 38px;\n  height: 38px;\n  color: white;\n  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));\n}\n\n.avatar-ring {\n  position: absolute;\n  top: -5px;\n  left: -5px;\n  right: -5px;\n  bottom: -5px;\n  border-radius: 22px;\n  border: 2px solid rgba(100, 181, 246, 0.5);\n  animation: ringPulse 3s infinite;\n}\n\n@keyframes ringPulse {\n  0%, 100% { transform: scale(1); opacity: 0.5; }\n  50% { transform: scale(1.1); opacity: 1; }\n}\n\n.avatar-glow {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 100%;\n  height: 100%;\n  background: radial-gradient(circle, rgba(100, 181, 246, 0.4) 0%, transparent 70%);\n  border-radius: 50%;\n  filter: blur(20px);\n  animation: glowPulse 2s infinite;\n}\n\n@keyframes glowPulse {\n  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }\n  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.3); }\n}\n\n.card-title-section {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n\n.card-name {\n  font-size: 20px;\n  font-weight: 800;\n  color: white;\n  line-height: 1.2;\n  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);\n}\n\n.badge-container {\n  display: flex;\n  gap: 8px;\n}\n\n.badge {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  padding: 6px 14px;\n  border-radius: 12px;\n  font-size: 12px;\n  font-weight: 700;\n  text-transform: uppercase;\n  letter-spacing: 0.5px;\n  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);\n}\n\n.badge.active {\n  background: linear-gradient(135deg, #00e676 0%, #00c853 100%);\n  color: white;\n}\n\n.badge-dot {\n  width: 8px;\n  height: 8px;\n  background: white;\n  border-radius: 50%;\n  animation: badgePulse 2s infinite;\n}\n\n@keyframes badgePulse {\n  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }\n  50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(255, 255, 255, 0); }\n}\n\n.card-body {\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n}\n\n.info-card {\n  display: flex;\n  align-items: center;\n  gap: 16px;\n  padding: 18px;\n  border-radius: 16px;\n  border: 1px solid rgba(100, 181, 246, 0.2);\n  background: rgba(100, 181, 246, 0.05);\n  transition: all 0.4s ease;\n}\n\n.info-card:hover {\n  transform: translateX(8px);\n  background: rgba(100, 181, 246, 0.1);\n  border-color: rgba(100, 181, 246, 0.4);\n}\n\n.info-icon-wrapper {\n  position: relative;\n  flex-shrink: 0;\n}\n\n.info-icon {\n  width: 50px;\n  height: 50px;\n  border-radius: 14px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  transition: all 0.4s ease;\n  z-index: 1;\n}\n\n.start-card .info-icon {\n  background: linear-gradient(135deg, #00b4ff 0%, #0066ff 100%);\n  box-shadow: 0 8px 25px rgba(0, 180, 255, 0.4);\n}\n\n.end-card .info-icon {\n  background: linear-gradient(135deg, #2196f3 0%, #1565c0 100%);\n  box-shadow: 0 8px 25px rgba(33, 150, 243, 0.4);\n}\n\n.info-card:hover .info-icon {\n  transform: scale(1.1) rotate(10deg);\n}\n\n.info-icon svg {\n  width: 26px;\n  height: 26px;\n  color: white;\n  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));\n}\n\n.icon-ripple {\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  border-radius: 14px;\n  border: 2px solid rgba(100, 181, 246, 0.5);\n  animation: ripple 2s infinite;\n}\n\n@keyframes ripple {\n  0% { transform: scale(1); opacity: 1; }\n  100% { transform: scale(1.4); opacity: 0; }\n}\n\n.info-details {\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n  flex: 1;\n}\n\n.info-label {\n  font-size: 12px;\n  font-weight: 600;\n  color: rgba(100, 181, 246, 0.8);\n  text-transform: uppercase;\n  letter-spacing: 1px;\n}\n\n.info-value {\n  font-size: 18px;\n  font-weight: 800;\n  color: white;\n  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);\n}\n\n.card-footer {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n  padding-top: 16px;\n  border-top: 1px solid rgba(100, 181, 246, 0.2);\n}\n\n.progress-bar {\n  position: relative;\n  height: 8px;\n  background: rgba(100, 181, 246, 0.1);\n  border-radius: 10px;\n  overflow: hidden;\n}\n\n.progress-fill {\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 100%;\n  width: 70%;\n  background: linear-gradient(90deg, #0066ff 0%, #00b4ff 100%);\n  border-radius: 10px;\n  animation: progressGrow 2s ease-in-out;\n}\n\n@keyframes progressGrow {\n  0% { width: 0%; }\n  100% { width: 70%; }\n}\n\n.progress-glow {\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 100%;\n  width: 70%;\n  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);\n  animation: progressShine 2s infinite;\n}\n\n@keyframes progressShine {\n  0% { transform: translateX(-100%); }\n  100% { transform: translateX(100%); }\n}\n\n.footer-info {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.status-indicator {\n  display: inline-flex;\n  align-items: center;\n  gap: 8px;\n  font-size: 13px;\n  font-weight: 700;\n  color: #00e676;\n  text-transform: uppercase;\n  letter-spacing: 0.5px;\n}\n\n.status-pulse {\n  width: 10px;\n  height: 10px;\n  background: #00e676;\n  border-radius: 50%;\n  box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.7);\n  animation: statusPulse 2s infinite;\n}\n\n@keyframes statusPulse {\n  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.7); }\n  50% { box-shadow: 0 0 0 10px rgba(0, 230, 118, 0); }\n}\n\n.duration-badge {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  padding: 6px 12px;\n  background: rgba(100, 181, 246, 0.15);\n  border-radius: 10px;\n  font-size: 12px;\n  font-weight: 700;\n  color: rgba(100, 181, 246, 0.9);\n  border: 1px solid rgba(100, 181, 246, 0.3);\n}\n\n@media (max-width: 1200px) {\n  .master-container {\n    padding: 40px 24px;\n  }\n  \n  .Customer-card {\n    min-width: 320px;\n  }\n}\n\n@media (max-width: 900px) {\n  .master-container {\n    padding: 32px 20px;\n  }\n  \n  .row {\n    flex-direction: column;\n    gap: 0;\n  }\n  \n  .time {\n    min-width: 100%;\n    max-width: 100%;\n    padding: 28px 20px;\n    border-radius: 28px 28px 0 0;\n  }\n  \n  .customer-container {\n    padding: 24px;\n    justify-content: center;\n  }\n  \n  .Customer-card {\n    min-width: 100%;\n    max-width: 100%;\n  }\n}\n\n@media (max-width: 600px) {\n  .master-container {\n    padding: 24px 16px;\n    gap: 24px;\n  }\n  \n  .time-inner {\n    gap: 12px;\n  }\n  \n  .clock-icon {\n    width: 48px;\n    height: 48px;\n  }\n  \n  .time-value {\n    font-size: 18px;\n  }\n  \n  .card-content {\n    padding: 20px;\n  }\n  \n  .avatar {\n    width: 60px;\n    height: 60px;\n  }\n  \n  .avatar svg {\n    width: 32px;\n    height: 32px;\n  }\n  \n  .card-name {\n    font-size: 18px;\n  }\n  \n  .info-icon {\n    width: 44px;\n    height: 44px;\n  }\n  \n  .info-icon svg {\n    width: 22px;\n    height: 22px;\n  }\n}\n&lt;\/style&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+		page Overview
+		{
+			displayname = "Overview"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet1' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet1()\ncontent\n&lt;%{\n\t%&gt;\n&lt;div elName=&apos;zc-component&apos; formLinkName=&apos;stateless_Trainer_Details&apos; params=&apos;zc_Header=false&amp;amp;zc_SuccMsg=Data Added Successfully!&amp;amp;zc_SubmitVal=Submit&amp;amp;zc_ResetVal=Reset&apos;&gt;Loading Form...&lt;\/div&gt;\n&lt;div elName=&apos;zc-component&apos; name=&apos;JD&apos; viewLinkName=&apos;Dash_Board&apos; params=&apos;zc_Header=true&apos;&gt;Loading View...&lt;\/div&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+	}
+
+
+		workflow
+		{
+		form
+		{
+			Ui_Add_For_Trainer as "Ui Add For Trainer"
+			{
+				type =  form
+				form = Customer_Time_Details
+				record event = on add or edit
+
+				on user input of From_Time
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.From_Time != null)
+										{
+											input.To_Time = input.From_Time.addHour(1);
+											ver = Trainer_Existing[From_Time <= input.From_Time && To_Time >= input.From_Time].Trainer_Details.getAll();
+											input.Trainer_Name2:ui.add(ver);
+										}
+						)
+					}
+				}
+
+			}
+			hide_and_disable as "hide and disable"
+			{
+				type =  form
+				form = Customer_Time_Details
+				record event = on add or edit
+
+				field rules
+				{
+					actions 
+					{
+						disable To_Time;
+					}
+				}
+
+			}
+			Ui_Add_For_Trainer1 as "Ui Add For Trainer"
+			{
+				type =  form
+				form = stateless_Trainer_Details
+				record event = on add
+
+				on user input of Date_field
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											new = Trainer_Existing[Days == input.Date_field.tostring("EEEE")].Trainer_Details.getAll();
+										input.Trainer_Name:ui.add(new);
+						)
+					}
+				}
+
+			}
+			open_url as "open-url"
+			{
+				type =  form
+				form = stateless_Trainer_Details
+				record event = on add
+
+				on user input of Trainer_Name
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											openUrl("#Page:Dash_Board?zc_LoadIn=embed-JD&coachID=" + input.Trainer_Name + "&day=" + input.Date_field.toString("EEEE"),"same window");
+						)
+					}
+				}
+
+			}
+		}
+
+
+
+
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form Customer_Time_Details
+			{
+				label placement = left
+			}
+			form stateless_Trainer_Details
+			{
+				label placement = left
+			}
+			form Trainer_Details
+			{
+				label placement = left
+			}
+			form Trainer_Existing
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report All_Trainer_Details
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Trainer_Name as "Trainer Name"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 2
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								Trainer_Name as "Trainer Name"
+							)
+						)
+						datablock2
+						(
+							layout type = -1
+		     				title = "Trainer Work Details"
+		     				related field = Trainer_Work_Details
+							fields
+							(
+								Days
+								From_Time as "From Time"
+								To_Time as "To Time"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Trainer_Existing_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Days
+								From_Time as "From Time"
+								To_Time as "To Time"
+								Trainer_Details as "Trainer Details"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Days
+								From_Time as "From Time"
+								To_Time as "To Time"
+								Trainer_Details as "Trainer Details"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Customer_Time_Details
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Customer_Name as "Customer Name"
+								From_Time as "From Time"
+								To_Time as "To Time"
+								Trainer_Name2 as "Trainer Name"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Customer_Name as "Customer Name"
+								From_Time as "From Time"
+								To_Time as "To Time"
+								Trainer_Name2 as "Trainer Name"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Trainer_Details
+				{
+					displayname = "Trainer Details"
+					icon = "users-2-contacts-44"
+					form  Trainer_Details
+					{
+						icon = "users-2-contacts-44"
+					}
+					report All_Trainer_Details
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section Trainer_Existing
+				{
+					displayname = "Trainer Existing"
+					icon = "tech-2-l-check"
+					form  Trainer_Existing
+					{
+						icon = "tech-2-l-check"
+					}
+					report Trainer_Existing_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Customer_Time_Details
+				{
+					displayname = "Customer Time Details"
+					icon = "users-2-contacts-44"
+					form  Customer_Time_Details
+					{
+						icon = "users-2-contacts-44"
+					}
+					report All_Customer_Time_Details
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Dash_Board
+				{
+					displayname = "Dash Board"
+					icon = "media-2-remix"
+					page Dash_Board
+					{
+						icon = "media-2-remix"
+					}
+					page Overview
+					{
+						icon = "design-2-layout-25"
+					}
+				}
+				section stateless_Trainer_Details
+				{
+					displayname = "stateless Trainer Details"
+					icon = "users-2-contacts-44"
+					form  stateless_Trainer_Details
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "lato"
+			color options
+			{
+				color = "1"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Customer_Time_Details
+			{
+				label placement = auto
+			}
+			form stateless_Trainer_Details
+			{
+				label placement = auto
+			}
+			form Trainer_Details
+			{
+				label placement = auto
+			}
+			form Trainer_Existing
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = blue
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Customer_Time_Details
+			{
+				label placement = auto
+			}
+			form stateless_Trainer_Details
+			{
+				label placement = auto
+			}
+			form Trainer_Details
+			{
+				label placement = auto
+			}
+			form Trainer_Existing
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = blue
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}
