@@ -1,0 +1,1942 @@
+/*
+ * Author       : zappyworkssoftwaresolutionst47
+ * Generated on : 09-Jan-2026 08:47:10
+ * Version      : 1.0
+ */
+ application "Advance ice Cream Parlour"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form Ice_Cream_Details
+		{
+			displayname = "Ice Cream Details"
+			success message = "Ice Cream Detail Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Ice_Cream_Flavors
+			(
+    			type = text
+				displayname = "Ice Cream Flavors "
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Ice_Cream_Price
+			(
+				displayname = "Ice Cream Price"
+				type = INR
+				format = commadotindian
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Ice_Toppings_Details
+		{
+			displayname = "Ice Toppings Details"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Ice_Toppings
+			(
+    			type = text
+				displayname = "Ice Toppings "
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Ice_Toppings_Price
+			(
+				displayname = "Ice Toppings Price"
+				type = INR
+				format = commadotindian
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Order
+		{
+			success message = "Order Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Order_ID
+			(
+    			type = text
+				displayname = "Order ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Auto_Number
+			(
+    			type = autonumber
+				displayname = "Auto Number"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Customer_Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Customer_Email
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Customer_Phone
+			(
+    			type = phonenumber
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Customer_Address
+			(
+    			type = address
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Order_Details
+			(
+				type = grid
+				displayname = "Order Details"
+				Ice_Cream_Flavors
+				(
+					type = picklist	
+					displayname = "Ice Cream Flavors "
+					values  = Ice_Cream_Details.ID
+    				displayformat = [Ice_Cream_Flavors]
+					sortorder = ascending
+					width = medium
+				)
+				Ice_Cream_Price
+				(
+					displayname = "Ice Cream Price"
+					type = INR
+					format = commadotindian
+					initial value = 0
+					width = medium
+				)
+				Ice_Toppings
+				(
+					type = list	
+					displayname = "Ice Toppings"
+					values  = Ice_Toppings_Details.ID
+    				displayformat = [Ice_Toppings + " - " + Ice_Toppings_Price]
+					sortorder = ascending
+					height = 60px
+					width = medium
+				)
+				Ice_Toppings_Price
+				(
+					displayname = "Ice Toppings Price"
+					type = INR
+					format = commadotindian
+					initial value = 0
+					width = medium
+				)
+				Ice_Cream_Total_Price
+				(
+					displayname = "Ice Cream Total Price "
+					type = INR
+					format = commadotindian
+					initial value = 0
+					width = medium
+				)
+				Order_Status
+				(
+					type = picklist
+					displayname = "Order Status"
+					maxchar = 100
+					values = {"accept","cancel","prosses"}
+					initial value = "prosses"
+					width = medium
+				)
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Section1
+			(
+				type = section
+				displayname = "Section"
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Checkbox
+			(
+				type = checkboxes	
+				values = {"I have one more request"}
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Personalization
+			(
+				type = picklist	
+				values  = Personalization.ID
+    			displayformat = [Personalization]
+				sortorder = ascending
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Personalization_Price
+			(
+				displayname = "Personalization Price"
+				type = INR
+				format = commadotindian
+				initial value = 0
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Grand_Total
+			(
+				displayname = "Grand Total"
+				type = INR
+				format = commadotindian
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Personalization
+		{
+			success message = "Personation Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Personalization
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Price
+			(
+				type = INR
+				format = commadotindian
+				initial value = 0
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form ReOrder
+		{
+			success message = "Order Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Order_ID
+			(
+				type = picklist	
+				displayname = "Order ID"
+				values  = Order.ID
+    			displayformat = [Order_ID]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Customer_Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Customer_Email
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Customer_Phone
+			(
+    			type = phonenumber
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Customer_Address
+			(
+    			type = address
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Reorder_Details
+			(
+				type = grid
+				displayname = "Reorder Details"
+				Ice_Cream_Flavors
+				(
+					type = picklist	
+					displayname = "Ice Cream Flavors "
+					values  = Ice_Cream_Details.ID
+    				displayformat = [Ice_Cream_Flavors]
+					sortorder = ascending
+					width = medium
+				)
+				Ice_Cream_Price
+				(
+					displayname = "Ice Cream Price"
+					type = INR
+					format = commadotindian
+					initial value = 0
+					width = medium
+				)
+				Ice_Toppings
+				(
+					type = list	
+					displayname = "Ice Toppings"
+					values  = Ice_Toppings_Details.ID
+    				displayformat = [Ice_Toppings + " - " + Ice_Toppings_Price]
+					sortorder = ascending
+					height = 60px
+					width = medium
+				)
+				Ice_Toppings_Price
+				(
+					displayname = "Ice Toppings Price"
+					type = INR
+					format = commadotindian
+					initial value = 0
+					width = medium
+				)
+				Ice_Cream_Total_Price
+				(
+					displayname = "Ice Cream Total Price "
+					type = INR
+					format = commadotindian
+					initial value = 0
+					width = medium
+				)
+				Order_Status
+				(
+					type = picklist
+					displayname = "Order Status"
+					maxchar = 100
+					values = {"accept","cancel","prosses"}
+					initial value = "prosses"
+					width = medium
+				)
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Section1
+			(
+				type = section
+				displayname = "Section"
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Grand_Total
+			(
+				displayname = "Grand Total"
+				type = INR
+				format = commadotindian
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list All_Ice_Cream_Details
+		{
+			displayName = "All Ice Cream Details"
+			show all rows from Ice_Cream_Details    
+			(
+				Ice_Cream_Flavors as "Ice Cream Flavors "
+				Ice_Cream_Price as "Ice Cream Price"
+			)
+		}
+		default list Ice_Toppings_Details_Report
+		{
+			displayName = "Ice Toppings Details Report"
+			show all rows from Ice_Toppings_Details    
+			(
+				Ice_Toppings as "Ice Toppings "
+				Ice_Toppings_Price as "Ice Toppings Price"
+			)
+		}
+		default list All_Orders
+		{
+			displayName = "All Orders"
+			show all rows from Order    
+			(
+				Order_ID as "Order ID"
+				Auto_Number as "Auto Number"
+				Customer_Name 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Customer_Email
+				Customer_Phone
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Customer_Address 
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Order_Details.Ice_Cream_Flavors as "Order Details"
+				Checkbox
+				Personalization
+				Personalization_Price as "Personalization Price"
+				Grand_Total as "Grand Total"
+			)
+		}
+		default list All_Personations
+		{
+			displayName = "All Personations"
+			show all rows from Personalization    
+			(
+				Personalization
+				Price
+			)
+		}
+		default list ReOrder_Report
+		{
+			displayName = "ReOrder Report"
+			show all rows from ReOrder    
+			(
+				Customer_Name 
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Customer_Email
+				Customer_Phone
+				Customer_Address 
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	 			)
+				Grand_Total as "Grand Total"
+				Order_ID as "Order ID"
+			)
+		}
+	}
+	pages
+	{
+		page Home_Page
+		{
+			displayname = "Home Page"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet()\ncontent\n&lt;%{\n\t%&gt;\n&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n&lt;head&gt;\n    &lt;meta charset=&quot;UTF-8&quot;&gt;\n    &lt;title&gt;Sweet Scoops Ice Cream&lt;\/title&gt;\n    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;\n\n    &lt;style&gt;\n        * {\n            margin: 0;\n            padding: 0;\n            box-sizing: border-box;\n            font-family: Arial, Helvetica, sans-serif;\n        }\n\n        body {\n            background-color: #fff7f0;\n            color: #333;\n        }\n\n        \/* NAVBAR *\/\n        header {\n            background-color: #ff6f61;\n            padding: 15px 40px;\n            display: flex;\n            justify-content: space-between;\n            align-items: center;\n        }\n\n        header h1 {\n            color: #fff;\n            font-size: 24px;\n        }\n\n        nav a {\n            color: #fff;\n            margin-left: 20px;\n            text-decoration: none;\n            font-weight: bold;\n        }\n\n        nav a:hover {\n            text-decoration: underline;\n        }\n\n        \/* HERO SECTION *\/\n        .hero {\n            height: 80vh;\n            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),\n            url(&apos;https:\/\/images.unsplash.com\/photo-1505250469679-203ad9ced0cb&apos;) center\/cover no-repeat;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            text-align: center;\n            color: #fff;\n        }\n\n        .hero h2 {\n            font-size: 48px;\n            margin-bottom: 10px;\n        }\n\n        .hero p {\n            font-size: 18px;\n            margin-bottom: 20px;\n        }\n\n        .hero a {\n            background-color: #ff6f61;\n            padding: 12px 25px;\n            color: #fff;\n            text-decoration: none;\n            border-radius: 5px;\n            font-weight: bold;\n        }\n\n        \/* SECTION *\/\n        section {\n            padding: 60px 40px;\n            text-align: center;\n        }\n\n        section h3 {\n            font-size: 32px;\n            margin-bottom: 30px;\n        }\n\n        \/* ICE CREAM CARDS *\/\n        .cards {\n            display: grid;\n            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\n            gap: 25px;\n        }\n\n        .card {\n            background-color: #fff;\n            border-radius: 10px;\n            padding: 20px;\n            box-shadow: 0 5px 15px rgba(0,0,0,0.1);\n        }\n\n        .card img {\n            width: 100%;\n            border-radius: 10px;\n            margin-bottom: 15px;\n        }\n\n        .card h4 {\n            font-size: 22px;\n            margin-bottom: 10px;\n        }\n\n        \/* ABOUT *\/\n        .about {\n            background-color: #ffe5d9;\n        }\n\n        \/* FOOTER *\/\n        footer {\n            background-color: #ff6f61;\n            color: #fff;\n            text-align: center;\n            padding: 20px;\n            margin-top: 40px;\n        }\n    &lt;\/style&gt;\n&lt;\/head&gt;\n\n&lt;body&gt;\n\n    &lt;header&gt;\n        &lt;h1&gt;Sweet Scoops&lt;\/h1&gt;\n        &lt;nav&gt;\n            &lt;a href=&quot;#&quot;&gt;Home&lt;\/a&gt;\n            &lt;a href=&quot;#&quot;&gt;Flavours&lt;\/a&gt;\n            &lt;a href=&quot;#&quot;&gt;About&lt;\/a&gt;\n            &lt;a href=&quot;#&quot;&gt;Contact&lt;\/a&gt;\n        &lt;\/nav&gt;\n    &lt;\/header&gt;\n\n    &lt;div class=&quot;hero&quot;&gt;\n        &lt;div&gt;\n            &lt;h2&gt;Happiness in Every Scoop&lt;\/h2&gt;\n            &lt;p&gt;Fresh, creamy, and handcrafted ice creams&lt;\/p&gt;\n            &lt;a href=&quot;#&quot;&gt;Explore Flavours&lt;\/a&gt;\n        &lt;\/div&gt;\n    &lt;\/div&gt;\n\n    &lt;section&gt;\n        &lt;h3&gt;Our Best Sellers&lt;\/h3&gt;\n        &lt;div class=&quot;cards&quot;&gt;\n            &lt;div class=&quot;card&quot;&gt;\n                &lt;img src=&quot;https:\/\/images.unsplash.com\/photo-1501443762994-82bd5dace89a&quot;&gt;\n                &lt;h4&gt;Chocolate Delight&lt;\/h4&gt;\n                &lt;p&gt;Rich, creamy chocolate made with real cocoa.&lt;\/p&gt;\n            &lt;\/div&gt;\n\n            &lt;div class=&quot;card&quot;&gt;\n                &lt;img src=&quot;https:\/\/images.unsplash.com\/photo-1497034825429-c343d7c6a68f&quot;&gt;\n                &lt;h4&gt;Vanilla Dream&lt;\/h4&gt;\n                &lt;p&gt;Classic vanilla with a smooth, silky texture.&lt;\/p&gt;\n            &lt;\/div&gt;\n\n            &lt;div class=&quot;card&quot;&gt;\n                &lt;img src=&quot;https:\/\/images.unsplash.com\/photo-1504674900247-0877df9cc836&quot;&gt;\n                &lt;h4&gt;Strawberry Bliss&lt;\/h4&gt;\n                &lt;p&gt;Fresh strawberries blended to perfection.&lt;\/p&gt;\n            &lt;\/div&gt;\n        &lt;\/div&gt;\n    &lt;\/section&gt;\n\n    &lt;section class=&quot;about&quot;&gt;\n        &lt;h3&gt;About Us&lt;\/h3&gt;\n        &lt;p&gt;\n            Sweet Scoops is a local ice cream parlour serving handcrafted\n            ice creams made from the freshest ingredients. No shortcuts.\n            No artificial nonsense. Just real flavor.\n        &lt;\/p&gt;\n    &lt;\/section&gt;\n\n    &lt;footer&gt;\n        &lt;p&gt;&amp;copy; 2026 Sweet Scoops Ice Cream Parlour&lt;\/p&gt;\n    &lt;\/footer&gt;\n\n&lt;\/body&gt;\n&lt;\/html&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+		page Page_2
+		{
+			displayname = "Page 2"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet1' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet1()\ncontent\n&lt;%{\n\t%&gt;\n&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n&lt;head&gt;\n&lt;meta charset=&quot;UTF-8&quot;&gt;\n&lt;title&gt;Frosty Treats&lt;\/title&gt;\n&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;\n\n&lt;style&gt;\n    * {\n        margin: 0;\n        padding: 0;\n        box-sizing: border-box;\n        font-family: &apos;Segoe UI&apos;, sans-serif;\n    }\n\n    body {\n        background-color: #fdfcff;\n        color: #222;\n    }\n\n    \/* TOP BAR *\/\n    .top-bar {\n        background: #6c63ff;\n        color: white;\n        padding: 12px 30px;\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n    }\n\n    .top-bar h1 {\n        font-size: 26px;\n    }\n\n    .top-bar ul {\n        list-style: none;\n        display: flex;\n        gap: 20px;\n    }\n\n    .top-bar a {\n        color: white;\n        text-decoration: none;\n        font-weight: 600;\n    }\n\n    \/* HERO *\/\n    .hero {\n        display: grid;\n        grid-template-columns: 1fr 1fr;\n        align-items: center;\n        padding: 80px 50px;\n        background: #f3f1ff;\n    }\n\n    .hero-text h2 {\n        font-size: 46px;\n        margin-bottom: 15px;\n    }\n\n    .hero-text p {\n        font-size: 18px;\n        margin-bottom: 25px;\n        line-height: 1.6;\n    }\n\n    .hero-text a {\n        background: #6c63ff;\n        color: white;\n        padding: 12px 30px;\n        border-radius: 25px;\n        text-decoration: none;\n        font-weight: bold;\n    }\n\n    .hero img {\n        width: 100%;\n        border-radius: 20px;\n    }\n\n    \/* FLAVOURS *\/\n    .flavours {\n        padding: 70px 40px;\n        text-align: center;\n    }\n\n    .flavours h3 {\n        font-size: 34px;\n        margin-bottom: 40px;\n    }\n\n    .flavour-grid {\n        display: flex;\n        flex-wrap: wrap;\n        justify-content: center;\n        gap: 30px;\n    }\n\n    .flavour-box {\n        width: 260px;\n        background: white;\n        border-radius: 15px;\n        padding: 20px;\n        box-shadow: 0 10px 20px rgba(0,0,0,0.08);\n    }\n\n    .flavour-box img {\n        width: 100%;\n        border-radius: 15px;\n        margin-bottom: 15px;\n    }\n\n    .flavour-box h4 {\n        margin-bottom: 8px;\n        font-size: 20px;\n    }\n\n    \/* PROMO *\/\n    .promo {\n        background: #6c63ff;\n        color: white;\n        padding: 60px 30px;\n        text-align: center;\n    }\n\n    .promo h3 {\n        font-size: 32px;\n        margin-bottom: 10px;\n    }\n\n    \/* FOOTER *\/\n    footer {\n        background: #222;\n        color: #ccc;\n        text-align: center;\n        padding: 20px;\n    }\n\n    \/* RESPONSIVE *\/\n    @media (max-width: 900px) {\n        .hero {\n            grid-template-columns: 1fr;\n            text-align: center;\n        }\n\n        .hero img {\n            margin-top: 30px;\n        }\n    }\n&lt;\/style&gt;\n&lt;\/head&gt;\n\n&lt;body&gt;\n\n&lt;div class=&quot;top-bar&quot;&gt;\n    &lt;h1&gt;Frosty Treats&lt;\/h1&gt;\n    &lt;ul&gt;\n        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Home&lt;\/a&gt;&lt;\/li&gt;\n        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Menu&lt;\/a&gt;&lt;\/li&gt;\n        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Offers&lt;\/a&gt;&lt;\/li&gt;\n        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Contact&lt;\/a&gt;&lt;\/li&gt;\n    &lt;\/ul&gt;\n&lt;\/div&gt;\n\n&lt;section class=&quot;hero&quot;&gt;\n    &lt;div class=&quot;hero-text&quot;&gt;\n        &lt;h2&gt;Cold. Creamy. Perfect.&lt;\/h2&gt;\n        &lt;p&gt;\n            Premium ice creams crafted with real ingredients.\n            No shortcuts. No fake flavors.\n        &lt;\/p&gt;\n        &lt;a href=&quot;#&quot;&gt;View Menu&lt;\/a&gt;\n    &lt;\/div&gt;\n\n    &lt;img src=&quot;https:\/\/images.unsplash.com\/photo-1499636136210-6f4ee915583e&quot;&gt;\n&lt;\/section&gt;\n\n&lt;section class=&quot;flavours&quot;&gt;\n    &lt;h3&gt;Popular Flavours&lt;\/h3&gt;\n\n    &lt;div class=&quot;flavour-grid&quot;&gt;\n        &lt;div class=&quot;flavour-box&quot;&gt;\n            &lt;img src=&quot;https:\/\/images.unsplash.com\/photo-1589712235274-8f4b04c43a39&quot;&gt;\n            &lt;h4&gt;Mango Magic&lt;\/h4&gt;\n            &lt;p&gt;Seasonal mangoes with a creamy finish.&lt;\/p&gt;\n        &lt;\/div&gt;\n\n        &lt;div class=&quot;flavour-box&quot;&gt;\n            &lt;img src=&quot;https:\/\/images.unsplash.com\/photo-1605475128023-28a47b4f5c6c&quot;&gt;\n            &lt;h4&gt;Cookies &amp; Cream&lt;\/h4&gt;\n            &lt;p&gt;Crunchy cookies blended smoothly.&lt;\/p&gt;\n        &lt;\/div&gt;\n\n        &lt;div class=&quot;flavour-box&quot;&gt;\n            &lt;img src=&quot;https:\/\/images.unsplash.com\/photo-1505253216365-99e9e7f0b6e0&quot;&gt;\n            &lt;h4&gt;Berry Blast&lt;\/h4&gt;\n            &lt;p&gt;Mixed berries with a tangy twist.&lt;\/p&gt;\n        &lt;\/div&gt;\n    &lt;\/div&gt;\n&lt;\/section&gt;\n\n&lt;section class=&quot;promo&quot;&gt;\n    &lt;h3&gt;Buy 2 Get 1 Free&lt;\/h3&gt;\n    &lt;p&gt;Every Friday | Dine-in Only&lt;\/p&gt;\n&lt;\/section&gt;\n\n&lt;footer&gt;\n    &lt;p&gt;&amp;copy; 2026 Frosty Treats. All rights reserved.&lt;\/p&gt;\n&lt;\/footer&gt;\n\n&lt;\/body&gt;\n&lt;\/html&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+		page Page_3
+		{
+			displayname = "Page 3"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet2' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet2()\ncontent\n&lt;%{\n\t%&gt;\n&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n&lt;head&gt;\n&lt;meta charset=&quot;UTF-8&quot;&gt;\n&lt;title&gt;Neon Scoops&lt;\/title&gt;\n&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;\n\n&lt;style&gt;\n    * {\n        margin: 0;\n        padding: 0;\n        box-sizing: border-box;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    body {\n        background-color: #0f0f1a;\n        color: #f5f5f5;\n    }\n\n    \/* NAV *\/\n    .nav {\n        padding: 20px 50px;\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        background: #0a0a14;\n        border-bottom: 1px solid #222;\n    }\n\n    .nav h1 {\n        color: #ff4ecd;\n        letter-spacing: 2px;\n    }\n\n    .nav a {\n        margin-left: 25px;\n        color: #fff;\n        text-decoration: none;\n        font-weight: bold;\n    }\n\n    .nav a:hover {\n        color: #00f7ff;\n    }\n\n    \/* HERO *\/\n    .hero {\n        display: flex;\n        min-height: 90vh;\n    }\n\n    .hero-left {\n        width: 50%;\n        padding: 80px;\n        display: flex;\n        flex-direction: column;\n        justify-content: center;\n    }\n\n    .hero-left h2 {\n        font-size: 52px;\n        margin-bottom: 20px;\n        color: #00f7ff;\n    }\n\n    .hero-left p {\n        font-size: 18px;\n        margin-bottom: 30px;\n        line-height: 1.6;\n    }\n\n    .hero-left a {\n        width: fit-content;\n        padding: 14px 35px;\n        border-radius: 30px;\n        background: linear-gradient(90deg, #ff4ecd, #00f7ff);\n        color: #000;\n        font-weight: bold;\n        text-decoration: none;\n    }\n\n    .hero-right {\n        width: 50%;\n        background: url(&apos;https:\/\/images.unsplash.com\/photo-1499636136210-6f4ee915583e&apos;) center\/cover no-repeat;\n    }\n\n    \/* MENU *\/\n    .menu {\n        padding: 80px 50px;\n        text-align: center;\n    }\n\n    .menu h3 {\n        font-size: 36px;\n        margin-bottom: 50px;\n        color: #ff4ecd;\n    }\n\n    .menu-items {\n        display: grid;\n        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\n        gap: 30px;\n    }\n\n    .item {\n        background: #151528;\n        padding: 25px;\n        border-radius: 15px;\n        border: 1px solid #222;\n    }\n\n    .item img {\n        width: 100%;\n        border-radius: 15px;\n        margin-bottom: 15px;\n    }\n\n    .item h4 {\n        margin-bottom: 8px;\n        color: #00f7ff;\n    }\n\n    \/* STRIP *\/\n    .strip {\n        background: linear-gradient(90deg, #ff4ecd, #00f7ff);\n        color: #000;\n        text-align: center;\n        padding: 40px 20px;\n        font-size: 22px;\n        font-weight: bold;\n    }\n\n    \/* FOOTER *\/\n    footer {\n        background: #0a0a14;\n        text-align: center;\n        padding: 25px;\n        color: #888;\n    }\n\n    \/* RESPONSIVE *\/\n    @media (max-width: 900px) {\n        .hero {\n            flex-direction: column;\n        }\n\n        .hero-left,\n        .hero-right {\n            width: 100%;\n        }\n\n        .hero-left {\n            padding: 50px 30px;\n        }\n\n        .hero-right {\n            height: 350px;\n        }\n    }\n&lt;\/style&gt;\n&lt;\/head&gt;\n\n&lt;body&gt;\n\n&lt;div class=&quot;nav&quot;&gt;\n    &lt;h1&gt;NEON SCOOPS&lt;\/h1&gt;\n    &lt;div&gt;\n        &lt;a href=&quot;#&quot;&gt;Home&lt;\/a&gt;\n        &lt;a href=&quot;#&quot;&gt;Menu&lt;\/a&gt;\n        &lt;a href=&quot;#&quot;&gt;Deals&lt;\/a&gt;\n        &lt;a href=&quot;#&quot;&gt;Visit&lt;\/a&gt;\n    &lt;\/div&gt;\n&lt;\/div&gt;\n\n&lt;section class=&quot;hero&quot;&gt;\n    &lt;div class=&quot;hero-left&quot;&gt;\n        &lt;h2&gt;Ice Cream After Dark&lt;\/h2&gt;\n        &lt;p&gt;\n            Bold flavors. Electric colors.\n            Crafted for night cravings and sugar addicts.\n        &lt;\/p&gt;\n        &lt;a href=&quot;#&quot;&gt;Explore Menu&lt;\/a&gt;\n    &lt;\/div&gt;\n    &lt;div class=&quot;hero-right&quot;&gt;&lt;\/div&gt;\n&lt;\/section&gt;\n\n&lt;section class=&quot;menu&quot;&gt;\n    &lt;h3&gt;Signature Scoops&lt;\/h3&gt;\n    &lt;div class=&quot;menu-items&quot;&gt;\n        &lt;div class=&quot;item&quot;&gt;\n            &lt;img src=&quot;https:\/\/images.unsplash.com\/photo-1505253216365-99e9e7f0b6e0&quot;&gt;\n            &lt;h4&gt;Midnight Chocolate&lt;\/h4&gt;\n            &lt;p&gt;Dark cocoa with a neon twist.&lt;\/p&gt;\n        &lt;\/div&gt;\n\n        &lt;div class=&quot;item&quot;&gt;\n            &lt;img src=&quot;https:\/\/images.unsplash.com\/photo-1501443762994-82bd5dace89a&quot;&gt;\n            &lt;h4&gt;Electric Vanilla&lt;\/h4&gt;\n            &lt;p&gt;Classic flavor, amplified.&lt;\/p&gt;\n        &lt;\/div&gt;\n\n        &lt;div class=&quot;item&quot;&gt;\n            &lt;img src=&quot;https:\/\/images.unsplash.com\/photo-1589712235274-8f4b04c43a39&quot;&gt;\n            &lt;h4&gt;Pink Shock&lt;\/h4&gt;\n            &lt;p&gt;Berry-powered sweetness.&lt;\/p&gt;\n        &lt;\/div&gt;\n    &lt;\/div&gt;\n&lt;\/section&gt;\n\n&lt;div class=&quot;strip&quot;&gt;\n    Open Till Midnight \u2022 City Center \u2022 No Boring Flavors\n&lt;\/div&gt;\n\n&lt;footer&gt;\n    &amp;copy; 2026 Neon Scoops\n&lt;\/footer&gt;\n\n&lt;\/body&gt;\n&lt;\/html&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+		page Page_4
+		{
+			displayname = "Page 4"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet3' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet3()\ncontent\n&lt;%{\n\t%&gt;\n&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n&lt;head&gt;\n&lt;meta charset=&quot;UTF-8&quot;&gt;\n&lt;title&gt;Happy Scoops&lt;\/title&gt;\n&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;\n\n&lt;style&gt;\n    * {\n        margin: 0;\n        padding: 0;\n        box-sizing: border-box;\n        font-family: &quot;Comic Sans MS&quot;, &quot;Poppins&quot;, sans-serif;\n    }\n\n    body {\n        background: #fff3fb;\n        color: #333;\n    }\n\n    \/* HEADER *\/\n    header {\n        background: #ff85c0;\n        padding: 20px;\n        text-align: center;\n        border-bottom: 6px solid #ff5aa5;\n    }\n\n    header h1 {\n        font-size: 36px;\n        color: white;\n        letter-spacing: 2px;\n    }\n\n    header nav {\n        margin-top: 10px;\n    }\n\n    header nav a {\n        margin: 0 15px;\n        color: white;\n        text-decoration: none;\n        font-weight: bold;\n    }\n\n    \/* HERO *\/\n    .hero {\n        padding: 80px 20px;\n        text-align: center;\n        background: linear-gradient(#ffd6ec, #fff3fb);\n    }\n\n    .hero h2 {\n        font-size: 42px;\n        margin-bottom: 15px;\n        color: #ff5aa5;\n    }\n\n    .hero p {\n        font-size: 18px;\n        margin-bottom: 25px;\n    }\n\n    .hero a {\n        display: inline-block;\n        background: #ff5aa5;\n        color: white;\n        padding: 14px 35px;\n        border-radius: 40px;\n        text-decoration: none;\n        font-weight: bold;\n    }\n\n    \/* FLAVOURS *\/\n    .flavours {\n        padding: 60px 30px;\n        text-align: center;\n    }\n\n    .flavours h3 {\n        font-size: 32px;\n        margin-bottom: 40px;\n    }\n\n    .flavour-list {\n        display: grid;\n        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));\n        gap: 30px;\n    }\n\n    .flavour {\n        background: white;\n        border-radius: 25px;\n        padding: 20px;\n        box-shadow: 0 10px 20px rgba(0,0,0,0.1);\n        border: 4px dashed #ffd6ec;\n    }\n\n    .flavour img {\n        width: 100%;\n        border-radius: 20px;\n        margin-bottom: 15px;\n    }\n\n    .flavour h4 {\n        font-size: 20px;\n        color: #ff5aa5;\n        margin-bottom: 5px;\n    }\n\n    \/* FUN STRIP *\/\n    .fun-strip {\n        background: #ffe066;\n        text-align: center;\n        padding: 40px 20px;\n        font-size: 24px;\n        font-weight: bold;\n        color: #7a5200;\n    }\n\n    \/* FOOTER *\/\n    footer {\n        background: #ff85c0;\n        color: white;\n        text-align: center;\n        padding: 20px;\n        margin-top: 40px;\n    }\n&lt;\/style&gt;\n&lt;\/head&gt;\n\n&lt;body&gt;\n\n&lt;header&gt;\n    &lt;h1&gt;Happy Scoops&lt;\/h1&gt;\n    &lt;nav&gt;\n        &lt;a href=&quot;#&quot;&gt;Home&lt;\/a&gt;\n        &lt;a href=&quot;#&quot;&gt;Flavours&lt;\/a&gt;\n        &lt;a href=&quot;#&quot;&gt;Kids Zone&lt;\/a&gt;\n        &lt;a href=&quot;#&quot;&gt;Party Orders&lt;\/a&gt;\n    &lt;\/nav&gt;\n&lt;\/header&gt;\n\n&lt;section class=&quot;hero&quot;&gt;\n    &lt;h2&gt;Smile With Every Scoop \uD83D\uDE04&lt;\/h2&gt;\n    &lt;p&gt;Colorful ice creams made for kids and kids-at-heart&lt;\/p&gt;\n    &lt;a href=&quot;#&quot;&gt;Pick Your Flavor&lt;\/a&gt;\n&lt;\/section&gt;\n\n&lt;section class=&quot;flavours&quot;&gt;\n    &lt;h3&gt;Yummy Favorites&lt;\/h3&gt;\n\n    &lt;div class=&quot;flavour-list&quot;&gt;\n        &lt;div class=&quot;flavour&quot;&gt;\n            &lt;img src=&quot;https:\/\/images.unsplash.com\/photo-1505253216365-99e9e7f0b6e0&quot;&gt;\n            &lt;h4&gt;Bubblegum Pop&lt;\/h4&gt;\n            &lt;p&gt;Sweet, pink, and super fun!&lt;\/p&gt;\n        &lt;\/div&gt;\n\n        &lt;div class=&quot;flavour&quot;&gt;\n            &lt;img src=&quot;https:\/\/images.unsplash.com\/photo-1589712235274-8f4b04c43a39&quot;&gt;\n            &lt;h4&gt;Choco Monster&lt;\/h4&gt;\n            &lt;p&gt;Extra chocolate for little monsters.&lt;\/p&gt;\n        &lt;\/div&gt;\n\n        &lt;div class=&quot;flavour&quot;&gt;\n            &lt;img src=&quot;https:\/\/images.unsplash.com\/photo-1501443762994-82bd5dace89a&quot;&gt;\n            &lt;h4&gt;Rainbow Swirl&lt;\/h4&gt;\n            &lt;p&gt;All the colors. All the joy.&lt;\/p&gt;\n        &lt;\/div&gt;\n    &lt;\/div&gt;\n&lt;\/section&gt;\n\n&lt;div class=&quot;fun-strip&quot;&gt;\n    \uD83C\uDF89 Birthday Parties \u2022 \uD83C\uDF88 School Events \u2022 \uD83C\uDF66 Unlimited Fun\n&lt;\/div&gt;\n\n&lt;footer&gt;\n    &amp;copy; 2026 Happy Scoops Ice Cream Parlour\n&lt;\/footer&gt;\n\n&lt;\/body&gt;\n&lt;\/html&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+		page Dashboard
+		{
+			displayname = "Dashboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet4' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet4()\ncontent\n&lt;%{\n\t%&gt;\n&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n&lt;head&gt;\n&lt;meta charset=&quot;UTF-8&quot;&gt;\n&lt;title&gt;Ice Cream Dashboard&lt;\/title&gt;\n\n&lt;style&gt;\n* {\n    margin: 0;\n    padding: 0;\n    box-sizing: border-box;\n    font-family: &quot;Segoe UI&quot;, sans-serif;\n}\n\nbody {\n    background: #fff6f0;\n    color: #333;\n}\n\n\/* Navbar *\/\n.navbar {\n    background: #6a4cff;\n    color: #fff;\n    padding: 18px 30px;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n\n.navbar h2 {\n    letter-spacing: 1px;\n}\n\n.navbar ul {\n    list-style: none;\n    display: flex;\n    gap: 25px;\n}\n\n.navbar ul li {\n    cursor: pointer;\n    font-size: 15px;\n    opacity: 0.9;\n}\n\n.navbar ul li:hover {\n    opacity: 1;\n    text-decoration: underline;\n}\n\n\/* Main *\/\n.main {\n    padding: 30px;\n}\n\n\/* Welcome *\/\n.welcome {\n    background: linear-gradient(135deg, #ff9a8b, #ff6a88);\n    color: #fff;\n    padding: 30px;\n    border-radius: 14px;\n    margin-bottom: 25px;\n}\n\n.welcome h1 {\n    font-size: 26px;\n    margin-bottom: 10px;\n}\n\n\/* Stats *\/\n.stats {\n    display: grid;\n    grid-template-columns: repeat(4, 1fr);\n    gap: 20px;\n    margin-bottom: 25px;\n}\n\n.stat-card {\n    background: #fff;\n    padding: 25px;\n    border-radius: 14px;\n    text-align: center;\n    box-shadow: 0 6px 18px rgba(0,0,0,0.08);\n}\n\n.stat-card h3 {\n    font-size: 14px;\n    color: #777;\n    margin-bottom: 8px;\n}\n\n.stat-card p {\n    font-size: 26px;\n    font-weight: bold;\n    color: #6a4cff;\n}\n\n\/* Panels *\/\n.panels {\n    display: grid;\n    grid-template-columns: 2fr 1fr;\n    gap: 25px;\n}\n\n\/* Orders *\/\n.orders {\n    background: #fff;\n    padding: 25px;\n    border-radius: 14px;\n    box-shadow: 0 6px 18px rgba(0,0,0,0.08);\n}\n\n.orders h3 {\n    margin-bottom: 15px;\n}\n\n.order {\n    display: flex;\n    justify-content: space-between;\n    padding: 12px 0;\n    border-bottom: 1px solid #eee;\n}\n\n.order:last-child {\n    border-bottom: none;\n}\n\n\/* Flavors *\/\n.flavors {\n    background: #fff;\n    padding: 25px;\n    border-radius: 14px;\n    box-shadow: 0 6px 18px rgba(0,0,0,0.08);\n}\n\n.flavors h3 {\n    margin-bottom: 15px;\n}\n\n.flavor {\n    display: flex;\n    justify-content: space-between;\n    margin-bottom: 12px;\n    font-size: 14px;\n}\n\n.badge {\n    background: #ff6a88;\n    color: #fff;\n    padding: 3px 10px;\n    border-radius: 20px;\n    font-size: 12px;\n}\n\n\/* Responsive *\/\n@media (max-width: 900px) {\n    .stats {\n        grid-template-columns: repeat(2, 1fr);\n    }\n\n    .panels {\n        grid-template-columns: 1fr;\n    }\n}\n\n@media (max-width: 600px) {\n    .navbar ul {\n        display: none;\n    }\n\n    .stats {\n        grid-template-columns: 1fr;\n    }\n}\n&lt;\/style&gt;\n&lt;\/head&gt;\n\n&lt;body&gt;\n\n&lt;div class=&quot;navbar&quot;&gt;\n    &lt;h2&gt;IceCream Co.&lt;\/h2&gt;\n    &lt;ul&gt;\n        &lt;li&gt;Dashboard&lt;\/li&gt;\n        &lt;li&gt;Orders&lt;\/li&gt;\n        &lt;li&gt;Flavors&lt;\/li&gt;\n        &lt;li&gt;Reports&lt;\/li&gt;\n        &lt;li&gt;Logout&lt;\/li&gt;\n    &lt;\/ul&gt;\n&lt;\/div&gt;\n\n&lt;div class=&quot;main&quot;&gt;\n\n    &lt;div class=&quot;welcome&quot;&gt;\n        &lt;h1&gt;Good Afternoon, Admin&lt;\/h1&gt;\n        &lt;p&gt;Here\u2019s today\u2019s ice cream business overview&lt;\/p&gt;\n    &lt;\/div&gt;\n\n    &lt;div class=&quot;stats&quot;&gt;\n        &lt;div class=&quot;stat-card&quot;&gt;\n            &lt;h3&gt;Today Sales&lt;\/h3&gt;\n            &lt;p&gt;\u20B99,200&lt;\/p&gt;\n        &lt;\/div&gt;\n        &lt;div class=&quot;stat-card&quot;&gt;\n            &lt;h3&gt;Orders&lt;\/h3&gt;\n            &lt;p&gt;86&lt;\/p&gt;\n        &lt;\/div&gt;\n        &lt;div class=&quot;stat-card&quot;&gt;\n            &lt;h3&gt;Flavors&lt;\/h3&gt;\n            &lt;p&gt;22&lt;\/p&gt;\n        &lt;\/div&gt;\n        &lt;div class=&quot;stat-card&quot;&gt;\n            &lt;h3&gt;Customers&lt;\/h3&gt;\n            &lt;p&gt;54&lt;\/p&gt;\n        &lt;\/div&gt;\n    &lt;\/div&gt;\n\n    &lt;div class=&quot;panels&quot;&gt;\n\n        &lt;div class=&quot;orders&quot;&gt;\n            &lt;h3&gt;Recent Orders&lt;\/h3&gt;\n            &lt;div class=&quot;order&quot;&gt;\n                &lt;span&gt;#201 \u2013 Chocolate&lt;\/span&gt;\n                &lt;strong&gt;\u20B9180&lt;\/strong&gt;\n            &lt;\/div&gt;\n            &lt;div class=&quot;order&quot;&gt;\n                &lt;span&gt;#202 \u2013 Mango&lt;\/span&gt;\n                &lt;strong&gt;\u20B9150&lt;\/strong&gt;\n            &lt;\/div&gt;\n            &lt;div class=&quot;order&quot;&gt;\n                &lt;span&gt;#203 \u2013 Vanilla&lt;\/span&gt;\n                &lt;strong&gt;\u20B9120&lt;\/strong&gt;\n            &lt;\/div&gt;\n            &lt;div class=&quot;order&quot;&gt;\n                &lt;span&gt;#204 \u2013 Strawberry&lt;\/span&gt;\n                &lt;strong&gt;\u20B9200&lt;\/strong&gt;\n            &lt;\/div&gt;\n        &lt;\/div&gt;\n\n        &lt;div class=&quot;flavors&quot;&gt;\n            &lt;h3&gt;Top Flavors&lt;\/h3&gt;\n            &lt;div class=&quot;flavor&quot;&gt;\n                &lt;span&gt;Chocolate&lt;\/span&gt;\n                &lt;span class=&quot;badge&quot;&gt;Hot&lt;\/span&gt;\n            &lt;\/div&gt;\n            &lt;div class=&quot;flavor&quot;&gt;\n                &lt;span&gt;Mango&lt;\/span&gt;\n                &lt;span class=&quot;badge&quot;&gt;Hot&lt;\/span&gt;\n            &lt;\/div&gt;\n            &lt;div class=&quot;flavor&quot;&gt;\n                &lt;span&gt;Vanilla&lt;\/span&gt;\n                &lt;span class=&quot;badge&quot;&gt;Low&lt;\/span&gt;\n            &lt;\/div&gt;\n            &lt;div class=&quot;flavor&quot;&gt;\n                &lt;span&gt;Butterscotch&lt;\/span&gt;\n                &lt;span class=&quot;badge&quot;&gt;Low&lt;\/span&gt;\n            &lt;\/div&gt;\n        &lt;\/div&gt;\n\n    &lt;\/div&gt;\n\n&lt;\/div&gt;\n\n&lt;\/body&gt;\n&lt;\/html&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+		page Page_5
+		{
+			displayname = "Page 5"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet5' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet5()\ncontent\n&lt;%{\n\t%&gt;\n&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n&lt;head&gt;\n&lt;meta charset=&quot;UTF-8&quot;&gt;\n&lt;title&gt;Velvet Ice Cream&lt;\/title&gt;\n&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;\n\n&lt;style&gt;\n    * {\n        margin: 0;\n        padding: 0;\n        box-sizing: border-box;\n        font-family: Georgia, &quot;Times New Roman&quot;, serif;\n    }\n\n    body {\n        background-color: #faf9f7;\n        color: #2b2b2b;\n        line-height: 1.6;\n    }\n\n    \/* HEADER *\/\n    header {\n        padding: 30px 60px;\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        background: #ffffff;\n        border-bottom: 1px solid #ddd;\n    }\n\n    header h1 {\n        font-size: 28px;\n        letter-spacing: 1px;\n    }\n\n    header nav a {\n        margin-left: 30px;\n        text-decoration: none;\n        color: #2b2b2b;\n        font-weight: bold;\n    }\n\n    \/* HERO *\/\n    .hero {\n        padding: 120px 60px;\n        background: url(&quot;https:\/\/images.unsplash.com\/photo-1499636136210-6f4ee915583e&quot;)\n                    center\/cover no-repeat;\n        position: relative;\n        color: white;\n    }\n\n    .hero::after {\n        content: &quot;&quot;;\n        position: absolute;\n        inset: 0;\n        background: rgba(0,0,0,0.45);\n    }\n\n    .hero-content {\n        position: relative;\n        max-width: 600px;\n    }\n\n    .hero h2 {\n        font-size: 48px;\n        margin-bottom: 20px;\n    }\n\n    .hero p {\n        font-size: 18px;\n        margin-bottom: 30px;\n    }\n\n    .hero a {\n        display: inline-block;\n        padding: 14px 40px;\n        border: 2px solid white;\n        color: white;\n        text-decoration: none;\n        letter-spacing: 1px;\n    }\n\n    \/* SECTION *\/\n    section {\n        padding: 80px 60px;\n    }\n\n    section h3 {\n        font-size: 34px;\n        margin-bottom: 40px;\n        text-align: center;\n    }\n\n    \/* MENU *\/\n    .menu {\n        display: grid;\n        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));\n        gap: 40px;\n    }\n\n    .menu-item {\n        background: white;\n        padding: 25px;\n        border: 1px solid #ddd;\n    }\n\n    .menu-item img {\n        width: 100%;\n        margin-bottom: 20px;\n    }\n\n    .menu-item h4 {\n        font-size: 20px;\n        margin-bottom: 8px;\n    }\n\n    \/* QUOTE *\/\n    .quote {\n        background: #2b2b2b;\n        color: #f5f5f5;\n        text-align: center;\n        padding: 70px 40px;\n        font-size: 22px;\n        font-style: italic;\n    }\n\n    \/* FOOTER *\/\n    footer {\n        background: #ffffff;\n        border-top: 1px solid #ddd;\n        text-align: center;\n        padding: 25px;\n        color: #666;\n    }\n\n    \/* RESPONSIVE *\/\n    @media (max-width: 800px) {\n        header {\n            flex-direction: column;\n            gap: 15px;\n        }\n\n        .hero {\n            padding: 80px 30px;\n        }\n\n        section {\n            padding: 60px 30px;\n        }\n    }\n&lt;\/style&gt;\n&lt;\/head&gt;\n\n&lt;body&gt;\n\n&lt;header&gt;\n    &lt;h1&gt;VELVET&lt;\/h1&gt;\n    &lt;nav&gt;\n        &lt;a href=&quot;#&quot;&gt;Home&lt;\/a&gt;\n        &lt;a href=&quot;#&quot;&gt;Collection&lt;\/a&gt;\n        &lt;a href=&quot;#&quot;&gt;About&lt;\/a&gt;\n        &lt;a href=&quot;#&quot;&gt;Visit&lt;\/a&gt;\n    &lt;\/nav&gt;\n&lt;\/header&gt;\n\n&lt;section class=&quot;hero&quot;&gt;\n    &lt;div class=&quot;hero-content&quot;&gt;\n        &lt;h2&gt;Refined Ice Cream Experience&lt;\/h2&gt;\n        &lt;p&gt;\n            Crafted in small batches using premium ingredients\n            and timeless techniques.\n        &lt;\/p&gt;\n        &lt;a href=&quot;#&quot;&gt;Discover Flavours&lt;\/a&gt;\n    &lt;\/div&gt;\n&lt;\/section&gt;\n\n&lt;section&gt;\n    &lt;h3&gt;Signature Selection&lt;\/h3&gt;\n\n    &lt;div class=&quot;menu&quot;&gt;\n        &lt;div class=&quot;menu-item&quot;&gt;\n            &lt;img src=&quot;https:\/\/images.unsplash.com\/photo-1501443762994-82bd5dace89a&quot;&gt;\n            &lt;h4&gt;Madagascar Vanilla&lt;\/h4&gt;\n            &lt;p&gt;Elegant, smooth, and delicately balanced.&lt;\/p&gt;\n        &lt;\/div&gt;\n\n        &lt;div class=&quot;menu-item&quot;&gt;\n            &lt;img src=&quot;https:\/\/images.unsplash.com\/photo-1505253216365-99e9e7f0b6e0&quot;&gt;\n            &lt;h4&gt;Dark Chocolate Noir&lt;\/h4&gt;\n            &lt;p&gt;Intense cocoa with a silky finish.&lt;\/p&gt;\n        &lt;\/div&gt;\n\n        &lt;div class=&quot;menu-item&quot;&gt;\n            &lt;img src=&quot;https:\/\/images.unsplash.com\/photo-1589712235274-8f4b04c43a39&quot;&gt;\n            &lt;h4&gt;Pistachio Cream&lt;\/h4&gt;\n            &lt;p&gt;Slow-roasted pistachios from Sicily.&lt;\/p&gt;\n        &lt;\/div&gt;\n    &lt;\/div&gt;\n&lt;\/section&gt;\n\n&lt;div class=&quot;quote&quot;&gt;\n    \u201CIce cream is not a dessert. It is an experience.\u201D\n&lt;\/div&gt;\n\n&lt;footer&gt;\n    &amp;copy; 2026 Velvet Ice Cream Parlour\n&lt;\/footer&gt;\n\n&lt;\/body&gt;\n&lt;\/html&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+		page Page6
+		{
+			displayname = "Page6"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet6' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet6()\ncontent\n&lt;%{\n\t%&gt;\n&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n&lt;head&gt;\n&lt;meta charset=&quot;UTF-8&quot;&gt;\n&lt;title&gt;Urban Scoops&lt;\/title&gt;\n&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;\n\n&lt;style&gt;\n    * {\n        margin: 0;\n        padding: 0;\n        box-sizing: border-box;\n        font-family: &apos;Poppins&apos;, Arial, sans-serif;\n    }\n\n    body {\n        background: #f4f4f4;\n        color: #111;\n    }\n\n    \/* HEADER *\/\n    header {\n        background: #111;\n        color: #fff;\n        padding: 25px 50px;\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n    }\n\n    header h1 {\n        font-size: 30px;\n        letter-spacing: 2px;\n    }\n\n    header nav a {\n        margin-left: 25px;\n        color: #fff;\n        text-decoration: none;\n        font-weight: 600;\n    }\n\n    \/* HERO *\/\n    .hero {\n        display: grid;\n        grid-template-columns: 1.2fr 0.8fr;\n        min-height: 85vh;\n    }\n\n    .hero-text {\n        background: #ffe66d;\n        padding: 90px 70px;\n        display: flex;\n        flex-direction: column;\n        justify-content: center;\n    }\n\n    .hero-text h2 {\n        font-size: 58px;\n        margin-bottom: 20px;\n    }\n\n    .hero-text p {\n        font-size: 18px;\n        margin-bottom: 35px;\n        max-width: 420px;\n    }\n\n    .hero-text a {\n        background: #111;\n        color: #fff;\n        padding: 14px 40px;\n        text-decoration: none;\n        width: fit-content;\n        font-weight: bold;\n    }\n\n    .hero-img {\n        background: url(&quot;https:\/\/images.unsplash.com\/photo-1497034825429-c343d7c6a68f&quot;)\n                    center\/cover no-repeat;\n    }\n\n    \/* SECTION *\/\n    section {\n        padding: 80px 60px;\n        background: #fff;\n    }\n\n    section h3 {\n        font-size: 36px;\n        margin-bottom: 50px;\n        text-align: center;\n    }\n\n    \/* GRID *\/\n    .grid {\n        display: grid;\n        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));\n        gap: 35px;\n    }\n\n    .box {\n        background: #f4f4f4;\n        padding: 25px;\n    }\n\n    .box img {\n        width: 100%;\n        margin-bottom: 15px;\n    }\n\n    .box h4 {\n        font-size: 20px;\n        margin-bottom: 6px;\n    }\n\n    \/* BANNER *\/\n    .banner {\n        background: #111;\n        color: #fff;\n        text-align: center;\n        padding: 60px 30px;\n        font-size: 26px;\n        font-weight: bold;\n        letter-spacing: 1px;\n    }\n\n    \/* FOOTER *\/\n    footer {\n        background: #111;\n        color: #aaa;\n        text-align: center;\n        padding: 25px;\n    }\n\n    \/* RESPONSIVE *\/\n    @media (max-width: 900px) {\n        .hero {\n            grid-template-columns: 1fr;\n        }\n\n        .hero-text {\n            padding: 60px 40px;\n        }\n\n        section {\n            padding: 60px 30px;\n        }\n    }\n&lt;\/style&gt;\n&lt;\/head&gt;\n\n&lt;body&gt;\n\n&lt;header&gt;\n    &lt;h1&gt;URBAN SCOOPS&lt;\/h1&gt;\n    &lt;nav&gt;\n        &lt;a href=&quot;#&quot;&gt;Home&lt;\/a&gt;\n        &lt;a href=&quot;#&quot;&gt;Menu&lt;\/a&gt;\n        &lt;a href=&quot;#&quot;&gt;Locations&lt;\/a&gt;\n        &lt;a href=&quot;#&quot;&gt;Order&lt;\/a&gt;\n    &lt;\/nav&gt;\n&lt;\/header&gt;\n\n&lt;section class=&quot;hero&quot;&gt;\n    &lt;div class=&quot;hero-text&quot;&gt;\n        &lt;h2&gt;Cold Meets Bold&lt;\/h2&gt;\n        &lt;p&gt;\n            Street-inspired ice cream with flavors that hit hard\n            and visuals made for social feeds.\n        &lt;\/p&gt;\n        &lt;a href=&quot;#&quot;&gt;See Menu&lt;\/a&gt;\n    &lt;\/div&gt;\n    &lt;div class=&quot;hero-img&quot;&gt;&lt;\/div&gt;\n&lt;\/section&gt;\n\n&lt;section&gt;\n    &lt;h3&gt;Top Picks&lt;\/h3&gt;\n\n    &lt;div class=&quot;grid&quot;&gt;\n        &lt;div class=&quot;box&quot;&gt;\n            &lt;img src=&quot;https:\/\/images.unsplash.com\/photo-1501443762994-82bd5dace89a&quot;&gt;\n            &lt;h4&gt;Burnt Caramel&lt;\/h4&gt;\n            &lt;p&gt;Sweet, smoky, unforgettable.&lt;\/p&gt;\n        &lt;\/div&gt;\n\n        &lt;div class=&quot;box&quot;&gt;\n            &lt;img src=&quot;https:\/\/images.unsplash.com\/photo-1589712235274-8f4b04c43a39&quot;&gt;\n            &lt;h4&gt;Matcha Milk&lt;\/h4&gt;\n            &lt;p&gt;Clean flavor with a punch.&lt;\/p&gt;\n        &lt;\/div&gt;\n\n        &lt;div class=&quot;box&quot;&gt;\n            &lt;img src=&quot;https:\/\/images.unsplash.com\/photo-1505253216365-99e9e7f0b6e0&quot;&gt;\n            &lt;h4&gt;Cookie Smash&lt;\/h4&gt;\n            &lt;p&gt;Crunchy, messy, perfect.&lt;\/p&gt;\n        &lt;\/div&gt;\n    &lt;\/div&gt;\n&lt;\/section&gt;\n\n&lt;div class=&quot;banner&quot;&gt;\n    Made Fresh Daily \u2022 Downtown \u2022 Since 2026\n&lt;\/div&gt;\n\n&lt;footer&gt;\n    &amp;copy; 2026 Urban Scoops\n&lt;\/footer&gt;\n\n&lt;\/body&gt;\n&lt;\/html&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+		page Page_7
+		{
+			displayname = "Page 7"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet7' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet7()\ncontent\n&lt;%{\n\t%&gt;\n&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n&lt;head&gt;\n&lt;meta charset=&quot;UTF-8&quot;&gt;\n&lt;title&gt;SnowCream Parlour&lt;\/title&gt;\n&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;\n\n&lt;style&gt;\n    * {\n        margin: 0;\n        padding: 0;\n        box-sizing: border-box;\n        font-family: Arial, Helvetica, sans-serif;\n    }\n\n    body {\n        background-color: #f8f9fa;\n        color: #333;\n        line-height: 1.6;\n    }\n\n    \/* HEADER *\/\n    header {\n        background-color: #ffffff;\n        border-bottom: 1px solid #ddd;\n        padding: 20px 60px;\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n    }\n\n    header h1 {\n        font-size: 26px;\n        color: #2d6cdf;\n    }\n\n    header nav a {\n        margin-left: 25px;\n        text-decoration: none;\n        color: #333;\n        font-weight: 600;\n    }\n\n    header nav a:hover {\n        color: #2d6cdf;\n    }\n\n    \/* HERO *\/\n    .hero {\n        background-color: #eaf1ff;\n        padding: 100px 60px;\n        text-align: center;\n    }\n\n    .hero h2 {\n        font-size: 46px;\n        margin-bottom: 15px;\n    }\n\n    .hero p {\n        font-size: 18px;\n        max-width: 700px;\n        margin: auto;\n        margin-bottom: 30px;\n    }\n\n    .hero a {\n        background-color: #2d6cdf;\n        color: #fff;\n        padding: 14px 36px;\n        text-decoration: none;\n        font-weight: bold;\n        border-radius: 4px;\n    }\n\n    \/* SECTION *\/\n    section {\n        padding: 80px 60px;\n        background-color: #ffffff;\n    }\n\n    section h3 {\n        font-size: 34px;\n        margin-bottom: 50px;\n        text-align: center;\n    }\n\n    \/* CARDS *\/\n    .cards {\n        display: grid;\n        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));\n        gap: 40px;\n    }\n\n    .card {\n        border: 1px solid #ddd;\n        padding: 25px;\n        background-color: #fff;\n    }\n\n    .card img {\n        width: 100%;\n        margin-bottom: 20px;\n    }\n\n    .card h4 {\n        font-size: 20px;\n        margin-bottom: 8px;\n    }\n\n    \/* INFO STRIP *\/\n    .info {\n        background-color: #2d6cdf;\n        color: #fff;\n        text-align: center;\n        padding: 60px 30px;\n        font-size: 22px;\n        font-weight: bold;\n    }\n\n    \/* FOOTER *\/\n    footer {\n        background-color: #ffffff;\n        border-top: 1px solid #ddd;\n        text-align: center;\n        padding: 25px;\n        color: #666;\n    }\n\n    \/* RESPONSIVE *\/\n    @media (max-width: 800px) {\n        header {\n            flex-direction: column;\n            gap: 15px;\n        }\n\n        .hero {\n            padding: 70px 30px;\n        }\n\n        section {\n            padding: 60px 30px;\n        }\n    }\n&lt;\/style&gt;\n&lt;\/head&gt;\n\n&lt;body&gt;\n\n&lt;header&gt;\n    &lt;h1&gt;SnowCream&lt;\/h1&gt;\n    &lt;nav&gt;\n        &lt;a href=&quot;#&quot;&gt;Home&lt;\/a&gt;\n        &lt;a href=&quot;#&quot;&gt;Menu&lt;\/a&gt;\n        &lt;a href=&quot;#&quot;&gt;About&lt;\/a&gt;\n        &lt;a href=&quot;#&quot;&gt;Contact&lt;\/a&gt;\n    &lt;\/nav&gt;\n&lt;\/header&gt;\n\n&lt;div class=&quot;hero&quot;&gt;\n    &lt;h2&gt;Fresh Ice Cream, Made Daily&lt;\/h2&gt;\n    &lt;p&gt;\n        SnowCream serves handcrafted ice creams using quality ingredients\n        and simple recipes for a smooth, authentic taste.\n    &lt;\/p&gt;\n    &lt;a href=&quot;#&quot;&gt;View Menu&lt;\/a&gt;\n&lt;\/div&gt;\n\n&lt;section&gt;\n    &lt;h3&gt;Popular Flavours&lt;\/h3&gt;\n\n    &lt;div class=&quot;cards&quot;&gt;\n        &lt;div class=&quot;card&quot;&gt;\n            &lt;img src=&quot;https:\/\/images.unsplash.com\/photo-1501443762994-82bd5dace89a&quot;&gt;\n            &lt;h4&gt;Classic Vanilla&lt;\/h4&gt;\n            &lt;p&gt;Rich and creamy with natural vanilla.&lt;\/p&gt;\n        &lt;\/div&gt;\n\n        &lt;div class=&quot;card&quot;&gt;\n            &lt;img src=&quot;https:\/\/images.unsplash.com\/photo-1505253216365-99e9e7f0b6e0&quot;&gt;\n            &lt;h4&gt;Belgian Chocolate&lt;\/h4&gt;\n            &lt;p&gt;Deep cocoa flavor made from real chocolate.&lt;\/p&gt;\n        &lt;\/div&gt;\n\n        &lt;div class=&quot;card&quot;&gt;\n            &lt;img src=&quot;https:\/\/images.unsplash.com\/photo-1589712235274-8f4b04c43a39&quot;&gt;\n            &lt;h4&gt;Strawberry Cream&lt;\/h4&gt;\n            &lt;p&gt;Fresh strawberries blended smoothly.&lt;\/p&gt;\n        &lt;\/div&gt;\n    &lt;\/div&gt;\n&lt;\/section&gt;\n\n&lt;div class=&quot;info&quot;&gt;\n    Serving Smiles Since 2026 \u2022 Open Daily\n&lt;\/div&gt;\n\n&lt;footer&gt;\n    \u00A9 2026 SnowCream Ice Cream Parlour\n&lt;\/footer&gt;\n\n&lt;\/body&gt;\n&lt;\/html&gt;\n&lt;%\n\n}%&gt;]]>\n<\/dsp>\n<\/column>\n<\/row>\n<\/layout>\n<\/zml>"
+		}
+	}
+
+
+		workflow
+		{
+		form
+		{
+			Check_Negative_Value as "Check Negative Value"
+			{
+				type =  form
+				form = Ice_Cream_Details
+				record event = on add or edit
+
+				on user input of Ice_Cream_Price
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Ice_Cream_Price != null)
+										{
+											if(Ice_Cream_Price < 0)
+											{
+												alert "Not Valid Reson For You Enter The Negative Value";
+												input.Ice_Cream_Price = 0;
+											}
+										}
+						)
+					}
+				}
+
+			}
+			Check_All_Validation as "Check All Validation"
+			{
+				type =  form
+				form = Ice_Cream_Details
+				record event = on add or edit
+
+				on validate
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Ice_Cream_Flavors != null || input.Ice_Cream_Price == 0)
+										{
+											alert "Not Valid Reson For You Enter The Zero Value Or Not Enter The ice_toppings_list pls Enter";
+											cancel submit;
+										}
+						)
+					}
+				}
+
+			}
+			Check_Negative_Value1 as "Check Negative Value"
+			{
+				type =  form
+				form = Ice_Toppings_Details
+				record event = on add or edit
+
+				on user input of Ice_Toppings_Price
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Ice_Toppings_Price != null)
+										{
+											if(input.Ice_Toppings_Price < 0)
+											{
+												alert "Not Valid Reson For You Enter The Negative Value";
+												input.Ice_Toppings_Price = 0;
+											}
+										}
+						)
+					}
+				}
+
+			}
+			Check_All_Validation1 as "Check All Validation"
+			{
+				type =  form
+				form = Ice_Toppings_Details
+				record event = on add or edit
+
+				on validate
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Ice_Toppings != null || input.Ice_Toppings_Price == 0)
+										{
+											alert "Not Valid Reson For You Enter The Zero Value Or Not Enter The ice_toppings_list pls Enter";
+											cancel submit;
+										}
+						)
+					}
+				}
+
+			}
+			Hide_And_Show as "Hide And Show"
+			{
+				type =  form
+				form = Order
+				record event = on add or edit
+
+				field rules
+				{
+					actions  (Checkbox == "I have one more request")
+					{
+						show Personalization,Personalization_Price;
+					}
+				}
+
+			}
+			Hide_And_Disable as "Hide And Disable"
+			{
+				type =  form
+				form = Order
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											disable Order_Details.Ice_Toppings_Price;
+										disable Order_Details.Ice_Cream_Total_Price;
+										disable Order_Details.Ice_Cream_Price;
+										disable Grand_Total;
+										disable Order_Details.Order_Status;
+										hide Order_Details.Ice_Toppings_Price;
+						)
+					}
+				}
+
+			}
+			Fetch_Data as "Fetch Data"
+			{
+				type =  form
+				form = Order
+				record event = on add or edit
+
+				on user input of Order_Details.Ice_Cream_Flavors
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// input.Grand_Total = 0;
+										// if(row.Ice_Cream_Flavors != null)
+										// {
+										// 	enable row.Ice_Toppings;
+										// 	var = Ice_Cream_Details[ID == row.Ice_Cream_Flavors];
+										// 	row.Ice_Cream_Price=var.Ice_Cream_Price;
+										// 	row.Ice_Cream_Total_Price=var.Ice_Cream_Price;
+										// 	input.Grand_Total = input.Grand_Total + row.Ice_Cream_Price;
+										// }
+										// if(row.Ice_Cream_Flavors == null)
+										// {
+										// 	row.Ice_Toppings=null;
+										// 	input.Grand_Total = input.Grand_Total - row.Ice_Cream_Price;
+										// 	row.Ice_Toppings_Price=0;
+										// 	row.Ice_Cream_Total_Price=0;
+										// 	row.Ice_Cream_Price=0;
+										// }
+						)
+					}
+					actions 
+					{
+						custom deluge script
+						(
+											if(row.Ice_Toppings != null)
+										{
+											if(row.Ice_Cream_Flavors == null)
+											{
+												alert "Not Valid Reson For You Not Select The Ice_Cream_Flavors Pls Enter";
+												row.Ice_Toppings=null;
+												input.Grand_Total = input.Grand_Total - row.Ice_Cream_Total_Price;
+												row.Ice_Toppings_Price=0;
+												row.Ice_Cream_Total_Price=0;
+												row.Ice_Cream_Price=0;
+											}
+										}
+										if(row.Ice_Toppings == null && row.Ice_Cream_Flavors != null)
+										{
+											ver = Ice_Cream_Details[ID == row.Ice_Cream_Flavors];
+											row.Ice_Cream_Price=ver.Ice_Cream_Price;
+											row.Ice_Cream_Total_Price=row.Ice_Cream_Price;
+											input.Grand_Total = 0;
+											for each  rec in input.Order_Details
+											{
+												input.Grand_Total = input.Grand_Total + rec.Ice_Cream_Total_Price;
+											}
+										}
+										if(row.Ice_Cream_Flavors == null)
+										{
+											input.Grand_Total = input.Grand_Total - row.Ice_Cream_Total_Price;
+											row.Ice_Toppings_Price=0;
+											row.Ice_Cream_Price=0;
+										}
+						)
+					}
+				}
+
+			}
+			Calculate_Toppings_Price as "Calculate Toppings Price"
+			{
+				type =  form
+				form = Order
+				record event = on add or edit
+
+				on user input of Order_Details.Ice_Toppings
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											// if(row.Ice_Toppings != null && row.Ice_Cream_Flavors != null)
+										// {
+										// 	ver = Ice_Toppings_Details[ID == row.Ice_Toppings];
+										// 	row.Ice_Toppings_Price=ver.sum(Ice_Toppings_Price);
+										// 	row.Ice_Cream_Total_Price=ver.sum(Ice_Toppings_Price);
+										// 	input.Grand_Total = 0;
+										// 	for each  rec in input.Order_Details
+										// 	{
+										// 		input.Grand_Total = input.Grand_Total + rec.Ice_Cream_Total_Price;
+										// 	}
+										// 	input.Grand_Total = input.Grand_Total + row.Ice_Cream_Price;
+										// 	row.Ice_Cream_Total_Price=row.Ice_Cream_Total_Price + row.Ice_Cream_Price;
+										// }
+										// else if(row.Ice_Toppings == null)
+										// {
+										// 	input.Grand_Total = input.Grand_Total - row.Ice_Toppings_Price;
+										// 	row.Ice_Cream_Total_Price=row.Ice_Cream_Total_Price - row.Ice_Toppings_Price;
+										// }
+						)
+					}
+					actions 
+					{
+						custom deluge script
+						(
+											if(row.Ice_Toppings != null)
+										{
+											if(row.Ice_Cream_Flavors == null)
+											{
+												alert "Not Valid Reson For You Not Select The Ice_Cream_Flavors Pls Enter ";
+												row.Ice_Toppings=null;
+												input.Grand_Total = input.Grand_Total - row.Ice_Cream_Total_Price;
+												row.Ice_Toppings_Price=0;
+												row.Ice_Cream_Total_Price=0;
+											}
+										}
+										if(row.Ice_Toppings != null)
+										{
+											ver = Ice_Toppings_Details[ID == row.Ice_Toppings];
+											row.Ice_Cream_Total_Price=ver.sum(Ice_Toppings_Price) + row.Ice_Cream_Price;
+											input.Grand_Total = 0;
+											for each  rec in input.Order_Details
+											{
+												input.Grand_Total = input.Grand_Total + rec.Ice_Cream_Total_Price;
+											}
+										}
+										if(row.Ice_Toppings == null)
+										{
+											row.Ice_Cream_Total_Price=row.Ice_Cream_Price;
+											input.Grand_Total = 0;
+											for each  rec in input.Order_Details
+											{
+												input.Grand_Total = input.Grand_Total + rec.Ice_Cream_Total_Price;
+											}
+										}
+						)
+					}
+				}
+
+			}
+			minus_grand_total_if_dele as "minus grand total if delete a row"
+			{
+				type =  form
+				form = Order
+				record event = on add or edit
+
+				on delete row of Order_Details
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Grand_Total = input.Grand_Total - row.Ice_Cream_Total_Price;
+						)
+					}
+				}
+
+			}
+			Use_Ui_add as "Use Ui.add"
+			{
+				type =  form
+				form = Order
+				record event = on add or edit
+
+				on add row of Order_Details
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											rec = Ice_Cream_Details[ID != null].ID.getAll();
+										rec.removeAll(input.Order_Details.Ice_Cream_Flavors.getall());
+										row.Ice_Cream_Flavors:ui.add(rec);
+						)
+					}
+				}
+
+			}
+			Create_Order_ID as "Create Order ID"
+			{
+				type =  form
+				form = Order
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Order_ID = "O" + "_" + "I" + "_" + "D" + "_" + input.Customer_Name.subString(0,3) + "_" + input.Customer_Email.subString(0,3) + "_" + input.Auto_Number;
+						)
+					}
+				}
+
+			}
+			Hide_And_Disable1 as "Hide And Disable"
+			{
+				type =  form
+				form = ReOrder
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											disable Reorder_Details.Ice_Toppings_Price;
+										disable Reorder_Details.Ice_Cream_Price;
+										disable Reorder_Details.Ice_Cream_Flavors;
+										disable Reorder_Details.Ice_Toppings;
+										disable Reorder_Details.Ice_Cream_Total_Price;
+										disable Customer_Address;
+										disable Customer_Email;
+										disable Customer_Name;
+										disable Customer_Phone;
+										disable Grand_Total;
+						)
+					}
+				}
+
+			}
+			Fetch_data1 as "Fetch data"
+			{
+				type =  form
+				form = ReOrder
+				record event = on add or edit
+
+				on user input of Order_ID
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											ver = Order[ID == input.Order_ID];
+										input.Customer_Name = ver.Customer_Name;
+										input.Customer_Email = ver.Customer_Email;
+										input.Customer_Phone = ver.Customer_Phone;
+										input.Customer_Address = ver.Customer_Address;
+										input.Grand_Total = ver.Grand_Total;
+										for each  rec in ver.Order_Details
+										{
+											var = ReOrder.Reorder_Details();
+											var.Ice_Cream_Flavors=rec.Ice_Cream_Flavors;
+											var.Ice_Toppings=rec.Ice_Toppings;
+											var.Ice_Cream_Price=rec.Ice_Cream_Price;
+											var.Ice_Toppings_Price=rec.Ice_Toppings_Price;
+											var.Ice_Cream_Total_Price=rec.Ice_Cream_Total_Price;
+											var.Order_Status=rec.Order_Status;
+											input.Reorder_Details.insert(var);
+										}
+						)
+					}
+				}
+
+			}
+			Change_Status as "Change Status"
+			{
+				type =  form
+				form = ReOrder
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											var = Order[ID == input.Order_ID];
+										for each  ver in input.Reorder_Details
+										{
+											for each  rec in var.Order_Details
+											{
+												if(rec.Ice_Cream_Flavors == ver.Ice_Cream_Flavors)
+												{
+													rec.Order_Status=ver.Order_Status;
+												}
+											}
+										}
+						)
+					}
+				}
+
+			}
+		}
+
+
+
+
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form Ice_Cream_Details
+			{
+				label placement = left
+			}
+			form Ice_Toppings_Details
+			{
+				label placement = left
+			}
+			form Order
+			{
+				label placement = left
+			}
+			form Personalization
+			{
+				label placement = left
+			}
+			form ReOrder
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report All_Ice_Cream_Details
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Ice_Cream_Flavors as "Ice Cream Flavors "
+								Ice_Cream_Price as "Ice Cream Price"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Ice_Cream_Flavors as "Ice Cream Flavors "
+								Ice_Cream_Price as "Ice Cream Price"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report Ice_Toppings_Details_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Ice_Toppings as "Ice Toppings "
+								Ice_Toppings_Price as "Ice Toppings Price"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Ice_Toppings as "Ice Toppings "
+								Ice_Toppings_Price as "Ice Toppings Price"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Orders
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Order_ID as "Order ID"
+								Auto_Number as "Auto Number"
+								Customer_Name
+								Customer_Email
+								Customer_Phone
+								Customer_Address
+								Order_Details.Ice_Cream_Flavors as "Order Details"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Order_ID as "Order ID"
+								Auto_Number as "Auto Number"
+								Customer_Name
+								Customer_Email
+								Customer_Phone
+								Customer_Address
+								Order_Details.Ice_Cream_Flavors as "Order Details"
+								Checkbox
+								Personalization
+								Personalization_Price as "Personalization Price"
+								Grand_Total as "Grand Total"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Personations
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Personalization
+								Price
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Personalization
+								Price
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report ReOrder_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Customer_Name
+								Customer_Email
+								Customer_Phone
+								Customer_Address
+								Grand_Total as "Grand Total"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Add 
+    		 				Print 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Print   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Customer_Name
+								Customer_Email
+								Customer_Phone
+								Customer_Address
+								Grand_Total as "Grand Total"
+								Order_ID as "Order ID"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Print 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Ice_Cream_Details
+				{
+					displayname = "Ice Cream Details"
+					icon = "food-ice-cream-72"
+					form  Ice_Cream_Details
+					{
+						icon = "food-ice-cream-72"
+					}
+					report All_Ice_Cream_Details
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section Ice_Toppings_Details
+				{
+					displayname = "Ice Toppings Details"
+					icon = "food-ice-cream-72"
+					form  Ice_Toppings_Details
+					{
+						icon = "food-ice-cream-72"
+					}
+					report Ice_Toppings_Details_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Orders
+				{
+					displayname = "Orders"
+					icon = "shopping-list"
+					form  Order
+					{
+						icon = "shopping-delivery-fast"
+					}
+					report All_Orders
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Personations
+				{
+					displayname = "Personations"
+					icon = "tech-desktop"
+					form  Personalization
+					{
+						icon = "weather-forecast"
+					}
+					report All_Personations
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section ReOrder
+				{
+					displayname = "ReOrder"
+					icon = "education-grammar-check"
+					form  ReOrder
+					{
+						icon = "tech-desktop"
+					}
+					report ReOrder_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Home_Page
+				{
+					displayname = "Home Page"
+					icon = "education-book-bookmark"
+					page Home_Page
+					{
+						icon = "education-book-bookmark"
+					}
+					page Page_2
+					{
+						icon = "ui-1-dashboard-half"
+					}
+					page Page_3
+					{
+						icon = "design-webpage"
+					}
+					page Page_4
+					{
+						icon = "design-webpage"
+					}
+					page Dashboard
+					{
+						icon = "ui-1-dashboard-half"
+					}
+					page Page_5
+					{
+						icon = "design-webpage"
+					}
+					page Page6
+					{
+						icon = "tech-desktop"
+					}
+					page Page_7
+					{
+						icon = "design-webpage"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "lato"
+			color options
+			{
+				color = "1"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Ice_Cream_Details
+			{
+				label placement = auto
+			}
+			form Ice_Toppings_Details
+			{
+				label placement = auto
+			}
+			form Order
+			{
+				label placement = auto
+			}
+			form Personalization
+			{
+				label placement = auto
+			}
+			form ReOrder
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = rose
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Ice_Cream_Details
+			{
+				label placement = auto
+			}
+			form Ice_Toppings_Details
+			{
+				label placement = auto
+			}
+			form Order
+			{
+				label placement = auto
+			}
+			form Personalization
+			{
+				label placement = auto
+			}
+			form ReOrder
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = rose
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}
